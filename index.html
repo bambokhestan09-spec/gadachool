@@ -6,8 +6,8 @@
   <title>GEDACHOL - لیگ گداهای استرسی فصل ۲</title>
   <style>
     :root {
-      --bg-dark: #0a0e14;
-      --card-bg: rgba(22, 27, 34, 0.85);
+      --bg-dark: #0d1117;
+      --card-bg: #161b22;
       --yellow-accent: #f5b041;
       --blue-accent: #3498db;
       --text-main: #ffffff;
@@ -16,32 +16,21 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    
     body {
       background-color: var(--bg-dark);
       color: var(--text-main);
       font-family: Tahoma, 'Segoe UI', sans-serif;
       line-height: 1.6;
       padding-bottom: 40px;
-      position: relative;
-      min-height: 100vh;
-      /* پس‌زمینه فوتبالی متحرک و گرافیکی */
-      background-image: 
-        radial-gradient(circle at 10% 20%, rgba(54, 162, 235, 0.12) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(245, 176, 65, 0.12) 0%, transparent 40%),
-        radial-gradient(circle at 50% 50%, rgba(46, 204, 113, 0.05) 0%, transparent 60%),
-        url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M60 0a60 60 0 1 0 60 60A60.066 60.066 0 0 0 60 0zm0 110a50 50 0 1 1 50-50 50.057 50.057 0 0 1-50 50z'/%3E%3Cpath d='M60 20a40 40 0 1 0 40 40 40.045 40.045 0 0 0-40-40zm0 70a30 30 0 1 1 30-30 30.034 30.034 0 0 1-30 30z'/%3E%3C/g%3E%3C/svg%3E");
-      background-attachment: fixed;
     }
 
     /* هدر سایت */
     header {
       text-align: center;
       padding: 30px 20px 20px;
-      background: linear-gradient(135deg, rgba(245, 176, 65, 0.2) 0%, rgba(13, 17, 23, 0.9) 50%, rgba(52, 152, 219, 0.2) 100%);
+      background: linear-gradient(135deg, rgba(245, 176, 65, 0.15) 0%, rgba(52, 152, 219, 0.15) 100%);
       border-bottom: 3px solid var(--yellow-accent);
       margin-bottom: 25px;
-      backdrop-filter: blur(8px);
     }
 
     .hero-banner {
@@ -49,8 +38,8 @@
       width: 100%;
       height: auto;
       border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-      border: 2px solid var(--yellow-accent);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+      border: 2px solid var(--border-color);
       margin-bottom: 15px;
     }
 
@@ -62,7 +51,6 @@
       background: linear-gradient(90deg, var(--yellow-accent), var(--blue-accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 20px rgba(245, 176, 65, 0.3);
     }
 
     header p {
@@ -88,13 +76,12 @@
       border: 1px solid var(--border-color);
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
 
     .accordion-header {
       width: 100%;
-      background: rgba(22, 27, 34, 0.6);
+      background: none;
       border: none;
       outline: none;
       padding: 18px 20px;
@@ -105,12 +92,12 @@
       justify-content: space-between;
       align-items: center;
       cursor: pointer;
-      transition: background 0.2s ease, border-color 0.2s ease;
+      transition: background 0.2s ease;
       font-family: inherit;
     }
 
     .accordion-header:hover {
-      background: rgba(245, 176, 65, 0.08);
+      background: rgba(255, 255, 255, 0.03);
     }
 
     .accordion-header .title-text {
@@ -133,7 +120,7 @@
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.4s ease, padding 0.4s ease;
-      background: rgba(13, 17, 23, 0.95);
+      background: #0d1117;
       border-top: 0px solid var(--border-color);
       padding: 0 20px;
     }
@@ -146,7 +133,7 @@
 
     /* استایل مسابقات */
     .match-item {
-      background: rgba(22, 27, 34, 0.9);
+      background: #161b22;
       border-radius: 10px;
       padding: 12px 15px;
       margin-bottom: 12px;
@@ -214,7 +201,7 @@
 
     /* استایل اخبار */
     .news-item {
-      background: rgba(22, 27, 34, 0.9);
+      background: #161b22;
       border-radius: 8px;
       padding: 14px;
       margin-bottom: 12px;
@@ -243,7 +230,7 @@
     .poll-option {
       display: flex;
       align-items: center;
-      background: rgba(22, 27, 34, 0.9);
+      background: #161b22;
       border: 1px solid #21262d;
       padding: 12px 15px;
       border-radius: 8px;
@@ -254,7 +241,7 @@
 
     .poll-option:hover {
       border-color: var(--blue-accent);
-      background: rgba(52, 152, 219, 0.1);
+      background: rgba(52, 152, 219, 0.05);
     }
 
     .poll-option input[type="radio"] {
@@ -286,7 +273,7 @@
 
     .poll-message {
       display: none;
-      background: rgba(52, 152, 219, 0.2);
+      background: rgba(52, 152, 219, 0.15);
       border: 1px solid var(--blue-accent);
       color: #fff;
       padding: 12px;
@@ -312,7 +299,7 @@
     <!-- بخش ۱: مسابقات پیش‌بینی -->
     <div class="accordion-item">
       <button class="accordion-header" onclick="toggleSection(this)">
-        <span class="title-text">⚽ مسابقات پیش‌بینی آینده</span>
+        <span class="title-text">🎮 مسابقات پیش‌بینی آینده</span>
         <span class="icon">▼</span>
       </button>
       <div class="accordion-content">
