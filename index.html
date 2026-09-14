@@ -24,6 +24,86 @@
             font-family: 'Vazirmatn', sans-serif;
         }
 
+        /* Splash Screen Styles */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--dark-blue);
+            background-image: radial-gradient(circle at 50% 30%, #1754a3 0%, var(--dark-blue) 70%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            color: var(--text-white);
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .splash-title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            margin-bottom: 40px;
+            text-align: center;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            color: var(--accent-gold);
+            animation: pulseText 1.5s infinite alternate;
+        }
+
+        /* Animation Arena for Maradona & Ball */
+        .animation-arena {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .maradona-container {
+            font-size: 5rem;
+            position: relative;
+            z-index: 2;
+            animation: kickPlayer 1.2s ease-in-out infinite;
+        }
+
+        .football {
+            position: absolute;
+            bottom: 20px;
+            left: 110px;
+            width: 35px;
+            height: 35px;
+            background: radial-gradient(circle at 30% 30%, #fff, #bbb);
+            border-radius: 50%;
+            box-shadow: inset -5px -5px 10px rgba(0,0,0,0.5), 0 5px 10px rgba(0,0,0,0.4);
+            z-index: 3;
+            animation: shootBall 1.2s cubic-bezier(0.36, 0, 0.66, -0.56) infinite;
+        }
+
+        @keyframes pulseText {
+            0% { transform: scale(1); opacity: 0.9; }
+            100% { transform: scale(1.05); opacity: 1; }
+        }
+
+        @keyframes kickPlayer {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(-15deg) translateY(-10px); }
+        }
+
+        @keyframes shootBall {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            40% { transform: translate(0, 0) rotate(0deg); }
+            70% { transform: translate(250px, -80px) rotate(720deg); opacity: 1; }
+            100% { transform: translate(300px, -60px) rotate(800deg); opacity: 0; }
+        }
+
+        .fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
         body {
             background-color: var(--bg-blue);
             background-image: radial-gradient(circle at 50% 30%, #1754a3 0%, var(--bg-blue) 70%);
@@ -252,110 +332,6 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
 
-        .day-header {
-            background-color: #072552;
-            color: var(--accent-gold);
-            padding: 10px 15px;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin: 20px 0 15px 0;
-            border-right: 4px solid var(--accent-red);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .day-header:first-of-type {
-            margin-top: 10px;
-        }
-
-        .match-card {
-            background: rgba(7, 37, 82, 0.6);
-            border: 1px solid #1c4580;
-            border-radius: 10px;
-            padding: 15px 20px;
-            margin-bottom: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            transition: transform 0.2s, border-color 0.2s;
-        }
-
-        .match-card:hover {
-            border-color: var(--accent-gold);
-            transform: translateY(-2px);
-        }
-
-        .match-meta {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .match-time {
-            background-color: var(--accent-red);
-            color: #fff;
-            padding: 2px 10px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            width: fit-content;
-        }
-
-        .match-league {
-            color: #a2c4f5;
-            font-size: 0.85rem;
-        }
-
-        .match-teams {
-            font-weight: bold;
-            font-size: 1.1rem;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            direction: ltr;
-        }
-
-        .match-vs {
-            color: var(--accent-gold);
-            font-size: 0.85rem;
-            font-weight: 900;
-        }
-
-        .fotmob-btn {
-            background-color: #ffffff;
-            color: #000;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.85rem;
-            transition: background-color 0.2s, color 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-
-        .fotmob-btn:hover {
-            background-color: var(--accent-gold);
-            color: #000;
-        }
-
-        @media (max-width: 600px) {
-            .match-card {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .fotmob-btn {
-                align-self: flex-end;
-            }
-        }
-
         footer {
             text-align: center;
             margin-top: 40px;
@@ -366,6 +342,15 @@
     </style>
 </head>
 <body>
+
+    <!-- Splash Screen -->
+    <div id="splash-screen">
+        <div class="splash-title">فصل دوم لیگ گداهای استرسی خوش آمدید</div>
+        <div class="animation-arena">
+            <div class="maradona-container">🇦🇷⚽</div>
+            <div class="football"></div>
+        </div>
+    </div>
 
     <div class="container">
         <!-- Header -->
@@ -479,25 +464,19 @@
 </div>
 
 <div style="background: #1a1a2e; border-radius: 8px; padding: 8px 12px; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between; color: #fff; font-family: Tahoma, sans-serif;">
-    <!-- تیم اول (میزبان) -->
     <div style="display: flex; align-items: center; gap: 6px; width: 35%;">
         <img src="https://images.fotmob.com/image_resources/logo/teamlogo/9937.png" alt="Brentford" style="width: 16px; height: 16px; object-fit: contain;">
         <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Brentford</span>
     </div>
-
-    <!-- مرکز: ساعت و لیگ -->
     <div style="display: flex; flex-direction: column; align-items: center; width: 30%;">
         <span style="font-size: 10px; font-weight: 800; color: #ffcc00; letter-spacing: 1px;">۲۲:۳۰</span>
         <span style="font-size: 8px; color: #aaa; text-transform: uppercase;">لیگ برتر انگلیس</span>
     </div>
-
-    <!-- تیم دوم (میهمان) -->
     <div style="display: flex; align-items: center; justify-content: flex-end; gap: 6px; width: 35%;">
         <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: right;">Chelsea</span>
         <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8455.png" alt="Chelsea" style="width: 16px; height: 16px; object-fit: contain;">
     </div>
 </div>
-
 
 <!-- شنبه ۲۸ شهریور -->
 <div style="font-size: 12px; font-weight: bold; color: #666; margin: 12px 4px 4px 4px; text-align: center; text-transform: uppercase; letter-spacing: 0.5px;">
@@ -564,7 +543,6 @@
     </div>
 </div>
 
-
 <!-- یکشنبه ۲۹ شهریور -->
 <div style="font-size: 12px; font-weight: bold; color: #666; margin: 12px 4px 4px 4px; text-align: center; text-transform: uppercase; letter-spacing: 0.5px;">
     یکشنبه ۲۹ شهریور
@@ -584,3 +562,21 @@
         <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8650.png" alt="Liverpool" style="width: 16px; height: 16px; object-fit: contain;">
     </div>
 </div>
+        </div>
+
+        <footer>
+            CANBO FOOTBALL &copy; 1405
+        </footer>
+    </div>
+
+    <!-- JavaScript to hide splash screen after animation -->
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const splash = document.getElementById('splash-screen');
+                splash.classList.add('fade-out');
+            }, 1800); // زمان نمایش صفحه ورودی و شوت توپ
+        });
+    </script>
+</body>
+</html>
