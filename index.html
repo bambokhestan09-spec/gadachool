@@ -49,27 +49,59 @@
             position: relative;
             width: 100%;
             max-width: 700px;
-            height: 140px;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
+        /* Football 360 Style Logo Animation */
+        .football-logo-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            animation: spinAndPulse 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+
+        .logo-badge-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-red) 0%, #991b1b 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 0 20px rgba(255, 51, 75, 0.6);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
         .rotating-text {
-            font-size: 2.2rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: clamp(1.4rem, 5vw, 2.2rem);
             font-weight: 900;
-            background: linear-gradient(135deg, #f39c12 0%, #f1c40f 100%);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #f39c12 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             filter: drop-shadow(0 4px 15px rgba(243, 156, 18, 0.4));
-            animation: spinAndPulse 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            text-align: center;
             white-space: nowrap;
         }
 
+        .logo-subtext {
+            font-size: 0.75rem;
+            letter-spacing: 6px;
+            color: var(--accent-gold);
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
         @keyframes spinAndPulse {
-            0% { transform: scale(0.95) rotate(0deg); opacity: 0.8; }
-            50% { transform: scale(1.05) rotate(1deg); opacity: 1; filter: drop-shadow(0 6px 20px rgba(243, 156, 18, 0.6)); }
-            100% { transform: scale(0.95) rotate(0deg); opacity: 0.8; }
+            0% { transform: scale(0.97); opacity: 0.9; }
+            50% { transform: scale(1.03); opacity: 1; filter: drop-shadow(0 6px 20px rgba(243, 156, 18, 0.6)); }
+            100% { transform: scale(0.97); opacity: 0.9; }
         }
 
         .fade-out {
@@ -77,8 +109,8 @@
             visibility: hidden;
         }
 
-        .fade-out .rotating-text {
-            transform: scale(2) rotate(360deg);
+        .fade-out .football-logo-box {
+            transform: scale(1.5);
             opacity: 0;
             transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -231,9 +263,6 @@
             }
             .main-title {
                 font-size: 2.2rem;
-            }
-            .rotating-text {
-                font-size: 1.5rem;
             }
             .jelly-hero-banner {
                 flex-direction: column;
@@ -497,22 +526,21 @@
         }
 
         /* Footer */
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            padding: 20px;
-            font-size: 0.85rem;
-            color: #64748b;
-            font-weight: 600;
-        }
+        <footer>
+            CANBO FOOTBALL &copy; 1405
+        </footer>
     </style>
 </head>
 <body>
 
-    <!-- Splash Screen (فقط جمله خواسته شده) -->
+    <!-- Splash Screen (فصل دوم پیش‌بینی‌ها به سبک فوتبال ۳۶۰ با متن انگلیسی) -->
     <div id="splash-screen">
         <div class="orbit-container">
-            <div class="rotating-text">خوش آمدید به فصل دوم پیش بینی ها</div>
+            <div class="football-logo-box">
+                <div class="logo-badge-icon">⚽</div>
+                <div class="rotating-text">GEDAHAYE ESTERESI 2</div>
+                <div class="logo-subtext">OFFICIAL PREDICTION LEAGUE</div>
+            </div>
         </div>
     </div>
 
@@ -642,7 +670,7 @@
 
             <div class="match-card">
                 <div class="team-box">
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/9937.png" alt="Brentford" class="team-logo">
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/9937.png" alt="برنتفورد" class="team-logo">
                     <span class="team-name">Brentford</span>
                 </div>
                 <div class="match-info">
@@ -651,7 +679,7 @@
                 </div>
                 <div class="team-box right">
                     <span class="team-name">Chelsea</span>
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8455.png" alt="Chelsea" class="team-logo">
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8455.png" alt="چلسی" class="team-logo">
                 </div>
             </div>
 
@@ -660,7 +688,7 @@
 
             <div class="match-card">
                 <div class="team-box">
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8586.png" alt="Tottenham" class="team-logo">
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8586.png" alt="تاتنهام" class="team-logo">
                     <span class="team-name">Tottenham</span>
                 </div>
                 <div class="match-info">
@@ -669,13 +697,13 @@
                 </div>
                 <div class="team-box right">
                     <span class="team-name">Aston Villa</span>
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/10252.png" alt="Aston Villa" class="team-logo">
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/10252.png" alt="استون ویلا" class="team-logo">
                 </div>
             </div>
 
             <div class="match-card">
                 <div class="team-box">
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/10204.png" alt="Brighton" class="team-logo">
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/10204.png" alt="برایتون" class="team-logo">
                     <span class="team-name">Brighton</span>
                 </div>
                 <div class="match-info">
@@ -684,13 +712,13 @@
                 </div>
                 <div class="team-box right">
                     <span class="team-name">Arsenal</span>
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/9825.png" alt="Arsenal" class="team-logo">
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/9825.png" alt="آرسنال" class="team-logo">
                 </div>
             </div>
 
             <div class="match-card">
                 <div class="team-box">
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8686.png" alt="Roma" class="team-logo">
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8686.png" alt="آث رم" class="team-logo">
                     <span class="team-name">Roma</span>
                 </div>
                 <div class="match-info">
@@ -699,13 +727,13 @@
                 </div>
                 <div class="team-box right">
                     <span class="team-name">Inter</span>
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8636.png" alt="Inter" class="team-logo">
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8636.png" alt="اینترمیلان" class="team-logo">
                 </div>
             </div>
 
             <div class="match-card">
                 <div class="team-box">
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8302.png" alt="Sevilla" class="team-logo">
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8302.png" alt="سویا" class="team-logo">
                     <span class="team-name">Sevilla</span>
                 </div>
                 <div class="match-info">
@@ -714,7 +742,7 @@
                 </div>
                 <div class="team-box right">
                     <span class="team-name">Barcelona</span>
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8634.png" alt="Barcelona" class="team-logo">
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8634.png" alt="بارسلونا" class="team-logo">
                 </div>
             </div>
 
@@ -723,7 +751,7 @@
 
             <div class="match-card">
                 <div class="team-box">
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8678.png" alt="Bournemouth" class="team-logo">
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8678.png" alt="بورنموث" class="team-logo">
                     <span class="team-name">Bournemouth</span>
                 </div>
                 <div class="match-info">
@@ -732,7 +760,7 @@
                 </div>
                 <div class="team-box right">
                     <span class="team-name">Liverpool</span>
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8650.png" alt="Liverpool" class="team-logo">
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8650.png" alt="لیورپول" class="team-logo">
                 </div>
             </div>
         </div>
