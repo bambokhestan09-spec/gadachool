@@ -307,14 +307,13 @@
     .top-2 { border-right: 4px solid #cfd3d6; }
     .top-3 { border-right: 4px solid #cd8b55; }
 
-    .naeimi-row {
-      background: linear-gradient(90deg, rgba(230, 43, 50, 0.3) 0%, rgba(0, 0, 0, 0.2) 100%) !important;
-      border-right: 4px solid var(--accent-red);
+    .user-highlight {
+      background: linear-gradient(90deg, rgba(46, 204, 113, 0.25) 0%, rgba(0, 0, 0, 0.2) 100%) !important;
+      border-right: 4px solid #2ecc71;
     }
-    .naeimi-row .player-name { color: #ff8084 !important; font-weight: 900; }
+    .user-highlight .player-name { color: #2ecc71 !important; font-weight: 900; }
 
     .points { text-align: center; font-size: 1.2rem; font-weight: 900; color: #fff; }
-    .exact { text-align: center; color: rgba(255, 255, 255, 0.6); font-weight: 700; }
 
     /* 📸 استایل کارت‌های اخبار با تصویر */
     .news-card {
@@ -335,7 +334,6 @@
       transform: translateY(-3px);
     }
 
-    /* تصویر خبر */
     .news-image-wrapper {
       width: 140px;
       height: 110px;
@@ -358,9 +356,7 @@
       transform: scale(1.1);
     }
 
-    .news-content {
-      flex: 1;
-    }
+    .news-content { flex: 1; }
 
     .news-badge {
       display: inline-block;
@@ -426,19 +422,11 @@
 
     .poll-btn:hover { transform: translateY(-2px); }
 
-    /* موبایل ریسپانسو برای اخبار */
     @media (max-width: 650px) {
       .hero-title { font-size: 2.5rem; }
       .acc-header { font-size: 1.05rem; padding: 18px; }
-      
-      .news-card {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .news-image-wrapper {
-        width: 100%;
-        height: 160px;
-      }
+      .news-card { flex-direction: column; align-items: flex-start; }
+      .news-image-wrapper { width: 100%; height: 160px; }
     }
   </style>
 </head>
@@ -527,9 +515,9 @@
     </div>
 
     <!-- بخش ۲: جدول رده‌بندی -->
-    <div class="acc-item">
+    <div class="acc-item active">
       <button class="acc-header" onclick="toggleAccordion(this)">
-        <span>🏆 جدول رده‌بندی کل (۱۴ عضو)</span>
+        <span>🏆 جدول رده‌بندی کل (۱۳ عضو)</span>
         <span class="arrow-icon">▼</span>
       </button>
       <div class="acc-body">
@@ -540,33 +528,73 @@
                 <th style="text-align: center;">رتبه</th>
                 <th>شرکت‌کننده</th>
                 <th style="text-align: center;">امتیاز</th>
-                <th style="text-align: center;">دقیق</th>
               </tr>
             </thead>
             <tbody>
               <tr class="top-1">
                 <td class="rank-num">🥇 1</td>
-                <td class="player-name">اسما زویدات</td>
+                <td class="player-name">Asm A</td>
                 <td class="points">52</td>
-                <td class="exact">3</td>
               </tr>
-              <tr class="top-2">
+              <tr class="top-2 user-highlight">
                 <td class="rank-num">🥈 2</td>
-                <td class="player-name">رضا قطیفی</td>
+                <td class="player-name">REZA GHATIFI</td>
                 <td class="points">48</td>
-                <td class="exact">3</td>
               </tr>
               <tr class="top-3">
                 <td class="rank-num">🥉 3</td>
-                <td class="player-name">مهدی</td>
+                <td class="player-name">Mahdi</td>
                 <td class="points">45</td>
-                <td class="exact">2</td>
               </tr>
-              <tr class="naeimi-row">
+              <tr>
+                <td class="rank-num">4</td>
+                <td class="player-name">Donya Asil</td>
+                <td class="points">44</td>
+              </tr>
+              <tr>
                 <td class="rank-num">5</td>
-                <td class="player-name">حبیب نعیمی 🚀</td>
+                <td class="player-name">حبیب نعیمی</td>
                 <td class="points">43</td>
-                <td class="exact">1</td>
+              </tr>
+              <tr>
+                <td class="rank-num">6</td>
+                <td class="player-name">محمد خلیلاوی پور</td>
+                <td class="points">40</td>
+              </tr>
+              <tr>
+                <td class="rank-num">7</td>
+                <td class="player-name">hajar daoudi</td>
+                <td class="points">38</td>
+              </tr>
+              <tr>
+                <td class="rank-num">8</td>
+                <td class="player-name">Ahlam Aljaber</td>
+                <td class="points">37</td>
+              </tr>
+              <tr>
+                <td class="rank-num">9</td>
+                <td class="player-name">hey10</td>
+                <td class="points">34</td>
+              </tr>
+              <tr>
+                <td class="rank-num">10</td>
+                <td class="player-name">امین دریس</td>
+                <td class="points">33</td>
+              </tr>
+              <tr>
+                <td class="rank-num">11</td>
+                <td class="player-name">Sama salehi</td>
+                <td class="points">30</td>
+              </tr>
+              <tr>
+                <td class="rank-num">12</td>
+                <td class="player-name">محمد جاسمیان</td>
+                <td class="points">24</td>
+              </tr>
+              <tr>
+                <td class="rank-num">13</td>
+                <td class="player-name">مهدی</td>
+                <td class="points">15</td>
               </tr>
             </tbody>
           </table>
@@ -574,8 +602,8 @@
       </div>
     </div>
 
-    <!-- بخش ۳: اخبار و تحلیلی همراه با عکس -->
-    <div class="acc-item active">
+    <!-- بخش ۳: اخبار و حواشی اختصاصی -->
+    <div class="acc-item">
       <button class="acc-header" onclick="toggleAccordion(this)">
         <span>📰 اخبار و حواشی اختصاصی لیگ</span>
         <span class="arrow-icon">▼</span>
@@ -583,30 +611,30 @@
 
       <div class="acc-body">
 
-        <!-- خبر ۱: آغاز هفته پنجم -->
+        <!-- خبر اول -->
         <div class="news-card">
           <div class="news-image-wrapper">
-            <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=500&q=80" alt="چلسی برنتفورد">
+            <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=500&q=80" alt="چلسی و برنتفورد">
           </div>
           <div class="news-content">
             <span class="news-badge">🚨 آغاز هفته پنجم</span>
-            <div class="news-title">⚽ سوت آغاز هفته پنجم با نبرد حساس چلسی و برنتفورد!</div>
+            <div class="news-title">⚽ آغاز هفته پنجم مسابقات با نبرد حساس چلسی و برنتفورد!</div>
             <div class="news-desc">
-              هفته پنجم مسابقات از روز جمعه با تقابل جذاب چلسی و برنتفورد از ساعت <b style="color:var(--gold-light);">۲۲:۳۰</b> آغاز می‌شود. چلسی با ۴ بازی و کسب <b style="color:var(--gold-light);">۷ امتیاز</b> در رده پنجم جای دارد و برنتفورد با <b style="color:var(--accent-red);">۶ امتیاز</b> سایه‌به‌سایه در تعقیب آن‌هاست.
+              آغاز هفته پنجم از روز جمعه با بازی چلسی در مقابل برنتفورد از ساعت <b style="color:var(--gold-light);">۲۲:۳۰</b> آغاز می‌شود. چلسی با انجام ۴ بازی و <b style="color:var(--gold-light);">۷ امتیاز</b> در رده ۵ قرار گرفته و برنتفورد پشت سر او با <b style="color:var(--accent-red);">۶ امتیاز</b> این تیم را تعقیب می‌کند.
             </div>
           </div>
         </div>
 
-        <!-- خبر ۲: زویدات صدرنشین -->
+        <!-- خبر دوم -->
         <div class="news-card">
           <div class="news-image-wrapper">
-            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=500&q=80" alt="جدول لیگ">
+            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=500&q=80" alt="زویدات صدرنشین">
           </div>
           <div class="news-content">
-            <span class="news-badge">📊 پرونده هفته چهارم</span>
-            <div class="news-title">👑 زویدات همچنان غول آخر و صدرنشین بی‌رقیب!</div>
+            <span class="news-badge">📊 پایان هفته چهارم</span>
+            <div class="news-title">👑 زویدات همچنان غول آخر لیگ گداهای استرسی...</div>
             <div class="news-desc">
-              با پایان هفته چهارم، اسما زویدات با کسب <b style="color:var(--gold-light);">۵۰ امتیاز</b> همچنان دست‌نیافتنی در صدر جدول لیگ گداهای استرسی ۲ تکیه زده است. باید دید آیا رقبای او در هفته پنجم می‌توانند این صخره محکم را متزلزل کنند یا خیر!
+              زویدات همچنان با <b style="color:var(--gold-light);">۵۰ امتیاز</b> دست‌نیافتنی و صدرنشین لیگ گداهای استرسی، باید دید او در هفته پنجم می‌تواند همچنان این روند را ادامه دهد یا خیر.
             </div>
           </div>
         </div>
