@@ -127,16 +127,18 @@
       color: var(--accent-gold);
     }
 
-    /* باکس بدنه محتوا با الگوریتم محاسبه هوشمند ارتفاع */
+    /* بدنه بدون محدودیت ارتفاع جهت نمایش کامل تمام ۱۴ نفر و مسابقات */
     .acc-body {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.35s ease-out, padding 0.35s ease-out;
-      background: rgba(0, 0, 0, 0.25);
-      padding: 0 20px;
+      display: none;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 15px 20px 25px;
     }
 
-    /* استایل مسابقات */
+    .acc-item.active .acc-body {
+      display: block;
+    }
+
+    /* استایل کارت مسابقات */
     .match-item {
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.08);
@@ -174,33 +176,44 @@
     .team { display: flex; align-items: center; gap: 8px; }
     .team img { width: 28px; height: 28px; object-fit: contain; }
 
-    /* استایل جدول */
+    /* استایل جدول کامل ۱۴ نفره */
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+    }
+
     .ranking-table {
       width: 100%;
       border-collapse: collapse;
       font-size: 0.9rem;
+      min-width: 320px;
     }
 
     .ranking-table th {
       text-align: right;
       color: var(--text-muted);
-      padding: 8px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 10px 8px;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+      font-size: 0.85rem;
     }
 
     .ranking-table td {
       padding: 10px 8px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    .ranking-table tr.highlight td {
+    .ranking-table tr.top-3 {
+      background: rgba(241, 196, 15, 0.08);
+    }
+
+    .ranking-table tr.top-3 td {
       color: var(--accent-gold);
       font-weight: bold;
     }
 
-    .rank-num { width: 30px; text-align: center; font-weight: bold; }
+    .rank-num { width: 35px; text-align: center; font-weight: bold; }
     .points { text-align: center; font-weight: bold; color: var(--accent-blue); }
-    .exact { text-align: center; color: var(--text-muted); font-weight: bold; }
+    .exact { text-align: center; color: var(--accent-green); font-weight: bold; }
 
     /* اخبار و نظرسنجی */
     .news-item {
@@ -254,42 +267,83 @@
         <span class="arrow-icon">▼</span>
       </button>
       <div class="acc-body">
-        <div style="padding: 15px 0;">
-          <div class="match-item">
-            <div class="match-header">
-              <span class="match-date">جمعه ۲۷ شهریور ۱۴۰۵</span>
-              <span class="match-time">۲۲:۳۰</span>
-            </div>
-            <div class="match-teams">
-              <div class="team"><img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/fhBITrIlbQxhVB6IjxUO6Q_500x500.png" alt="چلسی"> چلسی</div>
-              <span>-</span>
-              <div class="team">برنتفورد <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/QOUce0WQBYqnkSmN6_TxGA_500x500.png" alt="برنتفورد"></div>
-            </div>
+        
+        <!-- بازی ۱ -->
+        <div class="match-item">
+          <div class="match-header">
+            <span class="match-date">جمعه ۲۷ شهریور ۱۴۰۵</span>
+            <span class="match-time">۲۲:۳۰</span>
           </div>
-
-          <div class="match-item">
-            <div class="match-header">
-              <span class="match-date">شنبه ۲۸ شهریور ۱۴۰۵</span>
-              <span class="match-time">۱۵:۰۰</span>
-            </div>
-            <div class="match-teams">
-              <div class="team"><img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/k3Q_mKE98Dnohrcea0JFgQ_500x500.png" alt="تاتنهام"> تاتنهام</div>
-              <span>-</span>
-              <div class="team">استون ویلا <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/uyNNelfnFvCEnsLrUL-j2Q_500x500.png" alt="استون ویلا"></div>
-            </div>
+          <div class="match-teams">
+            <div class="team"><img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/fhBITrIlbQxhVB6IjxUO6Q_500x500.png" alt="چلسی"> چلسی</div>
+            <span>-</span>
+            <div class="team">برنتفورد <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/QOUce0WQBYqnkSmN6_TxGA_500x500.png" alt="برنتفورد"></div>
           </div>
         </div>
+
+        <!-- بازی ۲ -->
+        <div class="match-item">
+          <div class="match-header">
+            <span class="match-date">شنبه ۲۸ شهریور ۱۴۰۵</span>
+            <span class="match-time">۱۵:۰۰</span>
+          </div>
+          <div class="match-teams">
+            <div class="team"><img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/k3Q_mKE98Dnohrcea0JFgQ_500x500.png" alt="تاتنهام"> تاتنهام</div>
+            <span>-</span>
+            <div class="team">استون ویلا <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/uyNNelfnFvCEnsLrUL-j2Q_500x500.png" alt="استون ویلا"></div>
+          </div>
+        </div>
+
+        <!-- بازی ۳ -->
+        <div class="match-item">
+          <div class="match-header">
+            <span class="match-date">شنبه ۲۸ شهریور ۱۴۰۵</span>
+            <span class="match-time">۱۷:۳۰</span>
+          </div>
+          <div class="match-teams">
+            <div class="team"><img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/4wa333I2bdR13R42_500x500.png" alt="آرسنال"> آرسنال</div>
+            <span>-</span>
+            <div class="team">منچستر سیتی <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/z44l-A0W1v5yM3yU_500x500.png" alt="منچستر سیتی"></div>
+          </div>
+        </div>
+
+        <!-- بازی ۴ -->
+        <div class="match-item">
+          <div class="match-header">
+            <span class="match-date">یکشنبه ۲۹ شهریور ۱۴۰۵</span>
+            <span class="match-time">۱۹:۰۰</span>
+          </div>
+          <div class="match-teams">
+            <div class="team"><img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/nwO2o3_7f60046_500x500.png" alt="لیورپول"> لیورپول</div>
+            <span>-</span>
+            <div class="team">نیوکاسل <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/96A2m23U4040_500x500.png" alt="نیوکاسل"></div>
+          </div>
+        </div>
+
+        <!-- بازی ۵ -->
+        <div class="match-item">
+          <div class="match-header">
+            <span class="match-date">یکشنبه ۲۹ شهریور ۱۴۰۵</span>
+            <span class="match-time">۲۱:۳۰</span>
+          </div>
+          <div class="match-teams">
+            <div class="team"><img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/pL143I2bdR13R42_500x500.png" alt="منچستر یونایتد"> منچستر یونایتد</div>
+            <span>-</span>
+            <div class="team">بایرن مونیخ <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/14352bdR13R42_500x500.png" alt="بایرن مونیخ"></div>
+          </div>
+        </div>
+
       </div>
     </div>
 
-    <!-- بخش ۲: جدول رده‌بندی -->
+    <!-- بخش ۲: جدول رده‌بندی کامل (۱۴ نفر) -->
     <div class="acc-item">
       <button class="acc-header" onclick="toggleAccordion(this)">
-        <span>🏆 جدول رده‌بندی لیگ</span>
+        <span>🏆 جدول کامل رده‌بندی (۱۴ عضو)</span>
         <span class="arrow-icon">▼</span>
       </button>
       <div class="acc-body">
-        <div style="padding: 15px 0;">
+        <div class="table-responsive">
           <table class="ranking-table">
             <thead>
               <tr>
@@ -300,26 +354,26 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="highlight">
+              <tr class="top-3">
                 <td class="rank-num">1</td>
                 <td>REZA GHATIFI 👑</td>
                 <td class="points">15</td>
                 <td class="exact">3</td>
               </tr>
-              <tr class="highlight">
+              <tr class="top-3">
                 <td class="rank-num">1</td>
-                <td>Mahdi</td>
+                <td>Mahdi 👑</td>
                 <td class="points">15</td>
                 <td class="exact">3</td>
               </tr>
-              <tr>
+              <tr class="top-3">
                 <td class="rank-num">3</td>
-                <td>حبیب نعیمی</td>
+                <td>حبیب نعیمی 🥉</td>
                 <td class="points">14</td>
                 <td class="exact">2</td>
               </tr>
               <tr>
-                <td class="rank-num">3</td>
+                <td class="rank-num">4</td>
                 <td>Asm A</td>
                 <td class="points">14</td>
                 <td class="exact">2</td>
@@ -329,6 +383,60 @@
                 <td>Donya Asil</td>
                 <td class="points">13</td>
                 <td class="exact">1</td>
+              </tr>
+              <tr>
+                <td class="rank-num">6</td>
+                <td>علی ناجح</td>
+                <td class="points">12</td>
+                <td class="exact">2</td>
+              </tr>
+              <tr>
+                <td class="rank-num">7</td>
+                <td>جاسمیان</td>
+                <td class="points">11</td>
+                <td class="exact">1</td>
+              </tr>
+              <tr>
+                <td class="rank-num">8</td>
+                <td>خانم داودی</td>
+                <td class="points">10</td>
+                <td class="exact">1</td>
+              </tr>
+              <tr>
+                <td class="rank-num">9</td>
+                <td>امیرحسین</td>
+                <td class="points">9</td>
+                <td class="exact">0</td>
+              </tr>
+              <tr>
+                <td class="rank-num">10</td>
+                <td>محمد</td>
+                <td class="points">8</td>
+                <td class="exact">1</td>
+              </tr>
+              <tr>
+                <td class="rank-num">11</td>
+                <td>کامران</td>
+                <td class="points">7</td>
+                <td class="exact">0</td>
+              </tr>
+              <tr>
+                <td class="rank-num">12</td>
+                <td>سارینا</td>
+                <td class="points">6</td>
+                <td class="exact">0</td>
+              </tr>
+              <tr>
+                <td class="rank-num">13</td>
+                <td>پرهام</td>
+                <td class="points">5</td>
+                <td class="exact">0</td>
+              </tr>
+              <tr>
+                <td class="rank-num">14</td>
+                <td>حسین</td>
+                <td class="points">3</td>
+                <td class="exact">0</td>
               </tr>
             </tbody>
           </table>
@@ -343,11 +451,9 @@
         <span class="arrow-icon">▼</span>
       </button>
       <div class="acc-body">
-        <div style="padding: 15px 0;">
-          <div class="news-item">
-            <div style="color: var(--accent-gold); font-weight: bold; margin-bottom: 4px;">۲۶ شهریور ۱۴۰۵</div>
-            <div>رونمایی از ظاهر جدید کشویی سایت؛ تمام جدول‌ها و مسابقات بدون محدودیت و به صورت ۱۰۰٪ باز می‌شوند.</div>
-          </div>
+        <div class="news-item">
+          <div style="color: var(--accent-gold); font-weight: bold; margin-bottom: 4px;">۲۶ شهریور ۱۴۰۵</div>
+          <div>ارتقاء ساختار منوی سایت؛ تمامی ۱۴ عضو جدول لیگ به همراه لیست کلیه مسابقات بدون محدودیت ارتفاع قابل رویت است.</div>
         </div>
       </div>
     </div>
@@ -359,20 +465,18 @@
         <span class="arrow-icon">▼</span>
       </button>
       <div class="acc-body">
-        <div style="padding: 15px 0;">
-          <div style="margin-bottom: 12px; font-weight: bold;">آیا مشکل باز شدن محتوا برطرف گردید؟</div>
-          <form onsubmit="event.preventDefault(); alert('رأی شما ثبت شد!');">
-            <label class="poll-option">
-              <input type="radio" name="poll" required>
-              <span>🔥 بله، محتوا کاملاً کامل و عالی باز می‌شود</span>
-            </label>
-            <label class="poll-option">
-              <input type="radio" name="poll">
-              <span>👍 خوب است</span>
-            </label>
-            <button type="submit" class="poll-btn">ثبت رأی</button>
-          </form>
-        </div>
+        <div style="margin-bottom: 12px; font-weight: bold;">آیا تمامی ۱۴ عضو و مسابقات بدون مشکل نمایش داده می‌شوند؟</div>
+        <form onsubmit="event.preventDefault(); alert('رأی شما ثبت شد!');">
+          <label class="poll-option">
+            <input type="radio" name="poll" required>
+            <span>🔥 بله، جدول ۱۴ نفره و مسابقات کاملاً مشخص هستند</span>
+          </label>
+          <label class="poll-option">
+            <input type="radio" name="poll">
+            <span>👍 عالی شده است</span>
+          </label>
+          <button type="submit" class="poll-btn">ثبت رأی</button>
+        </form>
       </div>
     </div>
 
@@ -381,20 +485,16 @@
   <script>
     function toggleAccordion(headerBtn) {
       const currentItem = headerBtn.parentElement;
-      const currentBody = currentItem.querySelector('.acc-body');
       const isOpen = currentItem.classList.contains('active');
 
-      // بسته کردن بقیه آیتم‌ها
+      // بستن تمام کشوها
       document.querySelectorAll('.acc-item').forEach(item => {
         item.classList.remove('active');
-        const body = item.querySelector('.acc-body');
-        body.style.maxHeight = '0px';
       });
 
-      // اگر آیتم جاری بسته بود، آن را بر اساس ارتفاع واقعی محتوا باز کن
+      // اگر بسته بود، باز کردن کامل کشوی انتخابی
       if (!isOpen) {
         currentItem.classList.add('active');
-        currentBody.style.maxHeight = currentBody.scrollHeight + "px";
       }
     }
   </script>
