@@ -176,44 +176,136 @@
     .team { display: flex; align-items: center; gap: 8px; }
     .team img { width: 28px; height: 28px; object-fit: contain; }
 
-    /* استایل جدول کامل ۱۴ نفره */
-    .table-responsive {
-      width: 100%;
-      overflow-x: auto;
-    }
+    /* استایل جدول کامل ۱۴ نفره */table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  background: #1d1d1d;
+  border-radius: 18px;
+  padding: 8px 5px;
+}
 
-    .ranking-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.9rem;
-      min-width: 320px;
-    }
+.ranking-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: 340px;
+  font-size: 0.95rem;
+  background: #1d1d1d;
+}
 
-    .ranking-table th {
-      text-align: right;
-      color: var(--text-muted);
-      padding: 10px 8px;
-      border-bottom: 2px solid rgba(255, 255, 255, 0.15);
-      font-size: 0.85rem;
-    }
+/* هدر جدول */
+.ranking-table th {
+  color: #8f8f8f;
+  padding: 12px 8px;
+  border-bottom: 1px solid #3b3b3b;
+  font-size: 0.78rem;
+  font-weight: bold;
+}
 
-    .ranking-table td {
-      padding: 10px 8px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
+/* سلول‌ها */
+.ranking-table td {
+  padding: 15px 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  color: #f5f5f5;
+  font-weight: 500;
+}
 
-    .ranking-table tr.top-3 {
-      background: rgba(241, 196, 15, 0.08);
-    }
+/* شماره رتبه */
+.rank-num {
+  width: 45px;
+  text-align: center !important;
+  font-size: 1rem;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+}
 
-    .ranking-table tr.top-3 td {
-      color: var(--accent-gold);
-      font-weight: bold;
-    }
+/* خط بین رتبه و نام */
+.ranking-table td:nth-child(2) {
+  border-left: 3px solid #3a3a3a;
+  padding-right: 14px;
+  font-size: 0.95rem;
+}
 
-    .rank-num { width: 35px; text-align: center; font-weight: bold; }
-    .points { text-align: center; font-weight: bold; color: var(--accent-blue); }
-    .exact { text-align: center; color: var(--accent-green); font-weight: bold; }
+/* نام */
+.ranking-table td:nth-child(2) {
+  color: #ffffff;
+}
+
+/* امتیاز */
+.points {
+  text-align: center;
+  color: #ffffff !important;
+  font-size: 1.15rem;
+  font-weight: 800 !important;
+}
+
+/* پیش‌بینی دقیق */
+.exact {
+  text-align: center;
+  color: #a0a0a0 !important;
+  font-weight: 600;
+}
+
+/* حذف رنگ قبلی Top 3 */
+.ranking-table tr.top-3 {
+  background: transparent;
+}
+
+.ranking-table tr.top-3 td {
+  color: #ffffff;
+}
+
+/* ===== سه نفر اول ===== */
+
+/* نفر اول */
+.ranking-table tbody tr:nth-child(1) .rank-num,
+.ranking-table tbody tr:nth-child(1) .points {
+  color: #ffd54a !important;
+}
+
+/* نفر دوم */
+.ranking-table tbody tr:nth-child(2) .rank-num,
+.ranking-table tbody tr:nth-child(2) .points {
+  color: #cfd3d6 !important;
+}
+
+/* نفر سوم */
+.ranking-table tbody tr:nth-child(3) .rank-num,
+.ranking-table tbody tr:nth-child(3) .points {
+  color: #cd8b55 !important;
+}
+
+/* ===== نعیمی ===== */
+
+.ranking-table tr.naeimi-row {
+  background: rgba(46, 204, 113, 0.08);
+}
+
+.ranking-table tr.naeimi-row td:nth-child(2),
+.ranking-table tr.naeimi-row .points {
+  color: #2ecc71 !important;
+  font-weight: 800;
+}
+
+/* موبایل */
+@media (max-width: 600px) {
+
+  .ranking-table {
+    font-size: 0.9rem;
+  }
+
+  .ranking-table td {
+    padding: 16px 6px;
+  }
+
+  .ranking-table td:nth-child(2) {
+    font-size: 0.92rem;
+  }
+
+  .points {
+    font-size: 1.1rem;
+  }
+}
 
     /* اخبار و نظرسنجی */
     .news-item {
