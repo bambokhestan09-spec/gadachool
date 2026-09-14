@@ -82,7 +82,6 @@
       gap: 15px;
     }
 
-    /* دکمه اصلی آیتم‌ها */
     .acc-item {
       background: var(--glass-bg);
       backdrop-filter: blur(16px);
@@ -90,7 +89,6 @@
       border-radius: 16px;
       overflow: hidden;
       box-shadow: var(--jelly-shadow);
-      transition: all 0.3s ease;
     }
 
     .acc-header {
@@ -129,22 +127,16 @@
       color: var(--accent-gold);
     }
 
-    /* بدنه محتوا که باز می‌شود */
+    /* باکس بدنه محتوا با الگوریتم محاسبه هوشمند ارتفاع */
     .acc-body {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
-      padding: 0 20px;
+      transition: max-height 0.35s ease-out, padding 0.35s ease-out;
       background: rgba(0, 0, 0, 0.25);
+      padding: 0 20px;
     }
 
-    .acc-item.active .acc-body {
-      max-height: 1000px; /* اجازه باز شدن کامل محتوا */
-      padding: 20px;
-      transition: max-height 0.4s ease-in-out;
-    }
-
-    /* استایل عناصر داخل محتوا */
+    /* استایل مسابقات */
     .match-item {
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.08);
@@ -182,7 +174,7 @@
     .team { display: flex; align-items: center; gap: 8px; }
     .team img { width: 28px; height: 28px; object-fit: contain; }
 
-    /* جدول رده‌بندی */
+    /* استایل جدول */
     .ranking-table {
       width: 100%;
       border-collapse: collapse;
@@ -255,141 +247,154 @@
 
   <div class="accordion-container">
 
-    <!-- آیتم ۱: مسابقات -->
+    <!-- بخش ۱: مسابقات -->
     <div class="acc-item">
       <button class="acc-header" onclick="toggleAccordion(this)">
         <span>⚽ مسابقات پیش‌بینی آینده</span>
         <span class="arrow-icon">▼</span>
       </button>
       <div class="acc-body">
-        <div class="match-item">
-          <div class="match-header">
-            <span class="match-date">جمعه ۲۷ شهریور ۱۴۰۵</span>
-            <span class="match-time">۲۲:۳۰</span>
+        <div style="padding: 15px 0;">
+          <div class="match-item">
+            <div class="match-header">
+              <span class="match-date">جمعه ۲۷ شهریور ۱۴۰۵</span>
+              <span class="match-time">۲۲:۳۰</span>
+            </div>
+            <div class="match-teams">
+              <div class="team"><img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/fhBITrIlbQxhVB6IjxUO6Q_500x500.png" alt="چلسی"> چلسی</div>
+              <span>-</span>
+              <div class="team">برنتفورد <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/QOUce0WQBYqnkSmN6_TxGA_500x500.png" alt="برنتفورد"></div>
+            </div>
           </div>
-          <div class="match-teams">
-            <div class="team"><img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/fhBITrIlbQxhVB6IjxUO6Q_500x500.png" alt="چلسی"> چلسی</div>
-            <span>-</span>
-            <div class="team">برنتفورد <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/QOUce0WQBYqnkSmN6_TxGA_500x500.png" alt="برنتفورد"></div>
-          </div>
-        </div>
 
-        <div class="match-item">
-          <div class="match-header">
-            <span class="match-date">شنبه ۲۸ شهریور ۱۴۰۵</span>
-            <span class="match-time">۱۵:۰۰</span>
-          </div>
-          <div class="match-teams">
-            <div class="team"><img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/k3Q_mKE98Dnohrcea0JFgQ_500x500.png" alt="تاتنهام"> تاتنهام</div>
-            <span>-</span>
-            <div class="team">استون ویلا <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/uyNNelfnFvCEnsLrUL-j2Q_500x500.png" alt="استون ویلا"></div>
+          <div class="match-item">
+            <div class="match-header">
+              <span class="match-date">شنبه ۲۸ شهریور ۱۴۰۵</span>
+              <span class="match-time">۱۵:۰۰</span>
+            </div>
+            <div class="match-teams">
+              <div class="team"><img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/k3Q_mKE98Dnohrcea0JFgQ_500x500.png" alt="تاتنهام"> تاتنهام</div>
+              <span>-</span>
+              <div class="team">استون ویلا <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/uyNNelfnFvCEnsLrUL-j2Q_500x500.png" alt="استون ویلا"></div>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- آیتم ۲: جدول رده‌بندی -->
+    <!-- بخش ۲: جدول رده‌بندی -->
     <div class="acc-item">
       <button class="acc-header" onclick="toggleAccordion(this)">
         <span>🏆 جدول رده‌بندی لیگ</span>
         <span class="arrow-icon">▼</span>
       </button>
       <div class="acc-body">
-        <table class="ranking-table">
-          <thead>
-            <tr>
-              <th class="rank-num">#</th>
-              <th>نام عضو</th>
-              <th style="text-align: center;">امتیاز</th>
-              <th style="text-align: center;">دقیق</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="highlight">
-              <td class="rank-num">1</td>
-              <td>REZA GHATIFI 👑</td>
-              <td class="points">15</td>
-              <td class="exact">3</td>
-            </tr>
-            <tr class="highlight">
-              <td class="rank-num">1</td>
-              <td>Mahdi</td>
-              <td class="points">15</td>
-              <td class="exact">3</td>
-            </tr>
-            <tr>
-              <td class="rank-num">3</td>
-              <td>حبیب نعیمی</td>
-              <td class="points">14</td>
-              <td class="exact">2</td>
-            </tr>
-            <tr>
-              <td class="rank-num">3</td>
-              <td>Asm A</td>
-              <td class="points">14</td>
-              <td class="exact">2</td>
-            </tr>
-            <tr>
-              <td class="rank-num">5</td>
-              <td>Donya Asil</td>
-              <td class="points">13</td>
-              <td class="exact">1</td>
-            </tr>
-          </tbody>
-        </table>
+        <div style="padding: 15px 0;">
+          <table class="ranking-table">
+            <thead>
+              <tr>
+                <th class="rank-num">#</th>
+                <th>نام عضو</th>
+                <th style="text-align: center;">امتیاز</th>
+                <th style="text-align: center;">دقیق</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="highlight">
+                <td class="rank-num">1</td>
+                <td>REZA GHATIFI 👑</td>
+                <td class="points">15</td>
+                <td class="exact">3</td>
+              </tr>
+              <tr class="highlight">
+                <td class="rank-num">1</td>
+                <td>Mahdi</td>
+                <td class="points">15</td>
+                <td class="exact">3</td>
+              </tr>
+              <tr>
+                <td class="rank-num">3</td>
+                <td>حبیب نعیمی</td>
+                <td class="points">14</td>
+                <td class="exact">2</td>
+              </tr>
+              <tr>
+                <td class="rank-num">3</td>
+                <td>Asm A</td>
+                <td class="points">14</td>
+                <td class="exact">2</td>
+              </tr>
+              <tr>
+                <td class="rank-num">5</td>
+                <td>Donya Asil</td>
+                <td class="points">13</td>
+                <td class="exact">1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
 
-    <!-- آیتم ۳: اخبار -->
+    <!-- بخش ۳: اخبار -->
     <div class="acc-item">
       <button class="acc-header" onclick="toggleAccordion(this)">
         <span>📰 اخبار لیگ گداهای استرسی</span>
         <span class="arrow-icon">▼</span>
       </button>
       <div class="acc-body">
-        <div class="news-item">
-          <div style="color: var(--accent-gold); font-weight: bold; margin-bottom: 4px;">۲۶ شهریور ۱۴۰۵</div>
-          <div>رونمایی از سیستم کشویی منو؛ حالا با کلیک روی هر آیتم، محتوای آن به صورت کامل و عریض باز می‌شود.</div>
+        <div style="padding: 15px 0;">
+          <div class="news-item">
+            <div style="color: var(--accent-gold); font-weight: bold; margin-bottom: 4px;">۲۶ شهریور ۱۴۰۵</div>
+            <div>رونمایی از ظاهر جدید کشویی سایت؛ تمام جدول‌ها و مسابقات بدون محدودیت و به صورت ۱۰۰٪ باز می‌شوند.</div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- آیتم ۴: نظرسنجی -->
+    <!-- بخش ۴: نظرسنجی -->
     <div class="acc-item">
       <button class="acc-header" onclick="toggleAccordion(this)">
         <span>🗳️ نظرسنجی سایت</span>
         <span class="arrow-icon">▼</span>
       </button>
       <div class="acc-body">
-        <div style="margin-bottom: 12px; font-weight: bold;">آیا از این مدل باز شدن کشویی کامل رضایت دارید؟</div>
-        <form onsubmit="event.preventDefault(); alert('رأی شما ثبت شد!');">
-          <label class="poll-option">
-            <input type="radio" name="poll" required>
-            <span>🔥 بسیار عالی و منظم است</span>
-          </label>
-          <label class="poll-option">
-            <input type="radio" name="poll">
-            <span>👍 خوب است</span>
-          </label>
-          <button type="submit" class="poll-btn">ثبت رأی</button>
-        </form>
+        <div style="padding: 15px 0;">
+          <div style="margin-bottom: 12px; font-weight: bold;">آیا مشکل باز شدن محتوا برطرف گردید؟</div>
+          <form onsubmit="event.preventDefault(); alert('رأی شما ثبت شد!');">
+            <label class="poll-option">
+              <input type="radio" name="poll" required>
+              <span>🔥 بله، محتوا کاملاً کامل و عالی باز می‌شود</span>
+            </label>
+            <label class="poll-option">
+              <input type="radio" name="poll">
+              <span>👍 خوب است</span>
+            </label>
+            <button type="submit" class="poll-btn">ثبت رأی</button>
+          </form>
+        </div>
       </div>
     </div>
 
   </div>
 
   <script>
-    function toggleAccordion(headerElement) {
-      const parentItem = headerElement.parentElement;
-      const isOpen = parentItem.classList.contains('active');
+    function toggleAccordion(headerBtn) {
+      const currentItem = headerBtn.parentElement;
+      const currentBody = currentItem.querySelector('.acc-body');
+      const isOpen = currentItem.classList.contains('active');
 
-      // اگر می‌خواهید با کلیک روی یک آیتم، بقیه آیتم‌ها بسته شوند:
-      const allItems = document.querySelectorAll('.acc-item');
-      allItems.forEach(item => item.classList.remove('active'));
+      // بسته کردن بقیه آیتم‌ها
+      document.querySelectorAll('.acc-item').forEach(item => {
+        item.classList.remove('active');
+        const body = item.querySelector('.acc-body');
+        body.style.maxHeight = '0px';
+      });
 
-      // اگر بسته بود، بازش کن
+      // اگر آیتم جاری بسته بود، آن را بر اساس ارتفاع واقعی محتوا باز کن
       if (!isOpen) {
-        parentItem.classList.add('active');
+        currentItem.classList.add('active');
+        currentBody.style.maxHeight = currentBody.scrollHeight + "px";
       }
     }
   </script>
