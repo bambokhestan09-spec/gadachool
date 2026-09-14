@@ -4,57 +4,66 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GEDACHOL | لیگ گداهای استرسی فصل ۲</title>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-pitch: #060d08;
-      --accent-green: #00ff87;
-      --accent-gold: #ffcc00;
-      --accent-blue: #00e5ff;
-      --glass-bg: rgba(18, 28, 22, 0.65);
-      --glass-border: rgba(255, 255, 255, 0.1);
-      --glass-hover: rgba(255, 255, 255, 0.18);
-      --text-main: #ffffff;
-      --text-muted: #8e9a93;
+      --bg-royal-blue: #0b3c7d;
+      --bg-dark-blue: #051d3e;
+      --accent-red: #e62b32;
+      --accent-gold: #d4a046;
+      --gold-light: #f7e199;
+      --text-white: #ffffff;
+      --card-bg: rgba(255, 255, 255, 0.08);
+      --card-border: rgba(255, 255, 255, 0.2);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    
+
     body {
-      background-color: var(--bg-pitch);
-      color: var(--text-main);
+      background-color: var(--bg-dark-blue);
+      color: var(--text-white);
       font-family: 'Vazirmatn', Tahoma, sans-serif;
       line-height: 1.6;
       padding-bottom: 60px;
       min-height: 100vh;
-      background-image: 
-        radial-gradient(circle at 50% -10%, rgba(0, 255, 135, 0.18), transparent 60%),
-        radial-gradient(circle at 100% 60%, rgba(0, 229, 255, 0.1), transparent 50%),
-        radial-gradient(circle at 0% 100%, rgba(255, 204, 0, 0.08), transparent 50%),
-        linear-gradient(180deg, rgba(6, 13, 8, 0.85) 0%, rgba(6, 13, 8, 0.98) 100%),
-        url("https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1920&q=80");
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
+      position: relative;
+      overflow-x: hidden;
     }
 
-    /* هدر لوکس */
+    /* 🎱 پس‌زمینه بافت پارچه‌ای بیلیارد + توپ‌های سه‌بعدی در اطراف */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: -2;
+      background: 
+        radial-gradient(circle at 50% 20%, rgba(20, 90, 180, 0.8) 0%, transparent 70%),
+        radial-gradient(circle at 80% 80%, rgba(5, 30, 70, 0.9) 0%, transparent 60%),
+        linear-gradient(135deg, #0d4691 0%, #06234b 100%);
+    }
+
+    /* بافت ریز پارچه بیلیارد */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: -1;
+      opacity: 0.12;
+      background-image: radial-gradient(#fff 1px, transparent 0);
+      background-size: 12px 12px;
+    }
+
+    /* هدر با طراحی تیتر پوستر (Tilted Typography & Badges) */
     header {
       text-align: center;
-      padding: 35px 20px 25px;
-      background: rgba(10, 20, 14, 0.7);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--glass-border);
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
-      margin-bottom: 30px;
+      padding: 40px 20px 30px;
       position: relative;
     }
 
-    .banner-wrapper {
+    .banner-container {
       position: relative;
       display: inline-block;
-      margin-bottom: 15px;
+      margin-bottom: 25px;
     }
 
     .hero-banner {
@@ -62,36 +71,60 @@
       width: 100%;
       height: auto;
       border-radius: 20px;
-      box-shadow: 0 0 30px rgba(0, 255, 135, 0.3);
-      border: 2px solid rgba(0, 255, 135, 0.5);
-      transition: transform 0.4s ease;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      transform: rotate(-2deg);
+      transition: transform 0.3s ease;
     }
 
     .hero-banner:hover {
-      transform: scale(1.03) rotate(-1deg);
+      transform: rotate(0deg) scale(1.03);
     }
 
-    header h1 {
-      font-size: 2.8rem;
+    /* تیترهای مورب مشابه ALL YOU CAN PLAY */
+    .hero-title {
+      font-size: 3.5rem;
       font-weight: 900;
-      letter-spacing: 3px;
-      background: linear-gradient(135deg, #ffffff 0%, var(--accent-green) 50%, var(--accent-blue) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 30px rgba(0, 255, 135, 0.3);
+      text-transform: uppercase;
+      line-height: 1.1;
+      letter-spacing: 2px;
+      color: var(--text-white);
+      text-shadow: 4px 6px 0px rgba(0, 0, 0, 0.4);
+      transform: rotate(-3deg);
+      margin-bottom: 15px;
     }
 
-    header p {
+    /* بج قرمز قیمتی/اطلاعاتی */
+    .red-badge {
+      display: inline-block;
+      background: var(--accent-red);
+      color: #fff;
+      font-weight: 900;
       font-size: 1.1rem;
-      color: var(--accent-gold);
-      font-weight: 600;
-      margin-top: 5px;
+      padding: 8px 24px;
+      border-radius: 8px;
+      transform: rotate(-2deg);
+      box-shadow: 3px 5px 15px rgba(230, 43, 50, 0.4);
+      margin-bottom: 10px;
     }
 
-    /* آکاردئون اصلی */
+    /* بج طلایی زمان/مکان */
+    .gold-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gold-light), var(--accent-gold));
+      color: #1a1000;
+      font-weight: 900;
+      font-size: 1rem;
+      padding: 6px 20px;
+      border-radius: 8px;
+      transform: rotate(1deg);
+      box-shadow: 3px 5px 15px rgba(212, 160, 70, 0.3);
+    }
+
+    /* آکاردئون اصلی با استایل کارت‌های شیشه‌ای آبی */
     .accordion-container {
       max-width: 850px;
-      margin: 0 auto;
+      margin: 30px auto 0;
       padding: 0 15px;
       display: flex;
       flex-direction: column;
@@ -99,19 +132,19 @@
     }
 
     .acc-item {
-      background: var(--glass-bg);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--glass-border);
-      border-radius: 22px;
+      background: var(--card-bg);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
     }
 
     .acc-item:hover {
-      border-color: rgba(0, 255, 135, 0.3);
-      box-shadow: 0 15px 40px rgba(0, 255, 135, 0.15);
+      border-color: rgba(255, 255, 255, 0.5);
+      transform: translateY(-2px);
     }
 
     .acc-header {
@@ -119,8 +152,8 @@
       padding: 22px 25px;
       background: transparent;
       border: none;
-      color: var(--text-main);
-      font-size: 1.15rem;
+      color: var(--text-white);
+      font-size: 1.2rem;
       font-weight: 800;
       display: flex;
       justify-content: space-between;
@@ -131,17 +164,17 @@
     }
 
     .acc-item.active .acc-header {
-      background: linear-gradient(90deg, rgba(0, 255, 135, 0.15) 0%, rgba(18, 28, 22, 0.2) 100%);
-      border-bottom: 1px solid var(--glass-border);
-      color: var(--accent-green);
+      background: rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid var(--card-border);
+      color: var(--gold-light);
     }
 
     .arrow-icon {
       font-size: 0.9rem;
-      transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-      background: rgba(255, 255, 255, 0.08);
-      width: 32px;
-      height: 32px;
+      transition: transform 0.4s ease;
+      background: rgba(255, 255, 255, 0.15);
+      width: 34px;
+      height: 34px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -150,8 +183,8 @@
 
     .acc-item.active .arrow-icon {
       transform: rotate(180deg);
-      background: var(--accent-green);
-      color: #000;
+      background: var(--accent-red);
+      color: #fff;
     }
 
     .acc-body {
@@ -161,45 +194,39 @@
 
     .acc-item.active .acc-body {
       display: block;
-      animation: fadeIn 0.4s ease-in-out;
+      animation: fadeIn 0.3s ease-in-out;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-10px); }
+      from { opacity: 0; transform: translateY(-8px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* کارت‌های مسابقات 3D */
+    /* کارت‌های مسابقات با استایل کپسولی پوستر */
     .match-item {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 16px;
-      padding: 16px;
+      padding: 18px;
       margin-bottom: 14px;
-      transition: all 0.3s ease;
-    }
-
-    .match-item:hover {
-      background: rgba(255, 255, 255, 0.06);
-      transform: translateY(-2px);
     }
 
     .match-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.85rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 0.88rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       padding-bottom: 10px;
       margin-bottom: 12px;
     }
 
-    .match-date { color: var(--text-muted); font-weight: 600; }
+    .match-date { color: rgba(255, 255, 255, 0.7); font-weight: 600; }
     .match-time {
-      background: linear-gradient(135deg, var(--accent-green), #00b359);
-      color: #000;
+      background: var(--accent-red);
+      color: #fff;
       padding: 3px 12px;
-      border-radius: 20px;
+      border-radius: 6px;
       font-weight: 800;
       font-size: 0.8rem;
     }
@@ -209,7 +236,7 @@
       justify-content: space-between;
       align-items: center;
       font-weight: 800;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
     }
 
     .team {
@@ -226,24 +253,22 @@
       width: 36px;
       height: 36px;
       object-fit: contain;
-      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
     }
 
     .vs-badge {
-      background: rgba(255, 255, 255, 0.1);
-      color: var(--accent-gold);
+      background: var(--accent-gold);
+      color: #000;
       padding: 4px 10px;
-      border-radius: 8px;
-      font-size: 0.75rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
       font-weight: 900;
       margin: 0 10px;
     }
 
-    /* جدول رده‌بندی مدرن */
+    /* جدول رده‌بندی مدرن بیلیاردی */
     .table-responsive {
       width: 100%;
       overflow-x: auto;
-      border-radius: 16px;
     }
 
     .ranking-table {
@@ -253,21 +278,20 @@
     }
 
     .ranking-table th {
-      color: var(--text-muted);
+      color: var(--gold-light);
       padding: 10px 15px;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       font-weight: 800;
-      text-transform: uppercase;
     }
 
     .ranking-table tbody tr {
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(0, 0, 0, 0.25);
       border-radius: 12px;
       transition: transform 0.2s ease;
     }
 
     .ranking-table tbody tr:hover {
-      background: rgba(255, 255, 255, 0.07);
+      background: rgba(255, 255, 255, 0.1);
       transform: scale(1.01);
     }
 
@@ -293,21 +317,18 @@
       width: 50px;
     }
 
-    /* مدال‌ها و نفرات برتر */
-    .top-1 { background: linear-gradient(90deg, rgba(255, 204, 0, 0.15) 0%, rgba(255, 204, 0, 0.02) 100%) !important; border-right: 4px solid var(--accent-gold); }
-    .top-1 .rank-num, .top-1 .player-name { color: var(--accent-gold) !important; font-weight: 900; }
+    /* رده‌های اول تا سوم و حبیب نعیمی */
+    .top-1 { background: linear-gradient(90deg, rgba(212, 160, 70, 0.3) 0%, rgba(0,0,0,0.2) 100%) !important; border-right: 4px solid var(--accent-gold); }
+    .top-1 .rank-num, .top-1 .player-name { color: var(--gold-light) !important; font-weight: 900; }
     
-    .top-2 { background: linear-gradient(90deg, rgba(207, 211, 214, 0.15) 0%, rgba(207, 211, 214, 0.02) 100%) !important; border-right: 4px solid #cfd3d6; }
-    .top-2 .rank-num { color: #cfd3d6 !important; }
-
-    .top-3 { background: linear-gradient(90deg, rgba(205, 139, 85, 0.15) 0%, rgba(205, 139, 85, 0.02) 100%) !important; border-right: 4px solid #cd8b55; }
-    .top-3 .rank-num { color: #cd8b55 !important; }
+    .top-2 { border-right: 4px solid #cfd3d6; }
+    .top-3 { border-right: 4px solid #cd8b55; }
 
     .naeimi-row {
-      background: linear-gradient(90deg, rgba(0, 255, 135, 0.2) 0%, rgba(0, 255, 135, 0.03) 100%) !important;
-      border-right: 4px solid var(--accent-green);
+      background: linear-gradient(90deg, rgba(230, 43, 50, 0.3) 0%, rgba(0, 0, 0, 0.2) 100%) !important;
+      border-right: 4px solid var(--accent-red);
     }
-    .naeimi-row .player-name { color: var(--accent-green) !important; font-weight: 900; }
+    .naeimi-row .player-name { color: #ff8084 !important; font-weight: 900; }
 
     .points {
       text-align: center;
@@ -318,27 +339,26 @@
 
     .exact {
       text-align: center;
-      color: var(--text-muted);
+      color: rgba(255, 255, 255, 0.6);
       font-weight: 700;
     }
 
-    /* کارت‌های خبری */
+    /* کارت‌های اخبار مشابه استیکرهای متنی پوستر */
     .news-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 16px;
       padding: 18px;
       margin-bottom: 16px;
-      position: relative;
     }
 
     .news-badge {
       display: inline-block;
-      background: rgba(255, 204, 0, 0.15);
-      color: var(--accent-gold);
-      font-size: 0.75rem;
-      font-weight: 800;
-      padding: 4px 10px;
+      background: var(--accent-gold);
+      color: #000;
+      font-size: 0.78rem;
+      font-weight: 900;
+      padding: 4px 12px;
       border-radius: 6px;
       margin-bottom: 10px;
     }
@@ -351,72 +371,78 @@
     }
 
     .news-desc {
-      color: #c0cac4;
+      color: rgba(255, 255, 255, 0.8);
       font-size: 0.92rem;
       line-height: 1.7;
     }
 
-    /* نظرسنجی */
+    /* نظرسنجی با دکمه‌های بیضی پوستر */
     .poll-option {
       display: flex;
       align-items: center;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--glass-border);
-      padding: 14px 18px;
-      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #000;
+      padding: 14px 20px;
+      border-radius: 30px; /* شکل کپسولی دقیقا مثل پوستر */
       margin-bottom: 12px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      font-weight: 700;
+      transition: all 0.2s ease;
     }
 
     .poll-option:hover {
-      background: rgba(0, 255, 135, 0.1);
-      border-color: var(--accent-green);
+      background: #fff;
+      transform: scale(1.01);
     }
 
     .poll-option input {
       margin-left: 12px;
-      accent-color: var(--accent-green);
+      accent-color: var(--accent-red);
       width: 18px;
       height: 18px;
     }
 
     .poll-btn {
       width: 100%;
-      background: linear-gradient(135deg, var(--accent-green) 0%, #00b359 100%);
-      color: #000;
+      background: var(--accent-red);
+      color: #fff;
       border: none;
-      padding: 14px;
-      border-radius: 12px;
+      padding: 16px;
+      border-radius: 30px;
       font-weight: 900;
       font-size: 1rem;
       cursor: pointer;
       font-family: inherit;
-      box-shadow: 0 6px 20px rgba(0, 255, 135, 0.3);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 6px 20px rgba(230, 43, 50, 0.4);
+      transition: transform 0.2s ease;
     }
 
     .poll-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0, 255, 135, 0.5);
     }
 
     @media (max-width: 600px) {
-      header h1 { font-size: 2rem; }
-      .acc-header { font-size: 1rem; padding: 18px; }
+      .hero-title { font-size: 2.5rem; }
+      .acc-header { font-size: 1.05rem; padding: 18px; }
       .team { font-size: 0.9rem; }
-      .team img { width: 28px; height: 28px; }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="banner-wrapper">
+    <div class="banner-container">
       <img src="photo1789386549.jpeg" alt="GEDACHOL Banner" class="hero-banner">
     </div>
-    <h1>GEDACHOL</h1>
-    <p>⚡ لیگ گداهای استرسی — فصل دوم ⚡</p>
+    
+    <div class="hero-title">GEDACHOL</div>
+    
+    <div>
+      <span class="red-badge">لیگ گداهای استرسی</span>
+    </div>
+    <div>
+      <span class="gold-badge">🏆 فصل دوم | ۱۴۰۵ - ۱۴۰۶ 🏆</span>
+    </div>
   </header>
 
   <div class="accordion-container">
@@ -571,7 +597,7 @@
               </tr>
               <tr class="naeimi-row">
                 <td class="rank-num">5</td>
-                <td class="player-name">حبیب نعیمی 🚀</td>
+                <td class="player-name">حبیب نعیمی</td>
                 <td class="points">43</td>
                 <td class="exact">1</td>
               </tr>
@@ -624,11 +650,7 @@
                 <td class="exact">0</td>
               </tr>
               <tr>
-                <td class="rank-num">14</td>
-                <td class="player-name">علی ناجح</td>
-                <td class="points">14</td>
-                <td class="exact">0</td>
-              </tr>
+                
             </tbody>
           </table>
         </div>
@@ -648,7 +670,7 @@
           <span class="news-badge">🔥 گزارش ویژه هفته ۴</span>
           <div class="news-title">🚀 پرواز حبیب نعیمی در هفته چهارم!</div>
           <div class="news-desc">
-            حبیب نعیمی در هفته چهارم با عملکردی فوق‌العاده موفق به کسب <b style="color:var(--accent-green);">۱۴ امتیاز</b> شد و خود را به صدرنشینان نزدیک‌تر کرد. وی با کسب <b style="color:var(--accent-gold);">۲ پیش‌بینی دقیق</b> زنگ خطر را برای رقبا به صدا درآورد!
+            حبیب نعیمی در هفته چهارم با عملکردی فوق‌العاده موفق به کسب <b style="color:var(--gold-light);">۱۴ امتیاز</b> شد و خود را به صدرنشینان نزدیک‌تر کرد. وی با کسب <b style="color:var(--accent-red);">۲ پیش‌بینی دقیق</b> زنگ خطر را برای رقبا به صدا درآورد!
           </div>
         </div>
 
@@ -679,7 +701,7 @@
       </div>
     </div>
 
-    <!-- بخش ۴: نظرسنجی -->
+    <!-- بخش ۴: نظرسنجی (استایل کپسولی پوستر) -->
     <div class="acc-item">
       <button class="acc-header" onclick="toggleAccordion(this)">
         <span>🗳️ نظرسنجی و بازخورد اعضا</span>
@@ -687,16 +709,16 @@
       </button>
       <div class="acc-body">
         <div style="margin-bottom: 15px; font-weight: 800; font-size: 1rem; color: #fff;">
-          آیا طراحی مدرن سایت و جدول ۱۴ نفره را می‌پسندید؟
+          آیا از طراحی جدید پوستر گونه سایت رضایت دارید؟
         </div>
         <form onsubmit="event.preventDefault(); alert('رأی شما با موفقیت ثبت شد!');">
           <label class="poll-option">
             <input type="radio" name="poll" required>
-            <span>🔥 طراحی فوق‌العاده است و تمامی ۱۴ نفر با مسابقات مشخص هستند</span>
+            <span>🔥 بسیار عالی و شبیه به پوسترهای تبلیغاتی مدرن است</span>
           </label>
           <label class="poll-option">
             <input type="radio" name="poll">
-            <span>👍 عالی و بسیار سریع است</span>
+            <span>👍 خوب و خواناست</span>
           </label>
           <button type="submit" class="poll-btn">ثبت رأی نهایی</button>
         </form>
