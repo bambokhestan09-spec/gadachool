@@ -108,7 +108,7 @@
             }
         }
 
-        /* Newspaper style news section (Inspired by poster newspaper element) */
+        /* Newspaper style news section */
         .newspaper-card {
             background-color: var(--paper-bg);
             color: var(--paper-text);
@@ -142,33 +142,37 @@
             text-align: center;
             border-bottom: 1px solid #ccc;
             padding-bottom: 5px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .news-item {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             border-bottom: 1px dashed #bbb;
-            padding-bottom: 10px;
+            padding-bottom: 15px;
         }
 
         .news-item:last-child {
             border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
         }
 
         .news-title {
             font-weight: bold;
             font-size: 1.05rem;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
             color: #000;
+            line-height: 1.4;
         }
 
         .news-detail {
             font-size: 0.88rem;
-            color: #444;
-            line-height: 1.5;
+            color: #333;
+            line-height: 1.6;
+            text-align: justify;
         }
 
-        /* Leaderboard and Rules Section */
+        /* Leaderboard Section */
         .panel {
             background-color: var(--card-bg);
             border-radius: 12px;
@@ -221,7 +225,7 @@
 
         .rank-1 { color: #ffd700; font-weight: bold; }
 
-        /* Capsule Buttons from Poster */
+        /* Capsule Buttons */
         .capsule-badge {
             background-color: #ffffff;
             color: #111;
@@ -270,21 +274,22 @@
                 <div class="newspaper-header">
                     <h3>GEDA DAILY NEWS</h3>
                 </div>
-                <div class="newspaper-date">روزنامه اختصاصی حواشی - دوشنبه ۲۵ شهریور ۱۴۰۵</div>
+                <div class="newspaper-date">روزنامه اختصاصی حواشی - اخبار امروز</div>
                 
+                <!-- خبر اول -->
                 <div class="news-item">
-                    <div class="news-title">📰 صدرنشینی جنجالی نعیمی با پیش‌بینی دقیقه ۹۰!</div>
-                    <div class="news-detail">نعیمی با حدس زدن دقیق نتیجه بازی دیشب توانست با اختلاف ۴ امتیاز در صدر جدول بماند و خط و نشان جدیدی برای رقبا بکشد.</div>
+                    <div class="news-title">⚽ آغاز هفته پنجم</div>
+                    <div class="news-detail">
+                        آغاز هفته پنجم از روز جمعه با بازی چلسی در مقابل برنتفورد از ساعت ۲۲:۳۰ آغاز می‌شود. چلسی با انجام ۴ بازی و ۷ امتیاز در رده ۵ قرار گرفته و برنتفورد پشت سر او با ۶ امتیاز این تیم را تعقیب می‌کند.
+                    </div>
                 </div>
 
+                <!-- خبر دوم -->
                 <div class="news-item">
-                    <div class="news-title">🔥 بیانیه تند جاسمیان پس از سقوط به رتبه دوم</div>
-                    <div class="news-detail">جاسمیان در مصاحبه جدید مدعی شد که شانس با صدرنشین یار بوده و هفته آینده حتماً صندلی صدر را پس خواهد گرفت.</div>
-                </div>
-
-                <div class="news-item">
-                    <div class="news-title">⚡ ثبت‌نام پکیج MABAR 2 آغاز شد</div>
-                    <div class="news-detail">تمامی شرکت‌کنندگان جهت حضور در دور بعد باید فرم پیش‌بینی رسمی را تا قبل از ساعت ۱۱:۰۰ ثبت نمایند.</div>
+                    <div class="news-title">🔥 پایان هفته چهارم... زویدات همچنان غول آخر لیگ گداهای استرسی!</div>
+                    <div class="news-detail">
+                        زویدات همچنان با ۵۰ امتیاز دست‌نیافتنی و صدرنشین لیگ گداهای استرسی است. باید دید او در هفته پنجم می‌تواند همچنان این روند را ادامه دهد یا خیر!
+                    </div>
                 </div>
             </div>
 
@@ -307,27 +312,27 @@
                     <tbody>
                         <tr>
                             <td class="rank-1">🥇 ۱</td>
-                            <td>نعیمی</td>
-                            <td>۵</td>
-                            <td><strong>۴۲</strong></td>
+                            <td>زویدات</td>
+                            <td>۴</td>
+                            <td><strong>۵۰</strong></td>
                         </tr>
                         <tr>
                             <td>🥈 ۲</td>
-                            <td>جاسمیان</td>
-                            <td>۵</td>
-                            <td>۳۸</td>
+                            <td>نعیمی</td>
+                            <td>۴</td>
+                            <td>۴۲</td>
                         </tr>
                         <tr>
                             <td>🥉 ۳</td>
-                            <td>ناجح</td>
-                            <td>۵</td>
-                            <td>۳۱</td>
+                            <td>جاسمیان</td>
+                            <td>۴</td>
+                            <td>۳۸</td>
                         </tr>
                         <tr>
                             <td>۴</td>
-                            <td>خانم داودی</td>
-                            <td>۵</td>
-                            <td>۲۷</td>
+                            <td>ناجح</td>
+                            <td>۴</td>
+                            <td>۳۱</td>
                         </tr>
                     </tbody>
                 </table>
@@ -349,7 +354,7 @@
 
         <!-- Footer -->
         <footer>
-            <p>رزرو و پشتیبانی: 4245 3219 0821 | طراحی شده برای GEDA CHOLHA</p>
+            <p>طراحی شده برای GEDA CHOLHA | لیگ پیش‌بینی گداهای استرسی</p>
         </footer>
     </div>
 
