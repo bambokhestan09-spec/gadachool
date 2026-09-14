@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GEDA CHOLHA - لیگ پیش‌بینی فوتبال</title>
+    <title>GEDA CHOLHA - ALL YOU CAN PLAY</title>
     <link href="https://cdn.jsdelivr.net/npm/vazirmatn@33.0.3/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     <style>
         :root {
-            --bg-color: #0d1117;
-            --card-bg: #161b22;
-            --accent-color: #00e676;
-            --text-color: #f0f6fc;
-            --text-secondary: #8b949e;
-            --border-color: #30363d;
-            --gold: #ffd700;
+            --bg-blue: #0b3c7d;
+            --dark-blue: #072552;
+            --accent-red: #d32f2f;
+            --accent-gold: #cca262;
+            --card-bg: #112d59;
+            --text-white: #ffffff;
+            --paper-bg: #f8f6f0;
+            --paper-text: #1a1a1a;
         }
 
         * {
@@ -24,149 +25,225 @@
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: var(--bg-blue);
+            background-image: radial-gradient(circle at 50% 30%, #1754a3 0%, var(--bg-blue) 70%);
+            color: var(--text-white);
             padding: 20px;
             display: flex;
             justify-content: center;
+            min-height: 100vh;
         }
 
         .container {
             width: 100%;
-            max-width: 900px;
+            max-width: 950px;
         }
 
-        /* Header */
+        /* Header section inspired by poster */
         header {
             text-align: center;
-            padding: 30px 20px;
-            background: linear-gradient(135deg, #1f2937, #111827);
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-            margin-bottom: 25px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            padding: 40px 20px;
+            position: relative;
         }
 
-        header h1 {
-            font-size: 2.5rem;
-            color: var(--accent-color);
-            letter-spacing: 2px;
-            margin-bottom: 5px;
+        .brand-logo {
+            font-size: 1.5rem;
+            font-style: italic;
+            letter-spacing: 3px;
+            color: #d1e3ff;
+            margin-bottom: 10px;
+            text-transform: uppercase;
         }
 
-        header p {
-            color: var(--text-secondary);
-            font-size: 1rem;
+        .main-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 1.1;
+            text-shadow: 4px 4px 0px rgba(0,0,0,0.4);
+            letter-spacing: 1px;
+            margin-bottom: 15px;
         }
 
-        /* Navigation / Tabs */
-        .tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .tab-btn {
-            flex: 1;
-            padding: 12px;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
+        /* Red Badge from Poster */
+        .time-badge {
+            display: inline-block;
+            background-color: var(--accent-red);
+            color: var(--text-white);
+            padding: 8px 25px;
             font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: 0.3s;
+            font-size: 1.2rem;
+            border-radius: 4px;
+            transform: rotate(-2deg);
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+            margin-bottom: 15px;
         }
 
-        .tab-btn.active, .tab-btn:hover {
-            background: var(--accent-color);
+        /* Gold Tag from Poster */
+        .date-tag {
+            display: inline-block;
+            background-color: var(--accent-gold);
+            color: #000;
+            padding: 6px 20px;
+            font-weight: 800;
+            border-radius: 6px;
+            transform: rotate(1deg);
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Grid Layout for News and Table */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+            .main-title {
+                font-size: 2.4rem;
+            }
+        }
+
+        /* Newspaper style news section (Inspired by poster newspaper element) */
+        .newspaper-card {
+            background-color: var(--paper-bg);
+            color: var(--paper-text);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            transform: rotate(-1.5deg);
+            transition: transform 0.3s;
+        }
+
+        .newspaper-card:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .newspaper-header {
+            border-bottom: 2px solid var(--paper-text);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .newspaper-header h3 {
+            font-family: serif;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+        }
+
+        .newspaper-date {
+            font-size: 0.75rem;
+            color: #666;
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+
+        .news-item {
+            margin-bottom: 15px;
+            border-bottom: 1px dashed #bbb;
+            padding-bottom: 10px;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-title {
+            font-weight: bold;
+            font-size: 1.05rem;
+            margin-bottom: 5px;
             color: #000;
         }
 
-        /* Sections */
-        .section {
-            display: none;
-            background: var(--card-bg);
+        .news-detail {
+            font-size: 0.88rem;
+            color: #444;
+            line-height: 1.5;
+        }
+
+        /* Leaderboard and Rules Section */
+        .panel {
+            background-color: var(--card-bg);
             border-radius: 12px;
             padding: 20px;
-            border: 1px solid var(--border-color);
+            border: 2px solid #1c4580;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
 
-        .section.active {
-            display: block;
+        .panel-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        /* Leaderboard Table */
+        /* Billiard Ball Icon */
+        .ball-icon {
+            width: 25px;
+            height: 25px;
+            background-color: #d32f2f;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+            border: 2px solid #fff;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            text-align: center;
+            margin-bottom: 20px;
         }
 
         th, td {
-            padding: 12px 15px;
-            border-bottom: 1px solid var(--border-color);
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #1e4d8c;
         }
 
         th {
-            color: var(--text-secondary);
-            font-weight: 600;
+            color: #a2c4f5;
+            font-size: 0.9rem;
         }
 
-        tr:first-child td:first-child {
-            color: var(--gold);
+        .rank-1 { color: #ffd700; font-weight: bold; }
+
+        /* Capsule Buttons from Poster */
+        .capsule-badge {
+            background-color: #ffffff;
+            color: #111;
+            padding: 10px 20px;
+            border-radius: 30px;
             font-weight: bold;
-        }
-
-        .rank {
-            font-weight: bold;
-            width: 50px;
-        }
-
-        .points {
-            color: var(--accent-color);
-            font-weight: bold;
-        }
-
-        /* Matches Grid */
-        .matches-grid {
-            display: grid;
-            gap: 15px;
-        }
-
-        .match-card {
-            background: #21262d;
-            padding: 15px 20px;
-            border-radius: 10px;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            border: 1px solid var(--border-color);
+            justify-content: center;
+            gap: 10px;
         }
 
-        .team {
-            font-weight: bold;
-            font-size: 1.1rem;
-            width: 40%;
-        }
-
-        .team.left { text-align: left; }
-        .team.right { text-align: right; }
-
-        .vs {
-            background: var(--border-color);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            color: var(--accent-color);
-        }
-
-        /* Footer */
         footer {
             text-align: center;
-            margin-top: 30px;
-            color: var(--text-secondary);
+            margin-top: 40px;
+            padding: 20px;
             font-size: 0.85rem;
+            color: #8bb3f0;
         }
     </style>
 </head>
@@ -175,94 +252,106 @@
     <div class="container">
         <!-- Header -->
         <header>
-            <h1>GEDA CHOLHA</h1>
-            <p>جدول رسمی لیگ پیش‌بینی و کل‌کل‌های گروهی</p>
+            <div class="brand-logo">LUCEO / GEDA CHOLHA</div>
+            <h1 class="main-title">ALL YOU<br>CAN PLAY</h1>
+            <div>
+                <span class="time-badge">شروع رقابت‌ها: ۱۱:۰۰ تا ۱۵:۰۰</span>
+            </div>
+            <div>
+                <span class="date-tag">لیگ پیش‌بینی و کل‌کل فصل ۲۰۲۶</span>
+            </div>
         </header>
 
-        <!-- Navigation -->
-        <div class="tabs">
-            <button class="tab-btn active" onclick="switchTab('leaderboard')">جدول امتیازات</button>
-            <button class="tab-btn" onclick="switchTab('matches')">بازی‌های این هفته</button>
-        </div>
+        <!-- Main Content -->
+        <div class="main-grid">
+            
+            <!-- Section 1: Newspaper Style News -->
+            <div class="newspaper-card">
+                <div class="newspaper-header">
+                    <h3>GEDA DAILY NEWS</h3>
+                </div>
+                <div class="newspaper-date">روزنامه اختصاصی حواشی - دوشنبه ۲۵ شهریور ۱۴۰۵</div>
+                
+                <div class="news-item">
+                    <div class="news-title">📰 صدرنشینی جنجالی نعیمی با پیش‌بینی دقیقه ۹۰!</div>
+                    <div class="news-detail">نعیمی با حدس زدن دقیق نتیجه بازی دیشب توانست با اختلاف ۴ امتیاز در صدر جدول بماند و خط و نشان جدیدی برای رقبا بکشد.</div>
+                </div>
 
-        <!-- Leaderboard Section -->
-        <div id="leaderboard" class="section active">
-            <table>
-                <thead>
-                    <tr>
-                        <th>رتبه</th>
-                        <th>نام شرکت‌کننده</th>
-                        <th>بازی</th>
-                        <th>امتیاز</th>
-                    </tr>
-                </thead>
-                <tbody id="leaderboard-body">
-                    <!-- اطلاعات به صورت پویا با جاوااسکریپت بارگذاری می‌شوند -->
-                </tbody>
-            </table>
-        </div>
+                <div class="news-item">
+                    <div class="news-title">🔥 بیانیه تند جاسمیان پس از سقوط به رتبه دوم</div>
+                    <div class="news-detail">جاسمیان در مصاحبه جدید مدعی شد که شانس با صدرنشین یار بوده و هفته آینده حتماً صندلی صدر را پس خواهد گرفت.</div>
+                </div>
 
-        <!-- Matches Section -->
-        <div id="matches" class="section">
-            <div class="matches-grid" id="matches-grid">
-                <!-- بازی‌ها با جاوااسکریپت بارگذاری می‌شوند -->
+                <div class="news-item">
+                    <div class="news-title">⚡ ثبت‌نام پکیج MABAR 2 آغاز شد</div>
+                    <div class="news-detail">تمامی شرکت‌کنندگان جهت حضور در دور بعد باید فرم پیش‌بینی رسمی را تا قبل از ساعت ۱۱:۰۰ ثبت نمایند.</div>
+                </div>
             </div>
+
+            <!-- Section 2: Leaderboard & Conditions -->
+            <div class="panel">
+                <div class="panel-title">
+                    <span class="ball-icon">8</span>
+                    جدول امتیازات لیگ
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>رتبه</th>
+                            <th>نام</th>
+                            <th>بازی</th>
+                            <th>امتیاز</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="rank-1">🥇 ۱</td>
+                            <td>نعیمی</td>
+                            <td>۵</td>
+                            <td><strong>۴۲</strong></td>
+                        </tr>
+                        <tr>
+                            <td>🥈 ۲</td>
+                            <td>جاسمیان</td>
+                            <td>۵</td>
+                            <td>۳۸</td>
+                        </tr>
+                        <tr>
+                            <td>🥉 ۳</td>
+                            <td>ناجح</td>
+                            <td>۵</td>
+                            <td>۳۱</td>
+                        </tr>
+                        <tr>
+                            <td>۴</td>
+                            <td>خانم داودی</td>
+                            <td>۵</td>
+                            <td>۲۷</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div style="margin-top: 20px;">
+                    <div style="font-size: 0.85rem; color: #a2c4f5; margin-bottom: 8px;">شرایط و قوانین (KETENTUAN):</div>
+                    <div class="capsule-badge">
+                        <span class="ball-icon" style="background:#000;">8</span>
+                        ثبت‌نام پکیج MABAR 2
+                    </div>
+                    <div class="capsule-badge">
+                        <span class="ball-icon" style="background:#00e676; color:#000;">8</span>
+                        دنبال کردن اینستاگرام و کانال رسمی
+                    </div>
+                </div>
+            </div>
+
         </div>
 
+        <!-- Footer -->
         <footer>
-            <p>© CANBO FOOTBALL | تمامی حقوق برای GEDA CHOLHA محفوظ است.</p>
+            <p>رزرو و پشتیبانی: 4245 3219 0821 | طراحی شده برای GEDA CHOLHA</p>
         </footer>
     </div>
 
-    <script>
-        // داده‌های نمونه برای جدول امتیازات (می‌توانی تغییر دهی)
-        const players = [
-            { rank: 1, name: "نعیمی", played: 5, points: 42 },
-            { rank: 2, name: "جاسمیان", played: 5, points: 38 },
-            { rank: 3, name: "ناجح", played: 5, points: 31 },
-            { rank: 4, name: "خانم داودی", played: 5, points: 27 }
-        ];
-
-        // داده‌های نمونه برای بازی‌های هفته
-        const matches = [
-            { home: "منچستر یونایتد", away: "لیورپول", time: "شنبه - ۲۱:۰۰" },
-            { home: "رئال مادرید", away: "بارسلونا", time: "یکشنبه - ۲۲:۳۰" },
-            { home: "آرسنال", away: "چلسی", time: "یکشنبه - ۱۹:۰۰" }
-        ];
-
-        // رندر جدول
-        const leaderboardBody = document.getElementById('leaderboard-body');
-        players.forEach(p => {
-            leaderboardBody.innerHTML += `
-                <tr>
-                    <td class="rank">${p.rank}</td>
-                    <td>${p.name}</td>
-                    <td>${p.played}</td>
-                    <td class="points">${p.points}</td>
-                </tr>
-            `;
-        });
-
-        // رندر بازی‌ها
-        const matchesGrid = document.getElementById('matches-grid');
-        matches.forEach(m => {
-            matchesGrid.innerHTML += `
-                <div class="match-card">
-                    <span class="team right">${m.home}</span>
-                    <span class="vs">${m.time}</span>
-                    <span class="team left">${m.away}</span>
-                </div>
-            `;
-        });
-
-        // سوییچ بین تب‌ها
-        function switchTab(tabId) {
-            document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-            
-            document.getElementById(tabId).classList.add('active');
-            event.target.classList.add('active');
-        }
-    </script>
 </body>
 </html>
