@@ -3,39 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>گداچول - لیگ گداهای استرسی فصل ۲</title>
+  <title>GEDACHOL - لیگ گداهای استرسی فصل ۲</title>
   <style>
     :root {
-      --bg-color: #121214;
-      --card-bg: #1e1e24;
-      --accent-color: #FFD700; /* طلایی */
+      --bg-dark: #0d1117;
+      --card-bg: #161b22;
+      --yellow-accent: #f5b041;
+      --blue-accent: #3498db;
       --text-main: #ffffff;
-      --text-muted: #a0a0a0;
-      --border-color: #2a2a35;
+      --text-muted: #8b949e;
+      --border-color: #30363d;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background-color: var(--bg-color);
+      background-color: var(--bg-dark);
       color: var(--text-main);
       font-family: Tahoma, 'Segoe UI', sans-serif;
       line-height: 1.6;
       padding-bottom: 40px;
     }
 
-    /* هدر اصلی سایت */
+    /* هدر جذاب با پس‌زمینه دو رنگ (الهام گرفته از پوستر) */
     header {
       text-align: center;
-      padding: 30px 15px;
-      background: linear-gradient(180deg, #1f1f2e 0%, var(--bg-color) 100%);
-      border-bottom: 2px solid var(--accent-color);
+      padding: 40px 20px 20px;
+      background: linear-gradient(135deg, rgba(245, 176, 65, 0.15) 0%, rgba(52, 152, 219, 0.15) 100%);
+      border-bottom: 3px solid var(--yellow-accent);
       margin-bottom: 30px;
     }
-    header h1 {
-      font-size: 2.5rem;
-      color: var(--accent-color);
-      letter-spacing: 1px;
+
+    /* بنر پوستر بالای سایت */
+    .hero-banner {
+      max-width: 450px;
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+      border: 2px solid var(--border-color);
+      margin-bottom: 20px;
     }
+
+    header h1 {
+      font-size: 2.8rem;
+      font-family: Arial, sans-serif;
+      font-weight: 900;
+      letter-spacing: 2px;
+      background: linear-gradient(90deg, var(--yellow-accent), var(--blue-accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
     header p {
       font-size: 1.2rem;
       color: var(--text-muted);
@@ -43,7 +61,7 @@
       font-weight: bold;
     }
 
-    /* چیدمان اصلی (ستون راست: بازی‌ها / ستون چپ: جدول و اخبار) */
+    /* چیدمان اصلی سایت */
     .container {
       max-width: 1100px;
       margin: 0 auto;
@@ -55,56 +73,57 @@
 
     @media (min-width: 850px) {
       .container {
-        grid-template-columns: 1.2fr 0.8fr; /* ستون راست کمی عریض‌تر */
+        grid-template-columns: 1.2fr 0.8fr;
       }
     }
 
     .section-title {
-      color: var(--accent-color);
       font-size: 1.3rem;
-      border-right: 4px solid var(--accent-color);
+      border-right: 4px solid var(--yellow-accent);
       padding-right: 10px;
       margin-bottom: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      color: var(--yellow-accent);
+      font-weight: bold;
     }
 
-    /* کارت‌های عمومی */
     .card {
       background: var(--card-bg);
-      border-radius: 12px;
+      border-radius: 14px;
       padding: 20px;
       border: 1px solid var(--border-color);
       margin-bottom: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
 
-    /* ---- بخش ۱: مسابقات ---- */
+    /* مسابقات پیش‌بینی */
     .match-item {
-      background: #16161c;
+      background: #0d1117;
       border-radius: 10px;
       padding: 12px 15px;
       margin-bottom: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
+      border: 1px solid #21262d;
     }
+
     .match-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 0.85rem;
-      border-bottom: 1px solid #282835;
+      border-bottom: 1px solid #21262d;
       padding-bottom: 6px;
+      margin-bottom: 8px;
     }
-    .match-date { color: var(--accent-color); font-weight: bold; }
+
+    .match-date { color: var(--yellow-accent); font-weight: bold; }
     .match-time {
-      background: var(--accent-color);
-      color: #000;
-      padding: 2px 8px;
+      background: var(--blue-accent);
+      color: #fff;
+      padding: 2px 10px;
       border-radius: 12px;
       font-weight: bold;
+      font-size: 0.85rem;
     }
+
     .match-teams {
       display: flex;
       justify-content: space-around;
@@ -112,41 +131,48 @@
       font-weight: bold;
       font-size: 1rem;
     }
+
     .team { display: flex; align-items: center; gap: 8px; }
     .team img { width: 28px; height: 28px; object-fit: contain; }
 
-    /* ---- بخش ۲: جدول اعضای گروه ---- */
+    /* جدول اعضا */
     .ranking-table {
       width: 100%;
       border-collapse: collapse;
       font-size: 0.95rem;
     }
+
     .ranking-table th {
       text-align: right;
       color: var(--text-muted);
       border-bottom: 1px solid var(--border-color);
       padding: 8px;
     }
+
     .ranking-table td {
       padding: 10px 8px;
-      border-bottom: 1px solid #262632;
+      border-bottom: 1px solid #21262d;
     }
+
     .ranking-table tr.highlight td {
-      color: #00ff7f; /* سبز جداگانه برای رتبه اول */
+      color: var(--yellow-accent);
       font-weight: bold;
     }
+
     .rank-num { width: 30px; text-align: center; font-weight: bold; }
-    .points { text-align: center; font-weight: bold; color: var(--accent-color); }
+    .points { text-align: center; font-weight: bold; color: var(--blue-accent); }
     .exact { text-align: center; color: var(--text-muted); }
 
-    /* ---- بخش ۳: اخبار لیگ ---- */
+    /* اخبار */
     .news-item {
-      background: #16161c;
+      background: #0d1117;
       border-radius: 8px;
       padding: 12px;
       margin-bottom: 10px;
       font-size: 0.9rem;
+      border-right: 3px solid var(--blue-accent);
     }
+
     .news-date {
       color: var(--text-muted);
       font-size: 0.75rem;
@@ -156,23 +182,20 @@
 </head>
 <body>
 
-  <!-- هدر سایت -->
+  <!-- هدر با پوستر و عنوان انگلیسی GEDACHOL -->
   <header>
-    <h1>گداچول</h1>
+    <!-- عکس بالای سایت -->
+    <img src="photo1789386549.jpeg" alt="GEDACHOL Banner" class="hero-banner">
+    <h1>GEDACHOL</h1>
     <p>لیگ گداهای استرسی فصل ۲</p>
   </header>
 
   <div class="container">
 
-    <!-- ستون سمت راست: مسابقات پیش‌بینی -->
+    <!-- ستون سمت راست: مسابقات -->
     <div class="column-right">
-      <div class="section-title">
-        <span>🎮 مسابقات پیش‌بینی آینده</span>
-      </div>
+      <div class="section-title">🎮 مسابقات پیش‌بینی آینده</div>
 
-      <!-- ========================================== -->
-      <!--  شروع بخش مسابقات (برای تغییر فقط این تکه را ویرایش کنید)  -->
-      <!-- ========================================== -->
       <div id="matches-section">
         
         <div class="match-item">
@@ -272,17 +295,12 @@
         </div>
 
       </div>
-      <!-- ========================================== -->
-      <!--  پایان بخش مسابقات  -->
-      <!-- ========================================== -->
     </div>
 
     <!-- ستون سمت چپ: جدول اعضا و اخبار -->
     <div class="column-left">
       
-      <!-- ========================================== -->
-      <!--  شروع بخش جدول اعضا (دقیقاً طبق تصویر فرستاده شده)  -->
-      <!-- ========================================== -->
+      <!-- جدول اعضا -->
       <div class="card">
         <div class="section-title">📊 جدول رده‌بندی اعضا</div>
         <table class="ranking-table">
@@ -376,32 +394,21 @@
           </tbody>
         </table>
       </div>
-      <!-- ========================================== -->
-      <!--  پایان بخش جدول اعضا  -->
-      <!-- ========================================== -->
 
-      <!-- ========================================== -->
-      <!--  شروع بخش اخبار لیگ  -->
-      <!-- ========================================== -->
+      <!-- اخبار لیگ -->
       <div class="card">
-        <div class="section-title">📰 اخبار لیگ</div>
+        <div class="section-title">📰 اخبار GEDACHOL</div>
         <div id="news-section">
-          
           <div class="news-item">
             <div class="news-date">۲۶ شهریور ۱۴۰۵</div>
-            <div><strong>شروع پرقدرت فصل دوم:</strong> مهدی و رضا گطیفی با ۱۵ امتیاز در صدر جدول رقابت تنگی دارند!</div>
+            <div><strong>شروع فصل جدید:</strong> برند اختصاصی GEDACHOL کار خود را آغاز کرد!</div>
           </div>
-
           <div class="news-item">
             <div class="news-date">۲۵ شهریور ۱۴۰۵</div>
-            <div><strong>مهلت ثبت پیش‌بینی:</strong> تا قبل از شروع اولین بازی (جمعه ساعت ۲۲:۳۰) پیش‌بینی‌های خود را بفرستید.</div>
+            <div><strong>مهلت ارسال پیش‌بینی:</strong> تا قبل از آغاز مسابقه چلسی و برنتفورد.</div>
           </div>
-
         </div>
       </div>
-      <!-- ========================================== -->
-      <!--  پایان بخش اخبار لیگ  -->
-      <!-- ========================================== -->
 
     </div>
 
