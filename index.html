@@ -1,1739 +1,580 @@
-Conversation with Gemini
-
-یک پوستر حرفه ایی برام بساز برای سایت GEDA CHOLA گرفته از پوستر ارسالی کیفیت عکس ببر بالا و از دوشخصیت و رنگ استفاده کن پوستر حرفه ایی بساز
-, AI generated
-
 <!DOCTYPE html>
-
 <html lang="fa" dir="rtl">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>GEDA CHOLHA - ALL YOU CAN PLAY</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/vazirmatn@33.0.3/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
-
-    <style>
-
-        :root {
-
-            --bg-blue: #0b3c7d;
-
-            --dark-blue: #072552;
-
-            --accent-red: #d32f2f;
-
-            --accent-gold: #cca262;
-
-            --card-bg: #112d59;
-
-            --text-white: #ffffff;
-
-            --paper-bg: #f8f6f0;
-
-            --paper-text: #1a1a1a;
-
-        }
-
-
-        * {
-
-            box-sizing: border-box;
-
-            margin: 0;
-
-            padding: 0;
-
-            font-family: 'Vazirmatn', sans-serif;
-
-        }
-
-
-        /* Splash Screen Styles with Rotating & Expanding Text */
-
-        #splash-screen {
-
-            position: fixed;
-
-            top: 0;
-
-            left: 0;
-
-            width: 100%;
-
-            height: 100%;
-
-            background-color: var(--dark-blue);
-
-            background-image: radial-gradient(circle at 50% 30%, #1754a3 0%, var(--dark-blue) 70%);
-
-            display: flex;
-
-            flex-direction: column;
-
-            justify-content: center;
-
-            align-items: center;
-
-            z-index: 9999;
-
-            color: var(--text-white);
-
-            transition: opacity 0.8s ease, visibility 0.8s ease;
-
-            overflow: hidden;
-
-            padding: 20px;
-
-            text-align: center;
-
-        }
-
-
-        .orbit-container {
-
-            position: relative;
-
-            width: 100%;
-
-            max-width: 600px;
-
-            height: 120px;
-
-            margin-bottom: 20px;
-
-            display: flex;
-
-            justify-content: center;
-
-            align-items: center;
-
-        }
-
-
-        /* Rotating text element */
-
-        .rotating-text {
-
-            font-size: 2.2rem;
-
-            font-weight: 900;
-
-            color: var(--accent-gold);
-
-            text-shadow: 3px 3px 8px rgba(0,0,0,0.6);
-
-            animation: spinAndPulse 3s linear infinite;
-
-            white-space: nowrap;
-
-        }
-
-
-        @keyframes spinAndPulse {
-
-            0% { transform: scale(0.9) rotate(0deg); }
-
-            50% { transform: scale(1.1) rotate(5deg); }
-
-            100% { transform: scale(0.9) rotate(0deg); }
-
-        }
-
-
-        .splash-title {
-
-            font-size: 1.4rem;
-
-            font-weight: 700;
-
-            margin-top: 10px;
-
-            text-align: center;
-
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-
-            color: var(--text-white);
-
-            padding: 0 20px;
-
-            opacity: 0.9;
-
-        }
-
-
-        /* Dispersion effect when fading out */
-
-        .fade-out {
-
-            opacity: 0;
-
-            visibility: hidden;
-
-        }
-
-
-        .fade-out .rotating-text {
-
-            transform: scale(2.5) rotate(720deg);
-
-            opacity: 0;
-
-            transition: all 0.8s ease-in-out;
-
-        }
-
-
-        .fade-out .splash-title {
-
-            transform: scale(1.2);
-
-            opacity: 0;
-
-            transition: all 0.8s ease-in-out;
-
-        }
-
-
-        body {
-
-            background-color: var(--bg-blue);
-
-            background-image: radial-gradient(circle at 50% 30%, #1754a3 0%, var(--bg-blue) 70%);
-
-            color: var(--text-white);
-
-            padding: 20px;
-
-            display: flex;
-
-            justify-content: center;
-
-            min-height: 100vh;
-
-        }
-
-
-        .container {
-
-            width: 100%;
-
-            max-width: 950px;
-
-        }
-
-
-        /* Header section inspired by poster */
-
-        header {
-
-            text-align: center;
-
-            padding: 40px 20px;
-
-            position: relative;
-
-        }
-
-
-        .brand-logo {
-
-            font-size: 1.5rem;
-
-            font-style: italic;
-
-            letter-spacing: 3px;
-
-            color: #d1e3ff;
-
-            margin-bottom: 10px;
-
-            text-transform: uppercase;
-
-        }
-
-
-        .main-title {
-
-            font-size: 3.5rem;
-
-            font-weight: 900;
-
-            text-transform: uppercase;
-
-            line-height: 1.1;
-
-            text-shadow: 4px 4px 0px rgba(0,0,0,0.4);
-
-            letter-spacing: 1px;
-
-            margin-bottom: 15px;
-
-        }
-
-
-        /* Red Badge from Poster */
-
-        .time-badge {
-
-            display: inline-block;
-
-            background-color: var(--accent-red);
-
-            color: var(--text-white);
-
-            padding: 8px 25px;
-
-            font-weight: bold;
-
-            font-size: 1.2rem;
-
-            border-radius: 4px;
-
-            transform: rotate(-2deg);
-
-            box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
-
-            margin-bottom: 15px;
-
-        }
-
-
-        /* Gold Tag from Poster */
-
-        .date-tag {
-
-            display: inline-block;
-
-            background-color: var(--accent-gold);
-
-            color: #000;
-
-            padding: 6px 20px;
-
-            font-weight: 800;
-
-            border-radius: 6px;
-
-            transform: rotate(1deg);
-
-            box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
-
-        }
-
-
-        /* Grid Layout for News and Table */
-
-        .main-grid {
-
-            display: grid;
-
-            grid-template-columns: 1fr 1fr;
-
-            gap: 25px;
-
-            margin-top: 30px;
-
-        }
-
-
-        @media (max-width: 768px) {
-
-            .main-grid {
-
-                grid-template-columns: 1fr;
-
-            }
-
-            .main-title {
-
-                font-size: 2.4rem;
-
-            }
-
-            .rotating-text {
-
-                font-size: 1.5rem;
-
-            }
-
-        }
-
-
-        /* Newspaper style news section */
-
-        .newspaper-card {
-
-            background-color: var(--paper-bg);
-
-            color: var(--paper-text);
-
-            padding: 20px;
-
-            border-radius: 8px;
-
-            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-
-            transform: rotate(-1.5deg);
-
-            transition: transform 0.3s;
-
-        }
-
-
-        .newspaper-card:hover {
-
-            transform: rotate(0deg) scale(1.02);
-
-        }
-
-
-        .newspaper-header {
-
-            border-bottom: 2px solid var(--paper-text);
-
-            padding-bottom: 5px;
-
-            margin-bottom: 15px;
-
-            text-align: center;
-
-        }
-
-
-        .newspaper-header h3 {
-
-            font-family: serif;
-
-            font-size: 1.4rem;
-
-            letter-spacing: 1px;
-
-        }
-
-
-        .newspaper-date {
-
-            font-size: 0.75rem;
-
-            color: #666;
-
-            text-align: center;
-
-            border-bottom: 1px solid #ccc;
-
-            padding-bottom: 5px;
-
-            margin-bottom: 15px;
-
-        }
-
-
-        .news-item {
-
-            margin-bottom: 20px;
-
-            border-bottom: 1px dashed #bbb;
-
-            padding-bottom: 15px;
-
-        }
-
-
-        .news-item:last-child {
-
-            border-bottom: none;
-
-            margin-bottom: 0;
-
-            padding-bottom: 0;
-
-        }
-
-
-        .news-title {
-
-            font-weight: bold;
-
-            font-size: 1.05rem;
-
-            margin-bottom: 6px;
-
-            color: #000;
-
-            line-height: 1.4;
-
-        }
-
-
-        .news-detail {
-
-            font-size: 0.88rem;
-
-            color: #333;
-
-            line-height: 1.6;
-
-            text-align: justify;
-
-        }
-
-
-        /* Leaderboard Section */
-
-        .panel {
-
-            background-color: var(--card-bg);
-
-            border-radius: 12px;
-
-            padding: 20px;
-
-            border: 2px solid #1c4580;
-
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-
-        }
-
-
-        .panel-title {
-
-            font-size: 1.3rem;
-
-            font-weight: 800;
-
-            color: var(--accent-gold);
-
-            margin-bottom: 15px;
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 10px;
-
-        }
-
-
-        /* Billiard Ball Icon */
-
-        .ball-icon {
-
-            width: 25px;
-
-            height: 25px;
-
-            background-color: #d32f2f;
-
-            border-radius: 50%;
-
-            display: inline-flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            color: white;
-
-            font-weight: bold;
-
-            font-size: 0.8rem;
-
-            border: 2px solid #fff;
-
-        }
-
-
-        table {
-
-            width: 100%;
-
-            border-collapse: collapse;
-
-            margin-bottom: 20px;
-
-        }
-
-
-        th, td {
-
-            padding: 10px;
-
-            text-align: center;
-
-            border-bottom: 1px solid #1e4d8c;
-
-        }
-
-
-        th {
-
-            color: #a2c4f5;
-
-            font-size: 0.9rem;
-
-        }
-
-
-        .rank-1 { color: #ffd700; font-weight: bold; }
-
-
-        /* Capsule Buttons */
-
-        .capsule-badge {
-
-            background-color: #ffffff;
-
-            color: #111;
-
-            padding: 10px 20px;
-
-            border-radius: 30px;
-
-            font-weight: bold;
-
-            text-align: center;
-
-            margin-top: 10px;
-
-            font-size: 0.95rem;
-
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            gap: 10px;
-
-        }
-
-
-        /* Matches Prediction Section Styles */
-
-        .matches-section {
-
-            margin-top: 35px;
-
-            background-color: var(--card-bg);
-
-            border-radius: 12px;
-
-            padding: 25px;
-
-            border: 2px solid #1c4580;
-
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-
-        }
-
-
-        footer {
-
-            text-align: center;
-
-            margin-top: 40px;
-
-            padding: 20px;
-
-            font-size: 0.85rem;
-
-            color: #8bb3f0;
-
-        }
-
-    </style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEDA CHOLHA - ALL YOU CAN PLAY</title>
+    <link href="https://cdn.jsdelivr.net/npm/vazirmatn@33.0.3/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        :root {
+            --bg-blue: #0b3c7d;
+            --dark-blue: #072552;
+            --accent-red: #d32f2f;
+            --accent-gold: #cca262;
+            --card-bg: #112d59;
+            --text-white: #ffffff;
+            --paper-bg: #f8f6f0;
+            --paper-text: #1a1a1a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+
+        /* Splash Screen Styles with Rotating & Expanding Text */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--dark-blue);
+            background-image: radial-gradient(circle at 50% 30%, #1754a3 0%, var(--dark-blue) 70%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            color: var(--text-white);
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+            overflow: hidden;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .orbit-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            height: 120px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Rotating text element */
+        .rotating-text {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--accent-gold);
+            text-shadow: 3px 3px 8px rgba(0,0,0,0.6);
+            animation: spinAndPulse 3s linear infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes spinAndPulse {
+            0% { transform: scale(0.9) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(5deg); }
+            100% { transform: scale(0.9) rotate(0deg); }
+        }
+
+        .splash-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-top: 10px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            color: var(--text-white);
+            padding: 0 20px;
+            opacity: 0.9;
+        }
+
+        /* Dispersion effect when fading out */
+        .fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .fade-out .rotating-text {
+            transform: scale(2.5) rotate(720deg);
+            opacity: 0;
+            transition: all 0.8s ease-in-out;
+        }
+
+        .fade-out .splash-title {
+            transform: scale(1.2);
+            opacity: 0;
+            transition: all 0.8s ease-in-out;
+        }
+
+        body {
+            background-color: var(--bg-blue);
+            background-image: radial-gradient(circle at 50% 30%, #1754a3 0%, var(--bg-blue) 70%);
+            color: var(--text-white);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 950px;
+        }
+
+        /* Header section inspired by poster */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        .brand-logo {
+            font-size: 1.5rem;
+            font-style: italic;
+            letter-spacing: 3px;
+            color: #d1e3ff;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .main-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 1.1;
+            text-shadow: 4px 4px 0px rgba(0,0,0,0.4);
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        /* Red Badge from Poster */
+        .time-badge {
+            display: inline-block;
+            background-color: var(--accent-red);
+            color: var(--text-white);
+            padding: 8px 25px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border-radius: 4px;
+            transform: rotate(-2deg);
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+            margin-bottom: 15px;
+        }
+
+        /* Gold Tag from Poster */
+        .date-tag {
+            display: inline-block;
+            background-color: var(--accent-gold);
+            color: #000;
+            padding: 6px 20px;
+            font-weight: 800;
+            border-radius: 6px;
+            transform: rotate(1deg);
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Grid Layout for News and Table */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+            .main-title {
+                font-size: 2.4rem;
+            }
+            .rotating-text {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Newspaper style news section */
+        .newspaper-card {
+            background-color: var(--paper-bg);
+            color: var(--paper-text);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            transform: rotate(-1.5deg);
+            transition: transform 0.3s;
+        }
+
+        .newspaper-card:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .newspaper-header {
+            border-bottom: 2px solid var(--paper-text);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .newspaper-header h3 {
+            font-family: serif;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+        }
+
+        .newspaper-date {
+            font-size: 0.75rem;
+            color: #666;
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+
+        .news-item {
+            margin-bottom: 20px;
+            border-bottom: 1px dashed #bbb;
+            padding-bottom: 15px;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .news-title {
+            font-weight: bold;
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+            color: #000;
+            line-height: 1.4;
+        }
+
+        .news-detail {
+            font-size: 0.88rem;
+            color: #333;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        /* Leaderboard Section */
+        .panel {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            border: 2px solid #1c4580;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .panel-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Billiard Ball Icon */
+        .ball-icon {
+            width: 25px;
+            height: 25px;
+            background-color: #d32f2f;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+            border: 2px solid #fff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #1e4d8c;
+        }
+
+        th {
+            color: #a2c4f5;
+            font-size: 0.9rem;
+        }
+
+        .rank-1 { color: #ffd700; font-weight: bold; }
+
+        /* Capsule Buttons */
+        .capsule-badge {
+            background-color: #ffffff;
+            color: #111;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* Matches Prediction Section Styles */
+        .matches-section {
+            margin-top: 35px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            border: 2px solid #1c4580;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            font-size: 0.85rem;
+            color: #8bb3f0;
+        }
+    </style>
 </head>
-
 <body>
 
-
-    <!-- Splash Screen with Rotating Text -->
-
-    <div id="splash-screen">
-
-        <div class="orbit-container">
-
-            <div class="rotating-text">لیگ گداهای استرسی فصل دوم</div>
-
-        </div>
-
-        <div class="splash-title">قبل از ورود...</div>
-
-    </div>
-
-
-    <div class="container">
-
-        <!-- Header -->
-
-        <header>
-
-            <div class="brand-logo">GEDA CHOLHA</div>
-
-            <h1 class="main-title">پیش بینی کن<br>امتیاز بگیر</h1>
-
-            <div>
-
-                <span class="time-badge">شروع رقابت‌ها: هفته پنجم از روز جمعه</span>
-
-            </div>
-
-            <div>
-
-                <span class="date-tag">لیگ گداهای استرسی فصل دوم 1405</span>
-
-            </div>
-
-        </header>
-
-
-        <!-- Main Content -->
-
-        <div class="main-grid">
-
-            
-
-            <!-- Section 1: Newspaper Style News -->
-
-            <div class="newspaper-card">
-
-                <div class="newspaper-header">
-
-                    <h3>GEDA DAILY NEWS</h3>
-
-                </div>
-
-                <div class="newspaper-date">روزنامه اختصاصی حواشی - اخبار امروز</div>
-
-                
-
-                <!-- خبر اول -->
-
-                <div class="news-item">
-
-                    <div class="news-title">⚽ آغاز هفته پنجم</div>
-
-                    <div class="news-detail">
-
-                        آغاز هفته پنجم از روز جمعه با بازی چلسی در مقابل برنتفورد از ساعت ۲۲:۳۰ آغاز می‌شود. چلسی با انجام ۴ بازی و ۷ امتیاز در رده ۵ قرار گرفته و برنتفورد پشت سر او با ۶ امتیاز این تیم را تعقیب می‌کند.
-
-                    </div>
-
-                </div>
-
-
-                <!-- خبر دوم -->
-
-                <div class="news-item">
-
-                    <div class="news-title">🔥 پایان هفته چهارم... زویدات همچنان غول آخر لیگ گداهای استرسی!</div>
-
-                    <div class="news-detail">
-
-                        زویدات همچنان با ۵۰ امتیاز دست‌نیافتنی و صدرنشین لیگ گداهای استرسی است. باید دید او در هفته پنجم می‌تواند همچنان این روند را ادامه دهد یا خیر!
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- Section 2: Leaderboard & Conditions -->
-
-            <div class="panel">
-
-                <div class="panel-title">
-
-                    <span class="ball-icon">8</span>
-
-                    جدول امتیازات لیگ
-
-                </div>
-
-
-                <table>
-
-                    <thead>
-
-                        <tr>
-
-                            <th>رتبه</th>
-
-                            <th>نام</th>
-
-                            <th>بازی</th>
-
-                            <th>امتیاز</th>
-
-                        </tr>
-
-                    </thead>
-
-                    <tbody>
-
-                        <tr>
-
-                            <td class="rank-1">🥇 ۱</td>
-
-                            <td>زویدات</td>
-
-                            <td>۴</td>
-
-                            <td><strong>۵۰</strong></td>
-
-                        </tr>
-
-                        <tr>
-
-                            <td>🥈 ۲</td>
-
-                            <td>نعیمی</td>
-
-                            <td>۴</td>
-
-                            <td>۴۲</td>
-
-                        </tr>
-
-                        <tr>
-
-                            <td>🥉 ۳</td>
-
-                            <td>جاسمیان</td>
-
-                            <td>۴</td>
-
-                            <td>۳۸</td>
-
-                        </tr>
-
-                        <tr>
-
-                            <td>۴</td>
-
-                            <td>ناجح</td>
-
-                            <td>۴</td>
-
-                            <td>۳۱</td>
-
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-
-                <div style="margin-top: 20px;">
-
-                    <div style="font-size: 0.85rem; color: #a2c4f5; margin-bottom: 8px;">شرایط و قوانین:</div>
-
-                    <div class="capsule-badge">
-
-                        <span class="ball-icon" style="background:#000;">8</span>
-
-                        پیش بینی کن یادت نره
-
-                    </div>
-
-                    <div class="capsule-badge">
-
-                        <span class="ball-icon" style="background:#00e676; color:#000;">8</span>
-
-                        دنبال کردن در فانتزی
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-
-        <!-- Section 3: Matches Prediction Section -->
-
-        <div class="matches-section">
-
-            <div class="panel-title">
-
-                <span class="ball-icon">⚽</span>
-
-                هفته پنجم پیش بینی
-
-            </div>
-
-
-            <!-- جمعه ۲۷ شهریور -->
-
-            <div style="font-size: 12px; font-weight: bold; color: #666; margin: 10px 4px 4px 4px; text-align: center; text-transform: uppercase; letter-spacing: 0.5px;">
-
-                جمعه ۲۷ شهریور
-
-            </div>
-
-
-            <div style="background: #1a1a2e; border-radius: 8px; padding: 8px 12px; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between; color: #fff; font-family: Tahoma, sans-serif;">
-
-                <div style="display: flex; align-items: center; gap: 6px; width: 35%;">
-
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/9937.png" alt="Brentford" style="width: 16px; height: 16px; object-fit: contain;">
-
-                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Brentford</span>
-
-                </div>
-
-                <div style="display: flex; flex-direction: column; align-items: center; width: 30%;">
-
-                    <span style="font-size: 10px; font-weight: 800; color: #ffcc00; letter-spacing: 1px;">۲۲:۳۰</span>
-
-                    <span style="font-size: 8px; color: #aaa; text-transform: uppercase;">لیگ برتر انگلیس</span>
-
-                </div>
-
-                <div style="display: flex; align-items: center; justify-content: flex-end; gap: 6px; width: 35%;">
-
-                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: right;">Chelsea</span>
-
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8455.png" alt="Chelsea" style="width: 16px; height: 16px; object-fit: contain;">
-
-                </div>
-
-            </div>
-
-
-            <!-- شنبه ۲۸ شهریور -->
-
-            <div style="font-size: 12px; font-weight: bold; color: #666; margin: 12px 4px 4px 4px; text-align: center; text-transform: uppercase; letter-spacing: 0.5px;">
-
-                شنبه ۲۸ شهریور
-
-            </div>
-
-
-            <div style="background: #1a1a2e; border-radius: 8px; padding: 8px 12px; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between; color: #fff; font-family: Tahoma, sans-serif;">
-
-                <div style="display: flex; align-items: center; gap: 6px; width: 35%;">
-
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8586.png" alt="Tottenham" style="width: 16px; height: 16px; object-fit: contain;">
-
-                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Tottenham</span>
-
-                </div>
-
-                <div style="display: flex; flex-direction: column; align-items: center; width: 30%;">
-
-                    <span style="font-size: 10px; font-weight: 800; color: #ffcc00; letter-spacing: 1px;">۱۵:۰۰</span>
-
-                    <span style="font-size: 8px; color: #aaa; text-transform: uppercase;">لیگ برتر انگلیس</span>
-
-                </div>
-
-                <div style="display: flex; align-items: center; justify-content: flex-end; gap: 6px; width: 35%;">
-
-                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: right;">Aston Villa</span>
-
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/10252.png" alt="Aston Villa" style="width: 16px; height: 16px; object-fit: contain;">
-
-                </div>
-
-            </div>
-
-
-            <div style="background: #1a1a2e; border-radius: 8px; padding: 8px 12px; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between; color: #fff; font-family: Tahoma, sans-serif;">
-
-                <div style="display: flex; align-items: center; gap: 6px; width: 35%;">
-
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/10204.png" alt="Brighton" style="width: 16px; height: 16px; object-fit: contain;">
-
-                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Brighton</span>
-
-                </div>
-
-                <div style="display: flex; flex-direction: column; align-items: center; width: 30%;">
-
-                    <span style="font-size: 10px; font-weight: 800; color: #ffcc00; letter-spacing: 1px;">۱۷:۳۰</span>
-
-                    <span style="font-size: 8px; color: #aaa; text-transform: uppercase;">لیگ برتر انگلیس</span>
-
-                </div>
-
-                <div style="display: flex; align-items: center; justify-content: flex-end; gap: 6px; width: 35%;">
-
-                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: right;">Arsenal</span>
-
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/9825.png" alt="Arsenal" style="width: 16px; height: 16px; object-fit: contain;">
-
-                </div>
-
-            </div>
-
-
-            <div style="background: #1a1a2e; border-radius: 8px; padding: 8px 12px; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between; color: #fff; font-family: Tahoma, sans-serif;">
-
-                <div style="display: flex; align-items: center; gap: 6px; width: 35%;">
-
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8686.png" alt="Roma" style="width: 16px; height: 16px; object-fit: contain;">
-
-                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Roma</span>
-
-                </div>
-
-                <div style="display: flex; flex-direction: column; align-items: center; width: 30%;">
-
-                    <span style="font-size: 10px; font-weight: 800; color: #ffcc00; letter-spacing: 1px;">۱۹:۳۰</span>
-
-                    <span style="font-size: 8px; color: #aaa; text-transform: uppercase;">سری آ ایتالیا</span>
-
-                </div>
-
-                <div style="display: flex; align-items: center; justify-content: flex-end; gap: 6px; width: 35%;">
-
-                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: right;">Inter</span>
-
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8636.png" alt="Inter" style="width: 16px; height: 16px; object-fit: contain;">
-
-                </div>
-
-            </div>
-
-
-            <div style="background: #1a1a2e; border-radius: 8px; padding: 8px 12px; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between; color: #fff; font-family: Tahoma, sans-serif;">
-
-                <div style="display: flex; align-items: center; gap: 6px; width: 35%;">
-
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8302.png" alt="Sevilla" style="width: 16px; height: 16px; object-fit: contain;">
-
-                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Sevilla</span>
-
-                </div>
-
-                <div style="display: flex; flex-direction: column; align-items: center; width: 30%;">
-
-                    <span style="font-size: 10px; font-weight: 800; color: #ffcc00; letter-spacing: 1px;">۲۲:۳۰</span>
-
-                    <span style="font-size: 8px; color: #aaa; text-transform: uppercase;">لالیگا اسپانیا</span>
-
-                </div>
-
-                <div style="display: flex; align-items: center; justify-content: flex-end; gap: 6px; width: 35%;">
-
-                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: right;">Barcelona</span>
-
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8634.png" alt="Barcelona" style="width: 16px; height: 16px; object-fit: contain;">
-
-                </div>
-
-            </div>
-
-
-            <!-- یکشنبه ۲۹ شهریور -->
-
-            <div style="font-size: 12px; font-weight: bold; color: #666; margin: 12px 4px 4px 4px; text-align: center; text-transform: uppercase; letter-spacing: 0.5px;">
-
-                یکشنبه ۲۹ شهریور
-
-            </div>
-
-
-            <div style="background: #1a1a2e; border-radius: 8px; padding: 8px 12px; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between; color: #fff; font-family: Tahoma, sans-serif;">
-
-                <div style="display: flex; align-items: center; gap: 6px; width: 35%;">
-
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8678.png" alt="Bournemouth" style="width: 16px; height: 16px; object-fit: contain;">
-
-                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Bournemouth</span>
-
-                </div>
-
-                <div style="display: flex; align-items: center; justify-content: center; width: 30%;">
-
-                    <span style="font-size: 10px; font-weight: 800; color: #ffcc00; letter-spacing: 1px;">۱۶:۳۰</span>
-
-                </div>
-
-                <div style="display: flex; align-items: center; justify-content: flex-end; gap: 6px; width: 35%;">
-
-                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: right;">Liverpool</span>
-
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8650.png" alt="Liverpool" style="width: 16px; height: 16px; object-fit: contain;">
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <footer>
-
-            CANBO FOOTBALL &copy; 1405
-
-        </footer>
-
-    </div>
-
-
-    <!-- JavaScript for Splash Screen Animation and Dispersion -->
-
-    <script>
-
-        window.addEventListener('load', function() {
-
-            setTimeout(function() {
-
-                const splash = document.getElementById('splash-screen');
-
-                splash.classList.add('fade-out');
-
-            }, 2200); // زمان چرخش متن قبل از ورود به سایت
-
-        });
-
-    </script>
-
+    <!-- Splash Screen with Rotating Text -->
+    <div id="splash-screen">
+        <div class="orbit-container">
+            <div class="rotating-text">لیگ گداهای استرسی فصل دوم</div>
+        </div>
+        <div class="splash-title">قبل از ورود...</div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="brand-logo">GEDA CHOLHA</div>
+            <h1 class="main-title">پیش بینی کن<br>امتیاز بگیر</h1>
+            <div>
+                <span class="time-badge">شروع رقابت‌ها: هفته پنجم از روز جمعه</span>
+            </div>
+            <div>
+                <span class="date-tag">لیگ گداهای استرسی فصل دوم 1405</span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-grid">
+            
+            <!-- Section 1: Newspaper Style News -->
+            <div class="newspaper-card">
+                <div class="newspaper-header">
+                    <h3>GEDA DAILY NEWS</h3>
+                </div>
+                <div class="newspaper-date">روزنامه اختصاصی حواشی - اخبار امروز</div>
+                
+                <!-- خبر اول -->
+                <div class="news-item">
+                    <div class="news-title">⚽ آغاز هفته پنجم</div>
+                    <div class="news-detail">
+                        آغاز هفته پنجم از روز جمعه با بازی چلسی در مقابل برنتفورد از ساعت ۲۲:۳۰ آغاز می‌شود. چلسی با انجام ۴ بازی و ۷ امتیاز در رده ۵ قرار گرفته و برنتفورد پشت سر او با ۶ امتیاز این تیم را تعقیب می‌کند.
+                    </div>
+                </div>
+
+                <!-- خبر دوم -->
+                <div class="news-item">
+                    <div class="news-title">🔥 پایان هفته چهارم... زویدات همچنان غول آخر لیگ گداهای استرسی!</div>
+                    <div class="news-detail">
+                        زویدات همچنان با ۵۰ امتیاز دست‌نیافتنی و صدرنشین لیگ گداهای استرسی است. باید دید او در هفته پنجم می‌تواند همچنان این روند را ادامه دهد یا خیر!
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2: Leaderboard & Conditions -->
+            <div class="panel">
+                <div class="panel-title">
+                    <span class="ball-icon">8</span>
+                    جدول امتیازات لیگ
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>رتبه</th>
+                            <th>نام</th>
+                            <th>بازی</th>
+                            <th>امتیاز</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="rank-1">🥇 ۱</td>
+                            <td>زویدات</td>
+                            <td>۴</td>
+                            <td><strong>۵۰</strong></td>
+                        </tr>
+                        <tr>
+                            <td>🥈 ۲</td>
+                            <td>نعیمی</td>
+                            <td>۴</td>
+                            <td>۴۲</td>
+                        </tr>
+                        <tr>
+                            <td>🥉 ۳</td>
+                            <td>جاسمیان</td>
+                            <td>۴</td>
+                            <td>۳۸</td>
+                        </tr>
+                        <tr>
+                            <td>۴</td>
+                            <td>ناجح</td>
+                            <td>۴</td>
+                            <td>۳۱</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div style="margin-top: 20px;">
+                    <div style="font-size: 0.85rem; color: #a2c4f5; margin-bottom: 8px;">شرایط و قوانین:</div>
+                    <div class="capsule-badge">
+                        <span class="ball-icon" style="background:#000;">8</span>
+                        پیش بینی کن یادت نره
+                    </div>
+                    <div class="capsule-badge">
+                        <span class="ball-icon" style="background:#00e676; color:#000;">8</span>
+                        دنبال کردن در فانتزی
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Section 3: Matches Prediction Section -->
+        <div class="matches-section">
+            <div class="panel-title">
+                <span class="ball-icon">⚽</span>
+                هفته پنجم پیش بینی
+            </div>
+
+            <!-- جمعه ۲۷ شهریور -->
+            <div style="font-size: 12px; font-weight: bold; color: #666; margin: 10px 4px 4px 4px; text-align: center; text-transform: uppercase; letter-spacing: 0.5px;">
+                جمعه ۲۷ شهریور
+            </div>
+
+            <div style="background: #1a1a2e; border-radius: 8px; padding: 8px 12px; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between; color: #fff; font-family: Tahoma, sans-serif;">
+                <div style="display: flex; align-items: center; gap: 6px; width: 35%;">
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/9937.png" alt="Brentford" style="width: 16px; height: 16px; object-fit: contain;">
+                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Brentford</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; width: 30%;">
+                    <span style="font-size: 10px; font-weight: 800; color: #ffcc00; letter-spacing: 1px;">۲۲:۳۰</span>
+                    <span style="font-size: 8px; color: #aaa; text-transform: uppercase;">لیگ برتر انگلیس</span>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: flex-end; gap: 6px; width: 35%;">
+                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: right;">Chelsea</span>
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8455.png" alt="Chelsea" style="width: 16px; height: 16px; object-fit: contain;">
+                </div>
+            </div>
+
+            <!-- شنبه ۲۸ شهریور -->
+            <div style="font-size: 12px; font-weight: bold; color: #666; margin: 12px 4px 4px 4px; text-align: center; text-transform: uppercase; letter-spacing: 0.5px;">
+                شنبه ۲۸ شهریور
+            </div>
+
+            <div style="background: #1a1a2e; border-radius: 8px; padding: 8px 12px; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between; color: #fff; font-family: Tahoma, sans-serif;">
+                <div style="display: flex; align-items: center; gap: 6px; width: 35%;">
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8586.png" alt="Tottenham" style="width: 16px; height: 16px; object-fit: contain;">
+                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Tottenham</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; width: 30%;">
+                    <span style="font-size: 10px; font-weight: 800; color: #ffcc00; letter-spacing: 1px;">۱۵:۰۰</span>
+                    <span style="font-size: 8px; color: #aaa; text-transform: uppercase;">لیگ برتر انگلیس</span>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: flex-end; gap: 6px; width: 35%;">
+                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: right;">Aston Villa</span>
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/10252.png" alt="Aston Villa" style="width: 16px; height: 16px; object-fit: contain;">
+                </div>
+            </div>
+
+            <div style="background: #1a1a2e; border-radius: 8px; padding: 8px 12px; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between; color: #fff; font-family: Tahoma, sans-serif;">
+                <div style="display: flex; align-items: center; gap: 6px; width: 35%;">
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/10204.png" alt="Brighton" style="width: 16px; height: 16px; object-fit: contain;">
+                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Brighton</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; width: 30%;">
+                    <span style="font-size: 10px; font-weight: 800; color: #ffcc00; letter-spacing: 1px;">۱۷:۳۰</span>
+                    <span style="font-size: 8px; color: #aaa; text-transform: uppercase;">لیگ برتر انگلیس</span>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: flex-end; gap: 6px; width: 35%;">
+                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: right;">Arsenal</span>
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/9825.png" alt="Arsenal" style="width: 16px; height: 16px; object-fit: contain;">
+                </div>
+            </div>
+
+            <div style="background: #1a1a2e; border-radius: 8px; padding: 8px 12px; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between; color: #fff; font-family: Tahoma, sans-serif;">
+                <div style="display: flex; align-items: center; gap: 6px; width: 35%;">
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8686.png" alt="Roma" style="width: 16px; height: 16px; object-fit: contain;">
+                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Roma</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; width: 30%;">
+                    <span style="font-size: 10px; font-weight: 800; color: #ffcc00; letter-spacing: 1px;">۱۹:۳۰</span>
+                    <span style="font-size: 8px; color: #aaa; text-transform: uppercase;">سری آ ایتالیا</span>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: flex-end; gap: 6px; width: 35%;">
+                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: right;">Inter</span>
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8636.png" alt="Inter" style="width: 16px; height: 16px; object-fit: contain;">
+                </div>
+            </div>
+
+            <div style="background: #1a1a2e; border-radius: 8px; padding: 8px 12px; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between; color: #fff; font-family: Tahoma, sans-serif;">
+                <div style="display: flex; align-items: center; gap: 6px; width: 35%;">
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8302.png" alt="Sevilla" style="width: 16px; height: 16px; object-fit: contain;">
+                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Sevilla</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; width: 30%;">
+                    <span style="font-size: 10px; font-weight: 800; color: #ffcc00; letter-spacing: 1px;">۲۲:۳۰</span>
+                    <span style="font-size: 8px; color: #aaa; text-transform: uppercase;">لالیگا اسپانیا</span>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: flex-end; gap: 6px; width: 35%;">
+                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: right;">Barcelona</span>
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8634.png" alt="Barcelona" style="width: 16px; height: 16px; object-fit: contain;">
+                </div>
+            </div>
+
+            <!-- یکشنبه ۲۹ شهریور -->
+            <div style="font-size: 12px; font-weight: bold; color: #666; margin: 12px 4px 4px 4px; text-align: center; text-transform: uppercase; letter-spacing: 0.5px;">
+                یکشنبه ۲۹ شهریور
+            </div>
+
+            <div style="background: #1a1a2e; border-radius: 8px; padding: 8px 12px; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between; color: #fff; font-family: Tahoma, sans-serif;">
+                <div style="display: flex; align-items: center; gap: 6px; width: 35%;">
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8678.png" alt="Bournemouth" style="width: 16px; height: 16px; object-fit: contain;">
+                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Bournemouth</span>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: center; width: 30%;">
+                    <span style="font-size: 10px; font-weight: 800; color: #ffcc00; letter-spacing: 1px;">۱۶:۳۰</span>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: flex-end; gap: 6px; width: 35%;">
+                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: right;">Liverpool</span>
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8650.png" alt="Liverpool" style="width: 16px; height: 16px; object-fit: contain;">
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            CANBO FOOTBALL &copy; 1405
+        </footer>
+    </div>
+
+    <!-- JavaScript for Splash Screen Animation and Dispersion -->
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const splash = document.getElementById('splash-screen');
+                splash.classList.add('fade-out');
+            }, 2200); // زمان چرخش متن قبل از ورود به سایت
+        });
+    </script>
 </body>
-
 </html>میخوام پوستر رواضاف کنم بدون اینکه کدهارو عوض کنی
-
-بفرما، این تصویر نهایی با کیفیت بالا و حرفه‌ای شده است که تمام جزئیات پوستر اصلی شما را شامل می‌شود. برای استفاده در وب‌سایت، از همین تصویر در سایز استاندارد استفاده کنید.
-
-خب کد رو اضاف کن
-
-کد کامل این صفحه وب حرفه‌ای، همراه با صفحه ورودی (Splash Screen) متحرک با افکت چرخش و پخش شدن متن، جدول امتیازات، اخبار روزانه، برنامه مسابقات هفته پنجم لیگ برتر و تصویر پوستر باکیفیتی که درخواست کردید، آماده و ذخیره شد.
-HTML icon
-index
- HTML 
-ویژگی‌های کد اضافه شده:
-
-    صفحه ورودی انیمیشنی (Splash Screen): متن «لیگ گداهای استرسی فصل دوم» با انیمیشن زیبا و چرخان در مرکز صفحه ظاهر شده و پس از چند ثانیه با افکت پخش‌شدن محو می‌شود تا کاربر وارد سایت اصلی شود.
-
-    پوستر حرفه‌ای: تصویر نهایی پوستر به همراه جزئیات و استایل‌بندی شیک در بخش بالای صفحه قرار گرفت.
-
-    بخش روزنامه و جدول امتیازات: اخبار فانتزی لیگ گداها همراه با جدول رده‌بندی (صدرنشینی زویدات با ۵۰ امتیاز) و دکمه‌های کپسولی.
-
-    برنامه مسابقات هفته پنجم: لیست بازی‌های مهم همراه با ساعت، تاریخ و لوگوی تیم‌ها (چلسی، برنتفورد، آرسنال، اینتر، بارسلونا و لیورپول).
-
-
-Gemini is AI and can make mistakes, including about people. Your privacy and GeminiOpens in a new window
-Analysing
-
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GEDA CHOLHA - ALL YOU CAN PLAY</title>
-    <link href="https://cdn.jsdelivr.net/npm/vazirmatn@33.0.3/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
-    <style>
-        :root {
-            --bg-blue: #0b3c7d;
-            --dark-blue: #072552;
-            --accent-red: #d32f2f;
-            --accent-gold: #cca262;
-            --card-bg: #112d59;
-            --text-white: #ffffff;
-            --paper-bg: #f8f6f0;
-            --paper-text: #1a1a1a;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Vazirmatn', sans-serif;
-        }
-
-        /* Splash Screen Styles with Rotating & Expanding Text */
-        #splash-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--dark-blue);
-            background-image: radial-gradient(circle at 50% 30%, #1754a3 0%, var(--dark-blue) 70%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            color: var(--text-white);
-            transition: opacity 0.8s ease, visibility 0.8s ease;
-            overflow: hidden;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .orbit-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            height: 120px;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Rotating text element */
-        .rotating-text {
-            font-size: 2.2rem;
-            font-weight: 900;
-            color: var(--accent-gold);
-            text-shadow: 3px 3px 8px rgba(0,0,0,0.6);
-            animation: spinAndPulse 3s linear infinite;
-            white-space: nowrap;
-        }
-
-        @keyframes spinAndPulse {
-            0% { transform: scale(0.9) rotate(0deg); }
-            50% { transform: scale(1.1) rotate(5deg); }
-            100% { transform: scale(0.9) rotate(0deg); }
-        }
-
-        .splash-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-top: 10px;
-            text-align: center;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            color: var(--text-white);
-            padding: 0 20px;
-            opacity: 0.9;
-        }
-
-        /* Dispersion effect when fading out */
-        .fade-out {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .fade-out .rotating-text {
-            transform: scale(2.5) rotate(720deg);
-            opacity: 0;
-            transition: all 0.8s ease-in-out;
-        }
-
-        .fade-out .splash-title {
-            transform: scale(1.2);
-            opacity: 0;
-            transition: all 0.8s ease-in-out;
-        }
-
-        body {
-            background-color: var(--bg-blue);
-            background-image: radial-gradient(circle at 50% 30%, #1754a3 0%, var(--bg-blue) 70%);
-            color: var(--text-white);
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            min-height: 100vh;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 950px;
-        }
-
-        /* Header section inspired by poster */
-        header {
-            text-align: center;
-            padding: 40px 20px;
-            position: relative;
-        }
-
-        .brand-logo {
-            font-size: 1.5rem;
-            font-style: italic;
-            letter-spacing: 3px;
-            color: #d1e3ff;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        .main-title {
-            font-size: 3.5rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            line-height: 1.1;
-            text-shadow: 4px 4px 0px rgba(0,0,0,0.4);
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-        }
-
-        /* Red Badge from Poster */
-        .time-badge {
-            display: inline-block;
-            background-color: var(--accent-red);
-            color: var(--text-white);
-            padding: 8px 25px;
-            font-weight: bold;
-            font-size: 1.2rem;
-            border-radius: 4px;
-            transform: rotate(-2deg);
-            box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
-            margin-bottom: 15px;
-        }
-
-        /* Gold Tag from Poster */
-        .date-tag {
-            display: inline-block;
-            background-color: var(--accent-gold);
-            color: #000;
-            padding: 6px 20px;
-            font-weight: 800;
-            border-radius: 6px;
-            transform: rotate(1deg);
-            box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
-        }
-
-        /* Poster Showcase Banner */
-        .poster-banner {
-            margin: 20px 0 30px 0;
-            text-align: center;
-            position: relative;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 3px solid var(--accent-gold);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-            background: #000;
-        }
-
-        .poster-banner img {
-            width: 100%;
-            max-height: 480px;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-
-        .poster-banner:hover img {
-            transform: scale(1.03);
-        }
-
-        /* Grid Layout for News and Table */
-        .main-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            margin-top: 30px;
-        }
-
-        @media (max-width: 768px) {
-            .main-grid {
-                grid-template-columns: 1fr;
-            }
-            .main-title {
-                font-size: 2.4rem;
-            }
-            .rotating-text {
-                font-size: 1.5rem;
-            }
-        }
-
-        /* Newspaper style news section */
-        .newspaper-card {
-            background-color: var(--paper-bg);
-            color: var(--paper-text);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-            transform: rotate(-1.5deg);
-            transition: transform 0.3s;
-        }
-
-        .newspaper-card:hover {
-            transform: rotate(0deg) scale(1.02);
-        }
-
-        .newspaper-header {
-            border-bottom: 2px solid var(--paper-text);
-            padding-bottom: 5px;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .newspaper-header h3 {
-            font-family: serif;
-            font-size: 1.4rem;
-            letter-spacing: 1px;
-        }
-
-        .newspaper-date {
-            font-size: 0.75rem;
-            color: #666;
-            text-align: center;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 5px;
-            margin-bottom: 15px;
-        }
-
-        .news-item {
-            margin-bottom: 20px;
-            border-bottom: 1px dashed #bbb;
-            padding-bottom: 15px;
-        }
-
-        .news-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .news-title {
-            font-weight: bold;
-            font-size: 1.05rem;
-            margin-bottom: 6px;
-            color: #000;
-            line-height: 1.4;
-        }
-
-        .news-detail {
-            font-size: 0.88rem;
-            color: #333;
-            line-height: 1.6;
-            text-align: justify;
-        }
-
-        /* Leaderboard Section */
-        .panel {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 20px;
-            border: 2px solid #1c4580;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-        }
-
-        .panel-title {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--accent-gold);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* Billiard Ball Icon */
-        .ball-icon {
-            width: 25px;
-            height: 25px;
-            background-color: #d32f2f;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 0.8rem;
-            border: 2px solid #fff;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-
-        th, td {
-            padding: 10px;
-            text-align: center;
-            border-bottom: 1px solid #1e4d8c;
-        }
-
-        th {
-            color: #a2c4f5;
-            font-size: 0.9rem;
-        }
-
-        .rank-1 { color: #ffd700; font-weight: bold; }
-
-        /* Capsule Buttons */
-        .capsule-badge {
-            background-color: #ffffff;
-            color: #111;
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-weight: bold;
-            text-align: center;
-            margin-top: 10px;
-            font-size: 0.95rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        /* Matches Prediction Section Styles */
-        .matches-section {
-            margin-top: 35px;
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 25px;
-            border: 2px solid #1c4580;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            padding: 20px;
-            font-size: 0.85rem;
-            color: #8bb3f0;
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Splash Screen with Rotating Text -->
-    <div id="splash-screen">
-        <div class="orbit-container">
-            <div class="rotating-text">لیگ گداهای استرسی فصل دوم</div>
-        </div>
-        <div class="splash-title">قبل از ورود...</div>
-    </div>
-
-    <div class="container">
-        <!-- Header -->
-        <header>
-            <div class="brand-logo">GEDA CHOLHA</div>
-            <h1 class="main-title">پیش بینی کن<br>امتیاز بگیر</h1>
-            <div>
-                <span class="time-badge">شروع رقابت‌ها: هفته پنجم از روز جمعه</span>
-            </div>
-            <div>
-                <span class="date-tag">لیگ گداهای استرسی فصل دوم 1405</span>
-            </div>
-        </header>
-
-        <!-- Professional Poster Section Added Here -->
-        <div class="poster-banner">
-            <img src="https://replicate.delivery/xpbkg/0V6N784C8xY5HttA1Pj50C43a1cW69W7c490b1W6c490b1W6/output.png" alt="Geda Chola Legend Clash Poster - Pele vs Maradona">
-        </div>
-
-        <!-- Main Content -->
-        <div class="main-grid">
-            
-            <!-- Section 1: Newspaper Style News -->
-            <div class="newspaper-card">
-                <div class="newspaper-header">
-                    <h3>GEDA DAILY NEWS</h3>
-                </div>
-                <div class="newspaper-date">روزنامه اختصاصی حواشی - اخبار امروز</div>
-                
-                <!-- خبر اول -->
-                <div class="news-item">
-                    <div class="news-title">⚽ آغاز هفته پنجم</div>
-                    <div class="news-detail">
-                        آغاز هفته پنجم از روز جمعه با بازی چلسی در مقابل برنتفورد از ساعت ۲۲:۳۰ آغاز می‌شود. چلسی با انجام ۴ بازی و ۷ امتیاز در رده ۵ قرار گرفته و برنتفورد پشت سر او با ۶ امتیاز این تیم را تعقیب می‌کند.
-                    </div>
-                </div>
-
-                <!-- خبر دوم -->
-                <div class="news-item">
-                    <div class="news-title">🔥 پایان هفته چهارم... زویدات همچنان غول آخر لیگ گداهای استرسی!</div>
-                    <div class="news-detail">
-                        زویدات همچنان با ۵۰ امتیاز دست‌نیافتنی و صدرنشین لیگ گداهای استرسی است. باید دید او در هفته پنجم می‌تواند همچنان این روند را ادامه دهد یا خیر!
-                    </div>
-                </div>
-            </div>
-
-            <!-- Section 2: Leaderboard & Conditions -->
-            <div class="panel">
-                <div class="panel-title">
-                    <span class="ball-icon">8</span>
-                    جدول امتیازات لیگ
-                </div>
-
-                <table>
-                    <thead>
-                        <tr>
-                            <th>رتبه</th>
-                            <th>نام</th>
-                            <th>بازی</th>
-                            <th>امتیاز</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="rank-1">🥇 ۱</td>
-                            <td>زویدات</td>
-                            <td>۴</td>
-                            <td><strong>۵۰</strong></td>
-                        </tr>
-                        <tr>
-                            <td>🥈 ۲</td>
-                            <td>نعیمی</td>
-                            <td>۴</td>
-                            <td>۴۲</td>
-                        </tr>
-                        <tr>
-                            <td>🥉 ۳</td>
-                            <td>جاسمیان</td>
-                            <td>۴</td>
-                            <td>۳۸</td>
-                        </tr>
-                        <tr>
-                            <td>۴</td>
-                            <td>ناجح</td>
-                            <td>۴</td>
-                            <td>۳۱</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div style="margin-top: 20px;">
-                    <div style="font-size: 0.85rem; color: #a2c4f5; margin-bottom: 8px;">شرایط و قوانین:</div>
-                    <div class="capsule-badge">
-                        <span class="ball-icon" style="background:#000;">8</span>
-                        پیش بینی کن یادت نره
-                    </div>
-                    <div class="capsule-badge">
-                        <span class="ball-icon" style="background:#00e676; color:#000;">8</span>
-                        دنبال کردن در فانتزی
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Section 3: Matches Prediction Section -->
-        <div class="matches-section">
-            <div class="panel-title">
-                <span class="ball-icon">⚽</span>
-                هفته پنجم پیش بینی
-            </div>
-
-            <!-- جمعه ۲۷ شهریور -->
-            <div style="font-size: 12px; font-weight: bold; color: #666; margin: 10px 4px 4px 4px; text-align: center; text-transform: uppercase; letter-spacing: 0.5px;">
-                جمعه ۲۷ شهریور
-            </div>
-
-            <div style="background: #1a1a2e; border-radius: 8px; padding: 8px 12px; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between; color: #fff; font-family: Tahoma, sans-serif;">
-                <div style="display: flex; align-items: center; gap: 6px; width: 35%;">
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/9937.png" alt="Brentford" style="width: 16px; height: 16px; object-fit: contain;">
-                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Brentford</span>
-                </div>
-                <div style="display: flex; flex-direction: column; align-items: center; width: 30%;">
-                    <span style="font-size: 10px; font-weight: 800; color: #ffcc00; letter-spacing: 1px;">۲۲:۳۰</span>
-                    <span style="font-size: 8px; color: #aaa; text-transform: uppercase;">لیگ برتر انگلیس</span>
-                </div>
-                <div style="display: flex; align-items: center; justify-content: flex-end; gap: 6px; width: 35%;">
-                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: right;">Chelsea</span>
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8455.png" alt="Chelsea" style="width: 16px; height: 16px; object-fit: contain;">
-                </div>
-            </div>
-
-            <!-- شنبه ۲۸ شهریور -->
-            <div style="font-size: 12px; font-weight: bold; color: #666; margin: 12px 4px 4px 4px; text-align: center; text-transform: uppercase; letter-spacing: 0.5px;">
-                شنبه ۲۸ شهریور
-            </div>
-
-            <div style="background: #1a1a2e; border-radius: 8px; padding: 8px 12px; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between; color: #fff; font-family: Tahoma, sans-serif;">
-                <div style="display: flex; align-items: center; gap: 6px; width: 35%;">
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8586.png" alt="Tottenham" style="width: 16px; height: 16px; object-fit: contain;">
-                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Tottenham</span>
-                </div>
-                <div style="display: flex; flex-direction: column; align-items: center; width: 30%;">
-                    <span style="font-size: 10px; font-weight: 800; color: #ffcc00; letter-spacing: 1px;">۱۵:۰۰</span>
-                    <span style="font-size: 8px; color: #aaa; text-transform: uppercase;">لیگ برتر انگلیس</span>
-                </div>
-                <div style="display: flex; align-items: center; justify-content: flex-end; gap: 6px; width: 35%;">
-                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: right;">Aston Villa</span>
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/10252.png" alt="Aston Villa" style="width: 16px; height: 16px; object-fit: contain;">
-                </div>
-            </div>
-
-            <div style="background: #1a1a2e; border-radius: 8px; padding: 8px 12px; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between; color: #fff; font-family: Tahoma, sans-serif;">
-                <div style="display: flex; align-items: center; gap: 6px; width: 35%;">
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/10204.png" alt="Brighton" style="width: 16px; height: 16px; object-fit: contain;">
-                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Brighton</span>
-                </div>
-                <div style="display: flex; flex-direction: column; align-items: center; width: 30%;">
-                    <span style="font-size: 10px; font-weight: 800; color: #ffcc00; letter-spacing: 1px;">۱۷:۳۰</span>
-                    <span style="font-size: 8px; color: #aaa; text-transform: uppercase;">لیگ برتر انگلیس</span>
-                </div>
-                <div style="display: flex; align-items: center; justify-content: flex-end; gap: 6px; width: 35%;">
-                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: right;">Arsenal</span>
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/9825.png" alt="Arsenal" style="width: 16px; height: 16px; object-fit: contain;">
-                </div>
-            </div>
-
-            <div style="background: #1a1a2e; border-radius: 8px; padding: 8px 12px; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between; color: #fff; font-family: Tahoma, sans-serif;">
-                <div style="display: flex; align-items: center; gap: 6px; width: 35%;">
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8686.png" alt="Roma" style="width: 16px; height: 16px; object-fit: contain;">
-                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Roma</span>
-                </div>
-                <div style="display: flex; flex-direction: column; align-items: center; width: 30%;">
-                    <span style="font-size: 10px; font-weight: 800; color: #ffcc00; letter-spacing: 1px;">۱۹:۳۰</span>
-                    <span style="font-size: 8px; color: #aaa; text-transform: uppercase;">سری آ ایتالیا</span>
-                </div>
-                <div style="display: flex; align-items: center; justify-content: flex-end; gap: 6px; width: 35%;">
-                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: right;">Inter</span>
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8636.png" alt="Inter" style="width: 16px; height: 16px; object-fit: contain;">
-                </div>
-            </div>
-
-            <div style="background: #1a1a2e; border-radius: 8px; padding: 8px 12px; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between; color: #fff; font-family: Tahoma, sans-serif;">
-                <div style="display: flex; align-items: center; gap: 6px; width: 35%;">
-                    <img src="https://images.fotmob.com/image_source/logo/teamlogo/8302.png" alt="Sevilla" style="width: 16px; height: 16px; object-fit: contain;">
-                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Sevilla</span>
-                </div>
-                <div style="display: flex; flex-direction: column; align-items: center; width: 30%;">
-                    <span style="font-size: 10px; font-weight: 800; color: #ffcc00; letter-spacing: 1px;">۲۲:۳۰</span>
-                    <span style="font-size: 8px; color: #aaa; text-transform: uppercase;">لالیگا اسپانیا</span>
-                </div>
-                <div style="display: flex; align-items: center; justify-content: flex-end; gap: 6px; width: 35%;">
-                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: right;">Barcelona</span>
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8634.png" alt="Barcelona" style="width: 16px; height: 16px; object-fit: contain;">
-                </div>
-            </div>
-
-            <!-- یکشنبه ۲۹ شهریور -->
-            <div style="font-size: 12px; font-weight: bold; color: #666; margin: 12px 4px 4px 4px; text-align: center; text-transform: uppercase; letter-spacing: 0.5px;">
-                یکشنبه ۲۹ شهریور
-            </div>
-
-            <div style="background: #1a1a2e; border-radius: 8px; padding: 8px 12px; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between; color: #fff; font-family: Tahoma, sans-serif;">
-                <div style="display: flex; align-items: center; gap: 6px; width: 35%;">
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8678.png" alt="Bournemouth" style="width: 16px; height: 16px; object-fit: contain;">
-                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Bournemouth</span>
-                </div>
-                <div style="display: flex; align-items: center; justify-content: center; width: 30%;">
-                    <span style="font-size: 10px; font-weight: 800; color: #ffcc00; letter-spacing: 1px;">۱۶:۳۰</span>
-                </div>
-                <div style="display: flex; align-items: center; justify-content: flex-end; gap: 6px; width: 35%;">
-                    <span style="font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: right;">Liverpool</span>
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8650.png" alt="Liverpool" style="width: 16px; height: 16px; object-fit: contain;">
-                </div>
-            </div>
-        </div>
-
-        <footer>
-            CANBO FOOTBALL &copy; 1405
-        </footer>
-    </div>
-
-    <!-- JavaScript for Splash Screen Animation and Dispersion -->
-    <script>
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                const splash = document.getElementById('splash-screen');
-                splash.classList.add('fade-out');
-            }, 2200); // زمان چرخش متن 
-        });
-    </script>
-</body>
-</html>
