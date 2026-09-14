@@ -1,0 +1,19 @@
+{
+  "name": "گداچول | لیگ گداهای استرسی",
+  "short_name": "گداچول",
+  "lang": "fa",
+  "dir": "rtl",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#07090b",
+  "theme_color": "#0b0d0f",
+  "description": "مرکز اطلاع‌رسانی لیگ گداهای استرسی؛ بازی‌های پیش‌رو، جدول و فیره‌نیوز.",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
