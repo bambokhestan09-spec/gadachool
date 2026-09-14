@@ -3,18 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GEDACHOL - لیگ گداهای استرسی فصل ۲</title>
+  <title>GEDACHOL | لیگ گداهای استرسی فصل ۲</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-pitch: #0b1d13;
-      --accent-green: #2ecc71;
-      --accent-gold: #f1c40f;
-      --accent-blue: #00d2ff;
-      --glass-bg: rgba(18, 28, 22, 0.85);
-      --glass-border: rgba(255, 255, 255, 0.15);
-      --jelly-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+      --bg-pitch: #060d08;
+      --accent-green: #00ff87;
+      --accent-gold: #ffcc00;
+      --accent-blue: #00e5ff;
+      --glass-bg: rgba(18, 28, 22, 0.65);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --glass-hover: rgba(255, 255, 255, 0.18);
       --text-main: #ffffff;
-      --text-muted: #a0aec0;
+      --text-muted: #8e9a93;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -22,83 +23,105 @@
     body {
       background-color: var(--bg-pitch);
       color: var(--text-main);
-      font-family: Tahoma, 'Segoe UI', sans-serif;
-      line-height: 1.5;
-      padding-bottom: 50px;
+      font-family: 'Vazirmatn', Tahoma, sans-serif;
+      line-height: 1.6;
+      padding-bottom: 60px;
       min-height: 100vh;
       background-image: 
-        radial-gradient(circle at 50% 0%, rgba(46, 204, 113, 0.25), transparent 70%),
-        radial-gradient(circle at 50% 100%, rgba(0, 210, 255, 0.15), transparent 70%),
-        linear-gradient(rgba(10, 20, 15, 0.85), rgba(10, 20, 15, 0.92)),
+        radial-gradient(circle at 50% -10%, rgba(0, 255, 135, 0.18), transparent 60%),
+        radial-gradient(circle at 100% 60%, rgba(0, 229, 255, 0.1), transparent 50%),
+        radial-gradient(circle at 0% 100%, rgba(255, 204, 0, 0.08), transparent 50%),
+        linear-gradient(180deg, rgba(6, 13, 8, 0.85) 0%, rgba(6, 13, 8, 0.98) 100%),
         url("https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1920&q=80");
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
     }
 
+    /* هدر لوکس */
     header {
       text-align: center;
-      padding: 25px 20px 15px;
-      background: linear-gradient(135deg, rgba(46, 204, 113, 0.2) 0%, rgba(15, 25, 20, 0.75) 50%, rgba(0, 210, 255, 0.2) 100%);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 2px solid var(--glass-border);
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
-      margin-bottom: 25px;
+      padding: 35px 20px 25px;
+      background: rgba(10, 20, 14, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-border);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .banner-wrapper {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 15px;
     }
 
     .hero-banner {
       max-width: 320px;
       width: 100%;
       height: auto;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-      border: 2px solid rgba(241, 196, 15, 0.6);
-      margin-bottom: 10px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0, 255, 135, 0.3);
+      border: 2px solid rgba(0, 255, 135, 0.5);
+      transition: transform 0.4s ease;
+    }
+
+    .hero-banner:hover {
+      transform: scale(1.03) rotate(-1deg);
     }
 
     header h1 {
-      font-size: 2.2rem;
-      font-family: Arial, sans-serif;
+      font-size: 2.8rem;
       font-weight: 900;
-      letter-spacing: 2px;
-      background: linear-gradient(135deg, #ffffff 20%, var(--accent-gold) 60%, var(--accent-green) 100%);
+      letter-spacing: 3px;
+      background: linear-gradient(135deg, #ffffff 0%, var(--accent-green) 50%, var(--accent-blue) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 30px rgba(0, 255, 135, 0.3);
     }
 
     header p {
-      font-size: 1rem;
-      color: var(--accent-green);
-      font-weight: bold;
+      font-size: 1.1rem;
+      color: var(--accent-gold);
+      font-weight: 600;
+      margin-top: 5px;
     }
 
+    /* آکاردئون اصلی */
     .accordion-container {
-      max-width: 800px;
+      max-width: 850px;
       margin: 0 auto;
       padding: 0 15px;
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 20px;
     }
 
     .acc-item {
       background: var(--glass-bg);
-      backdrop-filter: blur(16px);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border: 1px solid var(--glass-border);
-      border-radius: 16px;
+      border-radius: 22px;
       overflow: hidden;
-      box-shadow: var(--jelly-shadow);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .acc-item:hover {
+      border-color: rgba(0, 255, 135, 0.3);
+      box-shadow: 0 15px 40px rgba(0, 255, 135, 0.15);
     }
 
     .acc-header {
       width: 100%;
-      padding: 18px 20px;
+      padding: 22px 25px;
       background: transparent;
       border: none;
       color: var(--text-main);
-      font-size: 1.05rem;
-      font-weight: bold;
+      font-size: 1.15rem;
+      font-weight: 800;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -107,337 +130,397 @@
       text-align: right;
     }
 
-    .acc-header:hover {
-      background: rgba(255, 255, 255, 0.05);
-    }
-
     .acc-item.active .acc-header {
-      background: linear-gradient(90deg, rgba(46, 204, 113, 0.2) 0%, rgba(18, 28, 22, 0.9) 100%);
+      background: linear-gradient(90deg, rgba(0, 255, 135, 0.15) 0%, rgba(18, 28, 22, 0.2) 100%);
       border-bottom: 1px solid var(--glass-border);
-      color: var(--accent-gold);
+      color: var(--accent-green);
     }
 
     .arrow-icon {
-      font-size: 0.8rem;
-      transition: transform 0.3s ease;
+      font-size: 0.9rem;
+      transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      background: rgba(255, 255, 255, 0.08);
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
     }
 
     .acc-item.active .arrow-icon {
       transform: rotate(180deg);
-      color: var(--accent-gold);
+      background: var(--accent-green);
+      color: #000;
     }
 
-    /* بدنه بدون محدودیت ارتفاع جهت نمایش کامل تمام ۱۴ نفر و مسابقات */
     .acc-body {
       display: none;
-      background: rgba(0, 0, 0, 0.3);
-      padding: 15px 20px 25px;
+      padding: 25px;
     }
 
     .acc-item.active .acc-body {
       display: block;
+      animation: fadeIn 0.4s ease-in-out;
     }
 
-    /* استایل کارت مسابقات */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* کارت‌های مسابقات 3D */
     .match-item {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 12px;
-      padding: 12px 14px;
-      margin-bottom: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .match-item:hover {
+      background: rgba(255, 255, 255, 0.06);
+      transform: translateY(-2px);
     }
 
     .match-header {
       display: flex;
       justify-content: space-between;
-      font-size: 0.8rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      padding-bottom: 6px;
-      margin-bottom: 10px;
+      align-items: center;
+      font-size: 0.85rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding-bottom: 10px;
+      margin-bottom: 12px;
     }
 
-    .match-date { color: var(--accent-gold); font-weight: bold; }
+    .match-date { color: var(--text-muted); font-weight: 600; }
     .match-time {
-      background: linear-gradient(135deg, #00d2ff, #0072ff);
-      color: #fff;
-      padding: 2px 8px;
-      border-radius: 10px;
-      font-weight: bold;
+      background: linear-gradient(135deg, var(--accent-green), #00b359);
+      color: #000;
+      padding: 3px 12px;
+      border-radius: 20px;
+      font-weight: 800;
+      font-size: 0.8rem;
     }
 
     .match-teams {
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       align-items: center;
-      font-weight: bold;
-      font-size: 0.95rem;
+      font-weight: 800;
+      font-size: 1.05rem;
     }
 
-    .team { display: flex; align-items: center; gap: 8px; }
-    .team img { width: 28px; height: 28px; object-fit: contain; }
+    .team {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+    }
 
-    /* استایل جدول کامل ۱۴ نفره */table-responsive {
-  width: 100%;
-  overflow-x: auto;
-  background: #1d1d1d;
-  border-radius: 18px;
-  padding: 8px 5px;
-}
+    .team.home { justify-content: flex-start; }
+    .team.away { justify-content: flex-end; }
 
-.ranking-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  min-width: 340px;
-  font-size: 0.95rem;
-  background: #1d1d1d;
-}
+    .team img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+    }
 
-/* هدر جدول */
-.ranking-table th {
-  color: #8f8f8f;
-  padding: 12px 8px;
-  border-bottom: 1px solid #3b3b3b;
-  font-size: 0.78rem;
-  font-weight: bold;
-}
+    .vs-badge {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--accent-gold);
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 900;
+      margin: 0 10px;
+    }
 
-/* سلول‌ها */
-.ranking-table td {
-  padding: 15px 8px;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-  color: #f5f5f5;
-  font-weight: 500;
-}
+    /* جدول رده‌بندی مدرن */
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+      border-radius: 16px;
+    }
 
-/* شماره رتبه */
-.rank-num {
-  width: 45px;
-  text-align: center !important;
-  font-size: 1rem;
-  font-weight: 800 !important;
-  color: #ffffff !important;
-}
+    .ranking-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 8px;
+    }
 
-/* خط بین رتبه و نام */
-.ranking-table td:nth-child(2) {
-  border-left: 3px solid #3a3a3a;
-  padding-right: 14px;
-  font-size: 0.95rem;
-}
+    .ranking-table th {
+      color: var(--text-muted);
+      padding: 10px 15px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
 
-/* نام */
-.ranking-table td:nth-child(2) {
-  color: #ffffff;
-}
+    .ranking-table tbody tr {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 12px;
+      transition: transform 0.2s ease;
+    }
 
-/* امتیاز */
-.points {
-  text-align: center;
-  color: #ffffff !important;
-  font-size: 1.15rem;
-  font-weight: 800 !important;
-}
+    .ranking-table tbody tr:hover {
+      background: rgba(255, 255, 255, 0.07);
+      transform: scale(1.01);
+    }
 
-/* پیش‌بینی دقیق */
-.exact {
-  text-align: center;
-  color: #a0a0a0 !important;
-  font-weight: 600;
-}
+    .ranking-table td {
+      padding: 14px 15px;
+      font-weight: 600;
+    }
 
-/* حذف رنگ قبلی Top 3 */
-.ranking-table tr.top-3 {
-  background: transparent;
-}
+    .ranking-table td:first-child {
+      border-top-right-radius: 12px;
+      border-bottom-right-radius: 12px;
+    }
 
-.ranking-table tr.top-3 td {
-  color: #ffffff;
-}
+    .ranking-table td:last-child {
+      border-top-left-radius: 12px;
+      border-bottom-left-radius: 12px;
+    }
 
-/* ===== سه نفر اول ===== */
+    .rank-num {
+      text-align: center;
+      font-weight: 900;
+      font-size: 1.1rem;
+      width: 50px;
+    }
 
-/* نفر اول */
-.ranking-table tbody tr:nth-child(1) .rank-num,
-.ranking-table tbody tr:nth-child(1) .points {
-  color: #ffd54a !important;
-}
+    /* مدال‌ها و نفرات برتر */
+    .top-1 { background: linear-gradient(90deg, rgba(255, 204, 0, 0.15) 0%, rgba(255, 204, 0, 0.02) 100%) !important; border-right: 4px solid var(--accent-gold); }
+    .top-1 .rank-num, .top-1 .player-name { color: var(--accent-gold) !important; font-weight: 900; }
+    
+    .top-2 { background: linear-gradient(90deg, rgba(207, 211, 214, 0.15) 0%, rgba(207, 211, 214, 0.02) 100%) !important; border-right: 4px solid #cfd3d6; }
+    .top-2 .rank-num { color: #cfd3d6 !important; }
 
-/* نفر دوم */
-.ranking-table tbody tr:nth-child(2) .rank-num,
-.ranking-table tbody tr:nth-child(2) .points {
-  color: #cfd3d6 !important;
-}
+    .top-3 { background: linear-gradient(90deg, rgba(205, 139, 85, 0.15) 0%, rgba(205, 139, 85, 0.02) 100%) !important; border-right: 4px solid #cd8b55; }
+    .top-3 .rank-num { color: #cd8b55 !important; }
 
-/* نفر سوم */
-.ranking-table tbody tr:nth-child(3) .rank-num,
-.ranking-table tbody tr:nth-child(3) .points {
-  color: #cd8b55 !important;
-}
-
-/* ===== نعیمی ===== */
-
-.ranking-table tr.naeimi-row {
-  background: rgba(46, 204, 113, 0.08);
-}
-
-.ranking-table tr.naeimi-row td:nth-child(2),
-.ranking-table tr.naeimi-row .points {
-  color: #2ecc71 !important;
-  font-weight: 800;
-}
-
-/* موبایل */
-@media (max-width: 600px) {
-
-  .ranking-table {
-    font-size: 0.9rem;
-  }
-
-  .ranking-table td {
-    padding: 16px 6px;
-  }
-
-  .ranking-table td:nth-child(2) {
-    font-size: 0.92rem;
-  }
-
-  .points {
-    font-size: 1.1rem;
-  }
-}
-
-    /* اخبار و نظرسنجی */
-    .news-item {
-      background: rgba(255, 255, 255, 0.04);
-      border-radius: 10px;
-      padding: 14px;
+    .naeimi-row {
+      background: linear-gradient(90deg, rgba(0, 255, 135, 0.2) 0%, rgba(0, 255, 135, 0.03) 100%) !important;
       border-right: 4px solid var(--accent-green);
-      font-size: 0.9rem;
+    }
+    .naeimi-row .player-name { color: var(--accent-green) !important; font-weight: 900; }
+
+    .points {
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: #fff;
     }
 
+    .exact {
+      text-align: center;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    /* کارت‌های خبری */
+    .news-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      padding: 18px;
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .news-badge {
+      display: inline-block;
+      background: rgba(255, 204, 0, 0.15);
+      color: var(--accent-gold);
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .news-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .news-desc {
+      color: #c0cac4;
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    /* نظرسنجی */
     .poll-option {
       display: flex;
       align-items: center;
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--glass-border);
-      padding: 12px;
-      border-radius: 10px;
-      margin-bottom: 10px;
+      padding: 14px 18px;
+      border-radius: 12px;
+      margin-bottom: 12px;
       cursor: pointer;
+      transition: all 0.3s ease;
     }
 
-    .poll-option input { margin-left: 10px; accent-color: var(--accent-green); }
+    .poll-option:hover {
+      background: rgba(0, 255, 135, 0.1);
+      border-color: var(--accent-green);
+    }
+
+    .poll-option input {
+      margin-left: 12px;
+      accent-color: var(--accent-green);
+      width: 18px;
+      height: 18px;
+    }
 
     .poll-btn {
       width: 100%;
-      background: linear-gradient(135deg, var(--accent-green), #27ae60);
-      color: #fff;
+      background: linear-gradient(135deg, var(--accent-green) 0%, #00b359 100%);
+      color: #000;
       border: none;
-      padding: 12px;
-      border-radius: 10px;
-      font-weight: bold;
+      padding: 14px;
+      border-radius: 12px;
+      font-weight: 900;
+      font-size: 1rem;
       cursor: pointer;
       font-family: inherit;
+      box-shadow: 0 6px 20px rgba(0, 255, 135, 0.3);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .poll-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 255, 135, 0.5);
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 2rem; }
+      .acc-header { font-size: 1rem; padding: 18px; }
+      .team { font-size: 0.9rem; }
+      .team img { width: 28px; height: 28px; }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <img src="photo1789386549.jpeg" alt="GEDACHOL Banner" class="hero-banner">
+    <div class="banner-wrapper">
+      <img src="photo1789386549.jpeg" alt="GEDACHOL Banner" class="hero-banner">
+    </div>
     <h1>GEDACHOL</h1>
-    <p>لیگ گداهای استرسی فصل ۲</p>
+    <p>⚡ لیگ گداهای استرسی — فصل دوم ⚡</p>
   </header>
 
   <div class="accordion-container">
 
-    <!-- بخش ۱: مسابقات -->
-    <div class="acc-item">
+    <!-- بخش ۱: مسابقات آینده -->
+    <div class="acc-item active">
       <button class="acc-header" onclick="toggleAccordion(this)">
-        <span>⚽ مسابقات پیش‌بینی آینده</span>
+        <span>⚽ مسابقات پیش‌بینی هفته</span>
         <span class="arrow-icon">▼</span>
       </button>
       <div class="acc-body">
         
         <!-- بازی ۱ -->
-        <!-- بازی چلسی - برنتفورد -->
-<div class="match-item">
-  <div class="match-header">
-    <span class="match-date">جمعه ۲۷ شهریور ۱۴۰۵</span>
-    <span class="match-time">۲۲:۳۰</span>
-  </div>
-
-  <div class="match-teams">
-
-    <div class="team">
-      <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/fhBITrIlbQxhVB6IjxUO6Q_500x500.png" alt="چلسی">
-      چلسی
-    </div>
-
-    <span>-</span>
-
-    <div class="team">
-      برنتفورد
-      <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/QOUce0WQBYqnkSmN6_TxGA_500x500.png" alt="برنتفورد">
-    </div>
-
-  </div>
-
-  <div style="text-align:center; margin-top:12px; color:#a0aec0; font-size:0.75rem;">
-    🏆 Premier League
-  </div>
-</div>
+        <div class="match-item">
+          <div class="match-header">
+            <span class="match-date">📅 جمعه ۲۷ شهریور ۱۴۰۵</span>
+            <span class="match-time">۲۲:۳۰</span>
+          </div>
+          <div class="match-teams">
+            <div class="team home">
+              <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/fhBITrIlbQxhVB6IjxUO6Q_500x500.png" alt="چلسی">
+              <span>چلسی</span>
+            </div>
+            <span class="vs-badge">VS</span>
+            <div class="team away">
+              <span>برنتفورد</span>
+              <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/QOUce0WQBYqnkSmN6_TxGA_500x500.png" alt="برنتفورد">
+            </div>
+          </div>
+        </div>
 
         <!-- بازی ۲ -->
         <div class="match-item">
           <div class="match-header">
-            <span class="match-date">شنبه ۲۸ شهریور ۱۴۰۵</span>
+            <span class="match-date">📅 شنبه ۲۸ شهریور ۱۴۰۵</span>
             <span class="match-time">۱۵:۰۰</span>
           </div>
           <div class="match-teams">
-            <div class="team"><img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/k3Q_mKE98Dnohrcea0JFgQ_500x500.png" alt="تاتنهام"> تاتنهام</div>
-            <span>-</span>
-            <div class="team">استون ویلا <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/uyNNelfnFvCEnsLrUL-j2Q_500x500.png" alt="استون ویلا"></div>
+            <div class="team home">
+              <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/k3Q_mKE98Dnohrcea0JFgQ_500x500.png" alt="تاتنهام">
+              <span>تاتنهام</span>
+            </div>
+            <span class="vs-badge">VS</span>
+            <div class="team away">
+              <span>استون ویلا</span>
+              <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/uyNNelfnFvCEnsLrUL-j2Q_500x500.png" alt="استون ویلا">
+            </div>
           </div>
         </div>
 
         <!-- بازی ۳ -->
         <div class="match-item">
           <div class="match-header">
-            <span class="match-date">شنبه ۲۸ شهریور ۱۴۰۵</span>
+            <span class="match-date">📅 شنبه ۲۸ شهریور ۱۴۰۵</span>
             <span class="match-time">۱۷:۳۰</span>
           </div>
           <div class="match-teams">
-            <div class="team"><img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/4wa333I2bdR13R42_500x500.png" alt="آرسنال"> آرسنال</div>
-            <span>-</span>
-            <div class="team">منچستر سیتی <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/z44l-A0W1v5yM3yU_500x500.png" alt="منچستر سیتی"></div>
+            <div class="team home">
+              <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/4wa333I2bdR13R42_500x500.png" alt="آرسنال">
+              <span>آرسنال</span>
+            </div>
+            <span class="vs-badge">VS</span>
+            <div class="team away">
+              <span>منچستر سیتی</span>
+              <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/z44l-A0W1v5yM3yU_500x500.png" alt="منچستر سیتی">
+            </div>
           </div>
         </div>
 
         <!-- بازی ۴ -->
         <div class="match-item">
           <div class="match-header">
-            <span class="match-date">یکشنبه ۲۹ شهریور ۱۴۰۵</span>
+            <span class="match-date">📅 یکشنبه ۲۹ شهریور ۱۴۰۵</span>
             <span class="match-time">۱۹:۰۰</span>
           </div>
           <div class="match-teams">
-            <div class="team"><img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/nwO2o3_7f60046_500x500.png" alt="لیورپول"> لیورپول</div>
-            <span>-</span>
-            <div class="team">نیوکاسل <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/96A2m23U4040_500x500.png" alt="نیوکاسل"></div>
+            <div class="team home">
+              <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/nwO2o3_7f60046_500x500.png" alt="لیورپول">
+              <span>لیورپول</span>
+            </div>
+            <span class="vs-badge">VS</span>
+            <div class="team away">
+              <span>نیوکاسل</span>
+              <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/96A2m23U4040_500x500.png" alt="نیوکاسل">
+            </div>
           </div>
         </div>
 
         <!-- بازی ۵ -->
         <div class="match-item">
           <div class="match-header">
-            <span class="match-date">یکشنبه ۲۹ شهریور ۱۴۰۵</span>
+            <span class="match-date">📅 یکشنبه ۲۹ شهریور ۱۴۰۵</span>
             <span class="match-time">۲۱:۳۰</span>
           </div>
           <div class="match-teams">
-            <div class="team"><img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/pL143I2bdR13R42_500x500.png" alt="منچستر یونایتد"> منچستر یونایتد</div>
-            <span>-</span>
-            <div class="team">بایرن مونیخ <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/14352bdR13R42_500x500.png" alt="بایرن مونیخ"></div>
+            <div class="team home">
+              <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/pL143I2bdR13R42_500x500.png" alt="منچستر یونایتد">
+              <span>منچستر یونایتد</span>
+            </div>
+            <span class="vs-badge">VS</span>
+            <div class="team away">
+              <span>بایرن مونیخ</span>
+              <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/14352bdR13R42_500x500.png" alt="بایرن مونیخ">
+            </div>
           </div>
         </div>
 
@@ -447,7 +530,7 @@
     <!-- بخش ۲: جدول رده‌بندی کامل (۱۴ نفر) -->
     <div class="acc-item">
       <button class="acc-header" onclick="toggleAccordion(this)">
-        <span>🏆 جدول کامل رده‌بندی (۱۴ عضو)</span>
+        <span>🏆 جدول رده‌بندی کل (۱۴ عضو)</span>
         <span class="arrow-icon">▼</span>
       </button>
       <div class="acc-body">
@@ -455,227 +538,167 @@
           <table class="ranking-table">
             <thead>
               <tr>
-                <th class="rank-num">#</th>
-                <th>نام عضو</th>
+                <th style="text-align: center;">رتبه</th>
+                <th>شرکت‌کننده</th>
                 <th style="text-align: center;">امتیاز</th>
                 <th style="text-align: center;">دقیق</th>
               </tr>
             </thead>
             <tbody>
-              <tr class="top-3">
-                <td class="rank-num">1</td>
-                <td>اسما زویدات 👑</td>
+              <tr class="top-1">
+                <td class="rank-num">🥇 1</td>
+                <td class="player-name">اسما زویدات</td>
                 <td class="points">52</td>
                 <td class="exact">3</td>
               </tr>
-              <tr class="top-3">
-                <td class="rank-num">2</td>
-                <td>رضاقطیفی 👑</td>
+              <tr class="top-2">
+                <td class="rank-num">🥈 2</td>
+                <td class="player-name">رضا قطیفی</td>
                 <td class="points">48</td>
                 <td class="exact">3</td>
               </tr>
               <tr class="top-3">
-                <td class="rank-num">3</td>
-                <td>مهدی 🥉</td>
+                <td class="rank-num">🥉 3</td>
+                <td class="player-name">مهدی</td>
                 <td class="points">45</td>
                 <td class="exact">2</td>
               </tr>
               <tr>
                 <td class="rank-num">4</td>
-                <td>دنیاعصیر</td>
+                <td class="player-name">دنیا عصیر</td>
                 <td class="points">44</td>
                 <td class="exact">2</td>
               </tr>
-              <tr>
+              <tr class="naeimi-row">
                 <td class="rank-num">5</td>
-                <td>حبیب نعیمی</td>
+                <td class="player-name">حبیب نعیمی 🚀</td>
                 <td class="points">43</td>
                 <td class="exact">1</td>
               </tr>
               <tr>
                 <td class="rank-num">6</td>
-                <td>محمدخلیلاوی پور</td>
+                <td class="player-name">محمد خلیلاوی پور</td>
                 <td class="points">40</td>
                 <td class="exact">2</td>
               </tr>
               <tr>
                 <td class="rank-num">7</td>
-                <td>داوودی</td>
+                <td class="player-name">خانم داوودی</td>
                 <td class="points">38</td>
                 <td class="exact">1</td>
               </tr>
               <tr>
                 <td class="rank-num">8</td>
-                <td>احلام الجابر</td>
+                <td class="player-name">احلام الجابر</td>
                 <td class="points">37</td>
                 <td class="exact">1</td>
               </tr>
               <tr>
                 <td class="rank-num">9</td>
-                <td>سیدحیدرپیرا</td>
+                <td class="player-name">سید حیدر پیرا</td>
                 <td class="points">34</td>
                 <td class="exact">0</td>
               </tr>
               <tr>
                 <td class="rank-num">10</td>
-                <td>امین دریس</td>
+                <td class="player-name">امین دریس</td>
                 <td class="points">33</td>
                 <td class="exact">1</td>
               </tr>
               <tr>
                 <td class="rank-num">11</td>
-                <td>سماصالحی</td>
+                <td class="player-name">سما صالحی</td>
                 <td class="points">30</td>
                 <td class="exact">0</td>
               </tr>
               <tr>
                 <td class="rank-num">12</td>
-                <td>محمدجاسمیان</td>
+                <td class="player-name">محمد جاسمیان</td>
                 <td class="points">24</td>
                 <td class="exact">0</td>
               </tr>
               <tr>
                 <td class="rank-num">13</td>
-                <td>مهدی بخشنده</td>
+                <td class="player-name">مهدی بخشنده</td>
                 <td class="points">15</td>
                 <td class="exact">0</td>
               </tr>
               <tr>
-          
+                <td class="rank-num">14</td>
+                <td class="player-name">علی ناجح</td>
+                <td class="points">14</td>
+                <td class="exact">0</td>
+              </tr>
             </tbody>
           </table>
         </div>
       </div>
     </div>
 
-    <!-- بخش ۳: اخبار -->
-<!-- بخش ۳: اخبار -->
-<div class="acc-item">
-  <button class="acc-header" onclick="toggleAccordion(this)">
-    <span>📰 اخبار لیگ گداهای استرسی</span>
-    <span class="arrow-icon">▼</span>
-  </button>
+    <!-- بخش ۳: اخبار و تحلیلی -->
+    <div class="acc-item">
+      <button class="acc-header" onclick="toggleAccordion(this)">
+        <span>📰 اخبار و حواشی اختصاصی لیگ</span>
+        <span class="arrow-icon">▼</span>
+      </button>
 
-  <div class="acc-body">
+      <div class="acc-body">
 
-    <!-- خبر ۱ -->
-    <div class="news-item" style="margin-bottom:15px;">
-      <div style="color:var(--accent-gold);font-weight:bold;font-size:0.85rem;margin-bottom:6px;">
-        🔥 گزارش ویژه | هفته چهارم
-      </div>
+        <div class="news-card">
+          <span class="news-badge">🔥 گزارش ویژه هفته ۴</span>
+          <div class="news-title">🚀 پرواز حبیب نعیمی در هفته چهارم!</div>
+          <div class="news-desc">
+            حبیب نعیمی در هفته چهارم با عملکردی فوق‌العاده موفق به کسب <b style="color:var(--accent-green);">۱۴ امتیاز</b> شد و خود را به صدرنشینان نزدیک‌تر کرد. وی با کسب <b style="color:var(--accent-gold);">۲ پیش‌بینی دقیق</b> زنگ خطر را برای رقبا به صدا درآورد!
+          </div>
+        </div>
 
-      <div style="font-size:1.05rem;font-weight:bold;margin-bottom:8px;">
-        🚀 پرواز حبیب نعیمی در هفته چهارم!
-      </div>
+        <div class="news-card">
+          <span class="news-badge">⚽ تحلیل اختصاصی</span>
+          <div class="news-title">نعیمی بالاخره خودش را جدی گرفت!</div>
+          <div class="news-desc">
+            پیش‌بینی‌های هفته چهارم نشان داد نعیمی فقط دنبال امتیازهای اتفاقی نیست. شکار امتیاز از بازی‌های پیچیده، او را به تهدیدی جدی برای صدر جدول تبدیل کرده است.
+          </div>
+        </div>
 
-      <div>
-        حبیب نعیمی در هفته چهارم با عملکردی بسیار خوب،
-        <b style="color:var(--accent-blue);">۱۴ امتیاز</b>
-        به دست آورد و خودش را به جمع مدعیان اصلی لیگ نزدیک‌تر کرد.
-        نعیمی با <b style="color:var(--accent-green);">۲ پیش‌بینی دقیق</b>
-        نشان داد که این هفته برای شوخی وارد لیگ نشده است!
-      </div>
+        <div class="news-card">
+          <span class="news-badge">😂 حواشی لیگ</span>
+          <div class="news-title">پسران لیگ در شوک!</div>
+          <div class="news-desc">
+            پس از عملکرد چشمگیر نعیمی، برخی بالانشینان جدول در سکوت خبری فرو رفته‌اند. طبق شنیده‌ها یکی از اعضا گفته: «فکرش را هم نمی‌کردیم این‌طور امتیاز جمع کند!» 😂
+          </div>
+        </div>
 
-      <div style="margin-top:10px;color:var(--text-muted);font-size:0.78rem;">
-        📊 عملکرد هفته چهارم: ۱۴ امتیاز | ۲ پیش‌بینی دقیق
-      </div>
-    </div>
+        <div class="news-card">
+          <span class="news-badge">🚨 اطلاعیه مهم</span>
+          <div class="news-title">آماده‌باش برای هفته پنجم</div>
+          <div class="news-desc">
+            پیش‌بینی‌های هفته جدید طبق روال همیشه در برنامه <b>FotMob</b> ثبت خواهند شد. جدول و مسابقات فوراً در همین سایت به‌روزرسانی می‌شوند.
+          </div>
+        </div>
 
-
-    <!-- خبر ۲ -->
-    <div class="news-item" style="margin-bottom:15px;">
-      <div style="color:var(--accent-gold);font-weight:bold;font-size:0.85rem;margin-bottom:6px;">
-        ⚽ تحلیل عملکرد
-      </div>
-
-      <div style="font-size:1.05rem;font-weight:bold;margin-bottom:8px;">
-        نعیمی بالاخره خودش را جدی گرفت!
-      </div>
-
-      <div>
-        پیش‌بینی‌های هفته چهارم نشان داد نعیمی فقط دنبال جمع کردن
-        امتیازهای اتفاقی نیست. گرفتن امتیاز از بازی‌های حساس،
-        او را به یکی از نفراتی تبدیل کرده که رقبا باید از این به بعد
-        بیشتر حواسشان به او باشد.
       </div>
     </div>
 
-
-    <!-- خبر ۳ -->
-    <div class="news-item" style="margin-bottom:15px;">
-      <div style="color:var(--accent-gold);font-weight:bold;font-size:0.85rem;margin-bottom:6px;">
-        😂 حاشیه لیگ
-      </div>
-
-      <div style="font-size:1.05rem;font-weight:bold;margin-bottom:8px;">
-        پسرهای لیگ، یک رقیب جدید پیدا کردند!
-      </div>
-
-      <div>
-        بعد از عملکرد ۱۴ امتیازی نعیمی در هفته چهارم،
-        چند نفر از بالانشین‌های جدول با نگرانی به نتایج او نگاه می‌کنند.
-        منابع نزدیک به لیگ می‌گویند:
-        «این یارو رو دست‌کم گرفته بودیم!» 😂
-      </div>
-    </div>
-
-
-    <!-- خبر ۴ -->
-    <div class="news-item" style="margin-bottom:15px;">
-      <div style="color:var(--accent-gold);font-weight:bold;font-size:0.85rem;margin-bottom:6px;">
-        🏆 جدول لیگ
-      </div>
-
-      <div style="font-size:1.05rem;font-weight:bold;margin-bottom:8px;">
-        رقابت برای بالای جدول داغ‌تر شد
-      </div>
-
-      <div>
-        با اضافه شدن امتیازات هفته چهارم، فاصله نفرات جدول کمتر شده
-        و حالا هر پیش‌بینی می‌تواند چند رتبه جایگاه اعضا را جابه‌جا کند.
-        هفته پنجم می‌تواند برای بسیاری از اعضا سرنوشت‌ساز باشد.
-      </div>
-    </div>
-
-
-    <!-- خبر ۵ -->
-    <div class="news-item">
-      <div style="color:var(--accent-gold);font-weight:bold;font-size:0.85rem;margin-bottom:6px;">
-        🚨 اطلاعیه
-      </div>
-
-      <div style="font-size:1.05rem;font-weight:bold;margin-bottom:8px;">
-        بازی‌های هفته بعد در راه هستند!
-      </div>
-
-      <div>
-        اعضای لیگ آماده هفته بعد می‌شوند.
-        پیش‌بینی مسابقات طبق روال در <b>FotMob</b> انجام می‌شود
-        و سایت GEDACHOL برای نمایش مسابقات، اخبار و وضعیت جدول
-        در کنار اعضای لیگ خواهد بود.
-      </div>
-    </div>
-
-  </div>
-</div>
     <!-- بخش ۴: نظرسنجی -->
     <div class="acc-item">
       <button class="acc-header" onclick="toggleAccordion(this)">
-        <span>🗳️ نظرسنجی سایت</span>
+        <span>🗳️ نظرسنجی و بازخورد اعضا</span>
         <span class="arrow-icon">▼</span>
       </button>
       <div class="acc-body">
-        <div style="margin-bottom: 12px; font-weight: bold;">آیا تمامی ۱۴ عضو و مسابقات بدون مشکل نمایش داده می‌شوند؟</div>
-        <form onsubmit="event.preventDefault(); alert('رأی شما ثبت شد!');">
+        <div style="margin-bottom: 15px; font-weight: 800; font-size: 1rem; color: #fff;">
+          آیا طراحی مدرن سایت و جدول ۱۴ نفره را می‌پسندید؟
+        </div>
+        <form onsubmit="event.preventDefault(); alert('رأی شما با موفقیت ثبت شد!');">
           <label class="poll-option">
             <input type="radio" name="poll" required>
-            <span>🔥 بله، جدول ۱۴ نفره و مسابقات کاملاً مشخص هستند</span>
+            <span>🔥 طراحی فوق‌العاده است و تمامی ۱۴ نفر با مسابقات مشخص هستند</span>
           </label>
           <label class="poll-option">
             <input type="radio" name="poll">
-            <span>👍 عالی شده است</span>
+            <span>👍 عالی و بسیار سریع است</span>
           </label>
-          <button type="submit" class="poll-btn">ثبت رأی</button>
+          <button type="submit" class="poll-btn">ثبت رأی نهایی</button>
         </form>
       </div>
     </div>
@@ -687,12 +710,10 @@
       const currentItem = headerBtn.parentElement;
       const isOpen = currentItem.classList.contains('active');
 
-      // بستن تمام کشوها
       document.querySelectorAll('.acc-item').forEach(item => {
         item.classList.remove('active');
       });
 
-      // اگر بسته بود، باز کردن کامل کشوی انتخابی
       if (!isOpen) {
         currentItem.classList.add('active');
       }
