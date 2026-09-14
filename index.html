@@ -6,69 +6,81 @@
   <title>GEDACHOL - لیگ گداهای استرسی فصل ۲</title>
   <style>
     :root {
-      --bg-dark: #0a0e14;
-      --card-bg: rgba(22, 27, 34, 0.85);
-      --yellow-accent: #f5b041;
-      --blue-accent: #3498db;
+      --bg-pitch: #0b1d13;
+      --accent-green: #2ecc71;
+      --accent-gold: #f1c40f;
+      --accent-blue: #00d2ff;
+      --glass-bg: rgba(18, 28, 22, 0.65);
+      --glass-border: rgba(255, 255, 255, 0.15);
+      --jelly-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.2);
       --text-main: #ffffff;
-      --text-muted: #8b949e;
-      --border-color: #30363d;
+      --text-muted: #a0aec0;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     
     body {
-      background-color: var(--bg-dark);
+      background-color: var(--bg-pitch);
       color: var(--text-main);
       font-family: Tahoma, 'Segoe UI', sans-serif;
       line-height: 1.6;
-      padding-bottom: 40px;
-      position: relative;
+      padding-bottom: 50px;
       min-height: 100vh;
+      /* پس‌زمینه فوتبالی استادیومی ترکیبی با گرادینت */
       background-image: 
-        radial-gradient(circle at 10% 20%, rgba(54, 162, 235, 0.12) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(245, 176, 65, 0.12) 0%, transparent 40%),
-        radial-gradient(circle at 50% 50%, rgba(46, 204, 113, 0.05) 0%, transparent 60%),
-        url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M60 0a60 60 0 1 0 60 60A60.066 60.066 0 0 0 60 0zm0 110a50 50 0 1 1 50-50 50.057 50.057 0 0 1-50 50z'/%3E%3Cpath d='M60 20a40 40 0 1 0 40 40 40.045 40.045 0 0 0-40-40zm0 70a30 30 0 1 1 30-30 30.034 30.034 0 0 1-30 30z'/%3E%3C/g%3E%3C/svg%3E");
+        radial-gradient(circle at 50% 0%, rgba(46, 204, 113, 0.25), transparent 70%),
+        radial-gradient(circle at 50% 100%, rgba(0, 210, 255, 0.15), transparent 70%),
+        linear-gradient(rgba(10, 20, 15, 0.85), rgba(10, 20, 15, 0.92)),
+        url("https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1920&q=80");
+      background-size: cover;
+      background-position: center;
       background-attachment: fixed;
     }
 
-    /* هدر سایت */
+    /* هدر سایت با استایل ژله‌ای */
     header {
       text-align: center;
-      padding: 30px 20px 20px;
-      background: linear-gradient(135deg, rgba(245, 176, 65, 0.2) 0%, rgba(13, 17, 23, 0.9) 50%, rgba(52, 152, 219, 0.2) 100%);
-      border-bottom: 3px solid var(--yellow-accent);
-      margin-bottom: 25px;
-      backdrop-filter: blur(8px);
+      padding: 35px 20px 25px;
+      background: linear-gradient(135deg, rgba(46, 204, 113, 0.2) 0%, rgba(15, 25, 20, 0.75) 50%, rgba(0, 210, 255, 0.2) 100%);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 2px solid var(--glass-border);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+      margin-bottom: 30px;
     }
 
     .hero-banner {
-      max-width: 400px;
+      max-width: 380px;
       width: 100%;
       height: auto;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-      border: 2px solid var(--yellow-accent);
+      border-radius: 20px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255,255,255,0.3);
+      border: 2px solid rgba(241, 196, 15, 0.6);
       margin-bottom: 15px;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .hero-banner:hover {
+      transform: scale(1.03);
     }
 
     header h1 {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       font-family: Arial, sans-serif;
       font-weight: 900;
-      letter-spacing: 2px;
-      background: linear-gradient(90deg, var(--yellow-accent), var(--blue-accent));
+      letter-spacing: 3px;
+      background: linear-gradient(135deg, #ffffff 20%, var(--accent-gold) 60%, var(--accent-green) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 20px rgba(245, 176, 65, 0.3);
+      text-shadow: 0 5px 15px rgba(0,0,0,0.5);
     }
 
     header p {
-      font-size: 1.1rem;
-      color: var(--text-muted);
+      font-size: 1.15rem;
+      color: var(--accent-green);
       margin-top: 5px;
       font-weight: bold;
+      letter-spacing: 1px;
     }
 
     /* کانتینر اصلی */
@@ -78,78 +90,85 @@
       padding: 0 15px;
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 20px;
     }
 
-    /* دکمه‌ها و بخش‌های آکاردئونی */
+    /* آکاردئون با حالت ژله‌ای و برجسته */
     .accordion-item {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(10px);
+      box-shadow: var(--jelly-shadow);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+    }
+
+    .accordion-item:hover {
+      border-color: rgba(46, 204, 113, 0.4);
     }
 
     .accordion-header {
       width: 100%;
-      background: rgba(22, 27, 34, 0.6);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 100%);
       border: none;
       outline: none;
-      padding: 18px 20px;
-      font-size: 1.1rem;
+      padding: 20px 24px;
+      font-size: 1.15rem;
       font-weight: bold;
       color: var(--text-main);
       display: flex;
       justify-content: space-between;
       align-items: center;
       cursor: pointer;
-      transition: background 0.2s ease, border-color 0.2s ease;
+      transition: background 0.2s ease;
       font-family: inherit;
     }
 
-    .accordion-header:hover {
-      background: rgba(245, 176, 65, 0.08);
+    .accordion-header:active {
+      transform: scale(0.99);
     }
 
     .accordion-header .title-text {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
 
     .accordion-header .icon {
-      color: var(--yellow-accent);
-      font-size: 1.2rem;
-      transition: transform 0.3s ease;
+      color: var(--accent-gold);
+      font-size: 1.1rem;
+      transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
 
     .accordion-item.active .icon {
       transform: rotate(180deg);
+      color: var(--accent-green);
     }
 
     .accordion-content {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.4s ease, padding 0.4s ease;
-      background: rgba(13, 17, 23, 0.95);
-      border-top: 0px solid var(--border-color);
-      padding: 0 20px;
+      transition: max-height 0.4s cubic-bezier(0, 1, 0, 1), padding 0.3s ease;
+      background: rgba(10, 18, 14, 0.6);
+      padding: 0 24px;
     }
 
     .accordion-item.active .accordion-content {
       max-height: 2000px;
-      padding: 20px;
-      border-top-width: 1px;
+      padding: 20px 24px;
+      border-top: 1px solid var(--glass-border);
     }
 
-    /* استایل مسابقات */
+    /* کارت مسابقات (ژله‌ای) */
     .match-item {
-      background: rgba(22, 27, 34, 0.9);
-      border-radius: 10px;
-      padding: 12px 15px;
-      margin-bottom: 12px;
-      border: 1px solid #21262d;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0.2) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 14px 18px;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
 
     .match-header {
@@ -157,19 +176,20 @@
       justify-content: space-between;
       align-items: center;
       font-size: 0.85rem;
-      border-bottom: 1px solid #21262d;
-      padding-bottom: 6px;
-      margin-bottom: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 8px;
+      margin-bottom: 10px;
     }
 
-    .match-date { color: var(--yellow-accent); font-weight: bold; }
+    .match-date { color: var(--accent-gold); font-weight: bold; }
     .match-time {
-      background: var(--blue-accent);
+      background: linear-gradient(135deg, #00d2ff, #0072ff);
       color: #fff;
-      padding: 2px 10px;
-      border-radius: 12px;
+      padding: 3px 12px;
+      border-radius: 20px;
       font-weight: bold;
       font-size: 0.85rem;
+      box-shadow: 0 2px 8px rgba(0, 210, 255, 0.4);
     }
 
     .match-teams {
@@ -177,188 +197,148 @@
       justify-content: space-around;
       align-items: center;
       font-weight: bold;
-      font-size: 1rem;
+      font-size: 1.05rem;
     }
 
-    .team { display: flex; align-items: center; gap: 8px; }
-    .team img { width: 28px; height: 28px; object-fit: contain; }
+    .team { display: flex; align-items: center; gap: 10px; }
+    .team img { width: 32px; height: 32px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5)); }
 
-    /* استایل جدول */
+    /* جدول رده‌بندی شیک */
     .ranking-table {
       width: 100%;
-      border-collapse: collapse;
+      border-collapse: separate;
+      border-spacing: 0 8px;
       font-size: 0.95rem;
     }
 
     .ranking-table th {
       text-align: right;
       color: var(--text-muted);
-      border-bottom: 1px solid var(--border-color);
-      padding: 8px;
+      padding: 8px 12px;
+    }
+
+    .ranking-table tr {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 12px;
+      transition: background 0.2s;
+    }
+
+    .ranking-table tr:hover {
+      background: rgba(46, 204, 113, 0.1);
     }
 
     .ranking-table td {
-      padding: 10px 8px;
-      border-bottom: 1px solid #21262d;
+      padding: 12px;
     }
 
-    .user-click {
-      color: #fff;
-      cursor: pointer;
-      text-decoration: underline;
-      text-decoration-color: var(--yellow-accent);
-      transition: color 0.2s;
-    }
+    .ranking-table tr td:first-child { border-radius: 0 12px 12px 0; }
+    .ranking-table tr td:last-child { border-radius: 12px 0 0 12px; }
 
-    .user-click:hover {
-      color: var(--yellow-accent);
+    .ranking-table tr.highlight {
+      background: linear-gradient(90deg, rgba(241, 196, 15, 0.15) 0%, rgba(46, 204, 113, 0.15) 100%);
+      border: 1px solid rgba(241, 196, 15, 0.3);
     }
 
     .ranking-table tr.highlight td {
-      color: var(--yellow-accent);
+      color: var(--accent-gold);
       font-weight: bold;
     }
 
-    .rank-num { width: 30px; text-align: center; font-weight: bold; }
-    .points { text-align: center; font-weight: bold; color: var(--blue-accent); }
-    .exact { text-align: center; color: var(--text-muted); }
+    .rank-num { width: 35px; text-align: center; font-weight: bold; }
+    .points { text-align: center; font-weight: bold; color: var(--accent-blue); font-size: 1.1rem; }
+    .exact { text-align: center; color: var(--text-muted); font-weight: bold; }
 
-    /* استایل اخبار */
+    /* اخبار */
     .news-item {
-      background: rgba(22, 27, 34, 0.9);
-      border-radius: 8px;
-      padding: 14px;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 14px;
+      padding: 16px;
       margin-bottom: 12px;
       font-size: 0.95rem;
-      border-right: 4px solid var(--yellow-accent);
-      border-top: 1px solid #21262d;
-      border-left: 1px solid #21262d;
-      border-bottom: 1px solid #21262d;
+      border-right: 4px solid var(--accent-green);
+      border-top: 1px solid var(--glass-border);
+      border-left: 1px solid var(--glass-border);
+      border-bottom: 1px solid var(--glass-border);
     }
 
     .news-date {
-      color: var(--text-muted);
+      color: var(--accent-gold);
       font-size: 0.8rem;
       margin-bottom: 6px;
       font-weight: bold;
     }
 
-    /* استایل نظرسنجی */
+    /* نظرسنجی با دکمه‌های ژله‌ای */
     .poll-question {
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-weight: bold;
       margin-bottom: 15px;
-      color: var(--yellow-accent);
+      color: var(--accent-gold);
     }
 
     .poll-option {
       display: flex;
       align-items: center;
-      background: rgba(22, 27, 34, 0.9);
-      border: 1px solid #21262d;
-      padding: 12px 15px;
-      border-radius: 8px;
-      margin-bottom: 10px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--glass-border);
+      padding: 14px 18px;
+      border-radius: 14px;
+      margin-bottom: 12px;
       cursor: pointer;
-      transition: border-color 0.2s ease, background 0.2s ease;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     .poll-option:hover {
-      border-color: var(--blue-accent);
-      background: rgba(52, 152, 219, 0.1);
+      border-color: var(--accent-green);
+      background: rgba(46, 204, 113, 0.15);
+      transform: translateY(-2px);
     }
 
     .poll-option input[type="radio"] {
-      margin-left: 12px;
-      accent-color: var(--yellow-accent);
-      width: 18px;
-      height: 18px;
+      margin-left: 14px;
+      accent-color: var(--accent-green);
+      width: 20px;
+      height: 20px;
       cursor: pointer;
     }
 
     .poll-btn {
       width: 100%;
-      background: linear-gradient(90deg, var(--yellow-accent), #e67e22);
-      color: #000;
+      background: linear-gradient(135deg, var(--accent-green) 0%, #27ae60 100%);
+      color: #ffffff;
       font-weight: bold;
       border: none;
-      padding: 12px;
-      border-radius: 8px;
-      font-size: 1rem;
+      padding: 14px;
+      border-radius: 14px;
+      font-size: 1.05rem;
       cursor: pointer;
       margin-top: 10px;
       font-family: inherit;
+      box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
+      transition: all 0.2s ease;
+    }
+
+    .poll-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(46, 204, 113, 0.6);
+    }
+
+    .poll-btn:active {
+      transform: translateY(0);
     }
 
     .poll-message {
       display: none;
-      background: rgba(52, 152, 219, 0.2);
-      border: 1px solid var(--blue-accent);
+      background: rgba(46, 204, 113, 0.2);
+      border: 1px solid var(--accent-green);
       color: #fff;
-      padding: 12px;
-      border-radius: 8px;
+      padding: 14px;
+      border-radius: 14px;
       text-align: center;
       margin-top: 12px;
       font-size: 0.95rem;
       font-weight: bold;
     }
-
-    /* پنجره پاپ‌آپ (Modal) برای پروفایل کاربر */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(5px);
-      z-index: 1000;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-
-    .modal-card {
-      background: #161b22;
-      border: 2px solid var(--yellow-accent);
-      border-radius: 16px;
-      width: 100%;
-      max-width: 450px;
-      padding: 25px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-      position: relative;
-      text-align: center;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 15px; left: 15px;
-      background: none; border: none;
-      color: var(--text-muted);
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-
-    .profile-avatar {
-      width: 80px; height: 80px;
-      border-radius: 50%;
-      border: 2px solid var(--blue-accent);
-      margin-bottom: 10px;
-      object-fit: cover;
-    }
-
-    .profile-name { font-size: 1.3rem; font-weight: bold; color: var(--yellow-accent); }
-    .profile-stats {
-      display: flex; justify-content: space-around;
-      background: #0d1117; padding: 10px;
-      border-radius: 10px; margin: 15px 0;
-      border: 1px solid #21262d;
-    }
-
-    .stat-box { font-size: 0.9rem; }
-    .stat-val { font-weight: bold; color: var(--blue-accent); font-size: 1.1rem; }
-
-    .prev-preds-title { text-align: right; font-weight: bold; margin-bottom: 10px; color: var(--text-muted); font-size: 0.9rem; }
-    .pred-list { list-style: none; text-align: right; font-size: 0.85rem; max-height: 150px; overflow-y: auto; }
-    .pred-item { background: #0d1117; padding: 8px 12px; border-radius: 6px; margin-bottom: 6px; display: flex; justify-content: space-between; }
   </style>
 </head>
 <body>
@@ -406,17 +386,17 @@
       </div>
     </div>
 
-    <!-- جدول رده‌بندی اعضا (با قابلیت کلیک) -->
+    <!-- جدول رده‌بندی اعضا -->
     <div class="accordion-item active">
       <button class="accordion-header" onclick="toggleSection(this)">
-        <span class="title-text">📊 جدول رده‌بندی اعضا (برای مشاهده اطلاعات روی نام کلیک کنید)</span>
+        <span class="title-text">🏆 جدول رده‌بندی لیگ</span>
         <span class="icon">▼</span>
       </button>
       <div class="accordion-content">
         <table class="ranking-table">
           <thead>
             <tr>
-              <th style="width: 25px;">#</th>
+              <th style="width: 35px;">#</th>
               <th>نام عضو</th>
               <th style="text-align: center;">امتیاز</th>
               <th style="text-align: center;">دقیق</th>
@@ -425,40 +405,31 @@
           <tbody>
             <tr class="highlight">
               <td class="rank-num">1</td>
-              <td class="user-click" onclick="openProfile('REZA GHATIFI', '15', '3', 'https://api.dicebear.com/7.x/bottts/svg?seed=REZA', [
-                {match: 'چلسی - برنتفورد', pred: '۲ - ۱', pts: '+۳'},
-                {match: 'آرسنال - برایتون', pred: '۳ - ۰', pts: '+۳'}
-              ])">REZA GHATIFI 👑</td>
+              <td>REZA GHATIFI 👑</td>
               <td class="points">15</td>
               <td class="exact">3</td>
             </tr>
             <tr class="highlight">
               <td class="rank-num">1</td>
-              <td class="user-click" onclick="openProfile('Mahdi', '15', '3', 'https://api.dicebear.com/7.x/bottts/svg?seed=Mahdi', [
-                {match: 'چلسی - برنتفورد', pred: '۲ - ۱', pts: '+۳'},
-                {match: 'آرسنال - برایتون', pred: '۳ - ۰', pts: '+۳'}
-              ])">Mahdi</td>
+              <td>Mahdi</td>
               <td class="points">15</td>
               <td class="exact">3</td>
             </tr>
             <tr>
               <td class="rank-num">3</td>
-              <td class="user-click" onclick="openProfile('حبیب نعیمی', '14', '2', 'https://api.dicebear.com/7.x/bottts/svg?seed=Habib', [
-                {match: 'چلسی - برنتفورد', pred: '۱ - ۱', pts: '+۱'},
-                {match: 'آرسنال - برایتون', pred: '۲ - ۰', pts: '+۳'}
-              ])">حبیب نعیمی</td>
+              <td>حبیب نعیمی</td>
               <td class="points">14</td>
               <td class="exact">2</td>
             </tr>
             <tr>
               <td class="rank-num">3</td>
-              <td class="user-click" onclick="openProfile('Asm A', '14', '2', 'https://api.dicebear.com/7.x/bottts/svg?seed=AsmA', [])">Asm A</td>
+              <td>Asm A</td>
               <td class="points">14</td>
               <td class="exact">2</td>
             </tr>
             <tr>
               <td class="rank-num">5</td>
-              <td class="user-click" onclick="openProfile('Donya Asil', '13', '1', 'https://api.dicebear.com/7.x/bottts/svg?seed=Donya', [])">Donya Asil</td>
+              <td>Donya Asil</td>
               <td class="points">13</td>
               <td class="exact">1</td>
             </tr>
@@ -476,7 +447,7 @@
       <div class="accordion-content">
         <div class="news-item">
           <div class="news-date">۲۶ شهریور ۱۴۰۵</div>
-          <div><strong>قابلیت جدید:</strong> امکان مشاهده پروفایل و پیش‌بینی‌های قبلی اعضا فراهم شد!</div>
+          <div><strong>بروزرسانی جدید:</strong> ظاهر جدید سایت با افکت‌های ژله‌ای و طراحی هیجان‌انگیز استادیومی رونمایی شد!</div>
         </div>
       </div>
     </div>
@@ -488,11 +459,11 @@
         <span class="icon">▼</span>
       </button>
       <div class="accordion-content">
-        <div class="poll-question">آیا از طراحی و ظاهر جدید سایت GEDACHOL راضی هستید؟</div>
+        <div class="poll-question">آیا از ظاهر ژله‌ای و طراحی جدید سایت GEDACHOL راضی هستید؟</div>
         <form id="pollForm" onsubmit="submitPoll(event)">
           <label class="poll-option">
             <input type="radio" name="design_rating" value="عالی" required>
-            <span>🔥 عالی و فوق‌العاده</span>
+            <span>🔥 بسیار زیبا و فوق‌العاده</span>
           </label>
           <label class="poll-option">
             <input type="radio" name="design_rating" value="خوب">
@@ -508,25 +479,6 @@
 
   </div>
 
-  <!-- پنجره پاپ‌آپ اطلاعات کاربر -->
-  <div id="profileModal" class="modal-overlay" onclick="closeProfile(event)">
-    <div class="modal-card" onclick="event.stopPropagation()">
-      <button class="modal-close" onclick="closeProfileModal()">&times;</button>
-      <img id="modalAvatar" src="" alt="Avatar" class="profile-avatar">
-      <div id="modalName" class="profile-name"></div>
-      
-      <div class="profile-stats">
-        <div class="stat-box">کل امتیازات:<br><span id="modalPoints" class="stat-val"></span></div>
-        <div class="stat-box">پیش‌بینی دقیق:<br><span id="modalExact" class="stat-val"></span></div>
-      </div>
-
-      <div class="prev-preds-title">📝 پیش‌بینی‌های اخیر:</div>
-      <ul id="modalPreds" class="pred-list">
-        <!-- پیش‌بینی‌ها به صورت خودکار اضافه می‌شوند -->
-      </ul>
-    </div>
-  </div>
-
   <script>
     function toggleSection(button) {
       const item = button.parentElement;
@@ -537,41 +489,6 @@
       event.preventDefault();
       document.getElementById('pollForm').style.display = 'none';
       document.getElementById('pollMessage').style.display = 'block';
-    }
-
-    function openProfile(name, points, exact, avatarUrl, predictions) {
-      document.getElementById('modalName').innerText = name;
-      document.getElementById('modalPoints').innerText = points;
-      document.getElementById('modalExact').innerText = exact;
-      document.getElementById('modalAvatar').src = avatarUrl;
-
-      const predsContainer = document.getElementById('modalPreds');
-      predsContainer.innerHTML = '';
-
-      if(predictions.length === 0) {
-        predsContainer.innerHTML = '<li class="pred-item">پیش‌بینی ثبت شده‌ای وجود ندارد.</li>';
-      } else {
-        predictions.forEach(p => {
-          predsContainer.innerHTML += `
-            <li class="pred-item">
-              <span>${p.match} (${p.pred})</span>
-              <span style="color: var(--yellow-accent); font-weight: bold;">${p.pts}</span>
-            </li>
-          `;
-        });
-      }
-
-      document.getElementById('profileModal').style.display = 'flex';
-    }
-
-    function closeProfileModal() {
-      document.getElementById('profileModal').style.display = 'none';
-    }
-
-    function closeProfile(event) {
-      if(event.target.classList.contains('modal-overlay')) {
-        closeProfileModal();
-      }
     }
   </script>
 
