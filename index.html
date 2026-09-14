@@ -24,7 +24,7 @@
             font-family: 'Vazirmatn', sans-serif;
         }
 
-        /* Splash Screen Styles with Orbiting Elements */
+        /* Splash Screen Styles with Rotating & Expanding Text */
         #splash-screen {
             position: fixed;
             top: 0;
@@ -41,109 +41,56 @@
             color: var(--text-white);
             transition: opacity 0.8s ease, visibility 0.8s ease;
             overflow: hidden;
+            padding: 20px;
+            text-align: center;
         }
 
         .orbit-container {
             position: relative;
-            width: 140px;
-            height: 140px;
-            margin-bottom: 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Center rotating ball */
-        .center-ball {
-            position: absolute;
-            width: 55px;
-            height: 55px;
-            background: radial-gradient(circle at 30% 30%, #ffffff, #d0d0d0 70%, #888888);
-            border-radius: 50%;
-            box-shadow: 0 0 15px rgba(255,255,255,0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 26px;
-            animation: spinBall 3s linear infinite;
-        }
-
-        @keyframes spinBall {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Orbit Ring and Items */
-        .orbit-ring {
-            position: absolute;
             width: 100%;
-            height: 100%;
-            animation: orbitRotate 2.5s linear infinite;
-        }
-
-        @keyframes orbitRotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .orbit-item {
-            position: absolute;
-            width: 36px;
-            height: 36px;
+            max-width: 600px;
+            height: 120px;
+            margin-bottom: 20px;
             display: flex;
-            align-items: center;
             justify-content: center;
-            font-size: 24px;
-            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5));
+            align-items: center;
         }
 
-        /* Positioning items along the circular path */
-        .item-cup { top: 0; left: calc(50% - 18px); }
-        .item-yellow { bottom: 15px; left: 10px; }
-        .item-red { bottom: 15px; right: 10px; }
+        /* Rotating text element */
+        .rotating-text {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--accent-gold);
+            text-shadow: 3px 3px 8px rgba(0,0,0,0.6);
+            animation: spinAndPulse 3s linear infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes spinAndPulse {
+            0% { transform: scale(0.9) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(5deg); }
+            100% { transform: scale(0.9) rotate(0deg); }
+        }
 
         .splash-title {
-            font-size: 1.8rem;
-            font-weight: 900;
+            font-size: 1.4rem;
+            font-weight: 700;
             margin-top: 10px;
             text-align: center;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
-            color: var(--accent-gold);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            color: var(--text-white);
             padding: 0 20px;
-            animation: pulseText 1.5s infinite alternate;
+            opacity: 0.9;
         }
 
-        @keyframes pulseText {
-            0% { transform: scale(1); opacity: 0.9; }
-            100% { transform: scale(1.04); opacity: 1; }
-        }
-
-        /* Explosion / Dispersion effect when fading out */
+        /* Dispersion effect when fading out */
         .fade-out {
             opacity: 0;
             visibility: hidden;
         }
 
-        .fade-out .center-ball {
-            transform: scale(3) rotate(720deg);
-            opacity: 0;
-            transition: all 0.8s ease-in-out;
-        }
-
-        .fade-out .item-cup {
-            transform: translateY(-150px) scale(1.5);
-            opacity: 0;
-            transition: all 0.8s ease-in-out;
-        }
-
-        .fade-out .item-yellow {
-            transform: translateX(-150px) translateY(100px) scale(1.5);
-            opacity: 0;
-            transition: all 0.8s ease-in-out;
-        }
-
-        .fade-out .item-red {
-            transform: translateX(150px) translateY(100px) scale(1.5);
+        .fade-out .rotating-text {
+            transform: scale(2.5) rotate(720deg);
             opacity: 0;
             transition: all 0.8s ease-in-out;
         }
@@ -235,6 +182,9 @@
             }
             .main-title {
                 font-size: 2.4rem;
+            }
+            .rotating-text {
+                font-size: 1.5rem;
             }
         }
 
@@ -393,17 +343,12 @@
 </head>
 <body>
 
-    <!-- Splash Screen with Orbiting Elements -->
+    <!-- Splash Screen with Rotating Text -->
     <div id="splash-screen">
         <div class="orbit-container">
-            <div class="center-ball">⚽</div>
-            <div class="orbit-ring">
-                <div class="orbit-item item-cup">🏆</div>
-                <div class="orbit-item item-yellow">🟨</div>
-                <div class="orbit-item item-red">🟥</div>
-            </div>
+            <div class="rotating-text">لیگ گداهای استرسی فصل دوم</div>
         </div>
-        <div class="splash-title">به سایت تخصصی لیگ گداهای استرسی خوش آمدید</div>
+        <div class="splash-title">قبل از ورود...</div>
     </div>
 
     <div class="container">
@@ -628,7 +573,7 @@
             setTimeout(function() {
                 const splash = document.getElementById('splash-screen');
                 splash.classList.add('fade-out');
-            }, 2200); // زمان چرخش قبل از باز شدن سایت
+            }, 2200); // زمان چرخش متن قبل از ورود به سایت
         });
     </script>
 </body>
