@@ -1,152 +1,191 @@
-<style>
-  .matches-container {
-    max-width: 800px;
-    margin: 0 auto;
-    font-family: Tahoma, 'Segoe UI', sans-serif;
-    direction: rtl;
-  }
-  .match-card {
-    background: #1e1e2f;
-    color: #ffffff;
-    border-radius: 12px;
-    padding: 15px 20px;
-    margin-bottom: 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  }
-  .match-date {
-    color: #FFD700; /* رنگ طلایی */
-    font-weight: bold;
-    font-size: 0.95rem;
-  }
-  .match-teams {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 1.1rem;
-    font-weight: bold;
-  }
-  .team-logo {
-    width: 32px;
-    height: 32px;
-    object-fit: contain;
-  }
-  .match-time {
-    background: #FFD700;
-    color: #000000;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-weight: bold;
-    font-size: 0.9rem;
-  }
-</style>
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>پیش‌بینی مسابقات فوتبال</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #ffffff;
+      font-family: Tahoma, 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #FFD700;
+      margin-bottom: 25px;
+    }
+    .matches-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .match-card {
+      background: #1e1e2f;
+      color: #ffffff;
+      border-radius: 12px;
+      padding: 15px 20px;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .match-date {
+      color: #FFD700; /* تاریخ با رنگ طلایی */
+      font-weight: bold;
+      font-size: 0.95rem;
+      width: 100%;
+      text-align: center;
+      border-bottom: 1px solid #333;
+      padding-bottom: 8px;
+      margin-bottom: 8px;
+    }
+    @media (min-width: 600px) {
+      .match-date {
+        width: auto;
+        text-align: right;
+        border-bottom: none;
+        padding-bottom: 0;
+        margin-bottom: 0;
+      }
+    }
+    .match-teams {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.05rem;
+      font-weight: bold;
+    }
+    .team-logo {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+    }
+    .match-time {
+      background: #FFD700;
+      color: #000000;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
 
-<div class="matches-container">
+  <h1>جدول مسابقات و پیش‌بینی</h1>
 
-  <!-- بازی ۱ -->
-  <div class="match-card">
-    <div class="match-date">جمعه ۲۷ شهریور ۱۴۰۵</div>
-    <div class="match-teams">
-      <img class="team-logo" src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/fhBITrIlbQxhVB6IjxUO6Q_500x500.png" alt="چلسی">
-      <span>چلسی</span>
-      <span>-</span>
-      <span>برنتفورد</span>
-      <img class="team-logo" src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/QOUce0WQBYqnkSmN6_TxGA_500x500.png" alt="برنتفورد">
+  <div class="matches-container">
+
+    <!-- بازی ۱ -->
+    <div class="match-card">
+      <div class="match-date">جمعه ۲۷ شهریور ۱۴۰۵</div>
+      <div class="match-teams">
+        <img class="team-logo" src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/fhBITrIlbQxhVB6IjxUO6Q_500x500.png" alt="چلسی">
+        <span>چلسی</span>
+        <span>-</span>
+        <span>برنتفورد</span>
+        <img class="team-logo" src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/QOUce0WQBYqnkSmN6_TxGA_500x500.png" alt="برنتفورد">
+      </div>
+      <div class="match-time">۲۲:۳۰</div>
     </div>
-    <div class="match-time">۲۲:۳۰</div>
+
+    <!-- بازی ۲ -->
+    <div class="match-card">
+      <div class="match-date">شنبه ۲۸ شهریور ۱۴۰۵</div>
+      <div class="match-teams">
+        <img class="team-logo" src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/k3Q_mKE98Dnohrcea0JFgQ_500x500.png" alt="تاتنهام">
+        <span>تاتنهام</span>
+        <span>-</span>
+        <span>استون ویلا</span>
+        <img class="team-logo" src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/uyNNelfnFvCEnsLrUL-j2Q_500x500.png" alt="استون ویلا">
+      </div>
+      <div class="match-time">۱۵:۰۰</div>
+    </div>
+
+    <!-- بازی ۳ -->
+    <div class="match-card">
+      <div class="match-date">شنبه ۲۸ شهریور ۱۴۰۵</div>
+      <div class="match-teams">
+        <img class="team-logo" src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/4us2nCgl6kgZc0t3hpW75Q_500x500.png" alt="آرسنال">
+        <span>آرسنال</span>
+        <span>-</span>
+        <span>برایتون</span>
+        <img class="team-logo" src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/EKIe0e-ZIphOcfQAwsuEEQ_500x500.png" alt="برایتون">
+      </div>
+      <div class="match-time">۱۷:۳۰</div>
+    </div>
+
+    <!-- بازی ۴ -->
+    <div class="match-card">
+      <div class="match-date">شنبه ۲۸ شهریور ۱۴۰۵</div>
+      <div class="match-teams">
+        <img class="team-logo" src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/l2-icwsMhIvsbRw8AwC1yg_500x500.png" alt="اینتر">
+        <span>اینتر</span>
+        <span>-</span>
+        <span>رم</span>
+        <img class="team-logo" src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/BQdP4jUBFJfG7U_JBsFIMg_500x500.png" alt="رم">
+      </div>
+      <div class="match-time">۱۹:۳۰</div>
+    </div>
+
+    <!-- بازی ۵ -->
+    <div class="match-card">
+      <div class="match-date">شنبه ۲۸ شهریور ۱۴۰۵</div>
+      <div class="match-teams">
+        <img class="team-logo" src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/paYnEE8hcrP96neHRNofhQ_500x500.png" alt="بارسلونا">
+        <span>بارسلونا</span>
+        <span>-</span>
+        <span>سویا</span>
+        <img class="team-logo" src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/hCTs5EX3WjCMC5Jl3QE4Rw_500x500.png" alt="سویا">
+      </div>
+      <div class="match-time">۲۲:۳۰</div>
+    </div>
+
+    <!-- بازی ۶ -->
+    <div class="match-card">
+      <div class="match-date">یکشنبه ۲۹ شهریور ۱۴۰۵</div>
+      <div class="match-teams">
+        <img class="team-logo" src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/nGfV05dipbAc7zzojivKew_500x500.png" alt="لیورپول">
+        <span>لیورپول</span>
+        <span>-</span>
+        <span>بورنموث</span>
+        <img class="team-logo" src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/IcOt-hrK04B-RlRwI3R0yA_500x500.png" alt="بورنموث">
+      </div>
+      <div class="match-time">۱۶:۳۰</div>
+    </div>
+
+    <!-- بازی ۷ -->
+    <div class="match-card">
+      <div class="match-date">یکشنبه ۲۹ شهریور ۱۴۰۵</div>
+      <div class="match-teams">
+        <img class="team-logo" src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/Th4fAVAZeCJWRcKoLW7koA_500x500.png" alt="رئال مادرید">
+        <span>رئال مادرید</span>
+        <span>-</span>
+        <span>اتلتیکومادرید</span>
+        <img class="team-logo" src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/pEqmA7CL-VRo4Llq3rwIPA_500x500.png" alt="اتلتیکومادرید">
+      </div>
+      <div class="match-time">۱۷:۴۵</div>
+    </div>
+
+    <!-- بازی ۸ -->
+    <div class="match-card">
+      <div class="match-date">یکشنبه ۲۹ شهریور ۱۴۰۵</div>
+      <div class="match-teams">
+        <img class="team-logo" src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/udQ6ns69PctCv143h-GeYw_500x500.png" alt="منچستریونایتد">
+        <span>منچستریونایتد</span>
+        <span>-</span>
+        <span>فولام</span>
+        <img class="team-logo" src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/Gh7_5p3n364p4vxeM8FhNg_500x500.png" alt="فولام">
+      </div>
+      <div class="match-time">۱۹:۰۰</div>
+    </div>
+
   </div>
 
-  <!-- بازی ۲ -->
-  <div class="match-card">
-    <div class="match-date">شنبه ۲۸ شهریور ۱۴۰۵</div>
-    <div class="match-teams">
-      <img class="team-logo" src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/k3Q_mKE98Dnohrcea0JFgQ_500x500.png" alt="تاتنهام">
-      <span>تاتنهام</span>
-      <span>-</span>
-      <span>استون ویلا</span>
-      <img class="team-logo" src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/uyNNelfnFvCEnsLrUL-j2Q_500x500.png" alt="استون ویلا">
-    </div>
-    <div class="match-time">۱۵:۰۰</div>
-  </div>
-
-  <!-- بازی ۳ -->
-  <div class="match-card">
-    <div class="match-date">شنبه ۲۸ شهریور ۱۴۰۵</div>
-    <div class="match-teams">
-      <img class="team-logo" src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/4us2nCgl6kgZc0t3hpW75Q_500x500.png" alt="آرسنال">
-      <span>آرسنال</span>
-      <span>-</span>
-      <span>برایتون</span>
-      <img class="team-logo" src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/EKIe0e-ZIphOcfQAwsuEEQ_500x500.png" alt="برایتون">
-    </div>
-    <div class="match-time">۱۷:۳۰</div>
-  </div>
-
-  <!-- بازی ۴ -->
-  <div class="match-card">
-    <div class="match-date">شنبه ۲۸ شهریور ۱۴۰۵</div>
-    <div class="match-teams">
-      <img class="team-logo" src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/l2-icwsMhIvsbRw8AwC1yg_500x500.png" alt="اینتر">
-      <span>اینتر</span>
-      <span>-</span>
-      <span>رم</span>
-      <img class="team-logo" src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/BQdP4jUBFJfG7U_JBsFIMg_500x500.png" alt="رم">
-    </div>
-    <div class="match-time">۱۹:۳۰</div>
-  </div>
-
-  <!-- بازی ۵ -->
-  <div class="match-card">
-    <div class="match-date">شنبه ۲۸ شهریور ۱۴۰۵</div>
-    <div class="match-teams">
-      <img class="team-logo" src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/paYnEE8hcrP96neHRNofhQ_500x500.png" alt="بارسلونا">
-      <span>بارسلونا</span>
-      <span>-</span>
-      <span>سویا</span>
-      <img class="team-logo" src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/hCTs5EX3WjCMC5Jl3QE4Rw_500x500.png" alt="سویا">
-    </div>
-    <div class="match-time">۲۲:۳۰</div>
-  </div>
-
-  <!-- بازی ۶ -->
-  <div class="match-card">
-    <div class="match-date">یکشنبه ۲۹ شهریور ۱۴۰۵</div>
-    <div class="match-teams">
-      <img class="team-logo" src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/nGfV05dipbAc7zzojivKew_500x500.png" alt="لیورپول">
-      <span>لیورپول</span>
-      <span>-</span>
-      <span>بورنموث</span>
-      <img class="team-logo" src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/IcOt-hrK04B-RlRwI3R0yA_500x500.png" alt="بورنموث">
-    </div>
-    <div class="match-time">۱۶:۳۰</div>
-  </div>
-
-  <!-- بازی ۷ -->
-  <div class="match-card">
-    <div class="match-date">یکشنبه ۲۹ شهریور ۱۴۰۵</div>
-    <div class="match-teams">
-      <img class="team-logo" src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/Th4fAVAZeCJWRcKoLW7koA_500x500.png" alt="رئال مادرید">
-      <span>رئال مادرید</span>
-      <span>-</span>
-      <span>اتلتیکومادرید</span>
-      <img class="team-logo" src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/pEqmA7CL-VRo4Llq3rwIPA_500x500.png" alt="اتلتیکومادرید">
-    </div>
-    <div class="match-time">۱۷:۴۵</div>
-  </div>
-
-  <!-- بازی ۸ -->
-  <div class="match-card">
-    <div class="match-date">یکشنبه ۲۹ شهریور ۱۴۰۵</div>
-    <div class="match-teams">
-      <img class="team-logo" src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/udQ6ns69PctCv143h-GeYw_500x500.png" alt="منچستریونایتد">
-      <span>منچستریونایتد</span>
-      <span>-</span>
-      <span>فولام</span>
-      <img class="team-logo" src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/Gh7_5p3n364p4vxeM8FhNg_500x500.png" alt="فولام">
-    </div>
-    <div class="match-time">۱۹:۰۰</div>
-  </div>
-
-</div>
+</body>
+</html>
