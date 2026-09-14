@@ -249,6 +249,17 @@
             text-align: justify;
         }
 
+        .news-prediction {
+            margin-top: 8px;
+            font-size: 0.8rem;
+            background: rgba(243, 156, 18, 0.12);
+            padding: 6px 10px;
+            border-radius: 6px;
+            border-right: 3px solid var(--accent-gold);
+            color: #92400e;
+            font-weight: 700;
+        }
+
         /* Panels & Tables */
         .panel {
             background: var(--card-bg);
@@ -581,19 +592,25 @@
                 <div class="newspaper-header">
                     <h3>GEDA DAILY NEWS</h3>
                 </div>
-                <div class="newspaper-date">اخبار امروز</div>
+                <div class="newspaper-date">اخبار تخصصی فوتبال و لیگ گداهای استرسی</div>
                 
                 <div class="news-item">
-                    <div class="news-title">⚽ آغاز هفته پنجم</div>
+                    <div class="news-title">⚽ آغاز هفته پنجم جزیره با تقابل چلسی و برنتفورد</div>
                     <div class="news-detail">
-                        آغاز هفته پنجم از روز جمعه با بازی چلسی در مقابل برنتفورد از ساعت ۲۲:۳۰ آغاز می‌شود. چلسی با انجام ۴ بازی و ۷ امتیاز در رده ۵ قرار گرفته و برنتفورد پشت سر او با ۶ امتیاز این تیم را تعقیب می‌کند.
+                        بر اساس تازه‌ترین گزارش‌های فوت‌موب، هفته پنجم از روز جمعه با جدال حساس چلسی و برنتفورد در جی‌تک کلید می‌خورد. چلسی با ۷ امتیاز در رده پنجم و برنتفورد با ۶ امتیاز تعقیب‌شان می‌کنند.
+                    </div>
+                    <div class="news-prediction">
+                        🔮 دیدگاه گداهای استرسی: بازی پر از استرس و خطای هافبک‌ها که در نهایت با برد اختلاف‌دار چلسی یا تساوی پرگل همراه می‌شود!
                     </div>
                 </div>
 
                 <div class="news-item">
-                    <div class="news-title">🔥 پایان هفته چهارم... زویدات همچنان غول آخر لیگ گداهای استرسی!</div>
+                    <div class="news-title">🔥 نبردهای بزرگ اروپا زیر ذره‌بین فوت‌موب</div>
                     <div class="news-detail">
-                        زویدات همچنان با ۵۰ امتیاز دست‌نیافتنی و صدرنشین لیگ گداهای استرسی است. باید دید او در هفته پنجم می‌تواند همچنان این روند را ادامه دهد یا خیر!
+                        سایت‌های معتبر اروپایی از دربی‌های حساس لالیگا، سری آ و جزیره از جمله بارسا-سویا، تاتنهام-آرسنال، اینتر-رم و منچستریونایتد-فولام خبر می‌دهند.
+                    </div>
+                    <div class="news-prediction">
+                        🔮 دیدگاه گداهای استرسی: بچه‌ها معتقدند دفاع منچستر و خط آتش بارسا هر هفته هواداران را تا مرز سکته پیش می‌برند!
                     </div>
                 </div>
             </div>
@@ -720,31 +737,31 @@
                     <span class="match-league">لیگ برتر انگلیس</span>
                 </div>
                 <div class="team-box right">
-                    <span class="team-name">Aston Villa</span>
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/10252.png" alt="استون ویلا" class="team-logo">
+                    <span class="team-name">Arsenal</span>
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/9825.png" alt="آرسنال" class="team-logo">
                 </div>
             </div>
             <div id="match-2" class="prediction-panel">
                 <div class="stats-box">
                     <h4>📊 تحلیل و رو در رو (H2H)</h4>
-                    <p>آخرین بازی رودررو: استون ویلا ۱ - ۲ تاتنهام. نبرد تانک‌های هجومی با تفکرات اونای امری.</p>
+                    <p>دربی بزرگ شمال لندن؛ تقابل اندیشه‌های تاتنهام و ساختار دفاعی مستحکم آرسنال در استادیوم اختصاصی میزبان.</p>
                 </div>
                 <div class="win-probability">
                     <div class="prob-bar-container">
-                        <div class="prob-home" style="width: 42%;"></div>
-                        <div class="prob-draw" style="width: 26%;"></div>
-                        <div class="prob-away" style="width: 32%;"></div>
+                        <div class="prob-home" style="width: 35%;"></div>
+                        <div class="prob-draw" style="width: 28%;"></div>
+                        <div class="prob-away" style="width: 37%;"></div>
                     </div>
                     <div class="prob-labels">
-                        <span>تاتنهام: ۴۲٪</span>
-                        <span>مساوی: ۲۶٪</span>
-                        <span>استون ویلا: ۳۲٪</span>
+                        <span>تاتنهام: ۳۵٪</span>
+                        <span>مساوی: ۲۸٪</span>
+                        <span>آرسنال: ۳۷٪</span>
                     </div>
                 </div>
                 <div class="vote-form">
                     <button class="vote-btn vote-home" onclick="submitVote('تاتنهام')">برد تاتنهام</button>
                     <button class="vote-btn vote-draw" onclick="submitVote('مساوی')">مساوی</button>
-                    <button class="vote-btn vote-away" onclick="submitVote('استون ویلا')">برد استون ویلا</button>
+                    <button class="vote-btn vote-away" onclick="submitVote('آرسنال')">برد آرسنال</button>
                 </div>
             </div>
 
@@ -755,72 +772,72 @@
                 </div>
                 <div class="match-info">
                     <span class="match-time">۱۷:۳۰</span>
-                    <span class="match-league">لیگ برتر انگلیس</span>
+                    <span class="match-league">سری آ / برایتون و رم</span>
                 </div>
                 <div class="team-box right">
-                    <span class="team-name">Arsenal</span>
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/9825.png" alt="آرسنال" class="team-logo">
+                    <span class="team-name">Roma</span>
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8686.png" alt="آث رم" class="team-logo">
                 </div>
             </div>
             <div id="match-3" class="prediction-panel">
                 <div class="stats-box">
                     <h4>📊 تحلیل و رو در رو (H2H)</h4>
-                    <p>آخرین بازی رودررو: برایتون ۰ - ۱ آرسنال. آرسنال با ساختار دفاعی مستحکم راهی فالمر می‌شود.</p>
+                    <p>تقابل جذاب فوتبال مالکانه برایتون با ساختار تاکتیکی و سرسخت تیم رومی در سطح اروپا.</p>
                 </div>
                 <div class="win-probability">
                     <div class="prob-bar-container">
-                        <div class="prob-home" style="width: 22%;"></div>
-                        <div class="prob-draw" style="width: 27%;"></div>
-                        <div class="prob-away" style="width: 51%;"></div>
+                        <div class="prob-home" style="width: 40%;"></div>
+                        <div class="prob-draw" style="width: 30%;"></div>
+                        <div class="prob-away" style="width: 30%;"></div>
                     </div>
                     <div class="prob-labels">
-                        <span>برایتون: ۲۲٪</span>
-                        <span>مساوی: ۲۷٪</span>
-                        <span>آرسنال: ۵۱٪</span>
+                        <span>برایتون: ۴۰٪</span>
+                        <span>مساوی: ۳۰٪</span>
+                        <span>رم: ۳۰٪</span>
                     </div>
                 </div>
                 <div class="vote-form">
                     <button class="vote-btn vote-home" onclick="submitVote('برایتون')">برد برایتون</button>
                     <button class="vote-btn vote-draw" onclick="submitVote('مساوی')">مساوی</button>
-                    <button class="vote-btn vote-away" onclick="submitVote('آرسنال')">برد آرسنال</button>
+                    <button class="vote-btn vote-away" onclick="submitVote('رم')">برد رم</button>
                 </div>
             </div>
 
             <div class="match-card" onclick="togglePrediction('match-4')">
                 <div class="team-box">
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8686.png" alt="آث رم" class="team-logo">
-                    <span class="team-name">Roma</span>
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8636.png" alt="اینتر" class="team-logo">
+                    <span class="team-name">Inter</span>
                 </div>
                 <div class="match-info">
                     <span class="match-time">۱۹:۳۰</span>
-                    <span class="match-league">سری آ ایتالیا</span>
+                    <span class="match-league">لیگ قهرمانان / اروپا</span>
                 </div>
                 <div class="team-box right">
-                    <span class="team-name">Inter</span>
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8636.png" alt="اینترمیلان" class="team-logo">
+                    <span class="team-name">Real Madrid</span>
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8633.png" alt="رئال مادرید" class="team-logo">
                 </div>
             </div>
             <div id="match-4" class="prediction-panel">
                 <div class="stats-box">
                     <h4>📊 تحلیل و رو در رو (H2H)</h4>
-                    <p>نبرد سنتی در المپیکو؛ اینتر با تجربه بالا و رم با انگیزه میزبانی پا به میدان می‌گذارند.</p>
+                    <p>نبرد کلاسیک قاره سبز؛ رئال با درخشش ستاره‌ها و اینتر با شوت‌های سهمگین و ساختار تدافعی.</p>
                 </div>
                 <div class="win-probability">
                     <div class="prob-bar-container">
-                        <div class="prob-home" style="width: 30%;"></div>
-                        <div class="prob-draw" style="width: 32%;"></div>
-                        <div class="prob-away" style="width: 38%;"></div>
+                        <div class="prob-home" style="width: 32%;"></div>
+                        <div class="prob-draw" style="width: 26%;"></div>
+                        <div class="prob-away" style="width: 42%;"></div>
                     </div>
                     <div class="prob-labels">
-                        <span>رم: ۳۰٪</span>
-                        <span>مساوی: ۳۲٪</span>
-                        <span>اینتر: ۳۸٪</span>
+                        <span>اینتر: ۳۲٪</span>
+                        <span>مساوی: ۲۶٪</span>
+                        <span>رئال مادرید: ۴۲٪</span>
                     </div>
                 </div>
                 <div class="vote-form">
-                    <button class="vote-btn vote-home" onclick="submitVote('رم')">برد رم</button>
+                    <button class="vote-btn vote-home" onclick="submitVote('اینتر')">برد اینتر</button>
                     <button class="vote-btn vote-draw" onclick="submitVote('مساوی')">مساوی</button>
-                    <button class="vote-btn vote-away" onclick="submitVote('اینتر')">برد اینتر</button>
+                    <button class="vote-btn vote-away" onclick="submitVote('رئال مادرید')">برد رئال مادرید</button>
                 </div>
             </div>
 
@@ -841,18 +858,18 @@
             <div id="match-5" class="prediction-panel">
                 <div class="stats-box">
                     <h4>📊 تحلیل و رو در رو (H2H)</h4>
-                    <p>بارسلونا با خط حمله پرمهره در سانچز پیسخوان مهمان سویا خواهد بود.</p>
+                    <p>بارسلونا با خط حمله هجومی آماده سفر به سانچز پیسخوان برای رویارویی با سویا است.</p>
                 </div>
                 <div class="win-probability">
                     <div class="prob-bar-container">
-                        <div class="prob-home" style="width: 21%;"></div>
+                        <div class="prob-home" style="width: 22%;"></div>
                         <div class="prob-draw" style="width: 25%;"></div>
-                        <div class="prob-away" style="width: 54%;"></div>
+                        <div class="prob-away" style="width: 53%;"></div>
                     </div>
                     <div class="prob-labels">
-                        <span>سویا: ۲۱٪</span>
+                        <span>سویا: ۲۲٪</span>
                         <span>مساوی: ۲۵٪</span>
-                        <span>بارسلونا: ۵۴٪</span>
+                        <span>بارسلونا: ۵۳٪</span>
                     </div>
                 </div>
                 <div class="vote-form">
@@ -867,71 +884,78 @@
 
             <div class="match-card" onclick="togglePrediction('match-6')">
                 <div class="team-box">
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8678.png" alt="بورنموث" class="team-logo">
-                    <span class="team-name">Bournemouth</span>
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/10260.png" alt="منچستریونایتد" class="team-logo">
+                    <span class="team-name">Man United</span>
                 </div>
                 <div class="match-info">
-                    <span class="match-time">۱۶:۳۰</span>
+                    <span class="match-time">۱۹:۰۰</span>
                     <span class="match-league">لیگ برتر انگلیس</span>
                 </div>
                 <div class="team-box right">
-                    <span class="team-name">Liverpool</span>
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8650.png" alt="لیورپول" class="team-logo">
+                    <span class="team-name">Fulham</span>
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/9879.png" alt="فولام" class="team-logo">
                 </div>
             </div>
             <div id="match-6" class="prediction-panel">
                 <div class="stats-box">
                     <h4>📊 تحلیل و رو در رو (H2H)</h4>
-                    <p>لیورپول با سرعت بالای مهاجمانش به مصاف بورنموثِ سرسختِ خانگی می‌رود.</p>
+                    <p>شیاطین سرخ در اولدترافورد پذیرای فولام سرسخت هستند؛ دیداری که طبق عادت هواداران را تا دقیقه آخر عذاب می‌دهد!</p>
                 </div>
                 <div class="win-probability">
                     <div class="prob-bar-container">
-                        <div class="prob-home" style="width: 20%;"></div>
-                        <div class="prob-draw" style="width: 25%;"></div>
-                        <div class="prob-away" style="width: 55%;"></div>
+                        <div class="prob-home" style="width: 52%;"></div>
+                        <div class="prob-draw" style="width: 26%;"></div>
+                        <div class="prob-away" style="width: 22%;"></div>
                     </div>
                     <div class="prob-labels">
-                        <span>بورنموث: ۲۰٪</span>
-                        <span>مساوی: ۲۵٪</span>
-                        <span>لیورپول: ۵۵٪</span>
+                        <span>منچستریونایتد: ۵۲٪</span>
+                        <span>مساوی: ۲۶٪</span>
+                        <span>فولام: ۲۲٪</span>
                     </div>
                 </div>
                 <div class="vote-form">
-                    <button class="vote-btn vote-home" onclick="submitVote('بورنموث')">برد بورنموث</button>
+                    <button class="vote-btn vote-home" onclick="submitVote('منچستریونایتد')">برد منچستر</button>
                     <button class="vote-btn vote-draw" onclick="submitVote('مساوی')">مساوی</button>
-                    <button class="vote-btn vote-away" onclick="submitVote('لیورپول')">برد لیورپول</button>
+                    <button class="vote-btn vote-away" onclick="submitVote('فولام')">برد فولام</button>
                 </div>
             </div>
+
         </div>
 
         <footer>
-            CANBO FOOTBALL &copy; 1405
+            GEDA CHOLHA — تمامی حقوق محفوظ است © ۱۴۰۵
         </footer>
     </div>
 
-    <!-- JavaScript for Animations and Predictions -->
     <script>
-        // Splash Screen
-        window.addEventListener('load', function() {
-            setTimeout(function() {
+        // Splash screen fade out handler
+        window.addEventListener('load', () => {
+            setTimeout(() => {
                 const splash = document.getElementById('splash-screen');
-                splash.classList.add('fade-out');
-            }, 2200);
+                if (splash) {
+                    splash.classList.add('fade-out');
+                    setTimeout(() => splash.remove(), 800);
+                }
+            }, 1000);
         });
 
-        // Toggle Match Prediction Panel
+        // Toggle match prediction panel
         function togglePrediction(matchId) {
             const panel = document.getElementById(matchId);
-            document.querySelectorAll('.prediction-panel').forEach(p => {
-                if(p.id !== matchId) p.classList.remove('active');
+            const allPanels = document.querySelectorAll('.prediction-panel');
+            
+            allPanels.forEach(p => {
+                if (p.id !== matchId && p.classList.contains('active')) {
+                    p.classList.remove('active');
+                }
             });
+
             panel.classList.toggle('active');
         }
 
-        // Submit Prediction Vote
+        // Dummy vote handler
         function submitVote(team) {
-            event.stopPropagation();
-            alert('پیش‌بینی شما برای نتیجه "' + team + '" در لیگ گداهای استرسی ثبت شد! 🎯');
+            alert('پیش‌بینی شما ("' + team + '") با موفقیت در لیگ گداهای استرسی ثبت شد! 🚀');
         }
     </script>
 </body>
