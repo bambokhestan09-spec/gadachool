@@ -1,776 +1,268 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GEDACHOL | لیگ گداهای استرسی فصل 2</title>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;800;900&display=swap" rel="stylesheet">
-  <style>
-    :root {
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEDA CHOLHA - لیگ پیش‌بینی فوتبال</title>
+    <link href="https://cdn.jsdelivr.net/npm/vazirmatn@33.0.3/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --accent-color: #00e676;
+            --text-color: #f0f6fc;
+            --text-secondary: #8b949e;
+            --border-color: #30363d;
+            --gold: #ffd700;
+        }
 
-    body {
-      background-color: var(--bg-dark-blue);
-      color: var(--text-white);
-      font-family: 'Vazirmatn', Tahoma, sans-serif;
-      line-height: 1.6;
-      padding-bottom: 60px;
-      min-height: 100vh;
-      position: relative;
-      overflow-x: hidden;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Vazirmatn', sans-serif;
+        }
 
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      z-index: -2;
-      background: 
-        radial-gradient(circle at 50% 20%, rgba(20, 90, 180, 0.8) 0%, transparent 70%),
-        radial-gradient(circle at 80% 80%, rgba(5, 30, 70, 0.9) 0%, transparent 60%),
-        linear-gradient(135deg, #0d4691 0%, #06234b 100%);
-    }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
 
-    body::after {
-      content: '';
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      z-index: -1;
-      opacity: 0.12;
-      background-image: radial-gradient(#fff 1px, transparent 0);
-      background-size: 12px 12px;
-    }
+        .container {
+            width: 100%;
+            max-width: 900px;
+        }
 
-    header {
-      text-align: center;
-      padding: 40px 20px 30px;
-      position: relative;
-    }
+        /* Header */
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #1f2937, #111827);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
 
-    .banner-container {
-      position: relative;
-      display: inline-block;
-      margin-bottom: 25px;
-    }
+        header h1 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
 
-    .hero-banner {
-      max-width: 320px;
-      width: 100%;
-      height: auto;
-      border-radius: 20px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-      border: 3px solid rgba(255, 255, 255, 0.3);
-      transform: rotate(-2deg);
-      transition: transform 0.3s ease;
-    }
+        header p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
 
-    .hero-banner:hover {
-      transform: rotate(0deg) scale(1.03);
-    }
+        /* Navigation / Tabs */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
 
-    .hero-title {
-      font-size: 3.5rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      line-height: 1.1;
-      letter-spacing: 2px;
-      color: var(--text-white);
-      text-shadow: 4px 6px 0px rgba(0, 0, 0, 0.4);
-      transform: rotate(-3deg);
-      margin-bottom: 15px;
-    }
+        .tab-btn {
+            flex: 1;
+            padding: 12px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
-    .red-badge {
-      display: inline-block;
-      background: var(--accent-red);
-      color: #fff;
-      font-weight: 900;
-      font-size: 1.1rem;
-      padding: 8px 24px;
-      border-radius: 8px;
-      transform: rotate(-2deg);
-      box-shadow: 3px 5px 15px rgba(230, 43, 50, 0.4);
-      margin-bottom: 10px;
-    }
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--accent-color);
+            color: #000;
+        }
 
-    .gold-badge {
-      display: inline-block;
-      background: linear-gradient(135deg, var(--gold-light), var(--accent-gold));
-      color: #1a1000;
-      font-weight: 900;
-      font-size: 1rem;
-      padding: 6px 20px;
-      border-radius: 8px;
-      transform: rotate(1deg);
-      box-shadow: 3px 5px 15px rgba(212, 160, 70, 0.3);
-    }
+        /* Sections */
+        .section {
+            display: none;
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+        }
 
-    .accordion-container {
-      max-width: 850px;
-      margin: 30px auto 0;
-      padding: 0 15px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
+        .section.active {
+            display: block;
+        }
 
-    .acc-item {
-      background: var(--card-bg);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      transition: all 0.3s ease;
-    }
+        /* Leaderboard Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
 
-    .acc-item:hover {
-      border-color: rgba(255, 255, 255, 0.5);
-      transform: translateY(-2px);
-    }
+        th, td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
 
-    .acc-header {
-      width: 100%;
-      padding: 22px 25px;
-      background: transparent;
-      border: none;
-      color: var(--text-white);
-      font-size: 1.2rem;
-      font-weight: 800;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      font-family: inherit;
-      text-align: right;
-    }
+        th {
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
 
-    .acc-item.active .acc-header {
-      background: rgba(255, 255, 255, 0.1);
-      border-bottom: 1px solid var(--card-border);
-      color: var(--gold-light);
-    }
+        tr:first-child td:first-child {
+            color: var(--gold);
+            font-weight: bold;
+        }
 
-    .arrow-icon {
-      font-size: 0.9rem;
-      transition: transform 0.4s ease;
-      background: rgba(255, 255, 255, 0.15);
-      width: 34px;
-      height: 34px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-    }
+        .rank {
+            font-weight: bold;
+            width: 50px;
+        }
 
-    .acc-item.active .arrow-icon {
-      transform: rotate(180deg);
-      background: var(--accent-red);
-      color: #fff;
-    }
+        .points {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
 
-    .acc-body {
-      display: none;
-      padding: 25px;
-    }
+        /* Matches Grid */
+        .matches-grid {
+            display: grid;
+            gap: 15px;
+        }
 
-    .acc-item.active .acc-body {
-      display: block;
-      animation: fadeIn 0.3s ease-in-out;
-    }
+        .match-card {
+            background: #21262d;
+            padding: 15px 20px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid var(--border-color);
+        }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+        .team {
+            font-weight: bold;
+            font-size: 1.1rem;
+            width: 40%;
+        }
 
-    .match-item {
-      background: rgba(0, 0, 0, 0.25);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 16px;
-      padding: 18px;
-      margin-bottom: 14px;
-    }
+        .team.left { text-align: left; }
+        .team.right { text-align: right; }
 
-    .match-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.88rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      padding-bottom: 10px;
-      margin-bottom: 12px;
-    }
+        .vs {
+            background: var(--border-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--accent-color);
+        }
 
-    .match-date { color: rgba(255, 255, 255, 0.7); font-weight: 600; }
-    .match-time {
-      background: var(--accent-red);
-      color: #fff;
-      padding: 3px 12px;
-      border-radius: 6px;
-      font-weight: 800;
-      font-size: 0.85rem;
-      direction: ltr;
-      display: inline-block;
-    }
-
-    .match-teams {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: 800;
-      font-size: 1.1rem;
-    }
-
-    .team {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex: 1;
-    }
-
-    .team.home { justify-content: flex-start; }
-    .team.away { justify-content: flex-end; }
-
-    .team img {
-      width: 36px;
-      height: 36px;
-      object-fit: contain;
-    }
-
-    .vs-badge {
-      background: var(--accent-gold);
-      color: #000;
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-size: 0.8rem;
-      font-weight: 900;
-      margin: 0 10px;
-    }
-
-    .table-responsive {
-      width: 100%;
-      overflow-x: auto;
-    }
-
-    .ranking-table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0 8px;
-    }
-
-    .ranking-table th {
-      color: var(--gold-light);
-      padding: 10px 15px;
-      font-size: 0.85rem;
-      font-weight: 800;
-    }
-
-    .ranking-table tbody tr {
-      background: rgba(0, 0, 0, 0.25);
-      border-radius: 12px;
-      transition: transform 0.2s ease;
-    }
-
-    .ranking-table tbody tr:hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: scale(1.01);
-    }
-
-    .ranking-table td {
-      padding: 14px 15px;
-      font-weight: 600;
-    }
-
-    .ranking-table td:first-child { border-top-right-radius: 12px; border-bottom-right-radius: 12px; }
-    .ranking-table td:last-child { border-top-left-radius: 12px; border-bottom-left-radius: 12px; }
-
-    .rank-num { text-align: center; font-weight: 900; font-size: 1.1rem; width: 50px; }
-
-    .top-1 { background: linear-gradient(90deg, rgba(212, 160, 70, 0.3) 0%, rgba(0,0,0,0.2) 100%) !important; border-right: 4px solid var(--accent-gold); }
-    .top-1 .rank-num, .top-1 .player-name { color: var(--gold-light) !important; font-weight: 900; }
-
-    .top-2 { border-right: 4px solid #cfd3d6; }
-    .top-3 { border-right: 4px solid #cd8b55; }
-
-    .user-highlight {
-      background: linear-gradient(90deg, rgba(46, 204, 113, 0.25) 0%, rgba(0, 0, 0, 0.2) 100%) !important;
-      border-right: 4px solid #2ecc71;
-    }
-    .user-highlight .player-name { color: #2ecc71 !important; font-weight: 900; }
-
-    .points { text-align: center; font-size: 1.2rem; font-weight: 900; color: #fff; }
-
-    .news-card {
-      background: rgba(0, 0, 0, 0.25);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 18px;
-      padding: 18px;
-      margin-bottom: 20px;
-      display: flex;
-      gap: 18px;
-      align-items: center;
-      transition: all 0.3s ease;
-    }
-
-    .news-card:hover {
-      background: rgba(0, 0, 0, 0.35);
-      border-color: rgba(255, 255, 255, 0.25);
-      transform: translateY(-3px);
-    }
-
-    .news-image-wrapper {
-      width: 140px;
-      height: 110px;
-      flex-shrink: 0;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 2px solid rgba(255, 255, 255, 0.15);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-      position: relative;
-    }
-
-    .news-image-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.4s ease;
-    }
-
-    .news-card:hover .news-image-wrapper img {
-      transform: scale(1.1);
-    }
-
-    .news-content { flex: 1; }
-
-    .news-badge {
-      display: inline-block;
-      background: var(--accent-gold);
-      color: #000;
-      font-size: 0.75rem;
-      font-weight: 900;
-      padding: 3px 10px;
-      border-radius: 6px;
-      margin-bottom: 8px;
-    }
-
-    .news-title {
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 6px;
-    }
-
-    .news-desc {
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 0.88rem;
-      line-height: 1.6;
-    }
-
-    .poll-option {
-      display: flex;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.9);
-      color: #000;
-      padding: 14px 20px;
-      border-radius: 30px;
-      margin-bottom: 12px;
-      cursor: pointer;
-      font-weight: 700;
-      transition: all 0.2s ease;
-    }
-
-    .poll-option:hover { background: #fff; transform: scale(1.01); }
-
-    .poll-option input {
-      margin-left: 12px;
-      accent-color: var(--accent-red);
-      width: 18px;
-      height: 18px;
-    }
-
-    .poll-btn {
-      width: 100%;
-      background: var(--accent-red);
-      color: #fff;
-      border: none;
-      padding: 16px;
-      border-radius: 30px;
-      font-weight: 900;
-      font-size: 1rem;
-      cursor: pointer;
-      font-family: inherit;
-      box-shadow: 0 6px 20px rgba(230, 43, 50, 0.4);
-      transition: transform 0.2s ease;
-    }
-
-    .poll-btn:hover { transform: translateY(-2px); }
-
-    @media (max-width: 650px) {
-      .hero-title { font-size: 2.5rem; }
-      .acc-header { font-size: 1.05rem; padding: 18px; }
-      .news-card { flex-direction: column; align-items: flex-start; }
-      .news-image-wrapper { width: 100%; height: 160px; }
-    }
-  </style>
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <div class="banner-container">
-      <img src="photo1789386549.jpeg" alt="GEDACHOL Banner" class="hero-banner">
-    </div>
-    
-    <div class="hero-title">GEDACHOL</div>
-    
-    <div>
-      <span class="red-badge">لیگ گداهای استرسی</span>
-    </div>
-    <div>
-      <span class="gold-badge">🏆 فصل دوم | 1405 - 1406 🏆</span>
-    </div>
-  </header>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>GEDA CHOLHA</h1>
+            <p>جدول رسمی لیگ پیش‌بینی و کل‌کل‌های گروهی</p>
+        </header>
 
-  <div class="accordion-container">
-    <!-- بخش 1: مسابقات آینده -->
-    <div class="acc-item">
-      <button class="acc-header" onclick="toggleAccordion(this)">
-        <span>⚽ مسابقات پیش‌بینی هفته</span>
-        <span class="arrow-icon">▼</span>
-      </button>
-      <div class="acc-body">
-        
-        <!-- بازی 1: چلسی - برنتفورد -->
-        <div class="match-item">
-          <div class="match-header">
-            <span class="match-info">🏴󠁧󠁢󠁥󠁮󠁧󠁿 لیگ برتر انگلیس</span>
-            <span class="match-date">📅 <b style="color:var(--gold-light);">جمعه 27 شهریور 1405</b></span>
-            <span class="match-time">22:30</span>
-          </div>
-          <div class="match-teams">
-            <div class="team home">
-              <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/fhBITrIlbQxhVB6IjxUO6Q_500x500.png" alt="چلسی">
-              <span>چلسی</span>
-            </div>
-            <span class="vs-badge">VS</span>
-            <div class="team away">
-              <span>برنتفورد</span>
-              <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/QOUce0WQBYqnkSmN6_TxGA_500x500.png" alt="برنتفورد">
-            </div>
-          </div>
+        <!-- Navigation -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('leaderboard')">جدول امتیازات</button>
+            <button class="tab-btn" onclick="switchTab('matches')">بازی‌های این هفته</button>
         </div>
 
-        <!-- بازی 2: تاتنهام - استون ویلا -->
-        <div class="match-item">
-          <div class="match-header">
-            <span class="match-info">🏴󠁧󠁢󠁥󠁮󠁧󠁿 لیگ برتر انگلیس</span>
-            <span class="match-date">📅 <b style="color:var(--gold-light);">شنبه 28 شهریور 1405</b></span>
-            <span class="match-time">15:00</span>
-          </div>
-          <div class="match-teams">
-            <div class="team home">
-              <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/k3Q_mKE98Dnohrcea0JFgQ_500x500.png" alt="تاتنهام">
-              <span>تاتنهام</span>
-            </div>
-            <span class="vs-badge">VS</span>
-            <div class="team away">
-              <span>استون ویلا</span>
-              <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/uyNNelfnFvCEnsLrUL-j2Q_500x500.png" alt="استون ویلا">
-            </div>
-          </div>
+        <!-- Leaderboard Section -->
+        <div id="leaderboard" class="section active">
+            <table>
+                <thead>
+                    <tr>
+                        <th>رتبه</th>
+                        <th>نام شرکت‌کننده</th>
+                        <th>بازی</th>
+                        <th>امتیاز</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboard-body">
+                    <!-- اطلاعات به صورت پویا با جاوااسکریپت بارگذاری می‌شوند -->
+                </tbody>
+            </table>
         </div>
 
-        <!-- بازی 3: آرسنال - برایتون -->
-        <div class="match-item">
-          <div class="match-header">
-            <span class="match-info">🏴󠁧󠁢󠁥󠁮󠁧󠁿 لیگ برتر انگلیس</span>
-            <span class="match-date">📅 <b style="color:var(--gold-light);">شنبه 28 شهریور 1405</b></span>
-            <span class="match-time">17:30</span>
-          </div>
-          <div class="match-teams">
-            <div class="team home">
-              <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/4us2nCgl6kgZc0t3hpW75Q_500x500.png" alt="آرسنال">
-              <span>آرسنال</span>
+        <!-- Matches Section -->
+        <div id="matches" class="section">
+            <div class="matches-grid" id="matches-grid">
+                <!-- بازی‌ها با جاوااسکریپت بارگذاری می‌شوند -->
             </div>
-            <span class="vs-badge">VS</span>
-            <div class="team away">
-              <span>برایتون</span>
-              <img src="https://ssl.gstatic.com/onebox/media/sports/optimized/EKIe0e-ZIphOcfQAwsuEEQ_500x500.png" alt="برایتون">
-            </div>
-          </div>
         </div>
 
-        <!-- بازی 4: رم - اینتر -->
-        <div class="match-item">
-          <div class="match-header">
-            <span class="match-info">🇮🇹 سری آ ایتالیا</span>
-            <span class="match-date">📅 <b style="color:var(--gold-light);">شنبه 28 شهریور 1405</b></span>
-            <span class="match-time">19:30</span>
-          </div>
-          <div class="match-teams">
-            <div class="team home">
-              <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/BQdP4jUBFJfG7U_JBsFIMg_500x500.png" alt="رم">
-              <span>رم</span>
-            </div>
-            <span class="vs-badge">VS</span>
-            <div class="team away">
-              <span>اینتر</span>
-              <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/l2-icwsMhIvsbRw8AwC1yg_500x500.png" alt="اینتر">
-            </div>
-          </div>
-        </div>
-
-        <!-- بازی 5: بارسلونا - سویا -->
-        <div class="match-item">
-          <div class="match-header">
-            <span class="match-info">🇪🇸 لا لیگا اسپانیا</span>
-            <span class="match-date">📅 <b style="color:var(--gold-light);">شنبه 28 شهریور 1405</b></span>
-            <span class="match-time">22:30</span>
-          </div>
-          <div class="match-teams">
-            <div class="team home">
-              <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/paYnEE8hcrP96neHRNofhQ_500x500.png" alt="بارسلونا">
-              <span>بارسلونا</span>
-            </div>
-            <span class="vs-badge">VS</span>
-            <div class="team away">
-              <span>سویا</span>
-              <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/hCTs5EX3WjCMC5Jl3QE4Rw_500x500.png" alt="سویا">
-            </div>
-          </div>
-        </div>
-
-        <!-- بازی 6: بورنموث - لیورپول -->
-        <div class="match-item">
-          <div class="match-header">
-            <span class="match-info">🏴󠁧󠁢󠁥󠁮󠁧󠁿 لیگ برتر انگلیس</span>
-            <span class="match-date">📅 <b style="color:var(--gold-light);">یکشنبه 29 شهریور 1405</b></span>
-            <span class="match-time">16:30</span>
-          </div>
-          <div class="match-teams">
-            <div class="team home">
-              <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/IcOt-hrK04B-RlRwI3R0yA_500x500.png" alt="بورنموث">
-              <span>بورنموث</span>
-            </div>
-            <span class="vs-badge">VS</span>
-            <div class="team away">
-              <span>لیورپول</span>
-              <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/nGfV05dipbAc7zzojivKew_500x500.png" alt="لیورپول">
-            </div>
-          </div>
-        </div>
-
-        <!-- بازی 7: اتلتیکو مادرید - رئال مادرید -->
-        <div class="match-item">
-          <div class="match-header">
-            <span class="match-info">🇪🇸 لا لیگا اسپانیا</span>
-            <span class="match-date">📅 <b style="color:var(--gold-light);">یکشنبه 29 شهریور 1405</b></span>
-            <span class="match-time">17:45</span>
-          </div>
-          <div class="match-teams">
-            <div class="team home">
-              <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/pEqmA7CL-VRo4Llq3rwIPA_500x500.png" alt="اتلتیکو مادرید">
-              <span>اتلتیکو مادرید</span>
-            </div>
-            <span class="vs-badge">VS</span>
-            <div class="team away">
-              <span>رئال مادرید</span>
-              <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/Th4fAVAZeCJWRcKoLW7koA_500x500.png" alt="رئال مادرید">
-            </div>
-          </div>
-        </div>
-
-        <!-- بازی 8: فولام - منچستر یونایتد -->
-        <div class="match-item">
-          <div class="match-header">
-            <span class="match-info">🏴󠁧󠁢󠁥󠁮󠁧󠁿 لیگ برتر انگلیس</span>
-            <span class="match-date">📅 <b style="color:var(--gold-light);">یکشنبه 29 شهریور 1405</b></span>
-            <span class="match-time">19:00</span>
-          </div>
-          <div class="match-teams">
-            <div class="team home">
-              <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/Gh7_5p3n364p4vxeM8FhNg_500x500.png" alt="فولام">
-              <span>فولام</span>
-            </div>
-            <span class="vs-badge">VS</span>
-            <div class="team away">
-              <span>منچستر یونایتد</span>
-              <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/udQ6ns69PctCv143h-GeYw_500x500.png" alt="منچستر یونایتد">
-            </div>
-          </div>
-        </div>
-
-      </div>
+        <footer>
+            <p>© CANBO FOOTBALL | تمامی حقوق برای GEDA CHOLHA محفوظ است.</p>
+        </footer>
     </div>
 
-    <!-- بخش 2: جدول رده‌بندی -->
-    <div class="acc-item active">
-      <button class="acc-header" onclick="toggleAccordion(this)">
-        <span>🏆 جدول رده‌بندی کل (13 عضو)</span>
-        <span class="arrow-icon">▼</span>
-      </button>
-      <div class="acc-body">
-        <div class="table-responsive">
-          <table class="ranking-table">
-            <thead>
-              <tr>
-                <th style="text-align: center;">رتبه</th>
-                <th>شرکت‌کننده</th>
-                <th style="text-align: center;">امتیاز</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="top-1">
-                <td class="rank-num">🥇 1</td>
-                <td class="player-name">Asm A</td>
-                <td class="points">52</td>
-              </tr>
-              <tr class="top-2 user-highlight">
-                <td class="rank-num">🥈 2</td>
-                <td class="player-name">REZA GHATIFI</td>
-                <td class="points">48</td>
-              </tr>
-              <tr class="top-3">
-                <td class="rank-num">🥉 3</td>
-                <td class="player-name">Mahdi</td>
-                <td class="points">45</td>
-              </tr>
-              <tr>
-                <td class="rank-num">4</td>
-                <td class="player-name">Donya Asil</td>
-                <td class="points">44</td>
-              </tr>
-              <tr>
-                <td class="rank-num">5</td>
-                <td class="player-name">حبیب نعیمی</td>
-                <td class="points">43</td>
-              </tr>
-              <tr>
-                <td class="rank-num">6</td>
-                <td class="player-name">محمد خلیلاوی پور</td>
-                <td class="points">40</td>
-              </tr>
-              <tr>
-                <td class="rank-num">7</td>
-                <td class="player-name">hajar daoudi</td>
-                <td class="points">38</td>
-              </tr>
-              <tr>
-                <td class="rank-num">8</td>
-                <td class="player-name">Ahlam Aljaber</td>
-                <td class="points">37</td>
-              </tr>
-              <tr>
-                <td class="rank-num">9</td>
-                <td class="player-name">hey10</td>
-                <td class="points">34</td>
-              </tr>
-              <tr>
-                <td class="rank-num">10</td>
-                <td class="player-name">امین دریس</td>
-                <td class="points">33</td>
-              </tr>
-              <tr>
-                <td class="rank-num">11</td>
-                <td class="player-name">Sama salehi</td>
-                <td class="points">30</td>
-              </tr>
-              <tr>
-                <td class="rank-num">12</td>
-                <td class="player-name">محمد جاسمیان</td>
-                <td class="points">24</td>
-              </tr>
-              <tr>
-                <td class="rank-num">13</td>
-                <td class="player-name">مهدی</td>
-                <td class="points">15</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+    <script>
+        // داده‌های نمونه برای جدول امتیازات (می‌توانی تغییر دهی)
+        const players = [
+            { rank: 1, name: "نعیمی", played: 5, points: 42 },
+            { rank: 2, name: "جاسمیان", played: 5, points: 38 },
+            { rank: 3, name: "ناجح", played: 5, points: 31 },
+            { rank: 4, name: "خانم داودی", played: 5, points: 27 }
+        ];
 
-    <!-- بخش 3: اخبار و حواشی اختصاصی -->
-    <div class="acc-item">
-      <button class="acc-header" onclick="toggleAccordion(this)">
-        <span>📰 اخبار و حواشی اختصاصی لیگ</span>
-        <span class="arrow-icon">▼</span>
-      </button>
+        // داده‌های نمونه برای بازی‌های هفته
+        const matches = [
+            { home: "منچستر یونایتد", away: "لیورپول", time: "شنبه - ۲۱:۰۰" },
+            { home: "رئال مادرید", away: "بارسلونا", time: "یکشنبه - ۲۲:۳۰" },
+            { home: "آرسنال", away: "چلسی", time: "یکشنبه - ۱۹:۰۰" }
+        ];
 
-      <div class="acc-body">
+        // رندر جدول
+        const leaderboardBody = document.getElementById('leaderboard-body');
+        players.forEach(p => {
+            leaderboardBody.innerHTML += `
+                <tr>
+                    <td class="rank">${p.rank}</td>
+                    <td>${p.name}</td>
+                    <td>${p.played}</td>
+                    <td class="points">${p.points}</td>
+                </tr>
+            `;
+        });
 
-        <!-- خبر اول -->
-        <div class="news-card">
-          <div class="news-image-wrapper">
-            <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=500&q=80" alt="چلسی و برنتفورد">
-          </div>
-          <div class="news-content">
-            <span class="news-badge">🚨 آغاز هفته پنجم</span>
-            <div class="news-title">⚽ آغاز هفته پنجم مسابقات با نبرد حساس چلسی و برنتفورد!</div>
-            <div class="news-desc">
-              آغاز هفته پنجم از روز جمعه با بازی چلسی در مقابل برنتفورد از ساعت <b style="color:var(--gold-light);">22:30</b> آغاز می‌شود. چلسی با انجام 4 بازی و <b style="color:var(--gold-light);">7 امتیاز</b> در رده 5 قرار گرفته و برنتفورد پشت سر او با <b style="color:var(--accent-red);">6 امتیاز</b> این تیم را تعقیب می‌کند.
-            </div>
-          </div>
-        </div>
+        // رندر بازی‌ها
+        const matchesGrid = document.getElementById('matches-grid');
+        matches.forEach(m => {
+            matchesGrid.innerHTML += `
+                <div class="match-card">
+                    <span class="team right">${m.home}</span>
+                    <span class="vs">${m.time}</span>
+                    <span class="team left">${m.away}</span>
+                </div>
+            `;
+        });
 
-        <!-- خبر دوم -->
-        <div class="news-card">
-          <div class="news-image-wrapper">
-            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=500&q=80" alt="زویدات صدرنشین">
-          </div>
-          <div class="news-content">
-            <span class="news-badge">📊 پایان هفته چهارم</span>
-            <div class="news-title">👑 زویدات همچنان غول آخر لیگ گداهای استرسی...</div>
-            <div class="news-desc">
-              زویدات همچنان با <b style="color:var(--gold-light);">50 امتیاز</b> دست‌نیافتنی و صدرنشین لیگ گداهای استرسی، باید دید او در هفته پنجم می‌تواند همچنان این روند را ادامه دهد یا خیر.
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- بخش 4: نظرسنجی -->
-    <div class="acc-item">
-      <button class="acc-header" onclick="toggleAccordion(this)">
-        <span>🗳️ نظرسنجی و بازخورد اعضا</span>
-        <span class="arrow-icon">▼</span>
-      </button>
-      <div class="acc-body">
-        <div style="margin-bottom: 15px; font-weight: 800; font-size: 1rem; color: #fff;">
-          آیا از طراحی جدید پوستر گونه سایت رضایت دارید؟
-        </div>
-        <form onsubmit="event.preventDefault(); alert('رأی شما با موفقیت ثبت شد!');">
-          <label class="poll-option">
-            <input type="radio" name="poll" required>
-            <span>🔥 بسیار عالی و شبیه به پوسترهای تبلیغاتی مدرن است</span>
-          </label>
-          <label class="poll-option">
-            <input type="radio" name="poll">
-            <span>👍 خوب و خواناست</span>
-          </label>
-          <button type="submit" class="poll-btn">ثبت رأی نهایی</button>
-        </form>
-      </div>
-    </div>
-
-  </div>
-
-  <script>
-    function toggleAccordion(headerBtn) {
-      const currentItem = headerBtn.parentElement;
-      const isOpen = currentItem.classList.contains('active');
-
-      document.querySelectorAll('.acc-item').forEach(item => {
-        item.classList.remove('active');
-      });
-
-      if (!isOpen) {
-        currentItem.classList.add('active');
-      }
-    }
-  </script>
+        // سوییچ بین تب‌ها
+        function switchTab(tabId) {
+            document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
 </body>
 </html>
