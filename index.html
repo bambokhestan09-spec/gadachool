@@ -117,10 +117,71 @@
             max-width: 950px;
         }
 
+        /* Cartoon & Jelly Avatars Banner Style */
+        .jelly-hero-banner {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
+            padding: 25px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .jelly-avatar-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            animation: floatJelly 4s ease-in-out infinite;
+        }
+
+        .jelly-avatar-card:nth-child(2) {
+            animation-delay: 1.5s;
+        }
+
+        @keyframes floatJelly {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(2deg); }
+        }
+
+        .jelly-icon-box {
+            width: 75px;
+            height: 75px;
+            background: linear-gradient(135deg, #f39c12 0%, #d35400 100%);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(243, 156, 18, 0.4), inset 0 2px 6px rgba(255,255,255,0.4);
+            border: 2px solid rgba(255,255,255,0.3);
+            font-size: 2.2rem;
+            position: relative;
+        }
+
+        .jelly-icon-box.alt {
+            background: linear-gradient(135deg, #ff334b 0%, #991b1b 100%);
+            box-shadow: 0 10px 25px rgba(255, 51, 75, 0.4), inset 0 2px 6px rgba(255,255,255,0.4);
+        }
+
+        .jelly-label {
+            font-size: 0.85rem;
+            font-weight: 800;
+            background: rgba(0,0,0,0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
         /* Header Styles */
         header {
             text-align: center;
-            padding: 30px 20px 40px;
+            padding: 10px 20px 30px;
             position: relative;
         }
 
@@ -135,7 +196,7 @@
         }
 
         .main-title {
-            font-size: 3rem;
+            font-size: 2.8rem;
             font-weight: 900;
             text-transform: uppercase;
             line-height: 1.2;
@@ -163,7 +224,7 @@
             font-weight: 700;
             font-size: 0.95rem;
             border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(211, 47, 47, c);
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4);
             border: 1px solid rgba(255,255,255,0.1);
         }
 
@@ -197,6 +258,10 @@
             }
             .rotating-text {
                 font-size: 1.8rem;
+            }
+            .jelly-hero-banner {
+                flex-direction: column;
+                gap: 20px;
             }
         }
 
@@ -494,6 +559,23 @@
     </div>
 
     <div class="container">
+        
+        <!-- Jelly & Cartoon Football Avatars Hero Banner -->
+        <div class="jelly-hero-banner">
+            <div class="jelly-avatar-card">
+                <div class="jelly-icon-box">⚽👕</div>
+                <span class="jelly-label">استرسِ صدرنشین</span>
+            </div>
+            <div class="jelly-avatar-card">
+                <div class="jelly-icon-box alt">🏆🎮</div>
+                <span class="jelly-label">پیش‌بینیِ حرفه‌ای</span>
+            </div>
+            <div class="jelly-avatar-card">
+                <div class="jelly-icon-box">👟🔥</div>
+                <span class="jelly-label">هفته پنجم</span>
+            </div>
+        </div>
+
         <!-- Header -->
         <header>
             <div class="brand-logo">GEDA CHOLHA</div>
@@ -513,6 +595,208 @@
                     <h3>GEDA DAILY NEWS</h3>
                 </div>
                 <div class="newspaper-date">روزنامه اختصاصی حواشی • اخبار امروز</div>
+                
+                <div class="news-item">
+                    <div class="news-title">⚽ آغاز هفته پنجم</div>
+                    <div class="news-detail">
+                        آغاز هفته پنجم از روز جمعه با بازی چلسی در مقابل برنتفورد از ساعت ۲۲:۳۰ آغاز می‌شود. چلسی با انجام ۴ بازی و ۷ امتیاز در رده ۵ قرار گرفته و برنتفورد پشت سر او با ۶ امتیاز این تیم را تعقیب می‌کند.
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-title">🔥 پایان هفته چهارم... زویدات همچنان غول آخر لیگ گداهای استرسی!</div>
+                    <div class="news-detail">
+                        زویدات همچنان با ۵۰ امتیاز دست‌نیافتنی و صدرنشین لیگ گداهای استرسی است. باید دید او در هفته پنجم می‌تواند همچنان این روند را ادامه دهد یا خیر!
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2: Leaderboard & Conditions -->
+            <div class="panel">
+                <div class="panel-title">
+                    <span class="ball-icon">8</span>
+                    جدول امتیازات لیگ
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>رتبه</th>
+                            <th>نام</th>
+                            <th>بازی</th>
+                            <th>امتیاز</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="rank-1">🥇 ۱</td>
+                            <td><strong>زویدات</strong></td>
+                            <td>۴</td>
+                            <td><strong style="color: var(--accent-gold);">۵۰</strong></td>
+                        </tr>
+                        <tr>
+                            <td>🥈 ۲</td>
+                            <td>نعیمی</td>
+                            <td>۴</td>
+                            <td>۴۲</td>
+                        </tr>
+                        <tr>
+                            <td>🥉 ۳</td>
+                            <td>جاسمیان</td>
+                            <td>۴</td>
+                            <td>۳۸</td>
+                        </tr>
+                        <tr>
+                            <td>۴</td>
+                            <td>ناجح</td>
+                            <td>۴</td>
+                            <td>۳۱</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div style="margin-top: 25px;">
+                    <div style="font-size: 0.85rem; color: #93c5fd; margin-bottom: 10px; font-weight: 700;">شرایط و قوانین:</div>
+                    <div class="capsule-wrapper">
+                        <div class="capsule-badge">
+                            <span class="ball-icon" style="background:#0f172a;">8</span>
+                            پیش‌بینی کن، یادت نره!
+                        </div>
+                        <div class="capsule-badge">
+                            <span class="ball-icon" style="background:#10b981; color:#fff;">8</span>
+                            دنبال کردن در فانتزی
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Section 3: Matches Prediction Section -->
+        <div class="matches-section">
+            <div class="panel-title">
+                <span class="ball-icon">⚽</span>
+                هفته پنجم پیش‌بینی
+            </div>
+
+            <!-- جمعه ۲۷ شهریور -->
+            <div class="match-date-header">جمعه ۲۷ شهریور</div>
+
+            <div class="match-card">
+                <div class="team-box">
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/9937.png" alt="Brentford" class="team-logo">
+                    <span class="team-name">Brentford</span>
+                </div>
+                <div class="match-info">
+                    <span class="match-time">۲۲:۳۰</span>
+                    <span class="match-league">لیگ برتر انگلیس</span>
+                </div>
+                <div class="team-box right">
+                    <span class="team-name">Chelsea</span>
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8455.png" alt="Chelsea" class="team-logo">
+                </div>
+            </div>
+
+            <!-- شنبه ۲۸ شهریور -->
+            <div class="match-date-header">شنبه ۲۸ شهریور</div>
+
+            <div class="match-card">
+                <div class="team-box">
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8586.png" alt="Tottenham" class="team-logo">
+                    <span class="team-name">Tottenham</span>
+                </div>
+                <div class="match-info">
+                    <span class="match-time">۱۵:۰۰</span>
+                    <span class="match-league">لیگ برتر انگلیس</span>
+                </div>
+                <div class="team-box right">
+                    <span class="team-name">Aston Villa</span>
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/10252.png" alt="Aston Villa" class="team-logo">
+                </div>
+            </div>
+
+            <div class="match-card">
+                <div class="team-box">
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/10204.png" alt="Brighton" class="team-logo">
+                    <span class="team-name">Brighton</span>
+                </div>
+                <div class="match-info">
+                    <span class="match-time">۱۷:۳۰</span>
+                    <span class="match-league">لیگ برتر انگلیس</span>
+                </div>
+                <div class="team-box right">
+                    <span class="team-name">Arsenal</span>
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/9825.png" alt="Arsenal" class="team-logo">
+                </div>
+            </div>
+
+            <div class="match-card">
+                <div class="team-box">
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8686.png" alt="Roma" class="team-logo">
+                    <span class="team-name">Roma</span>
+                </div>
+                <div class="match-info">
+                    <span class="match-time">۱۹:۳۰</span>
+                    <span class="match-league">سری آ ایتالیا</span>
+                </div>
+                <div class="team-box right">
+                    <span class="team-name">Inter</span>
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8636.png" alt="Inter" class="team-logo">
+                </div>
+            </div>
+
+            <div class="match-card">
+                <div class="team-box">
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8302.png" alt="Sevilla" class="team-logo">
+                    <span class="team-name">Sevilla</span>
+                </div>
+                <div class="match-info">
+                    <span class="match-time">۲۲:۳۰</span>
+                    <span class="match-league">لالیگا اسپانیا</span>
+                </div>
+                <div class="team-box right">
+                    <span class="team-name">Barcelona</span>
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8634.png" alt="Barcelona" class="team-logo">
+                </div>
+            </div>
+
+            <!-- یکشنبه ۲۹ شهریور -->
+            <div class="match-date-header">یکشنبه ۲۹ شهریور</div>
+
+            <div class="match-card">
+                <div class="team-box">
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8678.png" alt="Bournemouth" class="team-logo">
+                    <span class="team-name">Bournemouth</span>
+                </div>
+                <div class="match-info">
+                    <span class="match-time">۱۶:۳۰</span>
+                    <span class="match-league">لیگ برتر انگلیس</span>
+                </div>
+                <div class="team-box right">
+                    <span class="team-name">Liverpool</span>
+                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8650.png" alt="Liverpool" class="team-logo">
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            CANBO FOOTBALL &copy; 1405
+        </footer>
+    </div>
+
+    <!-- JavaScript for Splash Screen Animation -->
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const splash = document.getElementById('splash-screen');
+                splash.classList.add('fade-out');
+            }, 2200);
+        });
+    </script>
+</body>
+</html>
+                </div>
+                <div class="newspaper-date">اخبار امروز</div>
                 
                 <div class="news-item">
                     <div class="news-title">⚽ آغاز هفته پنجم</div>
