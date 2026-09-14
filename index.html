@@ -25,7 +25,7 @@
             font-family: 'Vazirmatn', sans-serif;
         }
 
-        /* Splash Screen / صفحه ورود به سایت (طراحی جدید بدون عکس و توپ) */
+        /* Splash Screen / صفحه ورود به سایت */
         #splash-screen {
             position: fixed;
             top: 0;
@@ -66,7 +66,6 @@
             text-align: center;
         }
 
-        /* سه نقطه متحرک به سبک فوتبال ۳۶۰ */
         .loading-dots {
             display: flex;
             gap: 8px;
@@ -118,62 +117,42 @@
             max-width: 950px;
         }
 
-        /* Jelly & Cartoon Football Avatars Hero Banner */
-        .jelly-hero-banner {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+        /* بخش جدید برای نمایش عکس‌ها (جایگزین بنر ژله‌ای) */
+        .image-banner-section {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
             backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 24px;
-            padding: 25px;
-            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 25px;
             display: flex;
-            align-items: center;
-            justify-content: space-around;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
         }
 
-        .jelly-avatar-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            animation: floatJelly 4s ease-in-out infinite;
-        }
-
-        .jelly-avatar-card:nth-child(2) {
-            animation-delay: 1.5s;
-        }
-
-        @keyframes floatJelly {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-8px) rotate(2deg); }
-        }
-
-        .jelly-icon-box {
-            width: 75px;
-            height: 75px;
-            background: linear-gradient(135deg, #f39c12 0%, #d35400 100%);
-            border-radius: 24px;
+        .banner-img-card {
+            width: 100px;
+            height: 100px;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            background: rgba(0, 0, 0, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 25px rgba(243, 156, 18, 0.4), inset 0 2px 6px rgba(255,255,255,0.4);
-            border: 2px solid rgba(255,255,255,0.3);
-            font-size: 2.2rem;
+            transition: transform 0.3s ease;
         }
 
-        .jelly-icon-box.alt {
-            background: linear-gradient(135deg, #ff334b 0%, #991b1b 100%);
-            box-shadow: 0 10px 25px rgba(255, 51, 75, 0.4), inset 0 2px 6px rgba(255,255,255,0.4);
+        .banner-img-card:hover {
+            transform: scale(1.05);
         }
 
-        .jelly-label {
-            font-size: 0.85rem;
-            font-weight: 800;
-            background: rgba(0,0,0,0.3);
-            padding: 4px 12px;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.1);
+        .banner-img-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         /* Header Styles */
@@ -247,10 +226,6 @@
             }
             .main-title {
                 font-size: 2.2rem;
-            }
-            .jelly-hero-banner {
-                flex-direction: column;
-                gap: 20px;
             }
         }
 
@@ -510,14 +485,17 @@
         }
 
         /* Footer */
-        <footer>
-            CANBO FOOTBALL &copy; 1405
-        </footer>
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Splash Screen (صفحه ورود به سبک فوتبال ۳۶۰ بدون عکس و توپ) -->
+    <!-- Splash Screen -->
     <div id="splash-screen">
         <div class="splash-content">
             <div class="splash-title">گداهای استرسی ۲</div>
@@ -531,19 +509,19 @@
 
     <div class="container">
         
-        <!-- Jelly & Cartoon Football Avatars Hero Banner -->
-        <div class="jelly-hero-banner">
-            <div class="jelly-avatar-card">
-                <div class="jelly-icon-box">⚽👕</div>
-                <span class="jelly-label">فصل دوم</span>
+        <!-- بخش جدید برای اضافه کردن عکس‌ها (جایگزین بنر ژله‌ای) -->
+        <div class="image-banner-section">
+            <div class="banner-img-card">
+                <!-- لینک یا آدرس عکس اول خود را در قسمت src قرار دهید -->
+                <img src="آدرس_عکس_اول.png" alt="تصویر ۱">
             </div>
-            <div class="jelly-avatar-card">
-                <div class="jelly-icon-box alt">🏆🎮</div>
-                <span class="jelly-label">پیش‌بینیِ حرفه‌ای</span>
+            <div class="banner-img-card">
+                <!-- لینک یا آدرس عکس دوم خود را در قسمت src قرار دهید -->
+                <img src="آدرس_عکس_دوم.png" alt="تصویر ۲">
             </div>
-            <div class="jelly-avatar-card">
-                <div class="jelly-icon-box">👟🔥</div>
-                <span class="jelly-label">هفته پنجم</span>
+            <div class="banner-img-card">
+                <!-- لینک یا آدرس عکس سوم خود را در قسمت src قرار دهید -->
+                <img src="آدرس_عکس_سوم.png" alt="تصویر ۳">
             </div>
         </div>
 
