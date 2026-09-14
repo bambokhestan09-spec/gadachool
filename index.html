@@ -242,6 +242,120 @@
             gap: 10px;
         }
 
+        /* Matches Prediction Section Styles */
+        .matches-section {
+            margin-top: 35px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            border: 2px solid #1c4580;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .day-header {
+            background-color: #072552;
+            color: var(--accent-gold);
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin: 20px 0 15px 0;
+            border-right: 4px solid var(--accent-red);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .day-header:first-of-type {
+            margin-top: 10px;
+        }
+
+        .match-card {
+            background: rgba(7, 37, 82, 0.6);
+            border: 1px solid #1c4580;
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .match-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-2px);
+        }
+
+        .match-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .match-time {
+            background-color: var(--accent-red);
+            color: #fff;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            width: fit-content;
+        }
+
+        .match-league {
+            color: #a2c4f5;
+            font-size: 0.85rem;
+        }
+
+        .match-teams {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            direction: ltr;
+        }
+
+        .match-vs {
+            color: var(--accent-gold);
+            font-size: 0.85rem;
+            font-weight: 900;
+        }
+
+        .fotmob-btn {
+            background-color: #ffffff;
+            color: #000;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            transition: background-color 0.2s, color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .fotmob-btn:hover {
+            background-color: var(--accent-gold);
+            color: #000;
+        }
+
+        @media (max-width: 600px) {
+            .match-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .fotmob-btn {
+                align-self: flex-end;
+            }
+        }
+
         footer {
             text-align: center;
             margin-top: 40px;
@@ -348,6 +462,96 @@
                         دنبال کردن اینستاگرام و کانال رسمی
                     </div>
                 </div>
+            </div>
+
+        </div>
+
+        <!-- Section 3: Matches Prediction Section -->
+        <div class="matches-section">
+            <div class="panel-title">
+                <span class="ball-icon">⚽</span>
+                برنامه مسابقات هفته پنجم جهت پیش‌بینی
+            </div>
+
+            <!-- جمعه ۲۷ شهریور -->
+            <div class="day-header">
+                🗓️ جمعه ۲۷ شهریور
+            </div>
+
+            <div class="match-card">
+                <div class="match-meta">
+                    <span class="match-time">۲۲:۳۰</span>
+                    <span class="match-league">🏴 Premier League</span>
+                </div>
+                <div class="match-teams">
+                    🔴 Brentford <span class="match-vs">VS</span> 🔵 Chelsea
+                </div>
+                <a href="https://www.fotmob.com" target="_blank" class="fotmob-btn">پیش‌بینی در FotMob ←</a>
+            </div>
+
+            <!-- شنبه ۲۸ شهریور -->
+            <div class="day-header">
+                🗓️ شنبه ۲۸ شهریور
+            </div>
+
+            <div class="match-card">
+                <div class="match-meta">
+                    <span class="match-time">۱۵:۰۰</span>
+                    <span class="match-league">🏴 Premier League</span>
+                </div>
+                <div class="match-teams">
+                    ⚪ Tottenham <span class="match-vs">VS</span> 🟣 Aston Villa
+                </div>
+                <a href="https://www.fotmob.com" target="_blank" class="fotmob-btn">پیش‌بینی در FotMob ←</a>
+            </div>
+
+            <div class="match-card">
+                <div class="match-meta">
+                    <span class="match-time">۱۷:۳۰</span>
+                    <span class="match-league">🏴 Premier League</span>
+                </div>
+                <div class="match-teams">
+                    🔵 Brighton <span class="match-vs">VS</span> 🔴 Arsenal
+                </div>
+                <a href="https://www.fotmob.com" target="_blank" class="fotmob-btn">پیش‌بینی در FotMob ←</a>
+            </div>
+
+            <div class="match-card">
+                <div class="match-meta">
+                    <span class="match-time">۱۹:۳۰</span>
+                    <span class="match-league">🇮🇹 Serie A</span>
+                </div>
+                <div class="match-teams">
+                    🟡 Roma <span class="match-vs">VS</span> 🔵 Inter
+                </div>
+                <a href="https://www.fotmob.com" target="_blank" class="fotmob-btn">پیش‌بینی در FotMob ←</a>
+            </div>
+
+            <div class="match-card">
+                <div class="match-meta">
+                    <span class="match-time">۲۲:۳۰</span>
+                    <span class="match-league">🇪🇸 LaLiga</span>
+                </div>
+                <div class="match-teams">
+                    ⚪ Sevilla <span class="match-vs">VS</span> 🔵 Barcelona
+                </div>
+                <a href="https://www.fotmob.com" target="_blank" class="fotmob-btn">پیش‌بینی در FotMob ←</a>
+            </div>
+
+            <!-- یکشنبه ۲۹ شهریور -->
+            <div class="day-header">
+                🗓️ یکشنبه ۲۹ شهریور
+            </div>
+
+            <div class="match-card">
+                <div class="match-meta">
+                    <span class="match-time">۱۶:۳۰</span>
+                    <span class="match-league">🏴 Premier League</span>
+                </div>
+                <div class="match-teams">
+                    🔴 Bournemouth <span class="match-vs">VS</span> 🔴 Liverpool
+                </div>
+                <a href="https://www.fotmob.com" target="_blank" class="fotmob-btn">پیش‌بینی در FotMob ←</a>
             </div>
 
         </div>
