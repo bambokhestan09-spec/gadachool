@@ -25,7 +25,7 @@
             font-family: 'Vazirmatn', sans-serif;
         }
 
-        /* Splash Screen */
+        /* Splash Screen / صفحه ورود به سایت */
         #splash-screen {
             position: fixed;
             top: 0;
@@ -48,7 +48,7 @@
         .orbit-container {
             position: relative;
             width: 100%;
-            max-width: 600px;
+            max-width: 700px;
             height: 140px;
             display: flex;
             justify-content: center;
@@ -56,7 +56,7 @@
         }
 
         .rotating-text {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 900;
             background: linear-gradient(135deg, #f39c12 0%, #f1c40f 100%);
             -webkit-background-clip: text;
@@ -68,17 +68,8 @@
 
         @keyframes spinAndPulse {
             0% { transform: scale(0.95) rotate(0deg); opacity: 0.8; }
-            50% { transform: scale(1.05) rotate(2deg); opacity: 1; filter: drop-shadow(0 6px 20px rgba(243, 156, 18, 0.6)); }
+            50% { transform: scale(1.05) rotate(1deg); opacity: 1; filter: drop-shadow(0 6px 20px rgba(243, 156, 18, 0.6)); }
             100% { transform: scale(0.95) rotate(0deg); opacity: 0.8; }
-        }
-
-        .splash-title {
-            font-size: 1.2rem;
-            font-weight: 500;
-            margin-top: 15px;
-            letter-spacing: 2px;
-            color: #a0aec0;
-            text-transform: uppercase;
         }
 
         .fade-out {
@@ -88,12 +79,6 @@
 
         .fade-out .rotating-text {
             transform: scale(2) rotate(360deg);
-            opacity: 0;
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .fade-out .splash-title {
-            transform: translateY(20px);
             opacity: 0;
             transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -117,7 +102,7 @@
             max-width: 950px;
         }
 
-        /* Cartoon & Jelly Avatars Banner Style */
+        /* Jelly & Cartoon Football Avatars Hero Banner */
         .jelly-hero-banner {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
             backdrop-filter: blur(16px);
@@ -129,8 +114,6 @@
             align-items: center;
             justify-content: space-around;
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            position: relative;
-            overflow: hidden;
         }
 
         .jelly-avatar-card {
@@ -161,7 +144,6 @@
             box-shadow: 0 10px 25px rgba(243, 156, 18, 0.4), inset 0 2px 6px rgba(255,255,255,0.4);
             border: 2px solid rgba(255,255,255,0.3);
             font-size: 2.2rem;
-            position: relative;
         }
 
         .jelly-icon-box.alt {
@@ -182,7 +164,6 @@
         header {
             text-align: center;
             padding: 10px 20px 30px;
-            position: relative;
         }
 
         .brand-logo {
@@ -204,7 +185,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            letter-spacing: -1px;
             margin-bottom: 20px;
         }
 
@@ -216,8 +196,6 @@
         }
 
         .time-badge {
-            display: inline-flex;
-            align-items: center;
             background: linear-gradient(135deg, var(--accent-red) 0%, #b91c1c 100%);
             color: var(--text-white);
             padding: 8px 20px;
@@ -229,8 +207,6 @@
         }
 
         .date-tag {
-            display: inline-flex;
-            align-items: center;
             background: linear-gradient(135deg, var(--accent-gold) 0%, #d97706 100%);
             color: #000;
             padding: 8px 20px;
@@ -257,7 +233,7 @@
                 font-size: 2.2rem;
             }
             .rotating-text {
-                font-size: 1.8rem;
+                font-size: 1.5rem;
             }
             .jelly-hero-banner {
                 flex-direction: column;
@@ -272,10 +248,8 @@
             padding: 25px;
             border-radius: 16px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-            position: relative;
-            overflow: hidden;
             border: 1px solid rgba(0,0,0,0.05);
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.4s ease;
         }
 
         .newspaper-card:hover {
@@ -428,12 +402,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            transition: transform 0.2s ease;
             border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .capsule-badge:hover {
-            transform: translateX(-4px);
         }
 
         /* Matches Prediction Section */
@@ -478,13 +447,6 @@
             justify-content: space-between;
             color: #fff;
             border: 1px solid rgba(255, 255, 255, 0.04);
-            transition: all 0.2s ease;
-        }
-
-        .match-card:hover {
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(51, 65, 85, 0.8) 100%);
-            border-color: rgba(147, 197, 253, 0.2);
-            transform: translateY(-2px);
         }
 
         .team-box {
@@ -503,7 +465,6 @@
             width: 22px;
             height: 22px;
             object-fit: contain;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
         }
 
         .team-name {
@@ -525,7 +486,6 @@
             font-size: 0.9rem;
             font-weight: 900;
             color: var(--accent-gold);
-            letter-spacing: 1px;
         }
 
         .match-league {
@@ -544,18 +504,16 @@
             font-size: 0.85rem;
             color: #64748b;
             font-weight: 600;
-            letter-spacing: 1px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Splash Screen -->
+    <!-- Splash Screen (فقط جمله خواسته شده) -->
     <div id="splash-screen">
         <div class="orbit-container">
-            <div class="rotating-text">لیگ گداهای استرسی فصل دوم</div>
+            <div class="rotating-text">خوش آمدید به فصل دوم پیش بینی ها</div>
         </div>
-        <div class="splash-title">آماده‌سازی پیش‌بینی‌ها...</div>
     </div>
 
     <div class="container">
@@ -564,7 +522,7 @@
         <div class="jelly-hero-banner">
             <div class="jelly-avatar-card">
                 <div class="jelly-icon-box">⚽👕</div>
-                <span class="jelly-label">استرسِ صدرنشین</span>
+                <span class="jelly-label">فصل دوم</span>
             </div>
             <div class="jelly-avatar-card">
                 <div class="jelly-icon-box alt">🏆🎮</div>
@@ -594,209 +552,7 @@
                 <div class="newspaper-header">
                     <h3>GEDA DAILY NEWS</h3>
                 </div>
-                <div class="newspaper-date">روزنامه اختصاصی حواشی • اخبار امروز</div>
-                
-                <div class="news-item">
-                    <div class="news-title">⚽ آغاز هفته پنجم</div>
-                    <div class="news-detail">
-                        آغاز هفته پنجم از روز جمعه با بازی چلسی در مقابل برنتفورد از ساعت ۲۲:۳۰ آغاز می‌شود. چلسی با انجام ۴ بازی و ۷ امتیاز در رده ۵ قرار گرفته و برنتفورد پشت سر او با ۶ امتیاز این تیم را تعقیب می‌کند.
-                    </div>
-                </div>
-
-                <div class="news-item">
-                    <div class="news-title">🔥 پایان هفته چهارم... زویدات همچنان غول آخر لیگ گداهای استرسی!</div>
-                    <div class="news-detail">
-                        زویدات همچنان با ۵۰ امتیاز دست‌نیافتنی و صدرنشین لیگ گداهای استرسی است. باید دید او در هفته پنجم می‌تواند همچنان این روند را ادامه دهد یا خیر!
-                    </div>
-                </div>
-            </div>
-
-            <!-- Section 2: Leaderboard & Conditions -->
-            <div class="panel">
-                <div class="panel-title">
-                    <span class="ball-icon">8</span>
-                    جدول امتیازات لیگ
-                </div>
-
-                <table>
-                    <thead>
-                        <tr>
-                            <th>رتبه</th>
-                            <th>نام</th>
-                            <th>بازی</th>
-                            <th>امتیاز</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="rank-1">🥇 ۱</td>
-                            <td><strong>زویدات</strong></td>
-                            <td>۴</td>
-                            <td><strong style="color: var(--accent-gold);">۵۰</strong></td>
-                        </tr>
-                        <tr>
-                            <td>🥈 ۲</td>
-                            <td>نعیمی</td>
-                            <td>۴</td>
-                            <td>۴۲</td>
-                        </tr>
-                        <tr>
-                            <td>🥉 ۳</td>
-                            <td>جاسمیان</td>
-                            <td>۴</td>
-                            <td>۳۸</td>
-                        </tr>
-                        <tr>
-                            <td>۴</td>
-                            <td>ناجح</td>
-                            <td>۴</td>
-                            <td>۳۱</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div style="margin-top: 25px;">
-                    <div style="font-size: 0.85rem; color: #93c5fd; margin-bottom: 10px; font-weight: 700;">شرایط و قوانین:</div>
-                    <div class="capsule-wrapper">
-                        <div class="capsule-badge">
-                            <span class="ball-icon" style="background:#0f172a;">8</span>
-                            پیش‌بینی کن، یادت نره!
-                        </div>
-                        <div class="capsule-badge">
-                            <span class="ball-icon" style="background:#10b981; color:#fff;">8</span>
-                            دنبال کردن در فانتزی
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Section 3: Matches Prediction Section -->
-        <div class="matches-section">
-            <div class="panel-title">
-                <span class="ball-icon">⚽</span>
-                هفته پنجم پیش‌بینی
-            </div>
-
-            <!-- جمعه ۲۷ شهریور -->
-            <div class="match-date-header">جمعه ۲۷ شهریور</div>
-
-            <div class="match-card">
-                <div class="team-box">
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/9937.png" alt="Brentford" class="team-logo">
-                    <span class="team-name">Brentford</span>
-                </div>
-                <div class="match-info">
-                    <span class="match-time">۲۲:۳۰</span>
-                    <span class="match-league">لیگ برتر انگلیس</span>
-                </div>
-                <div class="team-box right">
-                    <span class="team-name">Chelsea</span>
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8455.png" alt="Chelsea" class="team-logo">
-                </div>
-            </div>
-
-            <!-- شنبه ۲۸ شهریور -->
-            <div class="match-date-header">شنبه ۲۸ شهریور</div>
-
-            <div class="match-card">
-                <div class="team-box">
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8586.png" alt="Tottenham" class="team-logo">
-                    <span class="team-name">Tottenham</span>
-                </div>
-                <div class="match-info">
-                    <span class="match-time">۱۵:۰۰</span>
-                    <span class="match-league">لیگ برتر انگلیس</span>
-                </div>
-                <div class="team-box right">
-                    <span class="team-name">Aston Villa</span>
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/10252.png" alt="Aston Villa" class="team-logo">
-                </div>
-            </div>
-
-            <div class="match-card">
-                <div class="team-box">
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/10204.png" alt="Brighton" class="team-logo">
-                    <span class="team-name">Brighton</span>
-                </div>
-                <div class="match-info">
-                    <span class="match-time">۱۷:۳۰</span>
-                    <span class="match-league">لیگ برتر انگلیس</span>
-                </div>
-                <div class="team-box right">
-                    <span class="team-name">Arsenal</span>
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/9825.png" alt="Arsenal" class="team-logo">
-                </div>
-            </div>
-
-            <div class="match-card">
-                <div class="team-box">
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8686.png" alt="Roma" class="team-logo">
-                    <span class="team-name">Roma</span>
-                </div>
-                <div class="match-info">
-                    <span class="match-time">۱۹:۳۰</span>
-                    <span class="match-league">سری آ ایتالیا</span>
-                </div>
-                <div class="team-box right">
-                    <span class="team-name">Inter</span>
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8636.png" alt="Inter" class="team-logo">
-                </div>
-            </div>
-
-            <div class="match-card">
-                <div class="team-box">
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8302.png" alt="Sevilla" class="team-logo">
-                    <span class="team-name">Sevilla</span>
-                </div>
-                <div class="match-info">
-                    <span class="match-time">۲۲:۳۰</span>
-                    <span class="match-league">لالیگا اسپانیا</span>
-                </div>
-                <div class="team-box right">
-                    <span class="team-name">Barcelona</span>
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8634.png" alt="Barcelona" class="team-logo">
-                </div>
-            </div>
-
-            <!-- یکشنبه ۲۹ شهریور -->
-            <div class="match-date-header">یکشنبه ۲۹ شهریور</div>
-
-            <div class="match-card">
-                <div class="team-box">
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8678.png" alt="Bournemouth" class="team-logo">
-                    <span class="team-name">Bournemouth</span>
-                </div>
-                <div class="match-info">
-                    <span class="match-time">۱۶:۳۰</span>
-                    <span class="match-league">لیگ برتر انگلیس</span>
-                </div>
-                <div class="team-box right">
-                    <span class="team-name">Liverpool</span>
-                    <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8650.png" alt="Liverpool" class="team-logo">
-                </div>
-            </div>
-        </div>
-
-        <footer>
-            CANBO FOOTBALL &copy; 1405
-        </footer>
-    </div>
-
-    <!-- JavaScript for Splash Screen Animation -->
-    <script>
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                const splash = document.getElementById('splash-screen');
-                splash.classList.add('fade-out');
-            }, 2200);
-        });
-    </script>
-</body>
-</html>
-                </div>
-                <div class="newspaper-date">اخبار امروز</div>
+                <div class="newspaper-date"> اخبار امروز</div>
                 
                 <div class="news-item">
                     <div class="news-title">⚽ آغاز هفته پنجم</div>
