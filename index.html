@@ -6,8 +6,8 @@
   <title>GEDACHOL - لیگ گداهای استرسی فصل ۲</title>
   <style>
     :root {
-      --bg-dark: #0d1117;
-      --card-bg: #161b22;
+      --bg-dark: #0a0e14;
+      --card-bg: rgba(22, 27, 34, 0.85);
       --yellow-accent: #f5b041;
       --blue-accent: #3498db;
       --text-main: #ffffff;
@@ -16,21 +16,31 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    
     body {
       background-color: var(--bg-dark);
       color: var(--text-main);
       font-family: Tahoma, 'Segoe UI', sans-serif;
       line-height: 1.6;
       padding-bottom: 40px;
+      position: relative;
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(54, 162, 235, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(245, 176, 65, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(46, 204, 113, 0.05) 0%, transparent 60%),
+        url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M60 0a60 60 0 1 0 60 60A60.066 60.066 0 0 0 60 0zm0 110a50 50 0 1 1 50-50 50.057 50.057 0 0 1-50 50z'/%3E%3Cpath d='M60 20a40 40 0 1 0 40 40 40.045 40.045 0 0 0-40-40zm0 70a30 30 0 1 1 30-30 30.034 30.034 0 0 1-30 30z'/%3E%3C/g%3E%3C/svg%3E");
+      background-attachment: fixed;
     }
 
     /* هدر سایت */
     header {
       text-align: center;
       padding: 30px 20px 20px;
-      background: linear-gradient(135deg, rgba(245, 176, 65, 0.15) 0%, rgba(52, 152, 219, 0.15) 100%);
+      background: linear-gradient(135deg, rgba(245, 176, 65, 0.2) 0%, rgba(13, 17, 23, 0.9) 50%, rgba(52, 152, 219, 0.2) 100%);
       border-bottom: 3px solid var(--yellow-accent);
       margin-bottom: 25px;
+      backdrop-filter: blur(8px);
     }
 
     .hero-banner {
@@ -38,8 +48,8 @@
       width: 100%;
       height: auto;
       border-radius: 16px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-      border: 2px solid var(--border-color);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+      border: 2px solid var(--yellow-accent);
       margin-bottom: 15px;
     }
 
@@ -51,6 +61,7 @@
       background: linear-gradient(90deg, var(--yellow-accent), var(--blue-accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 20px rgba(245, 176, 65, 0.3);
     }
 
     header p {
@@ -76,12 +87,13 @@
       border: 1px solid var(--border-color);
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
     }
 
     .accordion-header {
       width: 100%;
-      background: none;
+      background: rgba(22, 27, 34, 0.6);
       border: none;
       outline: none;
       padding: 18px 20px;
@@ -92,12 +104,12 @@
       justify-content: space-between;
       align-items: center;
       cursor: pointer;
-      transition: background 0.2s ease;
+      transition: background 0.2s ease, border-color 0.2s ease;
       font-family: inherit;
     }
 
     .accordion-header:hover {
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(245, 176, 65, 0.08);
     }
 
     .accordion-header .title-text {
@@ -120,7 +132,7 @@
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.4s ease, padding 0.4s ease;
-      background: #0d1117;
+      background: rgba(13, 17, 23, 0.95);
       border-top: 0px solid var(--border-color);
       padding: 0 20px;
     }
@@ -133,7 +145,7 @@
 
     /* استایل مسابقات */
     .match-item {
-      background: #161b22;
+      background: rgba(22, 27, 34, 0.9);
       border-radius: 10px;
       padding: 12px 15px;
       margin-bottom: 12px;
@@ -190,6 +202,18 @@
       border-bottom: 1px solid #21262d;
     }
 
+    .user-click {
+      color: #fff;
+      cursor: pointer;
+      text-decoration: underline;
+      text-decoration-color: var(--yellow-accent);
+      transition: color 0.2s;
+    }
+
+    .user-click:hover {
+      color: var(--yellow-accent);
+    }
+
     .ranking-table tr.highlight td {
       color: var(--yellow-accent);
       font-weight: bold;
@@ -201,7 +225,7 @@
 
     /* استایل اخبار */
     .news-item {
-      background: #161b22;
+      background: rgba(22, 27, 34, 0.9);
       border-radius: 8px;
       padding: 14px;
       margin-bottom: 12px;
@@ -230,7 +254,7 @@
     .poll-option {
       display: flex;
       align-items: center;
-      background: #161b22;
+      background: rgba(22, 27, 34, 0.9);
       border: 1px solid #21262d;
       padding: 12px 15px;
       border-radius: 8px;
@@ -241,7 +265,7 @@
 
     .poll-option:hover {
       border-color: var(--blue-accent);
-      background: rgba(52, 152, 219, 0.05);
+      background: rgba(52, 152, 219, 0.1);
     }
 
     .poll-option input[type="radio"] {
@@ -264,16 +288,11 @@
       cursor: pointer;
       margin-top: 10px;
       font-family: inherit;
-      transition: opacity 0.2s ease;
-    }
-
-    .poll-btn:hover {
-      opacity: 0.9;
     }
 
     .poll-message {
       display: none;
-      background: rgba(52, 152, 219, 0.15);
+      background: rgba(52, 152, 219, 0.2);
       border: 1px solid var(--blue-accent);
       color: #fff;
       padding: 12px;
@@ -283,11 +302,67 @@
       font-size: 0.95rem;
       font-weight: bold;
     }
+
+    /* پنجره پاپ‌آپ (Modal) برای پروفایل کاربر */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal-card {
+      background: #161b22;
+      border: 2px solid var(--yellow-accent);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 450px;
+      padding: 25px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+      position: relative;
+      text-align: center;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px; left: 15px;
+      background: none; border: none;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .profile-avatar {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      border: 2px solid var(--blue-accent);
+      margin-bottom: 10px;
+      object-fit: cover;
+    }
+
+    .profile-name { font-size: 1.3rem; font-weight: bold; color: var(--yellow-accent); }
+    .profile-stats {
+      display: flex; justify-content: space-around;
+      background: #0d1117; padding: 10px;
+      border-radius: 10px; margin: 15px 0;
+      border: 1px solid #21262d;
+    }
+
+    .stat-box { font-size: 0.9rem; }
+    .stat-val { font-weight: bold; color: var(--blue-accent); font-size: 1.1rem; }
+
+    .prev-preds-title { text-align: right; font-weight: bold; margin-bottom: 10px; color: var(--text-muted); font-size: 0.9rem; }
+    .pred-list { list-style: none; text-align: right; font-size: 0.85rem; max-height: 150px; overflow-y: auto; }
+    .pred-item { background: #0d1117; padding: 8px 12px; border-radius: 6px; margin-bottom: 6px; display: flex; justify-content: space-between; }
   </style>
 </head>
 <body>
 
-  <!-- هدر سایت -->
   <header>
     <img src="photo1789386549.jpeg" alt="GEDACHOL Banner" class="hero-banner">
     <h1>GEDACHOL</h1>
@@ -296,10 +371,10 @@
 
   <div class="container">
 
-    <!-- بخش ۱: مسابقات پیش‌بینی -->
+    <!-- مسابقات پیش‌بینی -->
     <div class="accordion-item">
       <button class="accordion-header" onclick="toggleSection(this)">
-        <span class="title-text">🎮 مسابقات پیش‌بینی آینده</span>
+        <span class="title-text">⚽ مسابقات پیش‌بینی آینده</span>
         <span class="icon">▼</span>
       </button>
       <div class="accordion-content">
@@ -328,85 +403,13 @@
           </div>
         </div>
 
-        <div class="match-item">
-          <div class="match-header">
-            <span class="match-date">شنبه ۲۸ شهریور ۱۴۰۵</span>
-            <span class="match-time">۱۷:۳۰</span>
-          </div>
-          <div class="match-teams">
-            <div class="team"><img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/4us2nCgl6kgZc0t3hpW75Q_500x500.png" alt="آرسنال"> آرسنال</div>
-            <span>-</span>
-            <div class="team">برایتون <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/EKIe0e-ZIphOcfQAwsuEEQ_500x500.png" alt="برایتون"></div>
-          </div>
-        </div>
-
-        <div class="match-item">
-          <div class="match-header">
-            <span class="match-date">شنبه ۲۸ شهریور ۱۴۰۵</span>
-            <span class="match-time">۱۹:۳۰</span>
-          </div>
-          <div class="match-teams">
-            <div class="team"><img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/l2-icwsMhIvsbRw8AwC1yg_500x500.png" alt="اینتر"> اینتر</div>
-            <span>-</span>
-            <div class="team">رم <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/BQdP4jUBFJfG7U_JBsFIMg_500x500.png" alt="رم"></div>
-          </div>
-        </div>
-
-        <div class="match-item">
-          <div class="match-header">
-            <span class="match-date">شنبه ۲۸ شهریور ۱۴۰۵</span>
-            <span class="match-time">۲۲:۳۰</span>
-          </div>
-          <div class="match-teams">
-            <div class="team"><img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/paYnEE8hcrP96neHRNofhQ_500x500.png" alt="بارسلونا"> بارسلونا</div>
-            <span>-</span>
-            <div class="team">سویا <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/hCTs5EX3WjCMC5Jl3QE4Rw_500x500.png" alt="سویا"></div>
-          </div>
-        </div>
-
-        <div class="match-item">
-          <div class="match-header">
-            <span class="match-date">یکشنبه ۲۹ شهریور ۱۴۰۵</span>
-            <span class="match-time">۱۶:۳۰</span>
-          </div>
-          <div class="match-teams">
-            <div class="team"><img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/nGfV05dipbAc7zzojivKew_500x500.png" alt="لیورپول"> لیورپول</div>
-            <span>-</span>
-            <div class="team">بورنموث <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/IcOt-hrK04B-RlRwI3R0yA_500x500.png" alt="بورنموث"></div>
-          </div>
-        </div>
-
-        <div class="match-item">
-          <div class="match-header">
-            <span class="match-date">یکشنبه ۲۹ شهریور ۱۴۰۵</span>
-            <span class="match-time">۱۷:۴۵</span>
-          </div>
-          <div class="match-teams">
-            <div class="team"><img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/Th4fAVAZeCJWRcKoLW7koA_500x500.png" alt="رئال مادرید"> رئال مادرید</div>
-            <span>-</span>
-            <div class="team">اتلتیکومادرید <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/pEqmA7CL-VRo4Llq3rwIPA_500x500.png" alt="اتلتیکومادرید"></div>
-          </div>
-        </div>
-
-        <div class="match-item">
-          <div class="match-header">
-            <span class="match-date">یکشنبه ۲۹ شهریور ۱۴۰۵</span>
-            <span class="match-time">۱۹:۰۰</span>
-          </div>
-          <div class="match-teams">
-            <div class="team"><img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/udQ6ns69PctCv143h-GeYw_500x500.png" alt="منچستریونایتد"> منچستریونایتد</div>
-            <span>-</span>
-            <div class="team">فولام <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/Gh7_5p3n364p4vxeM8FhNg_500x500.png" alt="فولام"></div>
-          </div>
-        </div>
-
       </div>
     </div>
 
-    <!-- بخش ۲: جدول رده‌بندی اعضا -->
-    <div class="accordion-item">
+    <!-- جدول رده‌بندی اعضا (با قابلیت کلیک) -->
+    <div class="accordion-item active">
       <button class="accordion-header" onclick="toggleSection(this)">
-        <span class="title-text">📊 جدول رده‌بندی اعضا</span>
+        <span class="title-text">📊 جدول رده‌بندی اعضا (برای مشاهده اطلاعات روی نام کلیک کنید)</span>
         <span class="icon">▼</span>
       </button>
       <div class="accordion-content">
@@ -422,88 +425,49 @@
           <tbody>
             <tr class="highlight">
               <td class="rank-num">1</td>
-              <td>Mahdi</td>
+              <td class="user-click" onclick="openProfile('REZA GHATIFI', '15', '3', 'https://api.dicebear.com/7.x/bottts/svg?seed=REZA', [
+                {match: 'چلسی - برنتفورد', pred: '۲ - ۱', pts: '+۳'},
+                {match: 'آرسنال - برایتون', pred: '۳ - ۰', pts: '+۳'}
+              ])">REZA GHATIFI 👑</td>
               <td class="points">15</td>
               <td class="exact">3</td>
             </tr>
             <tr class="highlight">
               <td class="rank-num">1</td>
-              <td>REZA GHATIFI</td>
+              <td class="user-click" onclick="openProfile('Mahdi', '15', '3', 'https://api.dicebear.com/7.x/bottts/svg?seed=Mahdi', [
+                {match: 'چلسی - برنتفورد', pred: '۲ - ۱', pts: '+۳'},
+                {match: 'آرسنال - برایتون', pred: '۳ - ۰', pts: '+۳'}
+              ])">Mahdi</td>
               <td class="points">15</td>
               <td class="exact">3</td>
             </tr>
             <tr>
               <td class="rank-num">3</td>
-              <td>حبیب نعیمی</td>
+              <td class="user-click" onclick="openProfile('حبیب نعیمی', '14', '2', 'https://api.dicebear.com/7.x/bottts/svg?seed=Habib', [
+                {match: 'چلسی - برنتفورد', pred: '۱ - ۱', pts: '+۱'},
+                {match: 'آرسنال - برایتون', pred: '۲ - ۰', pts: '+۳'}
+              ])">حبیب نعیمی</td>
               <td class="points">14</td>
               <td class="exact">2</td>
             </tr>
             <tr>
               <td class="rank-num">3</td>
-              <td>Asm A</td>
+              <td class="user-click" onclick="openProfile('Asm A', '14', '2', 'https://api.dicebear.com/7.x/bottts/svg?seed=AsmA', [])">Asm A</td>
               <td class="points">14</td>
               <td class="exact">2</td>
             </tr>
             <tr>
               <td class="rank-num">5</td>
-              <td>Donya Asil</td>
+              <td class="user-click" onclick="openProfile('Donya Asil', '13', '1', 'https://api.dicebear.com/7.x/bottts/svg?seed=Donya', [])">Donya Asil</td>
               <td class="points">13</td>
               <td class="exact">1</td>
-            </tr>
-            <tr>
-              <td class="rank-num">5</td>
-              <td>امین دریس</td>
-              <td class="points">13</td>
-              <td class="exact">1</td>
-            </tr>
-            <tr>
-              <td class="rank-num">5</td>
-              <td>hey10</td>
-              <td class="points">13</td>
-              <td class="exact">1</td>
-            </tr>
-            <tr>
-              <td class="rank-num">8</td>
-              <td>hajar daoudi</td>
-              <td class="points">11</td>
-              <td class="exact">3</td>
-            </tr>
-            <tr>
-              <td class="rank-num">9</td>
-              <td>محمد خلیلاوی پور</td>
-              <td class="points">11</td>
-              <td class="exact">1</td>
-            </tr>
-            <tr>
-              <td class="rank-num">10</td>
-              <td>Ahlam Aljaber</td>
-              <td class="points">9</td>
-              <td class="exact">1</td>
-            </tr>
-            <tr>
-              <td class="rank-num">11</td>
-              <td>Sama salehi</td>
-              <td class="points">2</td>
-              <td class="exact">0</td>
-            </tr>
-            <tr>
-              <td class="rank-num">11</td>
-              <td>محمد جادمیان</td>
-              <td class="points">2</td>
-              <td class="exact">0</td>
-            </tr>
-            <tr>
-              <td class="rank-num">13</td>
-              <td>مهدی</td>
-              <td class="points">0</td>
-              <td class="exact">0</td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <!-- بخش ۳: اخبار لیگ گداهای استرسی -->
+    <!-- اخبار -->
     <div class="accordion-item">
       <button class="accordion-header" onclick="toggleSection(this)">
         <span class="title-text">📰 اخبار لیگ گداهای استرسی</span>
@@ -512,12 +476,12 @@
       <div class="accordion-content">
         <div class="news-item">
           <div class="news-date">۲۶ شهریور ۱۴۰۵</div>
-          <div><strong>خوش آمدید:</strong> بخش اخبار رسمی لیگ گداهای استرسی افتتاح شد. خبرهای بعدی به‌زودی قرار می‌گیرند!</div>
+          <div><strong>قابلیت جدید:</strong> امکان مشاهده پروفایل و پیش‌بینی‌های قبلی اعضا فراهم شد!</div>
         </div>
       </div>
     </div>
 
-    <!-- بخش ۴: نظرسنجی طراحی سایت -->
+    <!-- نظرسنجی -->
     <div class="accordion-item">
       <button class="accordion-header" onclick="toggleSection(this)">
         <span class="title-text">🗳️ نظرسنجی سایت</span>
@@ -525,37 +489,42 @@
       </button>
       <div class="accordion-content">
         <div class="poll-question">آیا از طراحی و ظاهر جدید سایت GEDACHOL راضی هستید؟</div>
-        
         <form id="pollForm" onsubmit="submitPoll(event)">
           <label class="poll-option">
             <input type="radio" name="design_rating" value="عالی" required>
             <span>🔥 عالی و فوق‌العاده</span>
           </label>
-
           <label class="poll-option">
             <input type="radio" name="design_rating" value="خوب">
             <span>👍 خوب و مناسب</span>
           </label>
-
-          <label class="poll-option">
-            <input type="radio" name="design_rating" value="متوسط">
-            <span>😐 متوسط (می‌تونه بهتر بشه)</span>
-          </label>
-
-          <label class="poll-option">
-            <input type="radio" name="design_rating" value="ضعیف">
-            <span>👎 ضعیف (نیاز به تغییر داره)</span>
-          </label>
-
           <button type="submit" class="poll-btn">ثبت رأی</button>
         </form>
-
         <div id="pollMessage" class="poll-message">
           ✅ رای شما با موفقیت ثبت شد. متشکریم!
         </div>
       </div>
     </div>
 
+  </div>
+
+  <!-- پنجره پاپ‌آپ اطلاعات کاربر -->
+  <div id="profileModal" class="modal-overlay" onclick="closeProfile(event)">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeProfileModal()">&times;</button>
+      <img id="modalAvatar" src="" alt="Avatar" class="profile-avatar">
+      <div id="modalName" class="profile-name"></div>
+      
+      <div class="profile-stats">
+        <div class="stat-box">کل امتیازات:<br><span id="modalPoints" class="stat-val"></span></div>
+        <div class="stat-box">پیش‌بینی دقیق:<br><span id="modalExact" class="stat-val"></span></div>
+      </div>
+
+      <div class="prev-preds-title">📝 پیش‌بینی‌های اخیر:</div>
+      <ul id="modalPreds" class="pred-list">
+        <!-- پیش‌بینی‌ها به صورت خودکار اضافه می‌شوند -->
+      </ul>
+    </div>
   </div>
 
   <script>
@@ -568,6 +537,41 @@
       event.preventDefault();
       document.getElementById('pollForm').style.display = 'none';
       document.getElementById('pollMessage').style.display = 'block';
+    }
+
+    function openProfile(name, points, exact, avatarUrl, predictions) {
+      document.getElementById('modalName').innerText = name;
+      document.getElementById('modalPoints').innerText = points;
+      document.getElementById('modalExact').innerText = exact;
+      document.getElementById('modalAvatar').src = avatarUrl;
+
+      const predsContainer = document.getElementById('modalPreds');
+      predsContainer.innerHTML = '';
+
+      if(predictions.length === 0) {
+        predsContainer.innerHTML = '<li class="pred-item">پیش‌بینی ثبت شده‌ای وجود ندارد.</li>';
+      } else {
+        predictions.forEach(p => {
+          predsContainer.innerHTML += `
+            <li class="pred-item">
+              <span>${p.match} (${p.pred})</span>
+              <span style="color: var(--yellow-accent); font-weight: bold;">${p.pts}</span>
+            </li>
+          `;
+        });
+      }
+
+      document.getElementById('profileModal').style.display = 'flex';
+    }
+
+    function closeProfileModal() {
+      document.getElementById('profileModal').style.display = 'none';
+    }
+
+    function closeProfile(event) {
+      if(event.target.classList.contains('modal-overlay')) {
+        closeProfileModal();
+      }
     }
   </script>
 
