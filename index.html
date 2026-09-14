@@ -380,6 +380,7 @@
             background: rgba(147, 197, 253, 0.2);
         }
 
+        /* Interactive Match Card */
         .match-card {
             background: linear-gradient(135deg, rgba(15, 23, 42, 0.6) 0%, rgba(30, 41, 59, 0.6) 100%);
             border-radius: 10px;
@@ -390,6 +391,14 @@
             justify-content: space-between;
             color: #fff;
             border: 1px solid rgba(255, 255, 255, 0.04);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .match-card:hover {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(51, 65, 85, 0.9) 100%);
+            border-color: var(--accent-gold);
+            transform: translateY(-2px);
         }
 
         .team-box {
@@ -397,7 +406,7 @@
             align-items: center;
             gap: 8px;
             width: 38%;
-            min-width: 0; /* حیاتی برای جلوگیری از بیرون زدگی متن در موبایل */
+            min-width: 0;
         }
 
         .team-box.right {
@@ -412,7 +421,6 @@
             flex-shrink: 0;
         }
 
-        /* بهینه‌سازی فونت نام تیم‌ها برای موبایل */
         .team-name {
             font-family: 'Segoe UI', Roboto, Helvetica, sans-serif;
             font-size: clamp(0.72rem, 2.5vw, 0.88rem);
@@ -445,6 +453,90 @@
             font-weight: 600;
             white-space: nowrap;
         }
+
+        /* Prediction Dropdown Panel */
+        .prediction-panel {
+            background-color: rgba(4, 13, 26, 0.95);
+            border-radius: 0 0 10px 10px;
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease, border 0.4s ease;
+            border: 1px solid transparent;
+            margin-top: -6px;
+            margin-bottom: 12px;
+        }
+
+        .prediction-panel.active {
+            max-height: 400px;
+            padding: 15px;
+            border-color: var(--accent-gold);
+            border-top: none;
+        }
+
+        .stats-box {
+            font-size: 0.8rem;
+            color: #cbd5e1;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .stats-box h4 {
+            color: var(--accent-gold);
+            margin-bottom: 4px;
+            font-size: 0.85rem;
+        }
+
+        /* Win Probability Bar */
+        .win-probability {
+            margin-bottom: 12px;
+        }
+
+        .prob-bar-container {
+            display: flex;
+            height: 8px;
+            width: 100%;
+            border-radius: 4px;
+            overflow: hidden;
+            background: #1e293b;
+            margin-top: 5px;
+        }
+
+        .prob-home { background-color: var(--accent-red); }
+        .prob-draw { background-color: var(--accent-gold); }
+        .prob-away { background-color: #3b82f6; }
+        
+        .prob-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.7rem;
+            color: #94a3b8;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        /* Vote Buttons */
+        .vote-form {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .vote-btn {
+            flex: 1;
+            padding: 8px 4px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 800;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: opacity 0.2s, transform 0.1s;
+        }
+
+        .vote-home { background-color: var(--accent-red); color: white; }
+        .vote-draw { background-color: var(--accent-gold); color: #000; }
+        .vote-away { background-color: #3b82f6; color: white; }
+        .vote-btn:hover { opacity: 0.85; transform: scale(1.02); }
 
         /* Footer */
         footer {
@@ -571,13 +663,13 @@
         <div class="matches-section">
             <div class="panel-title">
                 <span class="ball-icon">⚽</span>
-                هفته پنجم پیش‌بینی
+                هفته پنجم پیش‌بینی (برای باز کردن آمار و پیش‌بینی کلیک کنید)
             </div>
 
             <!-- جمعه ۲۷ شهریور -->
             <div class="match-date-header">جمعه ۲۷ شهریور</div>
 
-            <div class="match-card">
+            <div class="match-card" onclick="togglePrediction('match-1')">
                 <div class="team-box">
                     <img src="https://images.fotmob.com/image_resources/logo/teamlogo/9937.png" alt="برنتفورد" class="team-logo">
                     <span class="team-name">Brentford</span>
@@ -591,11 +683,34 @@
                     <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8455.png" alt="چلسی" class="team-logo">
                 </div>
             </div>
+            <div id="match-1" class="prediction-panel">
+                <div class="stats-box">
+                    <h4>📊 تحلیل و رو در رو (H2H)</h4>
+                    <p>آخرین بازی رودررو: چلسی ۲ - ۰ برنتفورد. چلسی برای حفظ جایگاه خود می‌جنگد اما برنتفورد در زمین خود خطرناک است.</p>
+                </div>
+                <div class="win-probability">
+                    <div class="prob-bar-container">
+                        <div class="prob-home" style="width: 25%;"></div>
+                        <div class="prob-draw" style="width: 28%;"></div>
+                        <div class="prob-away" style="width: 47%;"></div>
+                    </div>
+                    <div class="prob-labels">
+                        <span>برنتفورد: ۲۵٪</span>
+                        <span>مساوی: ۲۸٪</span>
+                        <span>چلسی: ۴۷٪</span>
+                    </div>
+                </div>
+                <div class="vote-form">
+                    <button class="vote-btn vote-home" onclick="submitVote('برنتفورد')">برد برنتفورد</button>
+                    <button class="vote-btn vote-draw" onclick="submitVote('مساوی')">مساوی</button>
+                    <button class="vote-btn vote-away" onclick="submitVote('چلسی')">برد چلسی</button>
+                </div>
+            </div>
 
             <!-- شنبه ۲۸ شهریور -->
             <div class="match-date-header">شنبه ۲۸ شهریور</div>
 
-            <div class="match-card">
+            <div class="match-card" onclick="togglePrediction('match-2')">
                 <div class="team-box">
                     <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8586.png" alt="تاتنهام" class="team-logo">
                     <span class="team-name">Tottenham</span>
@@ -609,8 +724,31 @@
                     <img src="https://images.fotmob.com/image_resources/logo/teamlogo/10252.png" alt="استون ویلا" class="team-logo">
                 </div>
             </div>
+            <div id="match-2" class="prediction-panel">
+                <div class="stats-box">
+                    <h4>📊 تحلیل و رو در رو (H2H)</h4>
+                    <p>آخرین بازی رودررو: استون ویلا ۱ - ۲ تاتنهام. نبرد تانک‌های هجومی با تفکرات اونای امری.</p>
+                </div>
+                <div class="win-probability">
+                    <div class="prob-bar-container">
+                        <div class="prob-home" style="width: 42%;"></div>
+                        <div class="prob-draw" style="width: 26%;"></div>
+                        <div class="prob-away" style="width: 32%;"></div>
+                    </div>
+                    <div class="prob-labels">
+                        <span>تاتنهام: ۴۲٪</span>
+                        <span>مساوی: ۲۶٪</span>
+                        <span>استون ویلا: ۳۲٪</span>
+                    </div>
+                </div>
+                <div class="vote-form">
+                    <button class="vote-btn vote-home" onclick="submitVote('تاتنهام')">برد تاتنهام</button>
+                    <button class="vote-btn vote-draw" onclick="submitVote('مساوی')">مساوی</button>
+                    <button class="vote-btn vote-away" onclick="submitVote('استون ویلا')">برد استون ویلا</button>
+                </div>
+            </div>
 
-            <div class="match-card">
+            <div class="match-card" onclick="togglePrediction('match-3')">
                 <div class="team-box">
                     <img src="https://images.fotmob.com/image_resources/logo/teamlogo/10204.png" alt="برایتون" class="team-logo">
                     <span class="team-name">Brighton</span>
@@ -624,8 +762,31 @@
                     <img src="https://images.fotmob.com/image_resources/logo/teamlogo/9825.png" alt="آرسنال" class="team-logo">
                 </div>
             </div>
+            <div id="match-3" class="prediction-panel">
+                <div class="stats-box">
+                    <h4>📊 تحلیل و رو در رو (H2H)</h4>
+                    <p>آخرین بازی رودررو: برایتون ۰ - ۱ آرسنال. آرسنال با ساختار دفاعی مستحکم راهی فالمر می‌شود.</p>
+                </div>
+                <div class="win-probability">
+                    <div class="prob-bar-container">
+                        <div class="prob-home" style="width: 22%;"></div>
+                        <div class="prob-draw" style="width: 27%;"></div>
+                        <div class="prob-away" style="width: 51%;"></div>
+                    </div>
+                    <div class="prob-labels">
+                        <span>برایتون: ۲۲٪</span>
+                        <span>مساوی: ۲۷٪</span>
+                        <span>آرسنال: ۵۱٪</span>
+                    </div>
+                </div>
+                <div class="vote-form">
+                    <button class="vote-btn vote-home" onclick="submitVote('برایتون')">برد برایتون</button>
+                    <button class="vote-btn vote-draw" onclick="submitVote('مساوی')">مساوی</button>
+                    <button class="vote-btn vote-away" onclick="submitVote('آرسنال')">برد آرسنال</button>
+                </div>
+            </div>
 
-            <div class="match-card">
+            <div class="match-card" onclick="togglePrediction('match-4')">
                 <div class="team-box">
                     <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8686.png" alt="آث رم" class="team-logo">
                     <span class="team-name">Roma</span>
@@ -639,8 +800,31 @@
                     <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8636.png" alt="اینترمیلان" class="team-logo">
                 </div>
             </div>
+            <div id="match-4" class="prediction-panel">
+                <div class="stats-box">
+                    <h4>📊 تحلیل و رو در رو (H2H)</h4>
+                    <p>نبرد سنتی در المپیکو؛ اینتر با تجربه بالا و رم با انگیزه میزبانی پا به میدان می‌گذارند.</p>
+                </div>
+                <div class="win-probability">
+                    <div class="prob-bar-container">
+                        <div class="prob-home" style="width: 30%;"></div>
+                        <div class="prob-draw" style="width: 32%;"></div>
+                        <div class="prob-away" style="width: 38%;"></div>
+                    </div>
+                    <div class="prob-labels">
+                        <span>رم: ۳۰٪</span>
+                        <span>مساوی: ۳۲٪</span>
+                        <span>اینتر: ۳۸٪</span>
+                    </div>
+                </div>
+                <div class="vote-form">
+                    <button class="vote-btn vote-home" onclick="submitVote('رم')">برد رم</button>
+                    <button class="vote-btn vote-draw" onclick="submitVote('مساوی')">مساوی</button>
+                    <button class="vote-btn vote-away" onclick="submitVote('اینتر')">برد اینتر</button>
+                </div>
+            </div>
 
-            <div class="match-card">
+            <div class="match-card" onclick="togglePrediction('match-5')">
                 <div class="team-box">
                     <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8302.png" alt="سویا" class="team-logo">
                     <span class="team-name">Sevilla</span>
@@ -654,11 +838,34 @@
                     <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8634.png" alt="بارسلونا" class="team-logo">
                 </div>
             </div>
+            <div id="match-5" class="prediction-panel">
+                <div class="stats-box">
+                    <h4>📊 تحلیل و رو در رو (H2H)</h4>
+                    <p>بارسلونا با خط حمله پرمهره در سانچز پیسخوان مهمان سویا خواهد بود.</p>
+                </div>
+                <div class="win-probability">
+                    <div class="prob-bar-container">
+                        <div class="prob-home" style="width: 21%;"></div>
+                        <div class="prob-draw" style="width: 25%;"></div>
+                        <div class="prob-away" style="width: 54%;"></div>
+                    </div>
+                    <div class="prob-labels">
+                        <span>سویا: ۲۱٪</span>
+                        <span>مساوی: ۲۵٪</span>
+                        <span>بارسلونا: ۵۴٪</span>
+                    </div>
+                </div>
+                <div class="vote-form">
+                    <button class="vote-btn vote-home" onclick="submitVote('سویا')">برد سویا</button>
+                    <button class="vote-btn vote-draw" onclick="submitVote('مساوی')">مساوی</button>
+                    <button class="vote-btn vote-away" onclick="submitVote('بارسلونا')">برد بارسلونا</button>
+                </div>
+            </div>
 
             <!-- یکشنبه ۲۹ شهریور -->
             <div class="match-date-header">یکشنبه ۲۹ شهریور</div>
 
-            <div class="match-card">
+            <div class="match-card" onclick="togglePrediction('match-6')">
                 <div class="team-box">
                     <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8678.png" alt="بورنموث" class="team-logo">
                     <span class="team-name">Bournemouth</span>
@@ -672,6 +879,29 @@
                     <img src="https://images.fotmob.com/image_resources/logo/teamlogo/8650.png" alt="لیورپول" class="team-logo">
                 </div>
             </div>
+            <div id="match-6" class="prediction-panel">
+                <div class="stats-box">
+                    <h4>📊 تحلیل و رو در رو (H2H)</h4>
+                    <p>لیورپول با سرعت بالای مهاجمانش به مصاف بورنموثِ سرسختِ خانگی می‌رود.</p>
+                </div>
+                <div class="win-probability">
+                    <div class="prob-bar-container">
+                        <div class="prob-home" style="width: 20%;"></div>
+                        <div class="prob-draw" style="width: 25%;"></div>
+                        <div class="prob-away" style="width: 55%;"></div>
+                    </div>
+                    <div class="prob-labels">
+                        <span>بورنموث: ۲۰٪</span>
+                        <span>مساوی: ۲۵٪</span>
+                        <span>لیورپول: ۵۵٪</span>
+                    </div>
+                </div>
+                <div class="vote-form">
+                    <button class="vote-btn vote-home" onclick="submitVote('بورنموث')">برد بورنموث</button>
+                    <button class="vote-btn vote-draw" onclick="submitVote('مساوی')">مساوی</button>
+                    <button class="vote-btn vote-away" onclick="submitVote('لیورپول')">برد لیورپول</button>
+                </div>
+            </div>
         </div>
 
         <footer>
@@ -679,14 +909,30 @@
         </footer>
     </div>
 
-    <!-- JavaScript for Splash Screen Animation -->
+    <!-- JavaScript for Animations and Predictions -->
     <script>
+        // Splash Screen
         window.addEventListener('load', function() {
             setTimeout(function() {
                 const splash = document.getElementById('splash-screen');
                 splash.classList.add('fade-out');
             }, 2200);
         });
+
+        // Toggle Match Prediction Panel
+        function togglePrediction(matchId) {
+            const panel = document.getElementById(matchId);
+            document.querySelectorAll('.prediction-panel').forEach(p => {
+                if(p.id !== matchId) p.classList.remove('active');
+            });
+            panel.classList.toggle('active');
+        }
+
+        // Submit Prediction Vote
+        function submitVote(team) {
+            event.stopPropagation();
+            alert('پیش‌بینی شما برای نتیجه "' + team + '" در لیگ گداهای استرسی ثبت شد! 🎯');
+        }
     </script>
 </body>
 </html>
