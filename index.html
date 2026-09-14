@@ -10,7 +10,7 @@
       --accent-green: #2ecc71;
       --accent-gold: #f1c40f;
       --accent-blue: #00d2ff;
-      --glass-bg: rgba(18, 28, 22, 0.75);
+      --glass-bg: rgba(18, 28, 22, 0.85);
       --glass-border: rgba(255, 255, 255, 0.15);
       --jelly-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.2);
       --text-main: #ffffff;
@@ -73,112 +73,93 @@
       font-weight: bold;
     }
 
-    /* کانتینر اصلی دوستونی */
-    .layout-container {
-      max-width: 1100px;
+    .accordion-container {
+      max-width: 800px;
       margin: 0 auto;
       padding: 0 15px;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-      transition: all 0.4s ease;
-    }
-
-    @media (min-width: 768px) {
-      .layout-container.split-mode {
-        grid-template-columns: 1fr 340px; /* ستون چپ گسترده، ستون راست منو */
-      }
-    }
-
-    /* لیست آیتم‌های سمت راست */
-    .menu-side {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 15px;
     }
 
-    .menu-item-btn {
-      background: var(--glass-bg);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--glass-border);
-      border-radius: 14px;
-      padding: 16px 20px;
-      font-size: 1rem;
-      font-weight: bold;
-      color: var(--text-main);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      box-shadow: var(--jelly-shadow);
-      transition: all 0.25s ease;
-      text-align: right;
-    }
-
-    .menu-item-btn:hover {
-      border-color: rgba(46, 204, 113, 0.5);
-      transform: translateX(-4px);
-    }
-
-    .menu-item-btn.active {
-      background: linear-gradient(90deg, rgba(46, 204, 113, 0.25) 0%, rgba(18, 28, 22, 0.85) 100%);
-      border-color: var(--accent-green);
-      color: var(--accent-gold);
-    }
-
-    /* پنل نمایش محتوا در سمت چپ */
-    .content-side {
-      display: none;
+    /* دکمه اصلی آیتم‌ها */
+    .acc-item {
       background: var(--glass-bg);
       backdrop-filter: blur(16px);
       border: 1px solid var(--glass-border);
       border-radius: 16px;
-      padding: 20px;
+      overflow: hidden;
       box-shadow: var(--jelly-shadow);
-      animation: fadeIn 0.3s ease;
-      font-size: 0.85rem; /* فونت کوچک‌تر و شکیل‌تر */
+      transition: all 0.3s ease;
     }
 
-    .content-side.active {
-      display: block;
+    .acc-header {
+      width: 100%;
+      padding: 18px 20px;
+      background: transparent;
+      border: none;
+      color: var(--text-main);
+      font-size: 1.05rem;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-family: inherit;
+      text-align: right;
     }
 
-    /* بخش راهنما و توضیح بالای محتوای چپ */
-    .content-header-info {
-      background: rgba(0, 0, 0, 0.3);
-      border-right: 3px solid var(--accent-gold);
-      padding: 10px 14px;
-      border-radius: 8px;
-      margin-bottom: 18px;
+    .acc-header:hover {
+      background: rgba(255, 255, 255, 0.05);
     }
 
-    .content-header-info h3 {
-      font-size: 0.95rem;
+    .acc-item.active .acc-header {
+      background: linear-gradient(90deg, rgba(46, 204, 113, 0.2) 0%, rgba(18, 28, 22, 0.9) 100%);
+      border-bottom: 1px solid var(--glass-border);
       color: var(--accent-gold);
-      margin-bottom: 2px;
     }
 
-    .content-header-info p {
+    .arrow-icon {
       font-size: 0.8rem;
-      color: var(--text-muted);
+      transition: transform 0.3s ease;
     }
 
-    /* عناصر داخل محتوا */
+    .acc-item.active .arrow-icon {
+      transform: rotate(180deg);
+      color: var(--accent-gold);
+    }
+
+    /* بدنه محتوا که باز می‌شود */
+    .acc-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
+      padding: 0 20px;
+      background: rgba(0, 0, 0, 0.25);
+    }
+
+    .acc-item.active .acc-body {
+      max-height: 1000px; /* اجازه باز شدن کامل محتوا */
+      padding: 20px;
+      transition: max-height 0.4s ease-in-out;
+    }
+
+    /* استایل عناصر داخل محتوا */
     .match-item {
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 12px;
-      padding: 10px 14px;
-      margin-bottom: 10px;
+      padding: 12px 14px;
+      margin-bottom: 12px;
     }
 
     .match-header {
       display: flex;
       justify-content: space-between;
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       padding-bottom: 6px;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .match-date { color: var(--accent-gold); font-weight: bold; }
@@ -195,28 +176,28 @@
       justify-content: space-around;
       align-items: center;
       font-weight: bold;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
     }
 
-    .team { display: flex; align-items: center; gap: 6px; }
-    .team img { width: 24px; height: 24px; object-fit: contain; }
+    .team { display: flex; align-items: center; gap: 8px; }
+    .team img { width: 28px; height: 28px; object-fit: contain; }
 
     /* جدول رده‌بندی */
     .ranking-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
     }
 
     .ranking-table th {
       text-align: right;
       color: var(--text-muted);
-      padding: 6px 8px;
+      padding: 8px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .ranking-table td {
-      padding: 8px;
+      padding: 10px 8px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.04);
     }
 
@@ -225,16 +206,17 @@
       font-weight: bold;
     }
 
-    .rank-num { width: 25px; text-align: center; }
+    .rank-num { width: 30px; text-align: center; font-weight: bold; }
     .points { text-align: center; font-weight: bold; color: var(--accent-blue); }
-    .exact { text-align: center; color: var(--text-muted); }
+    .exact { text-align: center; color: var(--text-muted); font-weight: bold; }
 
     /* اخبار و نظرسنجی */
     .news-item {
       background: rgba(255, 255, 255, 0.04);
       border-radius: 10px;
-      padding: 12px;
-      border-right: 3px solid var(--accent-green);
+      padding: 14px;
+      border-right: 4px solid var(--accent-green);
+      font-size: 0.9rem;
     }
 
     .poll-option {
@@ -242,9 +224,9 @@
       align-items: center;
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--glass-border);
-      padding: 10px 12px;
+      padding: 12px;
       border-radius: 10px;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       cursor: pointer;
     }
 
@@ -255,15 +237,11 @@
       background: linear-gradient(135deg, var(--accent-green), #27ae60);
       color: #fff;
       border: none;
-      padding: 10px;
+      padding: 12px;
       border-radius: 10px;
       font-weight: bold;
       cursor: pointer;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
+      font-family: inherit;
     }
   </style>
 </head>
@@ -275,17 +253,15 @@
     <p>لیگ گداهای استرسی فصل ۲</p>
   </header>
 
-  <div class="layout-container" id="mainLayout">
+  <div class="accordion-container">
 
-    <!-- ستون سمت چپ: نمایش محتوای کامل با توضیح بالای آن -->
-    <div class="content-side" id="contentSide">
-      <div class="content-header-info">
-        <h3 id="panelTitle">عنوان بخش</h3>
-        <p id="panelDesc">توضیحات تکمیلی و کامل‌تر مربوط به این بخش را در ادامه مشاهده می‌کنید.</p>
-      </div>
-
-      <!-- محتوای ۱: مسابقات -->
-      <div id="content-matches" class="section-block" style="display: none;">
+    <!-- آیتم ۱: مسابقات -->
+    <div class="acc-item">
+      <button class="acc-header" onclick="toggleAccordion(this)">
+        <span>⚽ مسابقات پیش‌بینی آینده</span>
+        <span class="arrow-icon">▼</span>
+      </button>
+      <div class="acc-body">
         <div class="match-item">
           <div class="match-header">
             <span class="match-date">جمعه ۲۷ شهریور ۱۴۰۵</span>
@@ -310,9 +286,15 @@
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- محتوای ۲: جدول -->
-      <div id="content-ranking" class="section-block" style="display: none;">
+    <!-- آیتم ۲: جدول رده‌بندی -->
+    <div class="acc-item">
+      <button class="acc-header" onclick="toggleAccordion(this)">
+        <span>🏆 جدول رده‌بندی لیگ</span>
+        <span class="arrow-icon">▼</span>
+      </button>
+      <div class="acc-body">
         <table class="ranking-table">
           <thead>
             <tr>
@@ -356,84 +338,59 @@
           </tbody>
         </table>
       </div>
+    </div>
 
-      <!-- محتوای ۳: اخبار -->
-      <div id="content-news" class="section-block" style="display: none;">
+    <!-- آیتم ۳: اخبار -->
+    <div class="acc-item">
+      <button class="acc-header" onclick="toggleAccordion(this)">
+        <span>📰 اخبار لیگ گداهای استرسی</span>
+        <span class="arrow-icon">▼</span>
+      </button>
+      <div class="acc-body">
         <div class="news-item">
           <div style="color: var(--accent-gold); font-weight: bold; margin-bottom: 4px;">۲۶ شهریور ۱۴۰۵</div>
-          <div>رونمایی از ظاهر چندستونی جدید سایت با کنترل اختصاصی و نمایش سریع جزئیات!</div>
+          <div>رونمایی از سیستم کشویی منو؛ حالا با کلیک روی هر آیتم، محتوای آن به صورت کامل و عریض باز می‌شود.</div>
         </div>
       </div>
+    </div>
 
-      <!-- محتوای ۴: نظرسنجی -->
-      <div id="content-poll" class="section-block" style="display: none;">
-        <div style="margin-bottom: 10px; font-weight: bold;">آیا از چیدمان جدید و تفکیک بخش‌ها راضی هستید؟</div>
+    <!-- آیتم ۴: نظرسنجی -->
+    <div class="acc-item">
+      <button class="acc-header" onclick="toggleAccordion(this)">
+        <span>🗳️ نظرسنجی سایت</span>
+        <span class="arrow-icon">▼</span>
+      </button>
+      <div class="acc-body">
+        <div style="margin-bottom: 12px; font-weight: bold;">آیا از این مدل باز شدن کشویی کامل رضایت دارید؟</div>
         <form onsubmit="event.preventDefault(); alert('رأی شما ثبت شد!');">
           <label class="poll-option">
             <input type="radio" name="poll" required>
-            <span>🔥 بسیار چیدمان عالی و خفنی شده</span>
+            <span>🔥 بسیار عالی و منظم است</span>
           </label>
           <label class="poll-option">
             <input type="radio" name="poll">
-            <span>👍 خوب و مناسب</span>
+            <span>👍 خوب است</span>
           </label>
           <button type="submit" class="poll-btn">ثبت رأی</button>
         </form>
       </div>
-
-    </div>
-
-    <!-- ستون سمت راست: منو و گزینه‌ها -->
-    <div class="menu-side">
-      
-      <button class="menu-item-btn" onclick="openTab('matches', '⚽ مسابقات پیش‌بینی آینده', 'جدول مسابقات هفته‌های آتی لیگ به همراه تاریخ و ساعت دقیق بازی‌ها.')">
-        <span>⚽ مسابقات پیش‌بینی آینده</span>
-        <span>◄</span>
-      </button>
-
-      <button class="menu-item-btn" onclick="openTab('ranking', '🏆 جدول رده‌بندی لیگ', 'آخرین وضعیت امتیازات، تعداد پیش‌بینی‌های دقیق و رتبه کاربران.')">
-        <span>🏆 جدول رده‌بندی لیگ</span>
-        <span>◄</span>
-      </button>
-
-      <button class="menu-item-btn" onclick="openTab('news', '📰 اخبار لیگ گداهای استرسی', 'اطلاعیه‌ها، اخبار رسمی و آخرین تغییرات مربوط به لیگ.')">
-        <span>📰 اخبار لیگ</span>
-        <span>◄</span>
-      </button>
-
-      <button class="menu-item-btn" onclick="openTab('poll', '🗳️ نظرسنجی سایت', 'نظر خود را در مورد طراحی و قابلیت‌های جدید ثبت کنید.')">
-        <span>🗳️ نظرسنجی سایت</span>
-        <span>◄</span>
-      </button>
-
     </div>
 
   </div>
 
   <script>
-    function openTab(sectionId, title, description) {
-      // فعال کردن حالت دوستونی
-      document.getElementById('mainLayout').classList.add('split-mode');
-      
-      // نمایش پنل سمت چپ
-      const contentSide = document.getElementById('contentSide');
-      contentSide.classList.add('active');
+    function toggleAccordion(headerElement) {
+      const parentItem = headerElement.parentElement;
+      const isOpen = parentItem.classList.contains('active');
 
-      // تنظیم متون بالای پنل سمت چپ
-      document.getElementById('panelTitle').innerText = title;
-      document.getElementById('panelDesc').innerText = description;
+      // اگر می‌خواهید با کلیک روی یک آیتم، بقیه آیتم‌ها بسته شوند:
+      const allItems = document.querySelectorAll('.acc-item');
+      allItems.forEach(item => item.classList.remove('active'));
 
-      // مخفی کردن همه بلاک‌ها
-      const blocks = document.querySelectorAll('.section-block');
-      blocks.forEach(b => b.style.display = 'none');
-
-      // نمایش بلاک انتخاب شده
-      document.getElementById('content-' + sectionId).style.display = 'block';
-
-      // هایلایت کردن دکمه فعال در سمت راست
-      const buttons = document.querySelectorAll('.menu-item-btn');
-      buttons.forEach(btn => btn.classList.remove('active'));
-      event.currentTarget.classList.add('active');
+      // اگر بسته بود، بازش کن
+      if (!isOpen) {
+        parentItem.classList.add('active');
+      }
     }
   </script>
 
