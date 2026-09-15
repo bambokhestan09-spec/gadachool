@@ -1,2805 +1,2171 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GEDA CHOLHA - ALL YOU CAN PLAY</title>
-    <link href="https://cdn.jsdelivr.net/npm/vazirmatn@33.0.3/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
-
-    <style>
-        :root {
-            --bg-blue: #020817;
-            --dark-blue: #01040b;
-            --navy: #07152b;
-            --accent-red: #ff304f;
-            --accent-gold: #f5b82e;
-            --accent-blue: #2878ff;
-            --green: #18c47c;
-            --card-bg: rgba(8, 24, 49, 0.88);
-            --card-border: rgba(255,255,255,0.10);
-            --text-white: #ffffff;
-            --muted: #8fa5c2;
-            --paper-bg: #fdfbf7;
-            --paper-text: #1f1f1f;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Vazirmatn', sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background:
-                radial-gradient(circle at 50% -10%, rgba(37,99,235,.22), transparent 35%),
-                radial-gradient(circle at 0% 50%, rgba(255,48,79,.10), transparent 30%),
-                radial-gradient(circle at 100% 80%, rgba(245,184,46,.08), transparent 30%),
-                linear-gradient(145deg, #01040b 0%, #06152c 48%, #020816 100%);
-            color: var(--text-white);
-            padding: 24px 12px;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            overflow-x: hidden;
-        }
-
-        body::before,
-        body::after {
-            content: "";
-            position: fixed;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        body::before {
-            width: 600px;
-            height: 600px;
-            top: -280px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: radial-gradient(
-                ellipse,
-                rgba(255,255,255,.12) 0%,
-                rgba(40,120,255,.06) 25%,
-                transparent 70%
-            );
-            filter: blur(12px);
-        }
-
-        body::after {
-            inset: 0;
-            opacity: .18;
-            background-image:
-                linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
-            background-size: 42px 42px;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1050px;
-        }
-
-        /* =========================
-           SPLASH SCREEN
-        ========================= */
-
-        #splash-screen {
-            position: fixed;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            background:
-                radial-gradient(circle at 50% 35%, #12325c 0%, #050d1c 45%, #01040a 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            color: white;
-            transition: opacity .8s ease, visibility .8s ease;
-            overflow: hidden;
-            padding: 20px;
-            text-align: center;
-        }
-
-        #splash-screen::before {
-            content: "⚽";
-            position: absolute;
-            font-size: 220px;
-            opacity: .025;
-            transform: rotate(-18deg);
-        }
-
-        .splash-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 18px;
-            animation: pulseSplash 2.5s ease-in-out infinite;
-        }
-
-        .splash-title {
-            font-family: 'Segoe UI', Tahoma, sans-serif;
-            font-size: clamp(2rem, 7vw, 3.4rem);
-            font-weight: 950;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            background: linear-gradient(
-                135deg,
-                #ffffff 10%,
-                #dbeafe 45%,
-                #f5b82e 100%
-            );
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 8px 25px rgba(245,184,46,.35));
-        }
-
-        .loading-dots {
-            display: flex;
-            gap: 9px;
-            margin-top: 8px;
-        }
-
-        .loading-dots span {
-            width: 9px;
-            height: 9px;
-            background: #fff;
-            border-radius: 50%;
-            animation: bounceDot 1.4s infinite ease-in-out both;
-        }
-
-        .loading-dots span:nth-child(1) {
-            animation-delay: -.32s;
-        }
-
-        .loading-dots span:nth-child(2) {
-            animation-delay: -.16s;
-        }
-
-        @keyframes bounceDot {
-            0%,80%,100% {
-                transform: scale(0);
-                opacity: .3;
-            }
-
-            40% {
-                transform: scale(1);
-                opacity: 1;
-                background: var(--accent-gold);
-                box-shadow: 0 0 18px var(--accent-gold);
-            }
-        }
-
-        @keyframes pulseSplash {
-            0%,100% {
-                transform: scale(.98);
-                opacity: .94;
-            }
-
-            50% {
-                transform: scale(1.03);
-                opacity: 1;
-            }
-        }
-
-        .fade-out {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        /* =========================
-           HEADER
-        ========================= */
-
-        header {
-            position: relative;
-            text-align: center;
-            padding: 18px 12px 30px;
-            margin-bottom: 8px;
-        }
-
-        header::before {
-            content: "MATCHDAY • SEASON 02";
-            display: inline-block;
-            font-family: 'Segoe UI', sans-serif;
-            font-size: .65rem;
-            letter-spacing: 3px;
-            color: #8aa6cc;
-            border: 1px solid rgba(255,255,255,.09);
-            background: rgba(255,255,255,.025);
-            padding: 6px 13px;
-            border-radius: 50px;
-            margin-bottom: 13px;
-        }
-
-        .brand-logo {
-            font-family: 'Segoe UI', sans-serif;
-            font-size: .95rem;
-            font-style: italic;
-            letter-spacing: 5px;
-            color: #8db8ff;
-            margin-bottom: 7px;
-            text-transform: uppercase;
-            font-weight: 900;
-        }
-
-        .main-title {
-            position: relative;
-            font-size: clamp(2.1rem, 6vw, 3.5rem);
-            font-weight: 950;
-            text-transform: uppercase;
-            line-height: 1.12;
-            background: linear-gradient(
-                180deg,
-                #ffffff 0%,
-                #dce7f8 55%,
-                #8fa7c8 100%
-            );
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 10px 30px rgba(0,0,0,.6));
-            margin-bottom: 20px;
-        }
-
-        .main-title::after {
-            content: "";
-            display: block;
-            width: 75px;
-            height: 3px;
-            margin: 15px auto 0;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                var(--accent-red),
-                var(--accent-gold),
-                transparent
-            );
-            border-radius: 50%;
-        }
-
-        .badges-wrapper {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .time-badge,
-        .date-tag {
-            padding: 8px 17px;
-            font-weight: 800;
-            font-size: .78rem;
-            border-radius: 50px;
-            border: 1px solid rgba(255,255,255,.12);
-            box-shadow: 0 7px 25px rgba(0,0,0,.25);
-        }
-
-        .time-badge {
-            background: linear-gradient(135deg,#ff304f,#b91335);
-            color: white;
-            box-shadow: 0 7px 25px rgba(255,48,79,.22);
-        }
-
-        .date-tag {
-            background: linear-gradient(135deg,#ffd45a,#e89b11);
-            color: #111827;
-            box-shadow: 0 7px 25px rgba(245,184,46,.18);
-        }
-
-        /* =========================
-           MAIN GRID
-        ========================= */
-
-        .main-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 15px;
-        }
-
-        /* =========================
-           NEWSPAPER
-        ========================= */
-
-        .newspaper-card {
-            position: relative;
-            background:
-                linear-gradient(rgba(255,255,255,.96),rgba(253,251,247,.98)),
-                var(--paper-bg);
-            color: var(--paper-text);
-            padding: 23px;
-            border-radius: 16px;
-            box-shadow:
-                0 25px 55px rgba(0,0,0,.38),
-                inset 0 0 0 1px rgba(0,0,0,.04);
-            border: 1px solid rgba(255,255,255,.5);
-            overflow: hidden;
-        }
-
-        .newspaper-card::before {
-            content: "⚽";
-            position: absolute;
-            left: -25px;
-            bottom: -45px;
-            font-size: 150px;
-            opacity: .025;
-            transform: rotate(-20deg);
-        }
-
-        .newspaper-header {
-            border-bottom: 3px double #202020;
-            padding-bottom: 8px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        .newspaper-header h3 {
-            font-family: Georgia, serif;
-            font-size: 1.35rem;
-            letter-spacing: 3px;
-            font-weight: 950;
-        }
-
-        .newspaper-date {
-            font-size: .7rem;
-            color: #64748b;
-            text-align: center;
-            border-bottom: 1px solid #dfe4ea;
-            padding-bottom: 8px;
-            margin-bottom: 17px;
-            font-weight: 700;
-        }
-
-        /* =========================
-           NEWS SLIDER
-        ========================= */
-
-        .news-slider {
-            position: relative;
-            min-height: 315px;
-            overflow: hidden;
-        }
-
-        .news-slide {
-            display: none;
-            animation: newsFromTop .55s ease both;
-        }
-
-        .news-slide.active {
-            display: block;
-        }
-
-        @keyframes newsFromTop {
-            0% {
-                opacity: 0;
-                transform: translateY(-35px);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .news-visual {
-            width: 100%;
-            height: 112px;
-            border-radius: 12px;
-            margin-bottom: 13px;
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(7,21,43,.96),
-                    rgba(21,39,68,.88)
-                );
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 22px;
-            position: relative;
-            overflow: hidden;
-            box-shadow:
-                inset 0 1px 0 rgba(255,255,255,.08),
-                0 8px 18px rgba(0,0,0,.12);
-        }
-
-        .news-visual::before {
-            content: "MATCHDAY";
-            position: absolute;
-            top: 8px;
-            right: 10px;
-            font-family: 'Segoe UI', sans-serif;
-            font-size: .52rem;
-            letter-spacing: 2px;
-            color: rgba(255,255,255,.48);
-        }
-
-        .news-team {
-            width: 52px;
-            height: 52px;
-            object-fit: contain;
-            filter: drop-shadow(0 5px 7px rgba(0,0,0,.45));
-            z-index: 2;
-        }
-
-        .news-vs {
-            color: #f5b82e;
-            font-family: 'Segoe UI', sans-serif;
-            font-size: .9rem;
-            font-weight: 950;
-            z-index: 2;
-        }
-
-        .news-kicker {
-            display: inline-block;
-            background: #111827;
-            color: #f5b82e;
-            font-size: .62rem;
-            font-weight: 900;
-            padding: 4px 8px;
-            border-radius: 5px;
-            margin-bottom: 7px;
-        }
-
-        .news-title {
-            font-weight: 900;
-            font-size: .95rem;
-            margin-bottom: 7px;
-            color: #0b1220;
-            line-height: 1.5;
-        }
-
-        .news-detail {
-            font-size: .82rem;
-            color: #334155;
-            line-height: 1.75;
-            text-align: justify;
-        }
-
-        .news-prediction {
-            margin-top: 9px;
-            font-size: .77rem;
-            background: linear-gradient(
-                90deg,
-                rgba(245,184,46,.14),
-                rgba(245,184,46,.04)
-            );
-            padding: 8px 11px;
-            border-radius: 8px;
-            border-right: 3px solid var(--accent-gold);
-            color: #854d0e;
-            font-weight: 800;
-        }
-
-        .news-controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 14px;
-            direction: ltr;
-            position: relative;
-            z-index: 5;
-        }
-
-        .news-arrow {
-            width: 35px;
-            height: 35px;
-            border: 1px solid rgba(15,23,42,.15);
-            border-radius: 50%;
-            background: #111827;
-            color: white;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            transition: .2s ease;
-        }
-
-        .news-arrow:hover {
-            background: var(--accent-red);
-            transform: scale(1.07);
-        }
-
-        .news-dots {
-            display: flex;
-            gap: 6px;
-            direction: ltr;
-        }
-
-        .news-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: #cbd5e1;
-            transition: .25s ease;
-        }
-
-        .news-dot.active {
-            width: 20px;
-            border-radius: 20px;
-            background: var(--accent-red);
-        }
-
-        /* =========================
-           PANELS
-        ========================= */
-
-        .panel,
-        .matches-section {
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(13,35,69,.92),
-                    rgba(4,15,31,.94)
-                );
-            backdrop-filter: blur(18px);
-            border-radius: 17px;
-            padding: 21px;
-            border: 1px solid rgba(255,255,255,.09);
-            box-shadow:
-                0 25px 55px rgba(0,0,0,.32),
-                inset 0 1px 0 rgba(255,255,255,.035);
-        }
-
-        .panel-title {
-            font-size: 1.05rem;
-            font-weight: 900;
-            color: #f7c84b;
-            margin-bottom: 17px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-shadow: 0 2px 12px rgba(245,184,46,.16);
-        }
-
-        .ball-icon {
-            width: 27px;
-            height: 27px;
-            background:
-                radial-gradient(circle at 35% 30%,#ff6074,#ff304f 55%,#a30f2e);
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 950;
-            font-size: .72rem;
-            box-shadow:
-                0 5px 15px rgba(255,48,79,.28),
-                inset 0 1px 2px rgba(255,255,255,.35);
-            border: 2px solid rgba(255,255,255,.18);
-            flex-shrink: 0;
-        }
-
-        /* =========================
-           TABLE
-        ========================= */
-
-        table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0 9px;
-            margin-bottom: 10px;
-        }
-
-        th {
-            color: #7fa5d4;
-            font-size: .72rem;
-            font-weight: 800;
-            padding: 0 10px 5px;
-            text-align: center;
-        }
-
-        td {
-            padding: 13px 10px;
-            text-align: center;
-            font-size: .82rem;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(255,255,255,.105) 0%,
-                    rgba(255,255,255,.045) 42%,
-                    rgba(0,0,0,.16) 100%
-                );
-
-            border-top: 1px solid rgba(255,255,255,.13);
-            border-bottom: 1px solid rgba(0,0,0,.22);
-
-            box-shadow:
-                inset 0 1px 0 rgba(255,255,255,.06),
-                inset 0 -2px 4px rgba(0,0,0,.16),
-                0 5px 12px rgba(0,0,0,.16);
-
-            transition:
-                transform .25s ease,
-                background .25s ease,
-                box-shadow .25s ease;
-        }
-
-        tr td:first-child {
-            border-right: 1px solid rgba(255,255,255,.08);
-            border-top-right-radius: 14px;
-            border-bottom-right-radius: 14px;
-        }
-
-        tr td:last-child {
-            border-left: 1px solid rgba(255,255,255,.08);
-            border-top-left-radius: 14px;
-            border-bottom-left-radius: 14px;
-        }
-
-        tbody tr {
-            position: relative;
-        }
-
-        tbody tr:hover td {
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(255,255,255,.15),
-                    rgba(255,255,255,.055)
-                );
-
-            box-shadow:
-                inset 0 1px 0 rgba(255,255,255,.10),
-                inset 0 -2px 5px rgba(0,0,0,.14),
-                0 9px 20px rgba(0,0,0,.22);
-
-            transform: translateY(-1px);
-        }
-
-        .rank-1 {
-            color: #ffd447;
-            font-weight: 950;
-            text-shadow: 0 0 13px rgba(255,212,71,.38);
-        }
-
-        .rank-number {
-            font-weight: 900;
-            color: #dce8f7;
-            white-space: nowrap;
-        }
-
-        .player-name {
-            font-weight: 800;
-            color: #f5f8ff;
-            white-space: nowrap;
-        }
-
-        .player-name.reza {
-            color: #42f58c;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            font-weight: 950;
-            letter-spacing: .4px;
-            text-shadow: 0 0 14px rgba(66,245,140,.22);
-        }
-
-        .player-score {
-            font-size: 1rem;
-            font-weight: 950;
-            color: #ffffff;
-            text-shadow: 0 2px 8px rgba(0,0,0,.35);
-        }
-
-        .first-place td {
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(245,184,46,.16),
-                    rgba(255,255,255,.055),
-                    rgba(0,0,0,.18)
-                );
-
-            border-top-color: rgba(245,184,46,.25);
-        }
-
-        .first-place .player-score {
-            color: #ffd447;
-            text-shadow: 0 0 14px rgba(255,212,71,.3);
-        }
-
-        /* =========================
-           CAPSULES
-        ========================= */
-
-        .capsule-wrapper {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-top: 12px;
-        }
-
-        .capsule-badge {
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(255,255,255,.97),
-                    rgba(226,232,240,.94)
-                );
-            color: #101827;
-            padding: 11px 15px;
-            border-radius: 10px;
-            font-weight: 800;
-            font-size: .8rem;
-            box-shadow: 0 6px 17px rgba(0,0,0,.17);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border: 1px solid rgba(255,255,255,.5);
-        }
-
-        /* =========================
-           MATCHES
-        ========================= */
-
-        .matches-section {
-            margin-top: 22px;
-        }
-
-        .match-date-header {
-            font-size: .74rem;
-            font-weight: 900;
-            color: #8eb4e6;
-            margin: 19px 0 11px;
-            text-align: center;
-            letter-spacing: 1.5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .match-date-header::before,
-        .match-date-header::after {
-            content: "";
-            height: 1px;
-            flex: 1;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(142,180,230,.25)
-            );
-        }
-
-        .match-date-header::after {
-            transform: rotate(180deg);
-        }
-
-        .match-card {
-            position: relative;
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(18,39,73,.78),
-                    rgba(5,17,35,.9)
-                );
-            border-radius: 12px;
-            padding: 14px 15px;
-            margin-bottom: 7px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            color: white;
-            border: 1px solid rgba(255,255,255,.055);
-            cursor: pointer;
-            transition: all .28s ease;
-            overflow: hidden;
-        }
-
-        .match-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            right: 0;
-            width: 3px;
-            background: linear-gradient(
-                var(--accent-red),
-                var(--accent-gold)
-            );
-            opacity: .7;
-        }
-
-        .match-card:hover {
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(29,58,104,.92),
-                    rgba(8,25,49,.95)
-                );
-            border-color: rgba(245,184,46,.42);
-            transform: translateY(-2px);
-            box-shadow:
-                0 12px 28px rgba(0,0,0,.25),
-                0 0 0 1px rgba(245,184,46,.04);
-        }
-
-        .team-box {
-            display: flex;
-            align-items: center;
-            gap: 9px;
-            width: 38%;
-            min-width: 0;
-        }
-
-        .team-box.right {
-            justify-content: flex-end;
-            text-align: right;
-        }
-
-        .team-logo {
-            width: 24px;
-            height: 24px;
-            object-fit: contain;
-            flex-shrink: 0;
-            filter: drop-shadow(0 3px 5px rgba(0,0,0,.35));
-            transition: transform .25s ease;
-        }
-
-        .match-card:hover .team-logo {
-            transform: scale(1.1);
-        }
-
-        .team-name {
-            font-family: 'Segoe UI', Roboto, Helvetica, sans-serif;
-            font-size: clamp(.7rem,2.5vw,.86rem);
-            font-weight: 800;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            letter-spacing: -.2px;
-        }
-
-        .match-info {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 24%;
-            flex-shrink: 0;
-            position: relative;
-        }
-
-        .match-time {
-            font-size: .86rem;
-            font-weight: 950;
-            color: #ffd34f;
-            text-shadow: 0 0 12px rgba(245,184,46,.2);
-        }
-
-        .match-league {
-            font-size: .58rem;
-            color: #8da0b9;
-            text-transform: uppercase;
-            margin-top: 2px;
-            font-weight: 700;
-            white-space: nowrap;
-        }
-
-        /* =========================
-           PREDICTION PANEL
-        ========================= */
-
-        .prediction-panel {
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(2,9,19,.98),
-                    rgba(5,19,38,.98)
-                );
-            border-radius: 0 0 11px 11px;
-            padding: 0 15px;
-            max-height: 0;
-            overflow: hidden;
-            transition:
-                max-height .4s ease,
-                padding .4s ease,
-                border .4s ease;
-            border: 1px solid transparent;
-            margin-top: -7px;
-            margin-bottom: 12px;
-        }
-
-        .prediction-panel.active {
-            max-height: 400px;
-            padding: 17px 15px;
-            border-color: rgba(245,184,46,.45);
-            border-top: none;
-            box-shadow: inset 0 -8px 25px rgba(0,0,0,.2);
-        }
-
-        .stats-box {
-            font-size: .78rem;
-            color: #c8d5e7;
-            margin-bottom: 14px;
-            line-height: 1.7;
-        }
-
-        .stats-box h4 {
-            color: #f5c344;
-            margin-bottom: 5px;
-            font-size: .82rem;
-        }
-
-        /* =========================
-           PROBABILITY
-        ========================= */
-
-        .win-probability {
-            margin-bottom: 13px;
-        }
-
-        .prob-bar-container {
-            display: flex;
-            height: 9px;
-            width: 100%;
-            border-radius: 20px;
-            overflow: hidden;
-            background: #142238;
-            margin-top: 6px;
-            box-shadow: inset 0 1px 3px rgba(0,0,0,.5);
-        }
-
-        .prob-home {
-            background: linear-gradient(90deg,#b80f32,#ff304f);
-        }
-
-        .prob-draw {
-            background: linear-gradient(90deg,#d78b0d,#f5b82e);
-        }
-
-        .prob-away {
-            background: linear-gradient(90deg,#1761d5,#3989ff);
-        }
-
-        .prob-labels {
-            display: flex;
-            justify-content: space-between;
-            font-size: .66rem;
-            color: #91a3bc;
-            margin-top: 5px;
-            font-weight: 700;
-        }
-
-        /* =========================
-           VOTE BUTTONS
-        ========================= */
-
-        .vote-form {
-            display: flex;
-            gap: 8px;
-            margin-top: 11px;
-        }
-
-        .vote-btn {
-            flex: 1;
-            padding: 9px 4px;
-            border: none;
-            border-radius: 7px;
-            font-weight: 900;
-            cursor: pointer;
-            font-size: .7rem;
-            transition: all .2s ease;
-            box-shadow: 0 4px 12px rgba(0,0,0,.2);
-        }
-
-        .vote-home {
-            background: linear-gradient(135deg,#ff304f,#bd1736);
-            color: white;
-        }
-
-        .vote-draw {
-            background: linear-gradient(135deg,#ffd04c,#df970e);
-            color: #111827;
-        }
-
-        .vote-away {
-            background: linear-gradient(135deg,#3b8dff,#1558bd);
-            color: white;
-        }
-
-        .vote-btn:hover {
-            opacity: .94;
-            transform: translateY(-1px) scale(1.015);
-            box-shadow: 0 7px 17px rgba(0,0,0,.3);
-        }
-
-        .vote-btn:active {
-            transform: scale(.97);
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            text-align: center;
-            padding: 25px 15px 15px;
-            color: #7085a2;
-            font-size: .72rem;
-            font-family: 'Segoe UI',sans-serif;
-            letter-spacing: .5px;
-        }
-
-        footer::before {
-            content: "⚽";
-            display: block;
-            font-size: 17px;
-            margin-bottom: 7px;
-            opacity: .55;
-        }
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 768px) {
-            body {
-                padding: 13px 8px;
-            }
-
-            .main-grid {
-                grid-template-columns: 1fr;
-                gap: 14px;
-            }
-
-            header {
-                padding-top: 10px;
-                padding-bottom: 23px;
-            }
-
-            .panel,
-            .matches-section,
-            .newspaper-card {
-                padding: 16px;
-                border-radius: 14px;
-            }
-
-            .main-title {
-                font-size: clamp(2rem,10vw,2.8rem);
-            }
-
-            .match-card {
-                padding: 13px 10px;
-            }
-
-            .team-name {
-                font-size: .7rem;
-            }
-
-            .team-logo {
-                width: 22px;
-                height: 22px;
-            }
-
-            .match-time {
-                font-size: .78rem;
-            }
-
-            .match-league {
-                font-size: .52rem;
-            }
-
-            .player-name {
-                font-size: .76rem;
-            }
-
-            .player-score {
-                font-size: .92rem;
-            }
-
-            td {
-                padding: 12px 7px;
-            }
-
-            .news-slider {
-                min-height: 340px;
-            }
-
-            .news-visual {
-                height: 105px;
-            }
-        }
-
-        @media (max-width: 430px) {
-            .badges-wrapper {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .time-badge,
-            .date-tag {
-                font-size: .72rem;
-            }
-
-            .panel-title {
-                font-size: .92rem;
-            }
-
-            .newspaper-card {
-                padding: 15px;
-            }
-
-            .news-title {
-                font-size: .88rem;
-            }
-
-            .news-detail {
-                font-size: .77rem;
-            }
-
-            .vote-btn {
-                font-size: .64rem;
-            }
-
-            .player-name {
-                font-size: .68rem;
-            }
-
-            .player-score {
-                font-size: .88rem;
-            }
-
-            td {
-                padding: 11px 5px;
-            }
-
-            .news-slider {
-                min-height: 360px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#071a4d">
+<title>گداهای استرسی ۲ | پیش‌بینی فوتبال اروپا</title>
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/npm/vazirmatn@33.0.3/Vazirmatn-font-face.css" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#061541;
+  --navy2:#0b2057;
+  --blue:#1769ff;
+  --cyan:#35d8ff;
+  --green:#25c879;
+  --gold:#f4c542;
+  --white:#fff;
+  --muted:#91a0bf;
+  --card:#0e1e48;
+  --line:rgba(255,255,255,.09);
+  --shadow:0 18px 50px rgba(0,0,0,.28);
+}
+
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+  margin:0;
+  font-family:Vazirmatn,Tahoma,sans-serif;
+  color:var(--white);
+  background:
+    radial-gradient(circle at 15% 5%,rgba(27,103,255,.18),transparent 30%),
+    radial-gradient(circle at 85% 35%,rgba(0,209,255,.10),transparent 25%),
+    linear-gradient(145deg,#031035,#081a48 55%,#04102e);
+  min-height:100vh;
+}
+
+button{font-family:inherit}
+a{color:inherit;text-decoration:none}
+
+.container{
+  width:min(1180px,calc(100% - 28px));
+  margin:auto;
+}
+
+/* HEADER */
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  padding:34px 0 28px;
+}
+
+.hero:before,
+.hero:after{
+  content:"";
+  position:absolute;
+  border:1px solid rgba(47,116,255,.18);
+  transform:rotate(-16deg);
+  border-radius:28px;
+}
+
+.hero:before{
+  width:480px;
+  height:220px;
+  right:-180px;
+  top:-80px;
+}
+
+.hero:after{
+  width:420px;
+  height:180px;
+  left:-180px;
+  bottom:-90px;
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  position:relative;
+  z-index:2;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.trophy{
+  width:58px;
+  height:58px;
+  display:grid;
+  place-items:center;
+  border-radius:18px;
+  background:linear-gradient(145deg,#fff2a0,#f2bd22 48%,#9c6500);
+  box-shadow:0 8px 28px rgba(244,197,66,.25);
+  font-size:32px;
+  transform:rotate(-3deg);
+}
+
+.brand h1{
+  margin:0;
+  font-size:25px;
+  letter-spacing:-1px;
+}
+
+.brand p{
+  margin:3px 0 0;
+  color:#aebbd6;
+  font-size:12px;
+}
+
+.navlinks{
+  display:flex;
+  gap:8px;
+}
+
+.navlinks a{
+  padding:10px 15px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  color:#d9e2f4;
+  background:rgba(255,255,255,.035);
+  font-size:13px;
+}
+
+.navlinks a:hover{
+  background:rgba(255,255,255,.09);
+}
+
+.hero-main{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:30px;
+  align-items:center;
+  margin-top:45px;
+}
+
+.kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:#a9d5ff;
+  background:rgba(23,105,255,.13);
+  border:1px solid rgba(23,105,255,.3);
+  padding:7px 11px;
+  border-radius:999px;
+  font-size:12px;
+}
+
+.kicker i{
+  width:7px;
+  height:7px;
+  background:#37e28a;
+  border-radius:50%;
+  box-shadow:0 0 14px #37e28a;
+}
+
+.hero h2{
+  font-size:clamp(32px,5vw,62px);
+  line-height:1.08;
+  margin:16px 0 12px;
+  letter-spacing:-2px;
+}
+
+.hero h2 span{
+  color:#4e9cff;
+}
+
+.hero-desc{
+  color:#aebbd6;
+  max-width:680px;
+  line-height:2;
+  font-size:14px;
+}
+
+.start-card{
+  padding:22px;
+  border-radius:28px;
+  background:linear-gradient(
+    145deg,
+    rgba(28,67,143,.55),
+    rgba(7,23,65,.75)
+  );
+  border:1px solid rgba(119,169,255,.16);
+  box-shadow:var(--shadow);
+}
+
+.start-card .label{
+  color:#91a0bf;
+  font-size:12px;
+}
+
+.start-date{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:15px;
+  margin:9px 0 16px;
+}
+
+.start-date strong{
+  font-size:34px;
+  color:#fff;
+}
+
+.start-date span{
+  color:#42d890;
+  font-size:13px;
+  font-weight:700;
+}
+
+.countdown{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+}
+
+.countdown div{
+  background:rgba(0,0,0,.18);
+  border:1px solid var(--line);
+  border-radius:15px;
+  text-align:center;
+  padding:12px 6px;
+}
+
+.countdown b{
+  display:block;
+  font-size:22px;
+}
+
+.countdown small{
+  color:#8594b5;
+  font-size:10px;
+}
+
+/* SECTION */
+
+.section{
+  padding:26px 0;
+}
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:15px;
+  margin-bottom:15px;
+}
+
+.section-head h3{
+  font-size:23px;
+  margin:0;
+}
+
+.section-head p{
+  margin:5px 0 0;
+  color:#8493b3;
+  font-size:12px;
+}
+
+.badge{
+  font-size:11px;
+  color:#8fc0ff;
+  background:rgba(23,105,255,.12);
+  border:1px solid rgba(23,105,255,.25);
+  padding:7px 10px;
+  border-radius:10px;
+}
+
+/* NEWS */
+
+.news-wrap{
+  overflow:hidden;
+  margin-inline:-2px;
+  padding:3px 2px 12px;
+}
+
+.news-track{
+  display:flex;
+  gap:14px;
+  overflow-x:auto;
+  padding:4px 2px 13px;
+  cursor:grab;
+  scrollbar-width:none;
+  scroll-snap-type:x mandatory;
+}
+
+.news-track::-webkit-scrollbar{
+  display:none;
+}
+
+.news-card{
+  min-width:min(78vw,360px);
+  scroll-snap-align:start;
+  position:relative;
+  overflow:hidden;
+  border-radius:24px;
+  padding:19px;
+  background:
+    radial-gradient(
+      circle at 85% 0%,
+      rgba(255,255,255,.22),
+      transparent 22%
+    ),
+    linear-gradient(
+      145deg,
+      #2369db,
+      #0e2d78 58%,
+      #071b4b
+    );
+  box-shadow:0 16px 34px rgba(0,0,0,.25);
+  border:1px solid rgba(255,255,255,.13);
+}
+
+.news-card:after{
+  content:"";
+  position:absolute;
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  background:rgba(255,255,255,.08);
+  left:-70px;
+  bottom:-80px;
+}
+
+.news-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  color:#dceaff;
+  font-size:11px;
+}
+
+.live{
+  display:flex;
+  gap:6px;
+  align-items:center;
+  background:rgba(0,0,0,.17);
+  padding:6px 9px;
+  border-radius:999px;
+}
+
+.live i{
+  width:6px;
+  height:6px;
+  background:#ff5252;
+  border-radius:50%;
+  animation:pulse 1.2s infinite;
+}
+
+@keyframes pulse{
+  50%{
+    opacity:.25;
+    transform:scale(.7);
+  }
+}
+
+.news-card h4{
+  font-size:19px;
+  line-height:1.7;
+  margin:20px 0 8px;
+}
+
+.news-card p{
+  color:#c5d3ee;
+  font-size:12px;
+  line-height:2;
+  margin:0;
+}
+
+.drag-hint{
+  text-align:center;
+  color:#657596;
+  font-size:10px;
+  margin-top:0;
+}
+
+/* TABLE */
+
+.table-card{
+  border:1px solid var(--line);
+  border-radius:24px;
+  overflow:hidden;
+  background:rgba(5,18,54,.62);
+  box-shadow:var(--shadow);
+}
+
+.table-scroll{
+  overflow-x:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:570px;
+}
+
+thead{
+  background:rgba(255,255,255,.055);
+}
+
+th,
+td{
+  padding:13px 15px;
+  text-align:right;
+  font-size:13px;
+  border-bottom:1px solid var(--line);
+}
+
+th{
+  color:#7f91b7;
+  font-size:11px;
+  font-weight:600;
+}
+
+td:first-child,
+th:first-child{
+  text-align:center;
+  width:60px;
+}
+
+td:last-child,
+th:last-child{
+  text-align:center;
+  width:80px;
+}
+
+tbody tr{
+  transition:.2s;
+}
+
+tbody tr:hover{
+  background:rgba(255,255,255,.035);
+}
+
+.rank{
+  font-weight:800;
+  color:#7789ac;
+}
+
+.player{
+  font-weight:600;
+}
+
+.points{
+  font-weight:900;
+  font-size:15px;
+  color:#fff;
+}
+
+.top1 .rank,
+.top1 .points{
+  color:#f6ca4c;
+}
+
+.me{
+  background:linear-gradient(
+    90deg,
+    rgba(35,216,126,.08),
+    rgba(23,105,255,.06)
+  );
+}
+
+.me .player,
+.me .points{
+  color:#47e695;
+}
+
+.progress{
+  height:4px;
+  background:#172b5b;
+  border-radius:20px;
+  overflow:hidden;
+  margin-top:6px;
+}
+
+.progress span{
+  display:block;
+  height:100%;
+  width:92%;
+  background:linear-gradient(
+    90deg,
+    #1769ff,
+    #3ae1a0
+  );
+  border-radius:20px;
+}
+
+/* MATCHES */
+
+.day{
+  margin-top:25px;
+  padding:14px 17px;
+  border-radius:18px;
+  background:linear-gradient(
+    90deg,
+    rgba(23,105,255,.16),
+    rgba(255,255,255,.035)
+  );
+  border:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.day strong{
+  font-size:18px;
+}
+
+.day span{
+  font-size:11px;
+  color:#8291b0;
+}
+
+.matches{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:13px;
+  margin-top:13px;
+}
+
+.match{
+  background:rgba(10,27,68,.72);
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:17px;
+  transition:transform .2s,border-color .2s;
+}
+
+.match:hover{
+  transform:translateY(-3px);
+  border-color:rgba(68,142,255,.35);
+}
+
+.comp{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  color:#8d9dbd;
+  font-size:10px;
+  margin-bottom:14px;
+}
+
+.comp-name{
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+
+.comp-logo{
+  width:24px;
+  height:24px;
+  border-radius:8px;
+  display:grid;
+  place-items:center;
+  font-weight:900;
+  font-size:8px;
+  color:#fff;
+  background:#253c7b;
+  border:1px solid rgba(255,255,255,.12);
+}
+
+.match-time{
+  color:#fff;
+  font-weight:800;
+  font-size:12px;
+}
+
+.teams{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  gap:9px;
+}
+
+.team{
+  text-align:center;
+}
+
+.team img{
+  width:58px;
+  height:58px;
+  object-fit:contain;
+  display:block;
+  margin:auto auto 8px;
+  filter:drop-shadow(
+    0 8px 9px rgba(0,0,0,.28)
+  );
+}
+
+.team b{
+  font-size:12px;
+}
+
+.vs{
+  color:#64779f;
+  font-size:10px;
+  font-weight:800;
+}
+
+.match-footer{
+  display:flex;
+  justify-content:space-between;
+  margin-top:15px;
+  padding-top:11px;
+  border-top:1px solid var(--line);
+  color:#7183a6;
+  font-size:10px;
+}
+
+.predict{
+  color:#45df92;
+  font-weight:700;
+}
+
+/* FOOTER */
+
+footer{
+  padding:38px 0 45px;
+  text-align:center;
+  color:#687a9e;
+  font-size:11px;
+}
+
+.footer-logo{
+  font-size:17px;
+  color:#dbe5f7;
+  font-weight:900;
+  margin-bottom:7px;
+}
+
+.footer-logo span{
+  color:#3f8dff;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+  .navlinks{
+    display:none;
+  }
+
+  .hero-main{
+    grid-template-columns:1fr;
+    margin-top:30px;
+  }
+
+  .hero h2{
+    letter-spacing:-1px;
+  }
+
+  .matches{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:520px){
+
+  .container{
+    width:min(100% - 18px,1180px);
+  }
+
+  .hero{
+    padding-top:20px;
+  }
+
+  .brand h1{
+    font-size:20px;
+  }
+
+  .trophy{
+    width:48px;
+    height:48px;
+    font-size:26px;
+    border-radius:15px;
+  }
+
+  .news-card{
+    min-width:84vw;
+  }
+
+  .start-card{
+    padding:18px;
+  }
+
+  .start-date strong{
+    font-size:29px;
+  }
+
+  .team img{
+    width:50px;
+    height:50px;
+  }
+
+}
+</style>
 </head>
 
 <body>
 
-    <!-- Splash Screen -->
-    <div id="splash-screen">
-        <div class="splash-content">
-            <div class="splash-title">گداهای استرسی ۲</div>
+<header class="hero" id="home">
 
-            <div class="loading-dots">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </div>
+<div class="container">
 
-    <div class="container">
+<nav class="nav">
 
-        <!-- Header -->
-        <header>
+<div class="brand">
 
-            <div class="brand-logo">GEDA CHOLHA</div>
+<div class="trophy">🏆</div>
 
-            <h1 class="main-title">
-                پیش‌بینی کن<br>امتیاز بگیر
-            </h1>
+<div>
 
-            <div class="badges-wrapper">
+<h1>گداهای استرسی ۲</h1>
 
-                <span class="time-badge">
-                    شروع رقابت‌ها: هفته پنجم از روز جمعه
-                </span>
+<p>
+GEDAHAYE ESTERESI 2 · EUROPEAN FOOTBALL
+</p>
 
-                <span class="date-tag">
-                    لیگ گداهای استرسی فصل دوم ۱۴۰۵
-                </span>
+</div>
 
-            </div>
+</div>
 
-        </header>
+<div class="navlinks">
 
-        <!-- Main Content -->
-        <div class="main-grid">
+<a href="#news">خبرها</a>
 
-            <!-- =========================
-                 NEWSPAPER / NEWS
-            ========================= -->
+<a href="#table">جدول لیگ</a>
 
-            <div class="newspaper-card">
+<a href="#matches">بازی‌ها</a>
 
-                <div class="newspaper-header">
-                    <h3>GEDA DAILY NEWS</h3>
-                </div>
+</div>
 
-                <div class="newspaper-date">
-                    اخبار تخصصی فوتبال و لیگ گداهای استرسی
-                </div>
+</nav>
 
-                <div class="news-slider" id="newsSlider">
 
-                    <!-- NEWS 1 -->
-                    <article class="news-slide active">
+<div class="hero-main">
 
-                        <div class="news-visual">
+<div>
 
-                            <img
-                                class="news-team"
-                                src="https://images.fotmob.com/image_resources/logo/teamlogo/9937.png"
-                                alt="Brentford">
+<span class="kicker">
+<i></i>
+فصل ۱۴۰۵–۱۴۰۶ · هفته پنجم
+</span>
 
-                            <span class="news-vs">VS</span>
+<h2>
+فوتبال اروپا،
+<br>
+<span>پیش‌بینی با استرس!</span>
+</h2>
 
-                            <img
-                                class="news-team"
-                                src="https://images.fotmob.com/image_resources/logo/teamlogo/8455.png"
-                                alt="Chelsea">
+<p class="hero-desc">
 
-                        </div>
+خانه رسمی لیگ پیش‌بینی
+<b>گداهای استرسی ۲</b>.
 
-                        <span class="news-kicker">
-                            📰 خبر اول • جمعه
-                        </span>
+از خبرهای لحظه‌ای تا جدول رقابت و بازی‌های هفته پنجم؛
+همه‌چیز یک‌جا، سریع و فوتبالی.
 
-                        <div class="news-title">
-                            ⚽ هفته پنجم با برنتفورد و چلسی استارت می‌خورد
-                        </div>
+</p>
 
-                        <div class="news-detail">
-                            هفته پنجم رقابت‌ها از روز جمعه آغاز می‌شود و اولین مسابقه پیش‌بینی لیگ گداهای استرسی ۲، تقابل برنتفورد و چلسی خواهد بود. طبق اطلاعات فوت‌موب، شانس برد چلسی بیشتر از میزبان است اما برنتفورد می‌تواند بازی را برای آبی‌ها سخت کند.
-                        </div>
+</div>
 
-                        <div class="news-prediction">
-                            🔮 گداهای استرسی آماده باشید؛ اولین بازی هفته می‌تواند همان جایی باشد که جدول شروع به تکان خوردن می‌کند!
-                        </div>
 
-                    </article>
+<div class="start-card">
 
-                    <!-- NEWS 2 -->
-                    <article class="news-slide">
+<div class="label">
+شروع دور جدید پیش‌بینی
+</div>
 
-                        <div class="news-visual">
+<div class="start-date">
 
-                            <img
-                                class="news-team"
-                                src="https://images.fotmob.com/image_resources/logo/teamlogo/10204.png"
-                                alt="Brighton">
+<strong>
+جمعه ۲۷ شهریور
+</strong>
 
-                            <span class="news-vs">VS</span>
+<span>
+هفته پنجم
+</span>
 
-                            <img
-                                class="news-team"
-                                src="https://images.fotmob.com/image_resources/logo/teamlogo/9825.png"
-                                alt="Arsenal">
+</div>
 
-                        </div>
+<div class="countdown" id="countdown">
 
-                        <span class="news-kicker">
-                            🔥 خبر دوم • لیگ برتر
-                        </span>
+<div>
+<b>--</b>
+<small>روز</small>
+</div>
 
-                        <div class="news-title">
-                            🔥 برایتون و آرسنال؛ نبرد با اختلاف شانس قابل توجه
-                        </div>
+<div>
+<b>--</b>
+<small>ساعت</small>
+</div>
 
-                        <div class="news-detail">
-                            یکی از بازی‌های مهم هفته، دیدار برایتون و آرسنال است. در داده‌های نمایش‌داده‌شده در فوت‌موب، شانس برد آرسنال ۵۵ درصد و شانس پیروزی برایتون ۲۱ درصد اعلام شده است.
-                        </div>
+<div>
+<b>--</b>
+<small>دقیقه</small>
+</div>
 
-                        <div class="news-prediction">
-                            🔮 پیش‌بینی کنید؛ آرسنال روی کاغذ شانس بیشتری دارد، اما فوتبال همیشه روی کاغذ بازی نمی‌شود!
-                        </div>
+</div>
 
-                    </article>
+</div>
 
-                    <!-- NEWS 3 -->
-                    <article class="news-slide">
+</div>
 
-                        <div class="news-visual">
+</div>
 
-                            <img
-                                class="news-team"
-                                src="https://images.fotmob.com/image_resources/logo/teamlogo/8636.png"
-                                alt="Inter">
+</header>
 
-                            <span class="news-vs">VS</span>
 
-                            <img
-                                class="news-team"
-                                src="https://images.fotmob.com/image_resources/logo/teamlogo/8686.png"
-                                alt="Roma">
+<main>
 
-                        </div>
 
-                        <span class="news-kicker">
-                            🇮🇹 خبر سوم • سری آ
-                        </span>
+<!-- NEWS -->
 
-                        <div class="news-title">
-                            ⚔️ رم و اینتر؛ یک دوئل سنگین برای شکار امتیاز
-                        </div>
+<section class="section" id="news">
 
-                        <div class="news-detail">
-                            در سری آ، رم و اینتر روبه‌روی هم قرار می‌گیرند. اختلاف شانس دو تیم کم است و همین موضوع این بازی را به یکی از خطرناک‌ترین مسابقات برای پیش‌بینی تبدیل می‌کند.
-                        </div>
+<div class="container">
 
-                        <div class="news-prediction">
-                            🔮 بازی‌ای برای آن‌هایی که دنبال ریسک هستند؛ یک پیش‌بینی اشتباه می‌تواند چند پله جدول را جابه‌جا کند!
-                        </div>
+<div class="section-head">
 
-                    </article>
+<div>
 
-                    <!-- NEWS 4 -->
-                    <article class="news-slide">
+<h3>
+📰 خبرهای گداهای استرسی
+</h3>
 
-                        <div class="news-visual">
+<p>
+خبرها را مثل اسنپ‌ژله‌ای به چپ و راست بکشید
+</p>
 
-                            <img
-                                class="news-team"
-                                src="https://images.fotmob.com/image_resources/logo/teamlogo/8302.png"
-                                alt="Sevilla">
+</div>
 
-                            <span class="news-vs">VS</span>
+<span class="badge">
+LIVE NEWS
+</span>
 
-                            <img
-                                class="news-team"
-                                src="https://images.fotmob.com/image_resources/logo/teamlogo/8634.png"
-                                alt="Barcelona">
+</div>
 
-                        </div>
 
-                        <span class="news-kicker">
-                            🇪🇸 خبر چهارم • لالیگا
-                        </span>
+<div class="news-wrap">
 
-                        <div class="news-title">
-                            🔵🔴 بارسلونا مقابل سویا؛ یکی از سخت‌ترین پیش‌بینی‌های هفته
-                        </div>
+<div class="news-track" id="newsTrack">
 
-                        <div class="news-detail">
-                            بارسلونا در یکی از مسابقات مهم لالیگا به مصاف سویا می‌رود. فوت‌موب شانس پیروزی بارسلونا را ۷۵ درصد و شانس برد سویا را ۹ درصد اعلام کرده است.
-                        </div>
 
-                        <div class="news-prediction">
-                            🔮 وقتی اختلاف شانس این‌قدر زیاد است، همه سراغ بارسا می‌روند؛ اما گداهای واقعی دنبال سورپرایزند!
-                        </div>
+<article class="news-card">
 
-                    </article>
+<div class="news-top">
 
-                    <!-- NEWS 5 -->
-                    <article class="news-slide">
+<span>
+هفته پنجم
+</span>
 
-                        <div class="news-visual">
+<span class="live">
+<i></i>
+خبر فوری
+</span>
 
-                            <img
-                                class="news-team"
-                                src="https://images.fotmob.com/image_resources/logo/teamlogo/8586.png"
-                                alt="Tottenham">
+</div>
 
-                            <span class="news-vs">VS</span>
+<h4>
+🚨 شمارش معکوس برای شروع هفته پنجم
+</h4>
 
-                            <img
-                                class="news-team"
-                                src="https://images.fotmob.com/image_resources/logo/teamlogo/10252.png"
-                                alt="Aston Villa">
+<p>
+جمعه ۲۷ شهریور، رقابت پیش‌بینی فوتبال اروپا دوباره داغ می‌شود.
+آماده‌اید؟
+</p>
 
-                        </div>
+</article>
 
-                        <span class="news-kicker">
-                            🏴 خبر پنجم • شنبه
-                        </span>
 
-                        <div class="news-title">
-                            ⚡ تاتنهام و استون ویلا؛ شروع سنگین شنبه
-                        </div>
+<article class="news-card">
 
-                        <div class="news-detail">
-                            شنبه با تقابل تاتنهام و استون ویلا ادامه پیدا می‌کند. طبق تصویر فوت‌موب، شانس پیروزی تاتنهام ۴۷ درصد و استون ویلا ۲۶ درصد است.
-                        </div>
+<div class="news-top">
 
-                        <div class="news-prediction">
-                            🔮 فاصله شانس دو تیم زیاد است؛ ولی برای جدول گداهای استرسی هیچ بازی ساده‌ای وجود ندارد!
-                        </div>
+<span>
+لیگ گداهای استرسی ۲
+</span>
 
-                    </article>
+<span>
+⚽
+</span>
 
-                    <!-- NEWS 6 -->
-                    <article class="news-slide">
+</div>
 
-                        <div class="news-visual">
+<h4>
+👑 رقابت برای صدر جدول نزدیک‌تر شد
+</h4>
 
-                            <img
-                                class="news-team"
-                                src="https://images.fotmob.com/image_resources/logo/teamlogo/8678.png"
-                                alt="Bournemouth">
+<p>
+در جدول فعلی، فاصله صدر تا رتبه‌های بالایی کم است و یک پیش‌بینی درست می‌تواند همه‌چیز را عوض کند.
+</p>
 
-                            <span class="news-vs">VS</span>
+</article>
 
-                            <img
-                                class="news-team"
-                                src="https://images.fotmob.com/image_resources/logo/teamlogo/8650.png"
-                                alt="Liverpool">
 
-                        </div>
+<article class="news-card">
 
-                        <span class="news-kicker">
-                            🔴 خبر ششم • شنبه
-                        </span>
+<div class="news-top">
 
-                        <div class="news-title">
-                            🚨 بورنموث و لیورپول؛ امتیازهای طلایی روی میز
-                        </div>
+<span>
+بازی بزرگ هفته
+</span>
 
-                        <div class="news-detail">
-                            لیورپول با شانس برد ۴۴ درصد وارد این مسابقه می‌شود و بورنموث نیز ۳۲ درصد شانس پیروزی دارد. اختلاف کم شانس دو تیم می‌تواند این بازی را به یک دام بزرگ برای پیش‌بینی‌کنندگان تبدیل کند.
-                        </div>
+<span>
+🔥
+</span>
 
-                        <div class="news-prediction">
-                            🔮 این همان بازی‌ای است که ممکن است یک نفر را قهرمان هفته کند و یک نفر دیگر را به انتهای جدول بفرستد!
-                        </div>
+</div>
 
-                    </article>
+<h4>
+⚔️ دربی مادرید؛ اتلتیکو مقابل رئال
+</h4>
 
-                    <!-- NEWS 7 -->
-                    <article class="news-slide">
+<p>
+یکی از حساس‌ترین بازی‌های هفته شنبه ۲۸ شهریور برگزار می‌شود؛ وقت پیش‌بینی فرا رسیده است.
+</p>
 
-                        <div class="news-visual">
+</article>
 
-                            <img
-                                class="news-team"
-                                src="https://images.fotmob.com/image_resources/logo/teamlogo/8639.png"
-                                alt="Atletico Madrid">
 
-                            <span class="news-vs">VS</span>
+<article class="news-card">
 
-                            <img
-                                class="news-team"
-                                src="https://images.fotmob.com/image_resources/logo/teamlogo/8633.png"
-                                alt="Real Madrid">
+<div class="news-top">
 
-                        </div>
+<span>
+اروپا
+</span>
 
-                        <span class="news-kicker">
-                            ⚔️ خبر هفتم • لالیگا
-                        </span>
+<span>
+🏟️
+</span>
 
-                        <div class="news-title">
-                            👑 دربی مادرید؛ اتلتیکو مقابل رئال
-                        </div>
+</div>
 
-                        <div class="news-detail">
-                            یکی از بزرگ‌ترین مسابقات هفته، تقابل اتلتیکو مادرید و رئال مادرید است. رئال در داده‌های فوت‌موب ۵۱ درصد شانس برد دارد و اتلتیکو با ۲۵ درصد پشت سر آن قرار گرفته است.
-                        </div>
+<h4>
+🌍 انگلیس، ایتالیا و اسپانیا در برنامه
+</h4>
 
-                        <div class="news-prediction">
-                            🔮 این بازی برای جدول گداهای استرسی حکم طلا دارد؛ مخصوصاً برای کسی که نتیجه متفاوتی بزند!
-                        </div>
+<p>
+از لیگ برتر انگلیس تا سری‌آ و لالیگا؛ هفته پنجم پر از بازی‌های جذاب برای پیش‌بینی است.
+</p>
 
-                    </article>
+</article>
 
-                    <!-- NEWS 8 -->
-                    <article class="news-slide">
 
-                        <div class="news-visual">
+</div>
 
-                            <img
-                                class="news-team"
-                                src="https://images.fotmob.com/image_resources/logo/teamlogo/9879.png"
-                                alt="Fulham">
+<div class="drag-hint">
+← برای دیدن خبرهای بیشتر بکشید →
+</div>
 
-                            <span class="news-vs">VS</span>
+</div>
 
-                            <img
-                                class="news-team"
-                                src="https://images.fotmob.com/image_resources/logo/teamlogo/10260.png"
-                                alt="Manchester United">
+</div>
 
-                        </div>
+</section>
 
-                        <span class="news-kicker">
-                            🔴 خبر هشتم • یکشنبه
-                        </span>
 
-                        <div class="news-title">
-                            😰 منچستریونایتد و فولام؛ پایان هفته با استرس
-                        </div>
+<!-- TABLE -->
 
-                        <div class="news-detail">
-                            آخرین بازی این مجموعه، تقابل فولام و منچستریونایتد است. فوت‌موب شانس برد منچستریونایتد را ۴۷ درصد و فولام را ۲۸ درصد نشان می‌دهد.
-                        </div>
+<section class="section" id="table">
 
-                        <div class="news-prediction">
-                            🔮 طبق سنت همیشگی منچستر؛ احتمالاً این بازی تا آخرین لحظه اعصاب گداهای استرسی را خرد خواهد کرد!
-                        </div>
+<div class="container">
 
-                    </article>
+<div class="section-head">
 
-                </div>
+<div>
 
-                <div class="news-controls">
+<h3>
+🏆 جدول اعضای شرکت‌کننده
+</h3>
 
-                    <button
-                        class="news-arrow"
-                        onclick="previousNews()"
-                        aria-label="خبر قبلی">
-                        ‹
-                    </button>
+<p>
+آخرین جدول ارسال‌شده برای لیگ گداهای استرسی ۲
+</p>
 
-                    <div class="news-dots" id="newsDots"></div>
+</div>
 
-                    <button
-                        class="news-arrow"
-                        onclick="nextNews()"
-                        aria-label="خبر بعدی">
-                        ›
-                    </button>
+<span class="badge">
+۱۳ شرکت‌کننده
+</span>
 
-                </div>
+</div>
 
-            </div>
 
-            <!-- =========================
-                 LEADERBOARD
-            ========================= -->
+<div class="table-card">
 
-            <div class="panel">
+<div class="table-scroll">
 
-                <div class="panel-title">
-                    <span class="ball-icon">8</span>
-                    جدول امتیازات لیگ
-                </div>
+<table>
 
-                <table>
+<thead>
 
-                    <thead>
-                        <tr>
-                            <th>رتبه</th>
-                            <th>نام</th>
-                            <th>امتیاز</th>
-                        </tr>
-                    </thead>
+<tr>
 
-                    <tbody>
+<th>رتبه</th>
+<th>بازیکن</th>
+<th>وضعیت</th>
+<th>امتیاز</th>
 
-                        <tr class="first-place">
-                            <td class="rank-1">🥇 ۱</td>
-                            <td class="player-name">Asm A</td>
-                            <td class="player-score">۵۲</td>
-                        </tr>
+</tr>
 
-                        <tr>
-                            <td class="rank-number">۲</td>
-                            <td class="player-name reza">REZA GHATIFI</td>
-                            <td class="player-score">۴۸</td>
-                        </tr>
+</thead>
 
-                        <tr>
-                            <td class="rank-number">۳</td>
-                            <td class="player-name">Mahdi</td>
-                            <td class="player-score">۴۵</td>
-                        </tr>
 
-                        <tr>
-                            <td class="rank-number">۴</td>
-                            <td class="player-name">Donya Asil</td>
-                            <td class="player-score">۴۴</td>
-                        </tr>
+<tbody>
 
-                        <tr>
-                            <td class="rank-number">۵</td>
-                            <td class="player-name">حبیب نعیمی</td>
-                            <td class="player-score">۴۳</td>
-                        </tr>
 
-                        <tr>
-                            <td class="rank-number">۶</td>
-                            <td class="player-name">محمد خلیلاوی پور</td>
-                            <td class="player-score">۴۰</td>
-                        </tr>
+<tr class="top1">
 
-                        <tr>
-                            <td class="rank-number">۷</td>
-                            <td class="player-name">hajar daoudi</td>
-                            <td class="player-score">۳۸</td>
-                        </tr>
+<td class="rank">1</td>
 
-                        <tr>
-                            <td class="rank-number">۸</td>
-                            <td class="player-name">Ahlam Aljaber</td>
-                            <td class="player-score">۳۷</td>
-                        </tr>
+<td class="player">
+Asm A
+</td>
 
-                        <tr>
-                            <td class="rank-number">۹</td>
-                            <td class="player-name">hey10</td>
-                            <td class="player-score">۳۴</td>
-                        </tr>
+<td>
 
-                        <tr>
-                            <td class="rank-number">۱۰</td>
-                            <td class="player-name">امین دریس</td>
-                            <td class="player-score">۳۳</td>
-                        </tr>
+<div class="progress">
+<span style="width:100%"></span>
+</div>
 
-                        <tr>
-                            <td class="rank-number">۱۱</td>
-                            <td class="player-name">Sama salehi</td>
-                            <td class="player-score">۳۰</td>
-                        </tr>
+</td>
 
-                        <tr>
-                            <td class="rank-number">۱۲</td>
-                            <td class="player-name">محمد جاسمیان</td>
-                            <td class="player-score">۲۴</td>
-                        </tr>
+<td class="points">
+52
+</td>
 
-                        <tr>
-                            <td class="rank-number">۱۳</td>
-                            <td class="player-name">مهدی</td>
-                            <td class="player-score">۱۵</td>
-                        </tr>
+</tr>
 
-                    </tbody>
 
-                </table>
+<tr class="me">
 
-                <div style="margin-top:20px;">
+<td class="rank">
+2
+</td>
 
-                    <div style="
-                        font-size:.8rem;
-                        color:#93c5fd;
-                        margin-bottom:8px;
-                        font-weight:700;
-                    ">
-                        شرایط و قوانین:
-                    </div>
+<td class="player">
+REZA GHATIFI
+</td>
 
-                    <div class="capsule-wrapper">
+<td>
 
-                        <div class="capsule-badge">
-                            <span class="ball-icon" style="background:#0f172a;">
-                                8
-                            </span>
-                            پیش‌بینی کن، یادت نره!
-                        </div>
+<div class="progress">
+<span style="width:92%"></span>
+</div>
 
-                        <div class="capsule-badge">
-                            <span class="ball-icon" style="background:#10b981;color:#fff;">
-                                8
-                            </span>
-                            دنبال کردن در فانتزی
-                        </div>
+</td>
 
-                    </div>
+<td class="points">
+48
+</td>
 
-                </div>
+</tr>
 
-            </div>
 
-        </div>
+<tr>
 
-        <!-- =========================
-             MATCHES
-        ========================= -->
+<td class="rank">3</td>
 
-        <div class="matches-section">
+<td class="player">
+Mahdi
+</td>
 
-            <div class="panel-title">
-                <span class="ball-icon">⚽</span>
-                هفته پنجم پیش‌بینی
-            </div>
+<td>
 
-            <!-- =========================
-                 جمعه ۲۷ شهریور
-            ========================= -->
+<div class="progress">
+<span style="width:86%"></span>
+</div>
 
-            <div class="match-date-header">
-                جمعه ۲۷ شهریور
-            </div>
+</td>
 
-            <!-- Brentford - Chelsea -->
+<td class="points">
+45
+</td>
 
-            <div class="match-card" onclick="togglePrediction('match-1')">
+</tr>
 
-                <div class="team-box">
 
-                    <img
-                        src="https://images.fotmob.com/image_resources/logo/teamlogo/9937.png"
-                        alt="برنتفورد"
-                        class="team-logo">
+<tr>
 
-                    <span class="team-name">
-                        Brentford
-                    </span>
+<td class="rank">4</td>
 
-                </div>
+<td class="player">
+Donya Asil
+</td>
 
-                <div class="match-info">
+<td>
 
-                    <span class="match-time">
-                        ۲۲:۳۰
-                    </span>
+<div class="progress">
+<span style="width:84%"></span>
+</div>
 
-                    <span class="match-league">
-                        Premier League
-                    </span>
+</td>
 
-                </div>
+<td class="points">
+44
+</td>
 
-                <div class="team-box right">
+</tr>
 
-                    <span class="team-name">
-                        Chelsea
-                    </span>
 
-                    <img
-                        src="https://images.fotmob.com/image_resources/logo/teamlogo/8455.png"
-                        alt="چلسی"
-                        class="team-logo">
+<tr>
 
-                </div>
+<td class="rank">5</td>
 
-            </div>
+<td class="player">
+حبیب نعیمی
+</td>
 
-            <div id="match-1" class="prediction-panel">
+<td>
 
-                <div class="stats-box">
+<div class="progress">
+<span style="width:82%"></span>
+</div>
 
-                    <h4>
-                        📊 درصد برد فوت‌موب
-                    </h4>
+</td>
 
-                    <p>
-                        طبق تصویر فوت‌موب، برنتفورد ۳۲٪ و چلسی ۴۲٪ شانس پیروزی دارند.
-                    </p>
+<td class="points">
+43
+</td>
 
-                </div>
+</tr>
 
-                <div class="win-probability">
 
-                    <div class="prob-bar-container">
+<tr>
 
-                        <div class="prob-home" style="width:32%;"></div>
+<td class="rank">6</td>
 
-                        <div class="prob-draw" style="width:26%;"></div>
+<td class="player">
+محمد خلیلاوی پور
+</td>
 
-                        <div class="prob-away" style="width:42%;"></div>
+<td>
 
-                    </div>
+<div class="progress">
+<span style="width:77%"></span>
+</div>
 
-                    <div class="prob-labels">
+</td>
 
-                        <span>
-                            برنتفورد: ۳۲٪
-                        </span>
+<td class="points">
+40
+</td>
 
-                        <span>
-                            مساوی: ۲۶٪
-                        </span>
+</tr>
 
-                        <span>
-                            چلسی: ۴۲٪
-                        </span>
 
-                    </div>
+<tr>
 
-                </div>
+<td class="rank">7</td>
 
-                <div class="vote-form">
+<td class="player">
+hajar daoudi
+</td>
 
-                    <button
-                        class="vote-btn vote-home"
-                        onclick="submitVote('برنتفورد')">
-                        برد برنتفورد
-                    </button>
+<td>
 
-                    <button
-                        class="vote-btn vote-draw"
-                        onclick="submitVote('مساوی')">
-                        مساوی
-                    </button>
+<div class="progress">
+<span style="width:73%"></span>
+</div>
 
-                    <button
-                        class="vote-btn vote-away"
-                        onclick="submitVote('چلسی')">
-                        برد چلسی
-                    </button>
+</td>
 
-                </div>
+<td class="points">
+38
+</td>
 
-            </div>
+</tr>
 
-            <!-- =========================
-                 شنبه ۲۸ شهریور
-            ========================= -->
 
-            <div class="match-date-header">
-                شنبه ۲۸ شهریور
-            </div>
+<tr>
 
-            <!-- Tottenham - Aston Villa -->
+<td class="rank">8</td>
 
-            <div class="match-card" onclick="togglePrediction('match-2')">
+<td class="player">
+Ahlam Aljaber
+</td>
 
-                <div class="team-box">
+<td>
 
-                    <img
-                        src="https://images.fotmob.com/image_resources/logo/teamlogo/8586.png"
-                        alt="تاتنهام"
-                        class="team-logo">
+<div class="progress">
+<span style="width:71%"></span>
+</div>
 
-                    <span class="team-name">
-                        Tottenham
-                    </span>
+</td>
 
-                </div>
+<td class="points">
+37
+</td>
 
-                <div class="match-info">
+</tr>
 
-                    <span class="match-time">
-                        ۱۵:۰۰
-                    </span>
 
-                    <span class="match-league">
-                        Premier League
-                    </span>
+<tr>
 
-                </div>
+<td class="rank">9</td>
 
-                <div class="team-box right">
+<td class="player">
+hey10
+</td>
 
-                    <span class="team-name">
-                        Aston Villa
-                    </span>
+<td>
 
-                    <img
-                        src="https://images.fotmob.com/image_resources/logo/teamlogo/10252.png"
-                        alt="استون ویلا"
-                        class="team-logo">
+<div class="progress">
+<span style="width:65%"></span>
+</div>
 
-                </div>
+</td>
 
-            </div>
+<td class="points">
+34
+</td>
 
-            <div id="match-2" class="prediction-panel">
+</tr>
 
-                <div class="stats-box">
 
-                    <h4>
-                        📊 درصد برد فوت‌موب
-                    </h4>
+<tr>
 
-                    <p>
-                        تاتنهام با ۴۷٪ شانس پیروزی در مقابل استون ویلا با ۲۶٪ قرار دارد.
-                    </p>
+<td class="rank">10</td>
 
-                </div>
+<td class="player">
+امین دریس
+</td>
 
-                <div class="win-probability">
+<td>
 
-                    <div class="prob-bar-container">
+<div class="progress">
+<span style="width:63%"></span>
+</div>
 
-                        <div class="prob-home" style="width:47%;"></div>
+</td>
 
-                        <div class="prob-draw" style="width:27%;"></div>
+<td class="points">
+33
+</td>
 
-                        <div class="prob-away" style="width:26%;"></div>
+</tr>
 
-                    </div>
 
-                    <div class="prob-labels">
+<tr>
 
-                        <span>
-                            تاتنهام: ۴۷٪
-                        </span>
+<td class="rank">11</td>
 
-                        <span>
-                            مساوی: ۲۷٪
-                        </span>
+<td class="player">
+Sama salehi
+</td>
 
-                        <span>
-                            استون ویلا: ۲۶٪
-                        </span>
+<td>
 
-                    </div>
+<div class="progress">
+<span style="width:58%"></span>
+</div>
 
-                </div>
+</td>
 
-                <div class="vote-form">
+<td class="points">
+30
+</td>
 
-                    <button
-                        class="vote-btn vote-home"
-                        onclick="submitVote('تاتنهام')">
-                        برد تاتنهام
-                    </button>
+</tr>
 
-                    <button
-                        class="vote-btn vote-draw"
-                        onclick="submitVote('مساوی')">
-                        مساوی
-                    </button>
 
-                    <button
-                        class="vote-btn vote-away"
-                        onclick="submitVote('استون ویلا')">
-                        برد استون ویلا
-                    </button>
+<tr>
 
-                </div>
+<td class="rank">12</td>
 
-            </div>
+<td class="player">
+محمد جاسمیان
+</td>
 
-            <!-- Brighton - Arsenal -->
+<td>
 
-            <div class="match-card" onclick="togglePrediction('match-3')">
+<div class="progress">
+<span style="width:46%"></span>
+</div>
 
-                <div class="team-box">
+</td>
 
-                    <img
-                        src="https://images.fotmob.com/image_resources/logo/teamlogo/10204.png"
-                        alt="برایتون"
-                        class="team-logo">
+<td class="points">
+24
+</td>
 
-                    <span class="team-name">
-                        Brighton
-                    </span>
+</tr>
 
-                </div>
 
-                <div class="match-info">
+<tr>
 
-                    <span class="match-time">
-                        ۱۷:۳۰
-                    </span>
+<td class="rank">13</td>
 
-                    <span class="match-league">
-                        Premier League
-                    </span>
+<td class="player">
+مهدی
+</td>
 
-                </div>
+<td>
 
-                <div class="team-box right">
+<div class="progress">
+<span style="width:29%"></span>
+</div>
 
-                    <span class="team-name">
-                        Arsenal
-                    </span>
+</td>
 
-                    <img
-                        src="https://images.fotmob.com/image_resources/logo/teamlogo/9825.png"
-                        alt="آرسنال"
-                        class="team-logo">
+<td class="points">
+15
+</td>
 
-                </div>
+</tr>
 
-            </div>
 
-            <div id="match-3" class="prediction-panel">
+</tbody>
 
-                <div class="stats-box">
+</table>
 
-                    <h4>
-                        📊 درصد برد فوت‌موب
-                    </h4>
+</div>
 
-                    <p>
-                        طبق تصویر ارسالی، شانس برد برایتون ۲۱٪ و شانس برد آرسنال ۵۵٪ است.
-                    </p>
+</div>
 
-                </div>
+</div>
 
-                <div class="win-probability">
+</section>
 
-                    <div class="prob-bar-container">
 
-                        <div class="prob-home" style="width:21%;"></div>
+<!-- MATCHES -->
 
-                        <div class="prob-draw" style="width:24%;"></div>
+<section class="section" id="matches">
 
-                        <div class="prob-away" style="width:55%;"></div>
+<div class="container">
 
-                    </div>
+<div class="section-head">
 
-                    <div class="prob-labels">
+<div>
 
-                        <span>
-                            برایتون: ۲۱٪
-                        </span>
+<h3>
+⚽ بازی‌های هفته پنجم
+</h3>
 
-                        <span>
-                            مساوی: ۲۴٪
-                        </span>
+<p>
+زمان‌ها به وقت ایران · تاریخ‌ها شمسی
+</p>
 
-                        <span>
-                            آرسنال: ۵۵٪
-                        </span>
+</div>
 
-                    </div>
+<span class="badge">
+PREDICT NOW
+</span>
 
-                </div>
+</div>
 
-                <div class="vote-form">
 
-                    <button
-                        class="vote-btn vote-home"
-                        onclick="submitVote('برایتون')">
-                        برد برایتون
-                    </button>
+<!-- FRIDAY -->
 
-                    <button
-                        class="vote-btn vote-draw"
-                        onclick="submitVote('مساوی')">
-                        مساوی
-                    </button>
+<div class="day">
 
-                    <button
-                        class="vote-btn vote-away"
-                        onclick="submitVote('آرسنال')">
-                        برد آرسنال
-                    </button>
+<div>
 
-                </div>
+<strong>
+جمعه ۲۷ شهریور ۱۴۰۵
+</strong>
 
-            </div>
+<br>
 
-            <!-- Roma - Inter -->
+<span>
+شروع مسابقات پیش‌بینی هفته پنجم
+</span>
 
-            <div class="match-card" onclick="togglePrediction('match-4')">
+</div>
 
-                <div class="team-box">
+<span>
+۱ بازی
+</span>
 
-                    <img
-                        src="https://images.fotmob.com/image_resources/logo/teamlogo/8686.png"
-                        alt="رم"
-                        class="team-logo">
+</div>
 
-                    <span class="team-name">
-                        Roma
-                    </span>
 
-                </div>
+<div class="matches">
 
-                <div class="match-info">
 
-                    <span class="match-time">
-                        ۱۹:۳۰
-                    </span>
+<article class="match">
 
-                    <span class="match-league">
-                        Serie A
-                    </span>
+<div class="comp">
 
-                </div>
+<span class="comp-name">
 
-                <div class="team-box right">
+<span class="comp-logo">
+PL
+</span>
 
-                    <span class="team-name">
-                        Inter
-                    </span>
+Premier League
 
-                    <img
-                        src="https://images.fotmob.com/image_resources/logo/teamlogo/8636.png"
-                        alt="اینتر"
-                        class="team-logo">
+</span>
 
-                </div>
+<span class="match-time">
+۲۲:۳۰
+</span>
 
-            </div>
+</div>
 
-            <div id="match-4" class="prediction-panel">
 
-                <div class="stats-box">
+<div class="teams">
 
-                    <h4>
-                        📊 درصد برد فوت‌موب
-                    </h4>
+<div class="team">
 
-                    <p>
-                        رم ۳۹٪ و اینتر ۳۴٪ شانس پیروزی دارند؛ اختلاف بسیار کم است.
-                    </p>
+<img
+src="https://upload.wikimedia.org/wikipedia/en/2/2a/Brentford_FC_crest.svg"
+alt="Brentford"
+>
 
-                </div>
+<b>
+برنتفورد
+</b>
 
-                <div class="win-probability">
+</div>
 
-                    <div class="prob-bar-container">
 
-                        <div class="prob-home" style="width:39%;"></div>
+<div class="vs">
+VS
+</div>
 
-                        <div class="prob-draw" style="width:27%;"></div>
 
-                        <div class="prob-away" style="width:34%;"></div>
+<div class="team">
 
-                    </div>
+<img
+src="https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg"
+alt="Chelsea"
+>
 
-                    <div class="prob-labels">
+<b>
+چلسی
+</b>
 
-                        <span>
-                            رم: ۳۹٪
-                        </span>
+</div>
 
-                        <span>
-                            مساوی: ۲۷٪
-                        </span>
+</div>
 
-                        <span>
-                            اینتر: ۳۴٪
-                        </span>
 
-                    </div>
+<div class="match-footer">
 
-                </div>
+<span>
+جمعه ۲۷ شهریور
+</span>
 
-                <div class="vote-form">
+<span class="predict">
+پیش‌بینی کنید ←
+</span>
 
-                    <button
-                        class="vote-btn vote-home"
-                        onclick="submitVote('رم')">
-                        برد رم
-                    </button>
+</div>
 
-                    <button
-                        class="vote-btn vote-draw"
-                        onclick="submitVote('مساوی')">
-                        مساوی
-                    </button>
+</article>
 
-                    <button
-                        class="vote-btn vote-away"
-                        onclick="submitVote('اینتر')">
-                        برد اینتر
-                    </button>
+</div>
 
-                </div>
 
-            </div>
+<!-- SATURDAY -->
 
-            <!-- Sevilla - Barcelona -->
+<div class="day">
 
-            <div class="match-card" onclick="togglePrediction('match-5')">
+<div>
 
-                <div class="team-box">
+<strong>
+شنبه ۲۸ شهریور ۱۴۰۵
+</strong>
 
-                    <img
-                        src="https://images.fotmob.com/image_resources/logo/teamlogo/8302.png"
-                        alt="سویا"
-                        class="team-logo">
+<br>
 
-                    <span class="team-name">
-                        Sevilla
-                    </span>
+<span>
+ادامه بازی‌های هفته پنجم
+</span>
 
-                </div>
+</div>
 
-                <div class="match-info">
+<span>
+۷ بازی
+</span>
 
-                    <span class="match-time">
-                        ۲۲:۳۰
-                    </span>
+</div>
 
-                    <span class="match-league">
-                        LaLiga
-                    </span>
 
-                </div>
+<div class="matches">
 
-                <div class="team-box right">
 
-                    <span class="team-name">
-                        Barcelona
-                    </span>
+<!-- Tottenham Aston Villa -->
 
-                    <img
-                        src="https://images.fotmob.com/image_resources/logo/teamlogo/8634.png"
-                        alt="بارسلونا"
-                        class="team-logo">
+<article class="match">
 
-                </div>
+<div class="comp">
 
-            </div>
+<span class="comp-name">
 
-            <div id="match-5" class="prediction-panel">
+<span class="comp-logo">
+PL
+</span>
 
-                <div class="stats-box">
+Premier League
 
-                    <h4>
-                        📊 درصد برد فوت‌موب
-                    </h4>
+</span>
 
-                    <p>
-                        بارسلونا با ۷۵٪ شانس پیروزی، اختلاف قابل توجهی با سویا دارد که ۹٪ شانس برد دارد.
-                    </p>
+<span class="match-time">
+۱۵:۰۰
+</span>
 
-                </div>
+</div>
 
-                <div class="win-probability">
 
-                    <div class="prob-bar-container">
+<div class="teams">
 
-                        <div class="prob-home" style="width:9%;"></div>
+<div class="team">
 
-                        <div class="prob-draw" style="width:16%;"></div>
+<img
+src="https://upload.wikimedia.org/wikipedia/en/b/b4/Tottenham_Hotspur.svg"
+alt="Tottenham"
+>
 
-                        <div class="prob-away" style="width:75%;"></div>
+<b>
+تاتنهام
+</b>
 
-                    </div>
+</div>
 
-                    <div class="prob-labels">
+<div class="vs">
+VS
+</div>
 
-                        <span>
-                            سویا: ۹٪
-                        </span>
+<div class="team">
 
-                        <span>
-                            مساوی: ۱۶٪
-                        </span>
+<img
+src="https://upload.wikimedia.org/wikipedia/en/9/f9/Aston_Villa_FC_new_crest.svg"
+alt="Aston Villa"
+>
 
-                        <span>
-                            بارسلونا: ۷۵٪
-                        </span>
+<b>
+استون ویلا
+</b>
 
-                    </div>
+</div>
 
-                </div>
+</div>
 
-                <div class="vote-form">
 
-                    <button
-                        class="vote-btn vote-home"
-                        onclick="submitVote('سویا')">
-                        برد سویا
-                    </button>
+<div class="match-footer">
 
-                    <button
-                        class="vote-btn vote-draw"
-                        onclick="submitVote('مساوی')">
-                        مساوی
-                    </button>
+<span>
+شنبه ۲۸ شهریور
+</span>
 
-                    <button
-                        class="vote-btn vote-away"
-                        onclick="submitVote('بارسلونا')">
-                        برد بارسلونا
-                    </button>
+<span class="predict">
+پیش‌بینی کنید ←
+</span>
 
-                </div>
+</div>
 
-            </div>
+</article>
 
-            <!-- Bournemouth - Liverpool -->
 
-            <div class="match-card" onclick="togglePrediction('match-6')">
+<!-- Bournemouth Liverpool -->
 
-                <div class="team-box">
+<article class="match">
 
-                    <img
-                        src="https://images.fotmob.com/image_resources/logo/teamlogo/8678.png"
-                        alt="بورنموث"
-                        class="team-logo">
+<div class="comp">
 
-                    <span class="team-name">
-                        Bournemouth
-                    </span>
+<span class="comp-name">
 
-                </div>
+<span class="comp-logo">
+PL
+</span>
 
-                <div class="match-info">
+Premier League
 
-                    <span class="match-time">
-                        ۱۶:۳۰
-                    </span>
+</span>
 
-                    <span class="match-league">
-                        Premier League
-                    </span>
+<span class="match-time">
+۱۶:۳۰
+</span>
 
-                </div>
+</div>
 
-                <div class="team-box right">
 
-                    <span class="team-name">
-                        Liverpool
-                    </span>
+<div class="teams">
 
-                    <img
-                        src="https://images.fotmob.com/image_resources/logo/teamlogo/8650.png"
-                        alt="لیورپول"
-                        class="team-logo">
+<div class="team">
 
-                </div>
+<img
+src="https://upload.wikimedia.org/wikipedia/en/e/e5/AFC_Bournemouth_%282013%29_logo.svg"
+alt="Bournemouth"
+>
 
-            </div>
+<b>
+بورنموث
+</b>
 
-            <div id="match-6" class="prediction-panel">
+</div>
 
-                <div class="stats-box">
+<div class="vs">
+VS
+</div>
 
-                    <h4>
-                        📊 درصد برد فوت‌موب
-                    </h4>
+<div class="team">
 
-                    <p>
-                        بورنموث ۳۲٪ و لیورپول ۴۴٪ شانس پیروزی دارند.
-                    </p>
+<img
+src="https://upload.wikimedia.org/wikipedia/en/0/0c/Liverpool_FC.svg"
+alt="Liverpool"
+>
 
-                </div>
+<b>
+لیورپول
+</b>
 
-                <div class="win-probability">
+</div>
 
-                    <div class="prob-bar-container">
+</div>
 
-                        <div class="prob-home" style="width:32%;"></div>
 
-                        <div class="prob-draw" style="width:24%;"></div>
+<div class="match-footer">
 
-                        <div class="prob-away" style="width:44%;"></div>
+<span>
+شنبه ۲۸ شهریور
+</span>
 
-                    </div>
+<span class="predict">
+پیش‌بینی کنید ←
+</span>
 
-                    <div class="prob-labels">
+</div>
 
-                        <span>
-                            بورنموث: ۳۲٪
-                        </span>
+</article>
 
-                        <span>
-                            مساوی: ۲۴٪
-                        </span>
 
-                        <span>
-                            لیورپول: ۴۴٪
-                        </span>
+<!-- Brighton Arsenal -->
 
-                    </div>
+<article class="match">
 
-                </div>
+<div class="comp">
 
-                <div class="vote-form">
+<span class="comp-name">
 
-                    <button
-                        class="vote-btn vote-home"
-                        onclick="submitVote('بورنموث')">
-                        برد بورنموث
-                    </button>
+<span class="comp-logo">
+PL
+</span>
 
-                    <button
-                        class="vote-btn vote-draw"
-                        onclick="submitVote('مساوی')">
-                        مساوی
-                    </button>
+Premier League
 
-                    <button
-                        class="vote-btn vote-away"
-                        onclick="submitVote('لیورپول')">
-                        برد لیورپول
-                    </button>
+</span>
 
-                </div>
+<span class="match-time">
+۱۷:۳۰
+</span>
 
-            </div>
+</div>
 
-            <!-- Atletico Madrid - Real Madrid -->
 
-            <div class="match-card" onclick="togglePrediction('match-7')">
+<div class="teams">
 
-                <div class="team-box">
+<div class="team">
 
-                    <img
-                        src="https://images.fotmob.com/image_resources/logo/teamlogo/8639.png"
-                        alt="اتلتیکو مادرید"
-                        class="team-logo">
+<img
+src="https://upload.wikimedia.org/wikipedia/en/d/d0/Brighton_and_Hove_Albion_crest.svg"
+alt="Brighton"
+>
 
-                    <span class="team-name">
-                        Atlético Madrid
-                    </span>
+<b>
+برایتون
+</b>
 
-                </div>
+</div>
 
-                <div class="match-info">
+<div class="vs">
+VS
+</div>
 
-                    <span class="match-time">
-                        ۱۷:۴۵
-                    </span>
+<div class="team">
 
-                    <span class="match-league">
-                        LaLiga
-                    </span>
+<img
+src="https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg"
+alt="Arsenal"
+>
 
-                </div>
+<b>
+آرسنال
+</b>
 
-                <div class="team-box right">
+</div>
 
-                    <span class="team-name">
-                        Real Madrid
-                    </span>
+</div>
 
-                    <img
-                        src="https://images.fotmob.com/image_resources/logo/teamlogo/8633.png"
-                        alt="رئال مادرید"
-                        class="team-logo">
 
-                </div>
+<div class="match-footer">
 
-            </div>
+<span>
+شنبه ۲۸ شهریور
+</span>
 
-            <div id="match-7" class="prediction-panel">
+<span class="predict">
+پیش‌بینی کنید ←
+</span>
 
-                <div class="stats-box">
+</div>
 
-                    <h4>
-                        📊 درصد برد فوت‌موب
-                    </h4>
+</article>
 
-                    <p>
-                        اتلتیکو مادرید ۲۵٪ و رئال مادرید ۵۱٪ شانس پیروزی دارند.
-                    </p>
 
-                </div>
+<!-- Fulham Man United -->
 
-                <div class="win-probability">
+<article class="match">
 
-                    <div class="prob-bar-container">
+<div class="comp">
 
-                        <div class="prob-home" style="width:25%;"></div>
+<span class="comp-name">
 
-                        <div class="prob-draw" style="width:24%;"></div>
+<span class="comp-logo">
+PL
+</span>
 
-                        <div class="prob-away" style="width:51%;"></div>
+Premier League
 
-                    </div>
+</span>
 
-                    <div class="prob-labels">
+<span class="match-time">
+۱۹:۰۰
+</span>
 
-                        <span>
-                            اتلتیکو: ۲۵٪
-                        </span>
+</div>
 
-                        <span>
-                            مساوی: ۲۴٪
-                        </span>
 
-                        <span>
-                            رئال مادرید: ۵۱٪
-                        </span>
+<div class="teams">
 
-                    </div>
+<div class="team">
 
-                </div>
+<img
+src="https://upload.wikimedia.org/wikipedia/en/e/eb/Fulham_FC_%28shield%29.svg"
+alt="Fulham"
+>
 
-                <div class="vote-form">
+<b>
+فولام
+</b>
 
-                    <button
-                        class="vote-btn vote-home"
-                        onclick="submitVote('اتلتیکو مادرید')">
-                        برد اتلتیکو
-                    </button>
+</div>
 
-                    <button
-                        class="vote-btn vote-draw"
-                        onclick="submitVote('مساوی')">
-                        مساوی
-                    </button>
+<div class="vs">
+VS
+</div>
 
-                    <button
-                        class="vote-btn vote-away"
-                        onclick="submitVote('رئال مادرید')">
-                        برد رئال
-                    </button>
+<div class="team">
 
-                </div>
+<img
+src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg"
+alt="Manchester United"
+>
 
-            </div>
+<b>
+منچستریونایتد
+</b>
 
-            <!-- =========================
-                 یکشنبه ۲۹ شهریور
-            ========================= -->
+</div>
 
-            <div class="match-date-header">
-                یکشنبه ۲۹ شهریور
-            </div>
+</div>
 
-            <!-- Fulham - Man United -->
 
-            <div class="match-card" onclick="togglePrediction('match-8')">
+<div class="match-footer">
 
-                <div class="team-box">
+<span>
+شنبه ۲۸ شهریور
+</span>
 
-                    <img
-                        src="https://images.fotmob.com/image_resources/logo/teamlogo/9879.png"
-                        alt="فولام"
-                        class="team-logo">
+<span class="predict">
+پیش‌بینی کنید ←
+</span>
 
-                    <span class="team-name">
-                        Fulham
-                    </span>
+</div>
 
-                </div>
+</article>
 
-                <div class="match-info">
 
-                    <span class="match-time">
-                        ۱۹:۰۰
-                    </span>
+<!-- Roma Inter -->
 
-                    <span class="match-league">
-                        Premier League
-                    </span>
+<article class="match">
 
-                </div>
+<div class="comp">
 
-                <div class="team-box right">
+<span class="comp-name">
 
-                    <span class="team-name">
-                        Man United
-                    </span>
+<span class="comp-logo">
+A
+</span>
 
-                    <img
-                        src="https://images.fotmob.com/image_resources/logo/teamlogo/10260.png"
-                        alt="منچستریونایتد"
-                        class="team-logo">
+Serie A
 
-                </div>
+</span>
 
-            </div>
+<span class="match-time">
+۱۹:۳۰
+</span>
 
-            <div id="match-8" class="prediction-panel">
+</div>
 
-                <div class="stats-box">
 
-                    <h4>
-                        📊 درصد برد فوت‌موب
-                    </h4>
+<div class="teams">
 
-                    <p>
-                        فولام ۲۸٪ و منچستریونایتد ۴۷٪ شانس پیروزی دارند.
-                    </p>
+<div class="team">
 
-                </div>
+<img
+src="https://upload.wikimedia.org/wikipedia/en/3/3e/AS_Roma_logo_%282017%29.svg"
+alt="Roma"
+>
 
-                <div class="win-probability">
+<b>
+رم
+</b>
 
-                    <div class="prob-bar-container">
+</div>
 
-                        <div class="prob-home" style="width:28%;"></div>
+<div class="vs">
+VS
+</div>
 
-                        <div class="prob-draw" style="width:25%;"></div>
+<div class="team">
 
-                        <div class="prob-away" style="width:47%;"></div>
+<img
+src="https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg"
+alt="Inter"
+>
 
-                    </div>
+<b>
+اینتر
+</b>
 
-                    <div class="prob-labels">
+</div>
 
-                        <span>
-                            فولام: ۲۸٪
-                        </span>
+</div>
 
-                        <span>
-                            مساوی: ۲۵٪
-                        </span>
 
-                        <span>
-                            منچستریونایتد: ۴۷٪
-                        </span>
+<div class="match-footer">
 
-                    </div>
+<span>
+شنبه ۲۸ شهریور
+</span>
 
-                </div>
+<span class="predict">
+پیش‌بینی کنید ←
+</span>
 
-                <div class="vote-form">
+</div>
 
-                    <button
-                        class="vote-btn vote-home"
-                        onclick="submitVote('فولام')">
-                        برد فولام
-                    </button>
+</article>
 
-                    <button
-                        class="vote-btn vote-draw"
-                        onclick="submitVote('مساوی')">
-                        مساوی
-                    </button>
 
-                    <button
-                        class="vote-btn vote-away"
-                        onclick="submitVote('منچستریونایتد')">
-                        برد منچستر
-                    </button>
+<!-- Atletico Real -->
 
-                </div>
+<article class="match">
 
-            </div>
+<div class="comp">
 
-        </div>
+<span class="comp-name">
 
-        <footer>
-            GEDA CHOLHA — تمامی حقوق محفوظ است © ۱۴۰۵
-        </footer>
+<span class="comp-logo">
+L
+</span>
 
-    </div>
+LaLiga
 
-    <script>
+</span>
 
-        /* =========================
-           SPLASH SCREEN
-        ========================= */
+<span class="match-time">
+۱۷:۴۵
+</span>
 
-        window.addEventListener('load', () => {
+</div>
 
-            setTimeout(() => {
 
-                const splash =
-                    document.getElementById('splash-screen');
+<div class="teams">
 
-                if (splash) {
+<div class="team">
 
-                    splash.classList.add('fade-out');
+<img
+src="https://upload.wikimedia.org/wikipedia/en/9/93/Atletico_Madrid_Logo_2024.svg"
+alt="Atletico Madrid"
+>
 
-                    setTimeout(() => {
-                        splash.remove();
-                    }, 800);
+<b>
+اتلتیکو مادرید
+</b>
 
-                }
+</div>
 
-            }, 1000);
+<div class="vs">
+VS
+</div>
 
-        });
+<div class="team">
 
-        /* =========================
-           MATCH PREDICTION
-        ========================= */
+<img
+src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg"
+alt="Real Madrid"
+>
 
-        function togglePrediction(matchId) {
+<b>
+رئال مادرید
+</b>
 
-            const panel =
-                document.getElementById(matchId);
+</div>
 
-            const allPanels =
-                document.querySelectorAll('.prediction-panel');
+</div>
 
-            allPanels.forEach(p => {
 
-                if (
-                    p.id !== matchId &&
-                    p.classList.contains('active')
-                ) {
-                    p.classList.remove('active');
-                }
+<div class="match-footer">
 
-            });
+<span>
+شنبه ۲۸ شهریور
+</span>
 
-            panel.classList.toggle('active');
+<span class="predict">
+پیش‌بینی کنید ←
+</span>
 
-        }
+</div>
 
-        /* =========================
-           VOTE
-        ========================= */
+</article>
 
-        function submitVote(team) {
 
-            alert(
-                'پیش‌بینی شما ("' +
-                team +
-                '") با موفقیت در لیگ گداهای استرسی ثبت شد! 🚀'
-            );
+<!-- Sevilla Barcelona -->
 
-        }
+<article class="match">
 
-        /* =========================
-           NEWS SLIDER
-        ========================= */
+<div class="comp">
 
-        const newsSlides =
-            document.querySelectorAll('.news-slide');
+<span class="comp-name">
 
-        const newsDotsContainer =
-            document.getElementById('newsDots');
+<span class="comp-logo">
+L
+</span>
 
-        let currentNews = 0;
+LaLiga
 
-        let newsTimer;
+</span>
 
-        function createNewsDots() {
+<span class="match-time">
+۲۲:۳۰
+</span>
 
-            newsSlides.forEach((slide, index) => {
+</div>
 
-                const dot =
-                    document.createElement('span');
 
-                dot.className =
-                    'news-dot' +
-                    (index === 0 ? ' active' : '');
+<div class="teams">
 
-                dot.onclick = () => {
-                    showNews(index);
-                    restartNewsTimer();
-                };
+<div class="team">
 
-                newsDotsContainer.appendChild(dot);
+<img
+src="https://upload.wikimedia.org/wikipedia/en/3/3b/Sevilla_FC_logo.svg"
+alt="Sevilla"
+>
 
-            });
+<b>
+سویا
+</b>
 
-        }
+</div>
 
-        function showNews(index) {
+<div class="vs">
+VS
+</div>
 
-            newsSlides.forEach(slide => {
-                slide.classList.remove('active');
-            });
+<div class="team">
 
-            const dots =
-                document.querySelectorAll('.news-dot');
+<img
+src="https://upload.wikimedia.org/wikipedia/en/5/5f/FC_Barcelona.svg"
+alt="Barcelona"
+>
 
-            dots.forEach(dot => {
-                dot.classList.remove('active');
-            });
+<b>
+بارسلونا
+</b>
 
-            currentNews =
-                (index + newsSlides.length) %
-                newsSlides.length;
+</div>
 
-            newsSlides[currentNews]
-                .classList.add('active');
+</div>
 
-            if (dots[currentNews]) {
-                dots[currentNews]
-                    .classList.add('active');
-            }
 
-        }
+<div class="match-footer">
 
-        function nextNews() {
+<span>
+شنبه ۲۸ شهریور
+</span>
 
-            showNews(currentNews + 1);
+<span class="predict">
+پیش‌بینی کنید ←
+</span>
 
-        }
+</div>
 
-        function previousNews() {
+</article>
 
-            showNews(currentNews - 1);
 
-        }
+</div>
 
-        function startNewsTimer() {
+</div>
 
-            newsTimer =
-                setInterval(() => {
+</section>
 
-                    nextNews();
+</main>
 
-                }, 5500);
 
-        }
+<footer>
 
-        function restartNewsTimer() {
+<div class="container">
 
-            clearInterval(newsTimer);
+<div class="footer-logo">
 
-            startNewsTimer();
+GEDAHAYE
+<span>
+ESTERESI 2
+</span>
 
-        }
+</div>
 
-        createNewsDots();
+<div>
+لیگ پیش‌بینی فوتبال اروپا · فصل ۱۴۰۵–۱۴۰۶
+</div>
 
-        startNewsTimer();
+</div>
 
-        /* توقف موقت هنگام لمس خبر در موبایل */
+</footer>
 
-        const newsSlider =
-            document.getElementById('newsSlider');
 
-        newsSlider.addEventListener(
-            'mouseenter',
-            () => clearInterval(newsTimer)
-        );
+<script>
 
-        newsSlider.addEventListener(
-            'mouseleave',
-            () => restartNewsTimer()
-        );
+/* حرکت افقی اخبار */
 
-    </script>
+const slider =
+document.getElementById('newsTrack');
+
+let isDown = false;
+let startX = 0;
+let scrollLeft = 0;
+
+
+slider.addEventListener(
+'pointerdown',
+e => {
+
+isDown = true;
+
+slider.setPointerCapture(
+e.pointerId
+);
+
+startX = e.clientX;
+
+scrollLeft = slider.scrollLeft;
+
+slider.style.cursor = 'grabbing';
+
+});
+
+
+slider.addEventListener(
+'pointermove',
+e => {
+
+if(!isDown) return;
+
+e.preventDefault();
+
+slider.scrollLeft =
+scrollLeft -
+(e.clientX - startX) * 1.15;
+
+});
+
+
+['pointerup','pointercancel','pointerleave']
+.forEach(ev => {
+
+slider.addEventListener(
+ev,
+() => {
+
+isDown = false;
+
+slider.style.cursor = 'grab';
+
+});
+
+});
+
+
+/* شمارش معکوس */
+
+const target =
+new Date(
+'2026-09-18T22:30:00+03:30'
+).getTime();
+
+
+function updateCountdown(){
+
+const diff =
+target - Date.now();
+
+const boxes =
+document.querySelectorAll(
+'#countdown b'
+);
+
+
+if(diff <= 0){
+
+boxes[0].textContent = 'شروع';
+boxes[1].textContent = 'شد';
+boxes[2].textContent = '🔥';
+
+return;
+
+}
+
+
+const days =
+Math.floor(
+diff / 86400000
+);
+
+
+const hours =
+Math.floor(
+(diff % 86400000) / 3600000
+);
+
+
+const mins =
+Math.floor(
+(diff % 3600000) / 60000
+);
+
+
+boxes[0].textContent =
+String(days).padStart(2,'0');
+
+
+boxes[1].textContent =
+String(hours).padStart(2,'0');
+
+
+boxes[2].textContent =
+String(mins).padStart(2,'0');
+
+}
+
+
+updateCountdown();
+
+setInterval(
+updateCountdown,
+30000
+);
+
+</script>
 
 </body>
 </html>
-- [ ] 
