@@ -1,1333 +1,659 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>لیگ گداهای استرسی فصل دوم</title>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
-
-:root{
- --navy:#082d4d;
- --blue:#18a7d8;
- --cyan:#39d7c6;
- --orange:#ffb52e;
- --yellow:#ffd35a;
- --green:#4be38a;
- --white:#f7fbff;
- --muted:#a9bfd0;
- --line:rgba(255,255,255,.09);
- --shadow:0 16px 40px rgba(0,0,0,.25);
-}
-
-*{box-sizing:border-box}
-
-html{scroll-behavior:smooth}
-
-body{
- margin:0;
- font-family:Vazirmatn,system-ui,sans-serif;
- color:var(--white);
- background:
- radial-gradient(circle at 10% 0%,rgba(255,181,46,.18),transparent 28%),
- radial-gradient(circle at 95% 15%,rgba(24,167,216,.22),transparent 30%),
- linear-gradient(145deg,#061f36,#0a3151 55%,#082640);
- min-height:100vh;
-}
-
-a{
- text-decoration:none;
- color:inherit;
-}
-
-.container{
- width:min(1120px,94%);
- margin:auto;
-}
-
-/* HEADER */
-
-header{
- position:sticky;
- top:0;
- z-index:50;
- backdrop-filter:blur(18px);
- background:rgba(6,31,54,.9);
- border-bottom:1px solid var(--line);
-}
-
-.topbar{
- height:78px;
- display:flex;
- align-items:center;
- justify-content:space-between;
- gap:16px;
-}
-
-.brand{
- display:flex;
- align-items:center;
- gap:10px;
- font-weight:900;
- font-size:18px;
- white-space:nowrap;
-}
-
-.ball{
- width:36px;
- height:36px;
- border-radius:50%;
- display:grid;
- place-items:center;
- background:white;
- color:#0b3150;
- font-size:20px;
- box-shadow:0 5px 16px #0004;
-}
-
-.menu{
- display:flex;
- gap:8px;
- overflow:auto;
- scrollbar-width:none;
-}
-
-.menu::-webkit-scrollbar{
- display:none;
-}
-
-.menu a{
- padding:10px 14px;
- border-radius:14px;
- color:var(--muted);
- font-weight:700;
- white-space:nowrap;
-}
-
-.menu a:hover,
-.menu a.active{
- background:#ffffff12;
- color:white;
-}
-
-/* HERO */
-
-.hero{
- padding:30px 0 20px;
-}
-
-.hero-card{
- border:1px solid #ffffff12;
- border-radius:30px;
- padding:30px 24px;
- background:
- linear-gradient(120deg,rgba(255,181,46,.25),rgba(24,167,216,.16)),
- rgba(255,255,255,.055);
- box-shadow:var(--shadow);
- overflow:hidden;
- position:relative;
-}
-
-.hero-card:after{
- content:"⚽";
- position:absolute;
- left:-10px;
- bottom:-35px;
- font-size:170px;
- opacity:.07;
- transform:rotate(-18deg);
-}
-
-.kicker{
- color:var(--yellow);
- font-weight:800;
- font-size:13px;
-}
-
-h1{
- margin:8px 0 10px;
- font-size:clamp(28px,5vw,48px);
- line-height:1.15;
-}
-
-.hero p{
- margin:0;
- color:#c5d7e4;
- max-width:700px;
- line-height:2;
-}
-
-.stats{
- display:flex;
- gap:10px;
- flex-wrap:wrap;
- margin-top:20px;
-}
-
-.pill{
- background:#06253e99;
- border:1px solid #ffffff12;
- padding:9px 13px;
- border-radius:999px;
- color:#dceaf2;
- font-size:13px;
-}
-
-/* SECTIONS */
-
-.section{
- padding:25px 0;
-}
-
-.section-head{
- display:flex;
- align-items:end;
- justify-content:space-between;
- margin-bottom:15px;
-}
-
-.section-title{
- font-size:23px;
- font-weight:900;
-}
-
-.section-sub{
- font-size:12px;
- color:var(--muted);
-}
-
-/* NEWS */
-
-.news-grid{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:14px;
-}
-
-.card{
- background:
- linear-gradient(145deg,rgba(255,255,255,.085),rgba(255,255,255,.035));
- border:1px solid var(--line);
- border-radius:22px;
- padding:18px;
- box-shadow:0 10px 30px #0002;
-}
-
-.news-card{
- min-height:170px;
-}
-
-.news-icon{
- font-size:28px;
-}
-
-.tag{
- color:var(--yellow);
- font-size:11px;
- font-weight:800;
-}
-
-.news-card h3{
- font-size:16px;
- line-height:1.8;
- margin:10px 0 5px;
-}
-
-.news-card p{
- color:#b9cedb;
- font-size:12px;
- line-height:1.9;
- margin:0;
-}
-
-/* GAMES */
-
-.games{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:14px;
-}
-
-.game{
- position:relative;
- padding:17px 18px;
- overflow:hidden;
-}
-
-.game:before{
- content:"";
- position:absolute;
- inset:0;
- background:linear-gradient(
-  90deg,
-  #18a7d812,
-  #ffb52e08
- );
- pointer-events:none;
-}
-
-.game-top{
- display:flex;
- justify-content:space-between;
- align-items:center;
- color:#b8ccda;
- font-size:12px;
-}
-
-.league{
- font-weight:800;
- color:#e7f3fa;
-}
-
-.date{
- color:var(--yellow);
-}
-
-.teams{
- display:grid;
- grid-template-columns:1fr 74px 1fr;
- align-items:center;
- text-align:center;
- gap:8px;
- margin:17px 0;
-}
-
-.team{
- font-weight:800;
- font-size:16px;
-}
-
-.team img{
- width:54px;
- height:54px;
- object-fit:contain;
- display:block;
- margin:0 auto 8px;
- filter:drop-shadow(0 5px 10px #0005);
-}
-
-.vs{
- font-size:12px;
- color:#91aabd;
- background:#ffffff09;
- border:1px solid #ffffff0e;
- border-radius:16px;
- padding:9px 4px;
-}
-
-.time{
- font-size:12px;
- color:#d8e8f0;
- margin-top:3px;
-}
-
-.predict{
- display:flex;
- justify-content:center;
- gap:8px;
- flex-wrap:wrap;
-}
-
-.predict button{
- border:0;
- border-radius:12px;
- background:#ffffff0a;
- color:#c9dce7;
- padding:9px 12px;
- font-family:inherit;
- cursor:pointer;
- transition:.2s;
-}
-
-.predict button:hover{
- background:#ffffff18;
- transform:translateY(-1px);
-}
-
-.predict button.active{
- background:linear-gradient(135deg,var(--orange),#ff8e25);
- color:#12263a;
- font-weight:900;
-}
-
-/* TABLE */
-
-.table-wrap{
- overflow:hidden;
-}
-
-.table{
- width:100%;
- border-collapse:collapse;
-}
-
-.table th,
-.table td{
- padding:14px 10px;
- border-bottom:1px solid var(--line);
- text-align:right;
-}
-
-.table th{
- color:#90adbf;
- font-size:11px;
-}
-
-.table td{
- font-size:14px;
-}
-
-.row{
- cursor:pointer;
- transition:.18s;
-}
-
-.row:hover{
- background:#ffffff08;
-}
-
-.rank{
- width:42px;
- color:#9eb6c6;
-}
-
-.rank.top{
- color:var(--yellow);
- font-weight:900;
-}
-
-.name{
- font-weight:700;
-}
-
-.points{
- font-weight:900;
- text-align:left!important;
-}
-
-.bar{
- height:6px;
- background:#ffffff0b;
- border-radius:99px;
- overflow:hidden;
- margin-top:6px;
-}
-
-.bar i{
- display:block;
- height:100%;
- background:linear-gradient(
-  90deg,
-  var(--cyan),
-  var(--yellow)
- );
- border-radius:99px;
-}
-
-/* FOOTER */
-
-footer{
- padding:35px 0 100px;
- text-align:center;
- color:#7895a8;
- font-size:11px;
-}
-
-/* BOTTOM MENU */
-
-.bottom{
- position:fixed;
- bottom:0;
- left:0;
- right:0;
- z-index:60;
- background:rgba(5,27,47,.95);
- backdrop-filter:blur(18px);
- border-top:1px solid var(--line);
- padding:8px 12px;
-}
-
-.bottom-inner{
- width:min(600px,100%);
- margin:auto;
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:7px;
-}
-
-.bottom a{
- padding:8px;
- text-align:center;
- color:#8ea7b7;
- border-radius:14px;
- font-size:11px;
-}
-
-.bottom a.active{
- background:#ffffff0b;
- color:white;
-}
-
-.bottom span{
- display:block;
- font-size:20px;
- margin-bottom:3px;
-}
-
-/* MODAL */
-
-.modal{
- position:fixed;
- inset:0;
- background:#001526aa;
- backdrop-filter:blur(8px);
- display:none;
- place-items:center;
- padding:20px;
- z-index:100;
-}
-
-.modal.show{
- display:grid;
-}
-
-.modal-box{
- width:min(430px,100%);
- background:#0b3555;
- border:1px solid #ffffff14;
- border-radius:24px;
- padding:22px;
- box-shadow:var(--shadow);
-}
-
-.close{
- float:left;
- border:0;
- background:#ffffff0c;
- color:white;
- border-radius:10px;
- padding:7px 10px;
- cursor:pointer;
-}
-
-/* MOBILE */
-
-@media(max-width:760px){
-
- .news-grid,
- .games{
-  grid-template-columns:1fr;
- }
-
- .topbar{
-  height:70px;
- }
-
- .brand{
-  font-size:14px;
- }
-
- .menu a{
-  padding:8px 10px;
- }
-
- .hero-card{
-  padding:24px 18px;
- }
-
- .teams{
-  grid-template-columns:1fr 60px 1fr;
- }
-
- .team{
-  font-size:14px;
- }
-
- .team img{
-  width:46px;
-  height:46px;
- }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>سایت فوتبالی پیشرفته</title>
+  <!-- فونت وزیرمتن -->
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+  <!-- FontAwesome برای آیکون‌ها -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --bg-main: #070e17;
+      --bg-card: #0d1b2a;
+      --accent-gold: #f39c12;
+      --accent-gold-light: #f1c40f;
+      --text-main: #ffffff;
+      --text-muted: #8a9ba8;
+      --border-color: rgba(255, 255, 255, 0.07);
+      --nav-height: 65px;
+      --header-height: 55px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, sans-serif;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    /* کانتینر اصلی اپلیکیشن */
+    .app-container {
+      width: 100%;
+      max-width: 450px;
+      height: 100vh;
+      max-height: 900px;
+      background-color: var(--bg-main);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+    }
+
+    @media (min-width: 480px) {
+      .app-container {
+        height: 92vh;
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+    }
+
+    /* هدر بالای سایت */
+    .app-header {
+      height: var(--header-height);
+      background-color: var(--bg-card);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 18px;
+      border-bottom: 1px solid var(--border-color);
+      z-index: 10;
+    }
+
+    .header-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .header-title i { color: var(--accent-gold); }
+
+    /* محتوای اصلی صفحات */
+    .app-content {
+      flex: 1;
+      overflow-y: auto;
+      position: relative;
+      padding-bottom: calc(var(--nav-height) + 15px);
+    }
+
+    .tab-pane {
+      display: none;
+      padding: 16px;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .tab-pane.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ==========================================
+       ۱. بخش اخبار (اسلایدر متحرک به سبک عکس اول)
+       ========================================== */
+    .banner-slider {
+      position: relative;
+      width: 100%;
+      border-radius: 18px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0e2a1b 0%, #05140d 100%);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      border: 1px solid rgba(46, 204, 113, 0.2);
+    }
+
+    .slide-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 100%;
+    }
+
+    .slide-item {
+      min-width: 100%;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 220px;
+      position: relative;
+    }
+
+    /* المان متحرک (درخت طلا / جام) */
+    .slide-visual-element {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 4.5rem;
+      color: var(--accent-gold);
+      filter: drop-shadow(0 0 15px rgba(243, 156, 18, 0.5));
+      animation: floatGraphic 3s ease-in-out infinite;
+    }
+
+    @keyframes floatGraphic {
+      0%, 100% { transform: translateY(-50%) rotate(0deg) scale(1); }
+      50% { transform: translateY(-58%) rotate(3deg) scale(1.05); }
+    }
+
+    .slide-badge {
+      align-self: flex-start;
+      background: linear-gradient(90deg, #d4af37, #f39c12);
+      color: #000;
+      font-weight: 900;
+      padding: 4px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+    }
+
+    .slide-content-body {
+      margin-top: 15px;
+      max-width: 65%;
+      z-index: 2;
+    }
+
+    /* فونت درشت متحرک شبیه عکس اول */
+    .slide-title-bold {
+      font-size: 1.45rem;
+      font-weight: 900;
+      line-height: 1.3;
+      color: #ffffff;
+      margin-bottom: 6px;
+      animation: pulseText 2s infinite ease-in-out alternate;
+    }
+
+    .slide-title-bold span { color: var(--accent-gold-light); }
+
+    @keyframes pulseText {
+      0% { opacity: 0.9; transform: scale(1); }
+      100% { opacity: 1; transform: scale(1.02); }
+    }
+
+    .slide-subtitle {
+      font-size: 0.82rem;
+      color: #a0c4b2;
+      line-height: 1.4;
+    }
+
+    .slide-btn {
+      align-self: flex-start;
+      margin-top: 15px;
+      background-color: #ffffff;
+      color: #05140d;
+      font-weight: 800;
+      padding: 8px 20px;
+      border-radius: 20px;
+      border: none;
+      font-size: 0.85rem;
+      cursor: pointer;
+      animation: glowBtn 2s infinite;
+      z-index: 2;
+    }
+
+    @keyframes glowBtn {
+      0%, 100% { box-shadow: 0 0 5px rgba(255,255,255,0.5); }
+      50% { box-shadow: 0 0 18px rgba(255,255,255,0.9); }
+    }
+
+    .slider-dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 14px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      background-color: rgba(255,255,255,0.25);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .dot.active {
+      background-color: #ffffff;
+      width: 20px;
+      border-radius: 10px;
+    }
+
+    /* ==========================================
+       ۲. بخش بازی‌ها (وسط)
+       ========================================== */
+    .date-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--bg-card);
+      padding: 8px 12px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+    }
+
+    .date-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      padding: 6px 12px;
+      border-radius: 8px;
+    }
+
+    .date-btn.active {
+      background-color: var(--accent-gold);
+      color: #000;
+      font-weight: bold;
+    }
+
+    .match-card {
+      background-color: var(--bg-card);
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 12px;
+      border: 1px solid var(--border-color);
+    }
+
+    .match-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .match-body {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .team-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      width: 35%;
+    }
+
+    .score-digits {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--accent-gold-light);
+    }
+
+    /* ==========================================
+       ۳. بخش جدول (مطابق عکس دوم)
+       ========================================== */
+    .table-container {
+      background-color: var(--bg-card);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+
+    .leaderboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .leaderboard-title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .leaderboard-list { list-style: none; }
+
+    .leaderboard-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    /* ردیف «شما» دقیقاً مثل عکس دوم */
+    .leaderboard-item.is-me {
+      background-color: rgba(255, 255, 255, 0.08);
+      border-right: 3px solid var(--accent-gold);
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex: 1;
+    }
+
+    .rank-num {
+      color: #8a9ba8;
+      font-size: 0.95rem;
+      font-weight: 700;
+      min-width: 20px;
+    }
+
+    .leaderboard-item.is-me .rank-num { color: var(--accent-gold); }
+
+    .user-name-text {
+      font-size: 0.9rem;
+      color: #e2e8f0;
+    }
+
+    .scores-wrapper {
+      display: flex;
+      gap: 28px;
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+
+    .score-secondary { color: #8a9ba8; }
+    .score-primary { color: #ffffff; min-width: 30px; text-align: left; }
+
+    /* ==========================================
+       نوار پایینی ثابت (Bottom Nav)
+       ========================================== */
+    .bottom-nav {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-height);
+      background-color: #08121e;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      border-top: 1px solid var(--border-color);
+      z-index: 20;
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      cursor: pointer;
+      width: 33.33%;
+    }
+
+    .nav-item i { font-size: 1.25rem; }
+
+    .nav-item.active {
+      color: var(--accent-gold);
+      font-weight: bold;
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- HEADER -->
-
-<header>
-
-<div class="container topbar">
-
-<a class="brand" href="#home">
-<span class="ball">⚽</span>
-<span>لیگ گداهای استرسی فصل دوم</span>
-</a>
-
-<nav class="menu">
-
-<a class="active" href="#news">
-خبر
-</a>
-
-<a href="#games">
-بازی‌ها
-</a>
-
-<a href="#table">
-جدول
-</a>
-
-</nav>
-
-</div>
-
-</header>
-
-
-<main id="home">
-
-<!-- HERO -->
-
-<section class="hero">
-
-<div class="container">
-
-<div class="hero-card">
-
-<div class="kicker">
-⚽ لیگ پیش‌بینی دوستانه
-</div>
-
-<h1>
-لیگ گداهای استرسی
-<br>
-فصل دوم
-</h1>
-
-<p>
-اینجا جای کل‌کل، فوتبال و پیش‌بینیه؛
-بازی‌های مهم رو ببین، جدول رو لمس کن
-و ببین چه کسی بالاتر ایستاده.
-</p>
-
-<div class="stats">
-
-<span class="pill">
-👥 ۱۳ شرکت‌کننده
-</span>
-
-<span class="pill">
-🏆 رقابت هفتگی
-</span>
-
-<span class="pill">
-🔥 جدول لیگ
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- NEWS -->
-
-<section class="section" id="news">
-
-<div class="container">
-
-<div class="section-head">
-
-<div>
-
-<div class="section-title">
-📰 خبرهای فوتبال
-</div>
-
-<div class="section-sub">
-چند خبر کوتاه برای شروع
-</div>
-
-</div>
-
-</div>
-
-
-<div class="news-grid">
-
-
-<article class="card news-card">
-
-<div class="news-icon">
-🔴
-</div>
-
-<span class="tag">
-لیگ برتر
-</span>
-
-<h3>
-آرسنال با برد مهم برگشت
-</h3>
-
-<p>
-آرسنال در هفته چهارم با نتیجه ۲–۰
-ساندرلند را شکست داد و سه امتیاز کامل گرفت.
-</p>
-
-</article>
-
-
-<article class="card news-card">
-
-<div class="news-icon">
-⚔️
-</div>
-
-<span class="tag">
-انگلیس
-</span>
-
-<h3>
-بازی‌های حساس در راه هستند
-</h3>
-
-<p>
-چند مسابقه مهم لیگ برتر و لالیگا
-در روزهای آینده برگزار می‌شوند.
-</p>
-
-</article>
-
-
-<article class="card news-card">
-
-<div class="news-icon">
-🔥
-</div>
-
-<span class="tag">
-لیگ گداهای استرسی
-</span>
-
-<h3>
-جدول حسابی فشرده شده
-</h3>
-
-<p>
-رقابت بالای جدول داغ شده و هر بازی
-می‌تواند جای نفرات را عوض کند.
-</p>
-
-</article>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- GAMES -->
-
-<section class="section" id="games">
-
-<div class="container">
-
-<div class="section-head">
-
-<div>
-
-<div class="section-title">
-⚽ بازی‌های پیش‌رو
-</div>
-
-<div class="section-sub">
-برای هر بازی نتیجه موردنظر خودت را انتخاب کن
-</div>
-
-</div>
-
-</div>
-
-<div class="games" id="gamesList"></div>
-
-</div>
-
-</section>
-
-
-<!-- TABLE -->
-
-<section class="section" id="table">
-
-<div class="container">
-
-<div class="section-head">
-
-<div>
-
-<div class="section-title">
-🏆 جدول لیگ
-</div>
-
-<div class="section-sub">
-روی هر نفر بزن تا جزئیات نمایش داده شود
-</div>
-
-</div>
-
-</div>
-
-
-<div class="card table-wrap">
-
-<table class="table">
-
-<thead>
-
-<tr>
-<th>رتبه</th>
-<th>شرکت‌کننده</th>
-<th>امتیاز</th>
-</tr>
-
-</thead>
-
-<tbody id="tableBody"></tbody>
-
-</table>
-
-</div>
-
-</div>
-
-</section>
-
-</main>
-
-
-<footer>
-لیگ گداهای استرسی فصل دوم · طراحی فوتبالی برای جمع دوستانه
-</footer>
-
-
-<!-- BOTTOM -->
-
-<div class="bottom">
-
-<div class="bottom-inner">
-
-<a class="active" href="#news">
-<span>📰</span>
-خبر
-</a>
-
-<a href="#games">
-<span>⚽</span>
-بازی‌ها
-</a>
-
-<a href="#table">
-<span>🏆</span>
-جدول
-</a>
-
-</div>
-
-</div>
-
-
-<!-- MODAL -->
-
-<div class="modal" id="modal">
-
-<div class="modal-box">
-
-<button class="close" onclick="closeModal()">
-✕
-</button>
-
-<div id="modalContent"></div>
-
-</div>
-
-</div>
-
-
-<script>
-
-/* =========================
-   LOGOS
-========================= */
-
-const teams = {
-
- Brighton:
- "https://upload.wikimedia.org/wikipedia/en/f/fd/Brighton_%26_Hove_Albion_logo.svg",
-
- Arsenal:
- "https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg",
-
- Roma:
- "https://upload.wikimedia.org/wikipedia/en/f/f7/AS_Roma_logo_%282017%29.svg",
-
- Inter:
- "https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg",
-
- Sevilla:
- "https://upload.wikimedia.org/wikipedia/en/3/3b/Sevilla_FC_logo.svg",
-
- Barcelona:
- "https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg",
-
- Bournemouth:
- "https://upload.wikimedia.org/wikipedia/en/e/e5/AFC_Bournemouth_%282013%29.svg",
-
- Liverpool:
- "https://upload.wikimedia.org/wikipedia/en/0/0c/Liverpool_FC.svg",
-
- Atletico:
- "https://upload.wikimedia.org/wikipedia/en/f/f4/Atletico_Madrid_2017_logo.svg",
-
- Real:
- "https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg",
-
- Fulham:
- "https://upload.wikimedia.org/wikipedia/en/e/eb/Fulham_FC_%28crest%29.svg",
-
- ManUnited:
- "https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg",
-
- Brentford:
- "https://upload.wikimedia.org/wikipedia/en/2/2a/Brentford_FC_crest.svg",
-
- Chelsea:
- "https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg",
-
- Tottenham:
- "https://upload.wikimedia.org/wikipedia/en/b/b4/Tottenham_Hotspur.svg",
-
- AstonVilla:
- "https://upload.wikimedia.org/wikipedia/en/9/9f/Aston_Villa_FC_new_crest.svg"
-
-};
-
-
-/* =========================
-   GAMES
-========================= */
-
-const games = [
-
-[
-"پنجشنبه ۲۶ شهریور",
-"۱۷:۳۰",
-"Premier League",
-"Brighton",
-"برایتون",
-"Arsenal",
-"آرسنال"
-],
-
-[
-"پنجشنبه ۲۶ شهریور",
-"۱۹:۳۰",
-"Serie A",
-"Roma",
-"رم",
-"Inter",
-"اینتر"
-],
-
-[
-"پنجشنبه ۲۶ شهریور",
-"۲۲:۳۰",
-"LaLiga",
-"Sevilla",
-"سویا",
-"Barcelona",
-"بارسلونا"
-],
-
-[
-"جمعه ۲۷ شهریور",
-"۱۶:۳۰",
-"Premier League",
-"Bournemouth",
-"بورنموث",
-"Liverpool",
-"لیورپول"
-],
-
-[
-"جمعه ۲۷ شهریور",
-"۱۷:۴۵",
-"LaLiga",
-"Atletico",
-"اتلتیکو مادرید",
-"Real",
-"رئال مادرید"
-],
-
-[
-"جمعه ۲۷ شهریور",
-"۱۹:۰۰",
-"Premier League",
-"Fulham",
-"فولام",
-"ManUnited",
-"منچستریونایتد"
-],
-
-[
-"جمعه ۲۷ شهریور",
-"۲۲:۳۰",
-"Premier League",
-"Brentford",
-"برنتفورد",
-"Chelsea",
-"چلسی"
-],
-
-[
-"شنبه ۲۸ شهریور",
-"۱۵:۰۰",
-"Premier League",
-"Tottenham",
-"تاتنهام",
-"AstonVilla",
-"استون ویلا"
-]
-
-];
-
-
-function gameCard(g,i){
-
-const [
-date,
-time,
-league,
-left,
-leftFa,
-right,
-rightFa
-] = g;
-
-return `
-
-<article class="card game">
-
-<div class="game-top">
-
-<span class="league">
-⚽ ${league}
-</span>
-
-<span class="date">
-${date} · ${time}
-</span>
-
-</div>
-
-
-<div class="teams">
-
-
-<div class="team">
-
-<img
-src="${teams[left]}"
-onerror="this.style.visibility='hidden'"
->
-
-${leftFa}
-
-</div>
-
-
-<div class="vs">
-مقابل
-</div>
-
-
-<div class="team">
-
-<img
-src="${teams[right]}"
-onerror="this.style.visibility='hidden'"
->
-
-${rightFa}
-
-</div>
-
-
-</div>
-
-
-<div class="time">
-⏰ ساعت ${time}
-</div>
-
-
-<div class="predict">
-
-<button onclick="choose(this)">
-۱
-</button>
-
-<button onclick="choose(this)">
-X
-</button>
-
-<button onclick="choose(this)">
-۲
-</button>
-
-<button onclick="openGame(${i})">
-جزئیات
-</button>
-
-</div>
-
-</article>
-
-`;
-
-}
-
-
-document.getElementById("gamesList").innerHTML =
-games.map(gameCard).join("");
-
-
-/* =========================
-   TABLE
-========================= */
-
-const players = [
-
-["Asm A",52],
-
-["REZA GHATIFI",48],
-
-["Mahdi",45],
-
-["Donya Asil",44],
-
-["حبیب نعیمی",43],
-
-["محمد خلیلاوی پور",40],
-
-["hajar daoudi",38],
-
-["Ahlam Aljaber",37],
-
-["hey10",34],
-
-["امین درییس",33],
-
-["Sama salehi",30],
-
-["محمد جاسمیان",24],
-
-["مهدی",15]
-
-];
-
-
-const max = players[0][1];
-
-
-document.getElementById("tableBody").innerHTML =
-
-players.map((p,i)=>`
-
-<tr
-class="row"
-onclick="openPlayer(${i})"
->
-
-<td class="rank ${i<3?'top':''}">
-${i+1}
-</td>
-
-<td>
-
-<span class="name">
-${p[0]}
-</span>
-
-<div class="bar">
-
-<i
-style="width:${Math.round(p[1]/max*100)}%"
-></i>
-
-</div>
-
-</td>
-
-<td class="points">
-${p[1]}
-</td>
-
-</tr>
-
-`).join("");
-
-
-/* =========================
-   PREDICTION BUTTON
-========================= */
-
-function choose(btn){
-
-btn.parentElement
-.querySelectorAll("button")
-.forEach(x=>x.classList.remove("active"));
-
-btn.classList.add("active");
-
-}
-
-
-/* =========================
-   GAME DETAILS
-========================= */
-
-function openGame(i){
-
-const g = games[i];
-
-document.getElementById("modalContent").innerHTML = `
-
-<div style="padding-top:12px">
-
-<div class="kicker">
-${g[2]}
-</div>
-
-<h2>
-${g[4]} × ${g[6]}
-</h2>
-
-<p style="
-color:#bdd0dc;
-line-height:2;
-">
-
-📅 ${g[0]}
-
-<br>
-
-⏰ ساعت ${g[1]}
-
-<br>
-
-⚽ بازی پیش‌رو
-
-</p>
-
-</div>
-
-`;
-
-document
-.getElementById("modal")
-.classList.add("show");
-
-}
-
-
-/* =========================
-   PLAYER DETAILS
-========================= */
-
-function openPlayer(i){
-
-const p = players[i];
-
-document.getElementById("modalContent").innerHTML = `
-
-<div
-style="
-padding-top:12px;
-text-align:center;
-"
->
-
-<div style="font-size:48px">
-🏆
-</div>
-
-<div class="kicker">
-رتبه ${i+1}
-</div>
-
-<h2>
-${p[0]}
-</h2>
-
-<p style="
-font-size:30px;
-font-weight:900;
-color:#ffd35a;
-">
-
-${p[1]} امتیاز
-
-</p>
-
-<p style="color:#bdd0dc">
-
-رقابت برای هفته بعد ادامه دارد 🔥
-
-</p>
-
-</div>
-
-`;
-
-document
-.getElementById("modal")
-.classList.add("show");
-
-}
-
-
-/* =========================
-   CLOSE MODAL
-========================= */
-
-function closeModal(){
-
-document
-.getElementById("modal")
-.classList.remove("show");
-
-}
-
-
-document
-.getElementById("modal")
-.addEventListener("click",function(e){
-
-if(e.target.id==="modal"){
-closeModal();
-}
-
-});
-
-</script>
-
+  <div class="app-container">
+    
+    <!-- هدر بالای اپ -->
+    <header class="app-header">
+      <div class="header-title">
+        <i class="fa-solid fa-futbol"></i>
+        <span>فوتبال پلاس</span>
+      </div>
+      <i class="fa-regular fa-bell" style="color: var(--text-muted);"></i>
+    </header>
+
+    <!-- محتوای متغیر صفحات -->
+    <main class="app-content">
+      
+      <!-- ==================== ۱. اخبار ==================== -->
+      <section id="tab-news" class="tab-pane active">
+        
+        <!-- اسلایدر متحرک شبیه عکس ۱ -->
+        <div class="banner-slider">
+          <div class="slide-track" id="slideTrack">
+            
+            <div class="slide-item">
+              <span class="slide-badge">ملّی گلد</span>
+              <div class="slide-content-body">
+                <div class="slide-title-bold">
+                  زرگر به طلات <span>وزن میده!</span>
+                </div>
+                <div class="slide-subtitle">
+                  ۱۰ گرم شمش طلا، جایزه‌ی ویژه‌ی سپرده‌گذاران
+                </div>
+              </div>
+              <button class="slide-btn">سپرده‌گذاری کنید</button>
+              <i class="slide-visual-element">🌳</i>
+            </div>
+
+            <div class="slide-item" style="background: linear-gradient(135deg, #1e0e2a 0%, #0c0514 100%);">
+              <span class="slide-badge" style="background: linear-gradient(90deg, #e74c3c, #f39c12);">بمب خبری</span>
+              <div class="slide-content-body">
+                <div class="slide-title-bold">
+                  امباپه به <span>رئال پیوست!</span>
+                </div>
+                <div class="slide-subtitle">
+                  قرارداد ۵ ساله طلایی با جایزه ویژه هواداران
+                </div>
+              </div>
+              <button class="slide-btn">مشاهده ویدیو</button>
+              <i class="slide-visual-element">🏆</i>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="slider-dots">
+          <div class="dot active" onclick="goToSlide(0)"></div>
+          <div class="dot" onclick="goToSlide(1)"></div>
+        </div>
+      </section>
+
+      <!-- ==================== ۲. بازی‌ها (وسط) ==================== -->
+      <section id="tab-matches" class="tab-pane">
+        <div class="date-bar">
+          <button class="date-btn">دیروز</button>
+          <button class="date-btn active">امروز</button>
+          <button class="date-btn">فردا</button>
+        </div>
+
+        <div class="match-card">
+          <div class="match-header">
+            <span>لیگ برتر ایران</span>
+            <span style="color: #e74c3c;">دقیقه ۷۴</span>
+          </div>
+          <div class="match-body">
+            <div class="team-box">
+              <span style="font-size: 1.5rem;">🔴</span>
+              <span style="font-size: 0.85rem; font-weight: bold;">پرسپولیس</span>
+            </div>
+            <div class="score-digits">۲ - ۱</div>
+            <div class="team-box">
+              <span style="font-size: 1.5rem;">🔵</span>
+              <span style="font-size: 0.85rem; font-weight: bold;">استقلال</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== ۳. جدول (مطابق عکس ۲) ==================== -->
+      <section id="tab-table" class="tab-pane">
+        
+        <div class="table-container">
+          <div class="leaderboard-header">
+            <span class="leaderboard-title">گداهای استرسی و نخبگان جانبو</span>
+            <i class="fa-solid fa-chevron-left" style="color: var(--text-muted); font-size: 0.9rem;"></i>
+          </div>
+
+          <ul class="leaderboard-list">
+            
+            <li class="leaderboard-item">
+              <div class="user-info">
+                <span class="rank-num">۱</span>
+                <span class="user-name-text">asma zoveidat</span>
+              </div>
+              <div class="scores-wrapper">
+                <span class="score-secondary">۷۵</span>
+                <span class="score-primary">۴۷۸</span>
+              </div>
+            </li>
+
+            <li class="leaderboard-item">
+              <div class="user-info">
+                <span class="rank-num">۲</span>
+                <span class="user-name-text">hey ۱۰</span>
+              </div>
+              <div class="scores-wrapper">
+                <span class="score-secondary">۶۲</span>
+                <span class="score-primary">۴۷۶</span>
+              </div>
+            </li>
+
+            <li class="leaderboard-item">
+              <div class="user-info">
+                <span class="rank-num">۳</span>
+                <span class="user-name-text">asir</span>
+              </div>
+              <div class="scores-wrapper">
+                <span class="score-secondary">۷۲</span>
+                <span class="score-primary">۴۷۱</span>
+              </div>
+            </li>
+
+            <!-- ردیف «شما» مطابق عکس ۲ -->
+            <li class="leaderboard-item is-me">
+              <div class="user-info">
+                <span class="rank-num">۴</span>
+                <span class="user-name-text">شما (موسی کاظم)</span>
+              </div>
+              <div class="scores-wrapper">
+                <span class="score-secondary">۶۷</span>
+                <span class="score-primary">۴۵۸</span>
+              </div>
+            </li>
+
+            <li class="leaderboard-item">
+              <div class="user-info">
+                <span class="rank-num">۵</span>
+                <span class="user-name-text">محمد خلیلای پور</span>
+              </div>
+              <div class="scores-wrapper">
+                <span class="score-secondary">۶۶</span>
+                <span class="score-primary">۴۵۳</span>
+              </div>
+            </li>
+
+            <li class="leaderboard-item">
+              <div class="user-info">
+                <span class="rank-num">۶</span>
+                <span class="user-name-text">حبیب نعیمی</span>
+              </div>
+              <div class="scores-wrapper">
+                <span class="score-secondary">۵۷</span>
+                <span class="score-primary">۴۴۰</span>
+              </div>
+            </li>
+
+            <li class="leaderboard-item">
+              <div class="user-info">
+                <span class="rank-num">۷</span>
+                <span class="user-name-text">احلام آل جابر</span>
+              </div>
+              <div class="scores-wrapper">
+                <span class="score-secondary">۵۴</span>
+                <span class="score-primary">۴۳۴</span>
+              </div>
+            </li>
+
+            <li class="leaderboard-item">
+              <div class="user-info">
+                <span class="rank-num">۸</span>
+                <span class="user-name-text">+98921***7403</span>
+              </div>
+              <div class="scores-wrapper">
+                <span class="score-secondary">۵۰</span>
+                <span class="score-primary">۴۲۶</span>
+              </div>
+            </li>
+
+            <li class="leaderboard-item">
+              <div class="user-info">
+                <span class="rank-num">۹</span>
+                <span class="user-name-text">+98916***8288</span>
+              </div>
+              <div class="scores-wrapper">
+                <span class="score-secondary">۵۹</span>
+                <span class="score-primary">۳۹۵</span>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- ==================== نوار پایینی ثابت (Bottom Nav) ==================== -->
+    <nav class="bottom-nav">
+      <div class="nav-item active" onclick="switchTab('news', this)">
+        <i class="fa-solid fa-newspaper"></i>
+        <span>اخبار</span>
+      </div>
+
+      <div class="nav-item" onclick="switchTab('matches', this)">
+        <i class="fa-solid fa-futbol"></i>
+        <span>بازی‌ها</span>
+      </div>
+
+      <div class="nav-item" onclick="switchTab('table', this)">
+        <i class="fa-solid fa-ranking-star"></i>
+        <span>جدول</span>
+      </div>
+    </nav>
+
+  </div>
+
+  <script>
+    // مدیریت تب‌های نوار پایین
+    function switchTab(tabName, element) {
+      document.querySelectorAll('.tab-pane').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+
+      document.getElementById('tab-' + tabName).classList.add('active');
+      element.classList.add('active');
+    }
+
+    // اسلایدر متحرک خودکار (بخش اخبار)
+    let currentSlide = 0;
+    const track = document.getElementById('slideTrack');
+    const dots = document.querySelectorAll('.dot');
+
+    function goToSlide(index) {
+      currentSlide = index;
+      track.style.transform = `translateX(${currentSlide * 100}%)`;
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide));
+    }
+
+    setInterval(() => {
+      currentSlide = (currentSlide + 1) % 2;
+      goToSlide(currentSlide);
+    }, 4000);
+  </script>
 </body>
 </html>
