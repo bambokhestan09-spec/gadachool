@@ -48,7 +48,6 @@
             overflow-x: hidden;
         }
 
-        /* Stadium light effect */
         body::before,
         body::after {
             content: "";
@@ -446,13 +445,13 @@
         }
 
         /* =========================
-           TABLE
+           TABLE - NEW JELLY STYLE
         ========================= */
 
         table {
             width: 100%;
             border-collapse: separate;
-            border-spacing: 0 6px;
+            border-spacing: 0 9px;
             margin-bottom: 10px;
         }
 
@@ -460,41 +459,117 @@
             color: #7fa5d4;
             font-size: .72rem;
             font-weight: 800;
-            padding: 0 8px 7px;
+            padding: 0 10px 5px;
             text-align: center;
         }
 
         td {
-            padding: 11px 8px;
+            padding: 13px 10px;
             text-align: center;
             font-size: .82rem;
-            background: rgba(255,255,255,.035);
-            border-top: 1px solid rgba(255,255,255,.055);
-            border-bottom: 1px solid rgba(255,255,255,.055);
-            transition: .25s ease;
-        }
 
-        tr:hover td {
-            background: rgba(255,255,255,.065);
-            border-color: rgba(245,184,46,.16);
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.105) 0%,
+                    rgba(255,255,255,.045) 42%,
+                    rgba(0,0,0,.16) 100%
+                );
+
+            border-top: 1px solid rgba(255,255,255,.13);
+            border-bottom: 1px solid rgba(0,0,0,.22);
+
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,.06),
+                inset 0 -2px 4px rgba(0,0,0,.16),
+                0 5px 12px rgba(0,0,0,.16);
+
+            transition:
+                transform .25s ease,
+                background .25s ease,
+                box-shadow .25s ease;
         }
 
         tr td:first-child {
-            border-right: 1px solid rgba(255,255,255,.05);
-            border-top-right-radius: 9px;
-            border-bottom-right-radius: 9px;
+            border-right: 1px solid rgba(255,255,255,.08);
+            border-top-right-radius: 14px;
+            border-bottom-right-radius: 14px;
         }
 
         tr td:last-child {
-            border-left: 1px solid rgba(255,255,255,.05);
-            border-top-left-radius: 9px;
-            border-bottom-left-radius: 9px;
+            border-left: 1px solid rgba(255,255,255,.08);
+            border-top-left-radius: 14px;
+            border-bottom-left-radius: 14px;
+        }
+
+        tbody tr {
+            position: relative;
+        }
+
+        tbody tr:hover td {
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.15),
+                    rgba(255,255,255,.055)
+                );
+
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,.10),
+                inset 0 -2px 5px rgba(0,0,0,.14),
+                0 9px 20px rgba(0,0,0,.22);
+
+            transform: translateY(-1px);
         }
 
         .rank-1 {
             color: #ffd447;
             font-weight: 950;
             text-shadow: 0 0 13px rgba(255,212,71,.38);
+        }
+
+        .rank-number {
+            font-weight: 900;
+            color: #dce8f7;
+            white-space: nowrap;
+        }
+
+        .player-name {
+            font-weight: 800;
+            color: #f5f8ff;
+            white-space: nowrap;
+        }
+
+        .player-name.reza {
+            color: #42f58c;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-weight: 950;
+            letter-spacing: .4px;
+            text-shadow: 0 0 14px rgba(66,245,140,.22);
+        }
+
+        .player-score {
+            font-size: 1rem;
+            font-weight: 950;
+            color: #ffffff;
+            text-shadow: 0 2px 8px rgba(0,0,0,.35);
+        }
+
+        .first-place td {
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(245,184,46,.16),
+                    rgba(255,255,255,.055),
+                    rgba(0,0,0,.18)
+                );
+
+            border-top-color: rgba(245,184,46,.25);
+        }
+
+        .first-place .player-score {
+            color: #ffd447;
+            text-shadow: 0 0 14px rgba(255,212,71,.3);
         }
 
         /* =========================
@@ -877,6 +952,18 @@
             .match-league {
                 font-size: .52rem;
             }
+
+            .player-name {
+                font-size: .76rem;
+            }
+
+            .player-score {
+                font-size: .92rem;
+            }
+
+            td {
+                padding: 12px 7px;
+            }
         }
 
         @media (max-width: 430px) {
@@ -908,6 +995,18 @@
 
             .vote-btn {
                 font-size: .64rem;
+            }
+
+            .player-name {
+                font-size: .68rem;
+            }
+
+            .player-score {
+                font-size: .88rem;
+            }
+
+            td {
+                padding: 11px 5px;
             }
         }
     </style>
@@ -1010,41 +1109,88 @@
                         <tr>
                             <th>رتبه</th>
                             <th>نام</th>
-                            <th>بازی</th>
                             <th>امتیاز</th>
                         </tr>
                     </thead>
 
                     <tbody>
 
-                        <tr>
+                        <tr class="first-place">
                             <td class="rank-1">🥇 ۱</td>
-                            <td><strong>زویدات</strong></td>
-                            <td>۴</td>
-                            <td>
-                                <strong style="color: var(--accent-gold);">۵۰</strong>
-                            </td>
+                            <td class="player-name">Asm A</td>
+                            <td class="player-score">۵۲</td>
                         </tr>
 
                         <tr>
-                            <td>🥈 ۲</td>
-                            <td>نعیمی</td>
-                            <td>۴</td>
-                            <td>۴۲</td>
+                            <td class="rank-number">۲</td>
+                            <td class="player-name reza">REZA GHATIFI</td>
+                            <td class="player-score">۴۸</td>
                         </tr>
 
                         <tr>
-                            <td>🥉 ۳</td>
-                            <td>جاسمیان</td>
-                            <td>۴</td>
-                            <td>۳۸</td>
+                            <td class="rank-number">۳</td>
+                            <td class="player-name">Mahdi</td>
+                            <td class="player-score">۴۵</td>
                         </tr>
 
                         <tr>
-                            <td>۴</td>
-                            <td>ناجح</td>
-                            <td>۴</td>
-                            <td>۳۱</td>
+                            <td class="rank-number">۴</td>
+                            <td class="player-name">Donya Asil</td>
+                            <td class="player-score">۴۴</td>
+                        </tr>
+
+                        <tr>
+                            <td class="rank-number">۵</td>
+                            <td class="player-name">حبیب نعیمی</td>
+                            <td class="player-score">۴۳</td>
+                        </tr>
+
+                        <tr>
+                            <td class="rank-number">۶</td>
+                            <td class="player-name">محمد خلیلاوی پور</td>
+                            <td class="player-score">۴۰</td>
+                        </tr>
+
+                        <tr>
+                            <td class="rank-number">۷</td>
+                            <td class="player-name">hajar daoudi</td>
+                            <td class="player-score">۳۸</td>
+                        </tr>
+
+                        <tr>
+                            <td class="rank-number">۸</td>
+                            <td class="player-name">Ahlam Aljaber</td>
+                            <td class="player-score">۳۷</td>
+                        </tr>
+
+                        <tr>
+                            <td class="rank-number">۹</td>
+                            <td class="player-name">hey10</td>
+                            <td class="player-score">۳۴</td>
+                        </tr>
+
+                        <tr>
+                            <td class="rank-number">۱۰</td>
+                            <td class="player-name">امین دریس</td>
+                            <td class="player-score">۳۳</td>
+                        </tr>
+
+                        <tr>
+                            <td class="rank-number">۱۱</td>
+                            <td class="player-name">Sama salehi</td>
+                            <td class="player-score">۳۰</td>
+                        </tr>
+
+                        <tr>
+                            <td class="rank-number">۱۲</td>
+                            <td class="player-name">محمد جاسمیان</td>
+                            <td class="player-score">۲۴</td>
+                        </tr>
+
+                        <tr>
+                            <td class="rank-number">۱۳</td>
+                            <td class="player-name">مهدی</td>
+                            <td class="player-score">۱۵</td>
                         </tr>
 
                     </tbody>
