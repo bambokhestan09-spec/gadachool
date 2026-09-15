@@ -14,7 +14,7 @@
 
 /* =========================================================
    GEDA CHOLHA 2
-   EUROPEAN FOOTBALL — POSTER THEME
+   فقط پس‌زمینه تغییر کرده
 ========================================================= */
 
 :root{
@@ -34,8 +34,6 @@
     --line:rgba(0,208,132,.18);
 }
 
-/* RESET */
-
 *{
     box-sizing:border-box;
     margin:0;
@@ -44,7 +42,7 @@
 
 html{
     scroll-behavior:smooth;
-    background:var(--navy);
+    background:#050d2d;
 }
 
 body{
@@ -58,55 +56,42 @@ body{
 
     color:var(--white);
 
+    /* فقط پس زمینه */
     background:
-        radial-gradient(
-            circle at 50% 15%,
-            rgba(0,208,132,.10),
-            transparent 28%
-        ),
-        radial-gradient(
-            circle at 0% 45%,
-            rgba(255,90,10,.08),
-            transparent 25%
-        ),
-        radial-gradient(
-            circle at 100% 75%,
-            rgba(0,208,132,.07),
-            transparent 25%
-        ),
         linear-gradient(
             135deg,
-            #030923,
-            #07133b 50%,
-            #06102f
+            #030923 0%,
+            #07133c 48%,
+            #050d2d 100%
         );
 
     overflow-x:hidden;
+    position:relative;
 }
 
 
 /* =========================================================
-   DECORATIVE POSTER ELEMENTS
+   دکور پس‌زمینه
 ========================================================= */
 
 body::before{
     content:"";
+
     position:fixed;
 
-    width:480px;
-    height:480px;
+    width:520px;
+    height:520px;
 
-    left:-340px;
-    bottom:-180px;
+    left:-390px;
+    bottom:-250px;
 
-    border:70px solid var(--green);
+    border:85px solid rgba(0,208,132,.70);
 
-    border-radius:
-        45% 55% 60% 40%;
+    border-radius:50%;
 
-    transform:rotate(30deg);
+    transform:rotate(28deg);
 
-    opacity:.82;
+    opacity:.75;
 
     pointer-events:none;
 
@@ -115,50 +100,47 @@ body::before{
 
 body::after{
     content:"";
+
     position:fixed;
 
-    width:400px;
-    height:400px;
+    width:470px;
+    height:470px;
 
-    right:-300px;
-    top:-170px;
+    right:-350px;
+    top:-230px;
 
-    border:65px solid var(--green);
+    border:75px solid rgba(0,208,132,.65);
 
-    border-radius:
-        55% 45% 40% 60%;
+    border-radius:50%;
 
     transform:rotate(-25deg);
 
-    opacity:.78;
+    opacity:.72;
 
     pointer-events:none;
 
     z-index:0;
 }
 
-
-/* نارنجی‌های تزئینی */
-
 .container::before{
     content:"";
 
     position:fixed;
 
-    width:130px;
-    height:300px;
+    width:180px;
+    height:360px;
 
-    left:-45px;
-    top:180px;
+    left:-85px;
+    top:190px;
 
-    border:30px solid var(--orange);
+    border:34px solid rgba(255,90,10,.72);
 
     border-radius:
         70% 30% 60% 40%;
 
     transform:rotate(25deg);
 
-    opacity:.75;
+    opacity:.60;
 
     pointer-events:none;
 
@@ -170,20 +152,20 @@ body::after{
 
     position:fixed;
 
-    width:130px;
-    height:300px;
+    width:180px;
+    height:360px;
 
-    right:-55px;
-    top:330px;
+    right:-90px;
+    top:390px;
 
-    border:30px solid var(--orange);
+    border:34px solid rgba(255,90,10,.68);
 
     border-radius:
         30% 70% 40% 60%;
 
     transform:rotate(-20deg);
 
-    opacity:.7;
+    opacity:.55;
 
     pointer-events:none;
 
@@ -192,7 +174,7 @@ body::after{
 
 
 /* =========================================================
-   SPLASH SCREEN
+   SPLASH
 ========================================================= */
 
 #splash-screen{
@@ -298,8 +280,6 @@ header{
     box-shadow:none !important;
 }
 
-/* بالای هدر */
-
 header .brand-logo{
     display:inline-flex;
 
@@ -324,8 +304,6 @@ header .brand-logo{
         rgba(255,255,255,.015);
 }
 
-/* عنوان اصلی */
-
 header .main-title{
     margin-top:42px;
 
@@ -349,8 +327,6 @@ header .main-title::first-line{
     color:white;
 }
 
-/* لوگوتایپ */
-
 header .brand-logo::before{
     content:"GEDA CHOLHA";
 
@@ -368,8 +344,6 @@ header .brand-logo::before{
 header .brand-logo{
     font-size:0;
 }
-
-/* خط رنگی */
 
 header::after{
     content:"";
@@ -398,8 +372,6 @@ header::after{
         0 0 18px
         rgba(0,208,132,.15);
 }
-
-/* بج‌های هدر */
 
 .time-badge{
     display:block;
@@ -577,7 +549,7 @@ header::after{
 
 
 /* =========================================================
-   NEWS SLIDE
+   NEWS
 ========================================================= */
 
 .news-slide{
@@ -769,18 +741,12 @@ tbody tr:first-child{
         rgba(0,208,132,.28) !important;
 }
 
-
-/* زمان بازی */
-
 .match-time{
     color:
         var(--orange) !important;
 
     font-weight:900 !important;
 }
-
-
-/* نام تیم */
 
 .team-name{
     color:white !important;
@@ -978,13 +944,7 @@ footer{
 </style>
 </head>
 
-
 <body>
-
-
-<!-- =====================================================
-     SPLASH
-===================================================== -->
 
 <div id="splash-screen">
 
@@ -1004,11 +964,6 @@ footer{
 
 
 <div class="container">
-
-
-<!-- =====================================================
-     HEADER
-===================================================== -->
 
 <header>
 
@@ -1031,16 +986,8 @@ footer{
 </header>
 
 
-<!-- =====================================================
-     MAIN GRID
-===================================================== -->
-
 <div class="main-grid">
 
-
-<!-- =====================================================
-     NEWS
-===================================================== -->
 
 <div class="newspaper-card">
 
@@ -1053,9 +1000,6 @@ footer{
     </div>
 
     <div class="news-slider" id="newsSlider">
-
-
-        <!-- NEWS 1 -->
 
         <article class="news-slide">
 
@@ -1083,8 +1027,6 @@ footer{
         </article>
 
 
-        <!-- NEWS 2 -->
-
         <article class="news-slide">
 
             <div class="kicker">
@@ -1109,8 +1051,6 @@ footer{
 
         </article>
 
-
-        <!-- NEWS 3 -->
 
         <article class="news-slide">
 
@@ -1138,8 +1078,6 @@ footer{
         </article>
 
 
-        <!-- NEWS 4 -->
-
         <article class="news-slide">
 
             <div class="kicker">
@@ -1166,8 +1104,6 @@ footer{
         </article>
 
 
-        <!-- NEWS 5 -->
-
         <article class="news-slide">
 
             <div class="kicker">
@@ -1193,8 +1129,6 @@ footer{
         </article>
 
 
-        <!-- NEWS 6 -->
-
         <article class="news-slide">
 
             <div class="kicker">
@@ -1219,8 +1153,6 @@ footer{
 
         </article>
 
-
-        <!-- NEWS 7 -->
 
         <article class="news-slide">
 
@@ -1248,8 +1180,6 @@ footer{
         </article>
 
 
-        <!-- NEWS 8 -->
-
         <article class="news-slide">
 
             <div class="kicker">
@@ -1274,7 +1204,6 @@ footer{
 
         </article>
 
-
     </div>
 
 
@@ -1296,10 +1225,6 @@ footer{
 
 
 
-<!-- =====================================================
-     LEADERBOARD
-===================================================== -->
-
 <div class="panel">
 
     <div class="panel-title">
@@ -1316,11 +1241,13 @@ footer{
     <table>
 
         <thead>
+
             <tr>
                 <th>رتبه</th>
                 <th>شرکت‌کننده</th>
                 <th>امتیاز</th>
             </tr>
+
         </thead>
 
         <tbody>
@@ -1430,10 +1357,6 @@ footer{
 </div>
 
 
-<!-- =====================================================
-     MATCHES
-===================================================== -->
-
 <section class="matches-section">
 
     <div class="panel-title">
@@ -1447,8 +1370,6 @@ footer{
     </div>
 
 
-    <!-- MATCH 1 -->
-
     <div class="match-card"
          onclick="togglePrediction('match1')">
 
@@ -1459,6 +1380,7 @@ footer{
             </div>
 
             <div class="teams">
+
                 <span class="team-name">
                     برنتفورد
                 </span>
@@ -1470,6 +1392,7 @@ footer{
                 <span class="team-name">
                     چلسی
                 </span>
+
             </div>
 
         </div>
@@ -1494,9 +1417,6 @@ footer{
 
     </div>
 
-
-
-    <!-- MATCH 2 -->
 
     <div class="match-card"
          onclick="togglePrediction('match2')">
@@ -1544,9 +1464,6 @@ footer{
     </div>
 
 
-
-    <!-- MATCH 3 -->
-
     <div class="match-card"
          onclick="togglePrediction('match3')">
 
@@ -1592,9 +1509,6 @@ footer{
 
     </div>
 
-
-
-    <!-- MATCH 4 -->
 
     <div class="match-card"
          onclick="togglePrediction('match4')">
@@ -1642,9 +1556,6 @@ footer{
     </div>
 
 
-
-    <!-- MATCH 5 -->
-
     <div class="match-card"
          onclick="togglePrediction('match5')">
 
@@ -1690,9 +1601,6 @@ footer{
 
     </div>
 
-
-
-    <!-- MATCH 6 -->
 
     <div class="match-card"
          onclick="togglePrediction('match6')">
@@ -1740,9 +1648,6 @@ footer{
     </div>
 
 
-
-    <!-- MATCH 7 -->
-
     <div class="match-card"
          onclick="togglePrediction('match7')">
 
@@ -1788,9 +1693,6 @@ footer{
 
     </div>
 
-
-
-    <!-- MATCH 8 -->
 
     <div class="match-card"
          onclick="togglePrediction('match8')">
@@ -1840,10 +1742,6 @@ footer{
 </section>
 
 
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
 <footer>
 
     ⚽
@@ -1860,16 +1758,10 @@ footer{
 
 </footer>
 
-
 </div>
 
 
-
 <script>
-
-/* =========================================================
-   SPLASH
-========================================================= */
 
 window.addEventListener("load", function(){
 
@@ -1886,10 +1778,6 @@ window.addEventListener("load", function(){
 
 });
 
-
-/* =========================================================
-   PREDICTION PANELS
-========================================================= */
 
 function togglePrediction(matchId){
 
@@ -1923,10 +1811,6 @@ function togglePrediction(matchId){
 }
 
 
-/* =========================================================
-   VOTE
-========================================================= */
-
 function submitVote(team){
 
     alert(
@@ -1938,10 +1822,6 @@ function submitVote(team){
 }
 
 
-/* =========================================================
-   NEWS SLIDER
-========================================================= */
-
 const newsSlides =
     document.querySelectorAll(".news-slide");
 
@@ -1952,8 +1832,6 @@ let currentNews = 0;
 
 let newsTimer;
 
-
-/* ساخت نقاط */
 
 function createNewsDots(){
 
@@ -1983,8 +1861,6 @@ function createNewsDots(){
 
 }
 
-
-/* نمایش خبر */
 
 function showNews(index){
 
@@ -2021,8 +1897,6 @@ function showNews(index){
 }
 
 
-/* خبر بعدی */
-
 function nextNews(){
 
     showNews(currentNews + 1);
@@ -2030,16 +1904,12 @@ function nextNews(){
 }
 
 
-/* خبر قبلی */
-
 function previousNews(){
 
     showNews(currentNews - 1);
 
 }
 
-
-/* تایمر */
 
 function startNewsTimer(){
 
@@ -2057,8 +1927,6 @@ function startNewsTimer(){
 
 }
 
-
-/* توقف با ماوس */
 
 const newsSlider =
     document.getElementById("newsSlider");
@@ -2086,8 +1954,6 @@ if(newsSlider){
 }
 
 
-/* شروع */
-
 createNewsDots();
 
 showNews(0);
@@ -2095,11 +1961,8 @@ showNews(0);
 startNewsTimer();
 
 
-/* =========================================================
-   TOUCH SWIPE
-========================================================= */
-
 let touchStartX = 0;
+
 let touchEndX = 0;
 
 if(newsSlider){
